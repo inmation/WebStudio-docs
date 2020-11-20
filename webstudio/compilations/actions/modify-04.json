@@ -1,0 +1,169 @@
+{
+    "version": "1",
+    "name": "actions-modify-example-04",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-modify-example-04",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Click here \r\n to change the aggregate of the first pen in the Webchart",
+            "captionBar": {
+                "hidden": false,
+                "title": "Widget to update array item by index",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "onClick": {
+                    "type": "modify",
+                    "id": "chart_1",
+                    "set": [
+                        {
+                            "name": "model.chart.pens.0.aggregate",
+                            "value": "AGG_TYPE_DELTA"
+                        }
+                    ]
+                }
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 8,
+                "h": 10,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "chart",
+            "captionBar": true,
+            "options": {
+                "play": "live",
+                "rightPanel": true,
+                "bottomPanel": true,
+                "leftPanel": false
+            },
+            "layout": {
+                "w": 16,
+                "h": 10,
+                "x": 8,
+                "y": 1,
+                "static": false
+            },
+            "chart": {
+                "class": "Trend",
+                "name": "Demo Process Data - DC4711",
+                "pens": [
+                    {
+                        "DecimalPlaces": 2,
+                        "OpcEngUnit": "$",
+                        "draw": true,
+                        "id": 1,
+                        "name": "Simulated Density",
+                        "path": "/System/Core/Examples/Demo Data/Process Data/DC4711",
+                        "style": {
+                            "line": "SOLID",
+                            "marker": "MARKER_STYLE_NONE",
+                            "thickness": "SEMISMALL"
+                        },
+                        "aggregate": "AGG_TYPE_INTERPOLATIVE",
+                        "themes": {
+                            "dark": {
+                                "color": "aqua"
+                            },
+                            "light": {
+                                "color": "aqua"
+                            }
+                        },
+                        "trend_type": "HT_LINE",
+                        "x_axis": [
+                            1
+                        ],
+                        "y_axis": [
+                            1
+                        ]
+                    }
+                ],
+                "x_axis": [
+                    {
+                        "end_time": "*",
+                        "grid": false,
+                        "id": 1,
+                        "intervals_no": 100,
+                        "locked": false,
+                        "name": "X",
+                        "position": {
+                            "alignment": "bottom",
+                            "end": 100,
+                            "orientation": "bottom",
+                            "start": 0,
+                            "value": 1
+                        },
+                        "start_time": "*-1d",
+                        "themes": {
+                            "dark": {
+                                "color": "white"
+                            },
+                            "light": {
+                                "color": "black"
+                            }
+                        }
+                    }
+                ],
+                "y_axis": [
+                    {
+                        "grid": false,
+                        "id": 1,
+                        "locked": false,
+                        "name": "Y",
+                        "position": {
+                            "alignment": "left",
+                            "end": 100,
+                            "orientation": "left",
+                            "start": 0,
+                            "value": 1
+                        },
+                        "range": {
+                            "max": {
+                                "mode": "auto",
+                                "value": 0
+                            },
+                            "min": {
+                                "mode": "auto",
+                                "value": 0
+                            }
+                        },
+                        "themes": {
+                            "dark": {
+                                "color": "white"
+                            },
+                            "light": {
+                                "color": "black"
+                            }
+                        }
+                    }
+                ]
+            },
+            "id": "chart_1"
+        }
+    ]
+}

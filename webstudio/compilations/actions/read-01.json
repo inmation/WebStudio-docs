@@ -1,0 +1,70 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "name": "Title Bar",
+            "text": "actions-read-example-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "table",
+            "id": "table_1",
+            "name": "Lua KPI Table",
+            "dataSource": {
+                "type": "read",
+                "path": "/Enterprise/Site/Area/KPI Table",
+                "opt": {
+                    "STARTTIME": "2020-10-13T00:00:00.000Z",
+                    "ENDTIME": "2020-10-14T00:00:00.000Z",
+                    "TIMESTAMP": "1602633600"
+                }
+            },
+            "options": {
+                "multi": false,
+                "editable": false,
+                "pageSize": 20,
+                "pagination": true,
+                "captionBar": true,
+                "showHoverHighLight": true,
+                "alternateColumnColoring": false,
+                "alternateRowColoring": true,
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "14px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 4,
+                "x": 0,
+                "y": 1,
+                "static": true
+            }
+        }
+    ],
+    "options": {
+        "stacking": "horizontal",
+        "numberOfColumns": 24
+    }
+}

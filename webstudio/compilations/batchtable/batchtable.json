@@ -1,0 +1,25 @@
+{
+    "version": "1",
+    "type": "webstudio",
+    "name": "batch-table",
+    "widgets": [
+        {
+            "type": "batchtable",
+            "id": "batchtable_1",
+            "name": "Batch Table",
+            "starttime": "2020-09-23T00:00:00.000Z",
+            "endtime": "2020-09-25T00:00:00.000Z",
+            "dataSource": {
+                "type": "fetch",
+                "path": "/enterprise/Site/Area/WorkCenter"
+            },
+            "layout": {
+                "w": 8,
+                "h": 8,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        }
+    ]
+}

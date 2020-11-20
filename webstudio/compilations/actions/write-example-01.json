@@ -1,0 +1,211 @@
+{
+    "version": "1",
+    "name": "actions-write-example-01",
+    "actions": {
+        "read": [
+            {
+                "type": "read",
+                "path": "/System/Core/Playground/Counter"
+            },
+            {
+                "type": "transform",
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "value": "$payload",
+                            "text": {
+                                "$concat": [
+                                    "Count: ",
+                                    "$payload"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
+        "write": [
+            {
+                "type": "write",
+                "path": "/System/Core/Playground/Counter"
+            }
+        ],
+        "increase": [
+            {
+                "type": "action",
+                "name": "read"
+            },
+            {
+                "type": "transform",
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "v": {
+                                "$add": [
+                                    "$value",
+                                    1
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "action",
+                "name": "write"
+            }
+        ],
+        "decrease": [
+            {
+                "type": "action",
+                "name": "read"
+            },
+            {
+                "type": "transform",
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "v": {
+                                "$add": [
+                                    "$value",
+                                    -1
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "action",
+                "name": "write"
+            }
+        ]
+    },
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-write-example-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "id": "counter",
+            "type": "text",
+            "dataSource": {
+                "type": "subscribe",
+                "path": "/System/Core/Playground/Counter"
+            },
+            "actions": {
+                "willUpdate": [
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "text": {
+                                        "$concat": [
+                                            "Count: ",
+                                            "$payload"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "captionBar": {
+                "title": "Counter"
+            },
+            "layout": {
+                "w": 11,
+                "h": 6,
+                "x": 12,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "text",
+            "name": "Widget to increment the count",
+            "dataSource": {
+                "data": "Click here \r\n to increase the value of count"
+            },
+            "captionBar": {
+                "hidden": false
+            },
+            "options": {
+                "style": {
+                    "textAlign": "center",
+                    "fontSize": "14px",
+                    "fontWeight": "bold"
+                }
+            },
+            "actions": {
+                "onClick": {
+                    "type": "action",
+                    "name": "increase"
+                }
+            },
+            "id": "increase",
+            "layout": {
+                "w": 6,
+                "h": 6,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "text",
+            "name": "Widget to decrement the count",
+            "dataSource": {
+                "data": "Click here \r\n to decrement the value of count"
+            },
+            "captionBar": {
+                "hidden": false
+            },
+            "options": {
+                "style": {
+                    "textAlign": "center",
+                    "fontSize": "14px",
+                    "fontWeight": "bold"
+                }
+            },
+            "actions": {
+                "onClick": {
+                    "type": "action",
+                    "name": "decrease"
+                }
+            },
+            "id": "decrease",
+            "layout": {
+                "w": 6,
+                "h": 6,
+                "x": 6,
+                "y": 1,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

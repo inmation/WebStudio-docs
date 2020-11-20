@@ -1,0 +1,69 @@
+{
+    "version": "1",
+    "actions": {
+        "doNotify": {
+            "type": "notify",
+            "text": "Action defined on grid level"
+        }
+    },
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "name": "Simple Text",
+            "text": "Your text here",
+            "captionBar": {
+                "hidden": false,
+                "title": "Simple Text Widget",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "handleClick": [
+                    {
+                        "type": "prompt",
+                        "width": "500px",
+                        "height": "500px",
+                        "message": {
+                            "payload": {
+                                "type": "text",
+                                "name": "Prompt Text Widget Example",
+                                "text": "Hello world"
+                            }
+                        }
+                    },
+                    {
+                        "type": "action",
+                        "name": "doNotify"
+                    }
+                ],
+                "onClick": [
+                    {
+                        "type": "action",
+                        "name": "handleClick"
+                    }
+                ]
+            },
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "fontWeight": "bold",
+                    "fontFamily": "\"Courier New\", Courier, sans-serif",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 10,
+                "h": 5,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

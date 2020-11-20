@@ -1,0 +1,71 @@
+{
+    "version": "1",
+    "name": "actions-wait-example-01",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-wait-example-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "id": "text_2",
+            "name": "Simple Text Widget",
+            "text": "Click me \r\n to show a notification after one second",
+            "captionBar": {
+                "hidden": false,
+                "title": "Show notification after one second",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "onClick": [
+                    {
+                        "type": "wait",
+                        "duration": 1000
+                    },
+                    {
+                        "type": "notify",
+                        "title": "You are notified",
+                        "text": "Some notify text!",
+                        "duration": 5000,
+                        "transition": "bounce"
+                    }
+                ]
+            },
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "fontWeight": "bold",
+                    "fontFamily": "\"Courier New\", Courier, sans-serif",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 7,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        }
+    ]
+}

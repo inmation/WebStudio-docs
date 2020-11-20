@@ -1,0 +1,58 @@
+{
+    "version": "1",
+    "name": "actions-prompt-example-01",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-prompt-example-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Click me \r\n to open a prompt that contains a text widget",
+            "captionBar": {
+                "hidden": false,
+                "title": "Opens a prompt that contains a text widget",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "onClick": {
+                    "type": "prompt",
+                    "width": "500px",
+                    "height": "500px",
+                    "message": {
+                        "payload": {
+                            "type": "text",
+                            "text": "Hello World"
+                        }
+                    }
+                }
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 24,
+                "h": 5,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        }
+    ]
+}

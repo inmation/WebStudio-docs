@@ -1,0 +1,100 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "text",
+            "name": "Text Widget",
+            "text": "Click here to see selected table rows in console log",
+            "actions": {
+                "onClick": [
+                    {
+                        "type": "collect",
+                        "from": "table",
+                        "message": {
+                            "topic": "selectedRows"
+                        }
+                    },
+                    {
+                        "type": "consoleLog"
+                    }
+                ]
+            },
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "fontWeight": "bold",
+                    "fontFamily": "\"Courier New\", Courier, sans-serif",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "id": "text_1",
+            "layout": {
+                "w": 10,
+                "h": 8,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "table",
+            "name": "Demo Process Data",
+            "dataSource": {
+                "ctx": "/System/Core/Use Cases/WebStudio Tests",
+                "func": "demoProcessDataTableData",
+                "lib": "webstudio-tests",
+                "type": "function"
+            },
+            "schema": [
+                {
+                    "name": "name",
+                    "title": "Name"
+                },
+                {
+                    "name": "value",
+                    "numberOfDecimals": 2,
+                    "title": "Value",
+                    "type": "number"
+                },
+                {
+                    "name": "quality",
+                    "title": "Quality"
+                },
+                {
+                    "name": "timestamp",
+                    "title": "Timestamp",
+                    "type": "date",
+                    "format": "YYYY-MM-DD HH:mm:ss:SSS"
+                }
+            ],
+            "captionBar": true,
+            "options": {
+                "multi": true,
+                "style": {
+                    "fontSize": "18px"
+                },
+                "pageSize": 10,
+                "pagination": true,
+                "allowSorting": true,
+                "alternateColumnColoring": false,
+                "alternateRowColoring": true,
+                "showHoverHighLight": true
+            },
+            "refreshInterval": 10,
+            "id": "table",
+            "layout": {
+                "w": 13,
+                "h": 8,
+                "x": 10,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

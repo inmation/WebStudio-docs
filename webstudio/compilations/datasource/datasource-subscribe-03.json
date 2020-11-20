@@ -1,0 +1,128 @@
+{
+    "version": "1",
+    "name": "dataSource-subscribe-example-03",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "dataSource-subscribe-example-03",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "name": "Widget to display the currency value. Subscribe with options and prefix switcher.",
+            "dataSource": {
+                "type": "subscribe",
+                "path": "/System/Core/Examples/Demo Data/Process Data/DC4711"
+            },
+            "actions": {
+                "willUpdate": [
+                    {
+                        "type": "consoleLog"
+                    },
+                    {
+                        "type": "transform",
+                        "completeMsgObject": true,
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "payload": {
+                                        "$concat": [
+                                            "$prefix",
+                                            " ",
+                                            "$payload"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 14,
+                "h": 6,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "text",
+            "name": "Widget to modify text of the currency widget. Click on $ to get the currency in $",
+            "dataSource": {
+                "data": "$"
+            },
+            "id": "text_3",
+            "actions": {
+                "onClick": {
+                    "type": "modify",
+                    "id": "text_2",
+                    "set": [
+                        {
+                            "name": "model.dataSource.message.prefix",
+                            "value": "USD"
+                        }
+                    ]
+                }
+            },
+            "layout": {
+                "w": 8,
+                "h": 3,
+                "x": 14,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "text",
+            "name": "Widget to modify text off the currency widget. Click on € to get the currency in €",
+            "dataSource": {
+                "data": "€"
+            },
+            "actions": {
+                "onClick": [
+                    {
+                        "type": "modify",
+                        "id": "text_2",
+                        "set": [
+                            {
+                                "name": "model.dataSource.message.prefix",
+                                "value": "€"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "id": "text_4",
+            "layout": {
+                "w": 8,
+                "h": 3,
+                "x": 14,
+                "y": 4,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

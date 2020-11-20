@@ -1,0 +1,41 @@
+{
+    "version": "1",
+    "name": "actions-transform-example-01",
+    "widgets": [
+        {
+            "type": "transformeditor",
+            "id": "transformeditor_1",
+            "name": "Transform Editor",
+            "completeMsgObject": false,
+            "input": {
+                "name": "Company A",
+                "location": "Eindhoven"
+            },
+            "transform": {
+                "type": "transform",
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "company": "$name"
+                        }
+                    }
+                ]
+            },
+            "editorOptions": {
+                "fontSize": 12
+            },
+            "captionBar": true,
+            "layout": {
+                "w": 24,
+                "h": 10,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

@@ -1,0 +1,70 @@
+{
+    "version": "1",
+    "name": "actions-transform-example-02",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "name": "Title Bar",
+            "text": "actions-transform-example-02",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "transformeditor",
+            "id": "transformeditor_1",
+            "name": "Transform Editor",
+            "completeMsgObject": false,
+            "input": [
+                {
+                    "name": "Company A",
+                    "location": "Cologne"
+                },
+                {
+                    "name": "Company B",
+                    "location": "Eindhoven"
+                }
+            ],
+            "transform": {
+                "type": "transform",
+                "aggregate": [
+                    {
+                        "$match": {
+                            "location": "Cologne"
+                        }
+                    }
+                ]
+            },
+            "editorOptions": {
+                "fontSize": 12
+            },
+            "captionBar": true,
+            "layout": {
+                "w": 24,
+                "h": 9,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

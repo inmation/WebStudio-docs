@@ -1,0 +1,56 @@
+{
+    "version": "1",
+    "name": "actions-consolelog-example-04",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-consolelog-example-04",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Click me \r\n to merge the message `payload` with other key-value data and display it in the browser's console log. Hit f12 to open your console!",
+            "captionBar": {
+                "hidden": false,
+                "title": "Console Log a custom payload message",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "onClick": {
+                    "type": "consoleLog",
+                    "tag": "The tag of the consolelog",
+                    "message": {
+                        "payload": {
+                            "otherTest": "This is just some other text message"
+                        }
+                    }
+                }
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 24,
+                "h": 5,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        }
+    ]
+}

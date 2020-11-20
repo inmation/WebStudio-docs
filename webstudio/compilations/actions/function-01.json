@@ -1,0 +1,87 @@
+{
+    "version": "1",
+    "name": "actions-function-example-01",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-function-example-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Click me \r\n to invoke an advanced endpoint. The response will be sent to the editor",
+            "captionBar": {
+                "hidden": false,
+                "title": "Invoke advanced endpoint",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "onClick": [
+                    {
+                        "type": "function",
+                        "lib": "inmation.api",
+                        "func": "read",
+                        "farg": {
+                            "items": [
+                                {
+                                    "p": "/System/Core/Examples/Demo Data/Process Data/DC4711"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "send",
+                        "to": "editor"
+                    }
+                ]
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 10,
+                "h": 6,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "name": "Editor",
+            "completeMsgObject": true,
+            "options": {
+                "showToolbar": true,
+                "language": "json"
+            },
+            "editorOptions": {
+                "fontSize": 12,
+                "cursorStyle": "line",
+                "readOnly": false
+            },
+            "layout": {
+                "w": 14,
+                "h": 6,
+                "x": 10,
+                "y": 1,
+                "static": false
+            },
+            "id": "editor"
+        }
+    ]
+}

@@ -1,0 +1,121 @@
+{
+    "version": "1",
+    "name": "actions-modify-example-05",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-modify-example-05",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Click here \r\n to add a row to the fixed data table",
+            "captionBar": {
+                "hidden": false,
+                "title": "Widget to add a row to the fixed data table",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "onClick": {
+                    "type": "modify",
+                    "id": "table_1",
+                    "addToArray": [
+                        {
+                            "name": "model.dataSource.data",
+                            "value": {
+                                "name": "New Name",
+                                "value": 10,
+                                "location": "New Location"
+                            }
+                        }
+                    ]
+                }
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 8,
+                "h": 8,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "table",
+            "name": "Fixed Data",
+            "dataSource": {
+                "data": [
+                    {
+                        "name": "Inside Temperature",
+                        "value": 26,
+                        "location": "Eindhoven"
+                    },
+                    {
+                        "name": "Outside Temperature",
+                        "value": 18,
+                        "location": "Eindhoven"
+                    },
+                    {
+                        "name": "Average Temperature",
+                        "value": 22,
+                        "location": "Eindhoven"
+                    }
+                ]
+            },
+            "schema": [
+                {
+                    "name": "name",
+                    "title": "Name"
+                },
+                {
+                    "name": "location",
+                    "title": "Location",
+                    "hidden": true
+                },
+                {
+                    "name": "value",
+                    "title": "Value"
+                }
+            ],
+            "captionBar": true,
+            "options": {
+                "editable": false,
+                "multi": false,
+                "style": {
+                    "fontSize": "12px"
+                },
+                "pageSize": 10,
+                "pagination": true,
+                "allowSorting": true,
+                "alternateColumnColoring": false,
+                "alternateRowColoring": true,
+                "showHoverHighLight": true
+            },
+            "id": "table_1",
+            "layout": {
+                "w": 16,
+                "h": 8,
+                "x": 8,
+                "y": 1,
+                "static": false
+            }
+        }
+    ]
+}

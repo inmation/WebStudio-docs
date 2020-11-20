@@ -1,0 +1,115 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "table",
+            "id": "table_1",
+            "name": "Order Table",
+            "captionBar": true,
+            "dataSource": {
+                "path": "/System/Core/Simulation/Tables/Shifts_Mutable.TableData",
+                "type": "read"
+            },
+            "schema": [
+                {
+                    "name": "Item",
+                    "title": "Item",
+                    "actions": {
+                        "onClick": {
+                            "type": "action",
+                            "name": "cellClick"
+                        }
+                    }
+                },
+                {
+                    "name": "OrderDate",
+                    "title": "Order date",
+                    "hidden": true
+                },
+                {
+                    "name": "Region",
+                    "title": "Region",
+                    "items": [
+                        "Central",
+                        "East",
+                        "West"
+                    ]
+                },
+                {
+                    "name": "Rep",
+                    "title": "Rep",
+                    "items": [
+                        "Kivell",
+                        "Jardine",
+                        "Gill",
+                        "Sorvino",
+                        "Jones",
+                        "Andrews",
+                        "Thompson"
+                    ]
+                },
+                {
+                    "name": "Total",
+                    "title": "Total"
+                },
+                {
+                    "name": "Unit Cost",
+                    "title": "Unit Cost"
+                },
+                {
+                    "name": "Units",
+                    "title": "Units"
+                }
+            ],
+            "actions": {
+                "cellClick": {
+                    "type": "send",
+                    "to": "editor_01"
+                }
+            },
+            "options": {
+                "pageSize": 20,
+                "pagination": true,
+                "allowSorting": true,
+                "alternateColumnColoring": false,
+                "alternateRowColoring": true,
+                "showHoverHighLight": true,
+                "style": {
+                    "fontSize": "12px"
+                }
+            },
+            "layout": {
+                "w": 11,
+                "h": 10,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "id": "editor_01",
+            "name": "Output",
+            "options": {
+                "showToolbar": true,
+                "language": "json"
+            },
+            "editorOptions": {
+                "fontSize": 12,
+                "cursorStyle": "line",
+                "readOnly": false
+            },
+            "layout": {
+                "w": 11,
+                "h": 10,
+                "x": 11,
+                "y": 0,
+                "static": false
+            }            
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

@@ -1,0 +1,136 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "table",
+            "name": "Table holder",
+            "dataSource": {
+                "type": "read",
+                "path": "/System/Core/Simulation/Tables/SalesOrders"
+            },
+            "actions": {
+                "didUpdate": [
+                    {
+                        "type": "send",
+                        "to": "self",
+                        "message": {
+                            "topic": "selectRows",
+                            "payload": {
+                                "rowIndex": [
+                                    4,
+                                    5,
+                                    6
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "schema": [
+                {
+                    "title": "Sales Person",
+                    "columns": [
+                        {
+                            "title": "Rep",
+                            "name": "Rep"
+                        },
+                        {
+                            "title": "Region",
+                            "name": "Region"
+                        }
+                    ]
+                },
+                {
+                    "title": "Sales",
+                    "columns": [
+                        {
+                            "title": "Item",
+                            "name": "Item"
+                        },
+                        {
+                            "title": "OrderDate",
+                            "name": "OrderDate"
+                        },
+                        {
+                            "title": "Units",
+                            "name": "Units"
+                        },
+                        {
+                            "title": "Unit Cost",
+                            "name": "Unit Cost"
+                        },
+                        {
+                            "title": "Total",
+                            "name": "Total"
+                        }
+                    ]
+                }
+            ],
+            "captionBar": true,
+            "options": {
+                "multi": true,
+                "editable": false,
+                "style": {
+                    "fontSize": "12px"
+                },
+                "pageSize": 20,
+                "pagination": true,
+                "showHoverHighLight": true,
+                "alternateColumnColoring": false,
+                "alternateRowColoring": true
+            },
+            "id": "table",
+            "layout": {
+                "w": 11,
+                "h": 8,
+                "x": 8,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "text",
+            "name": "Text Widget",
+            "text": "Add to selection",
+            "actions": {
+                "onClick": [
+                    {
+                        "type": "send",
+                        "to": "table",
+                        "message": {
+                            "topic": "selectRows",
+                            "payload": {
+                                "rowIndex": [
+                                    1,
+                                    2
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "fontWeight": "bold",
+                    "fontFamily": "\"Courier New\", Courier, sans-serif",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 8,
+                "h": 8,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

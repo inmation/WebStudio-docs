@@ -1,0 +1,50 @@
+{
+    "version": "1",
+    "name": "actions-copy-example-01",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-copy-example-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Click me \r\n and I will be on your clipboard!",
+            "captionBar": {
+                "hidden": false,
+                "title": "Copy to clipboard",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "onClick": {
+                    "type": "copy"
+                }
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 24,
+                "h": 6,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        }
+    ]
+}

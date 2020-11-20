@@ -1,0 +1,164 @@
+{
+    "version": "1",
+    "name": "actions-collect-example-01",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-collect-example-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "id": "text_3",
+            "captionBar": {},
+            "name": "Text to collect and send data",
+            "text": "Click here to collect the fixed data and send it to the editor",
+            "actions": {
+                "onClick": [
+                    {
+                        "type": "transform",
+                        "completeMsgObject": true,
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "payload": {
+                                        "text": "$payload"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "collect",
+                        "from": "table_1",
+                        "key": "MyTableData"
+                    },
+                    {
+                        "type": "send",
+                        "to": "editor_1"
+                    }
+                ]
+            },
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "fontWeight": "bold",
+                    "fontFamily": "\"Courier New\", Courier, sans-serif",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 6,
+                "h": 6,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "name": "Editor",
+            "captionBar": {
+                "hidden": false,
+                "title": "Editor that shows data from table",
+                "showModelEditorButton": true
+            },
+            "options": {
+                "showToolbar": true,
+                "language": "json"
+            },
+            "editorOptions": {
+                "fontSize": 12,
+                "cursorStyle": "line",
+                "readOnly": false
+            },
+            "layout": {
+                "w": 9,
+                "h": 6,
+                "x": 15,
+                "y": 1,
+                "static": false
+            },
+            "id": "editor_1"
+        },
+        {
+            "type": "table",
+            "name": "Fixed Data",
+            "dataSource": {
+                "data": [
+                    {
+                        "name": "Inside Temperature",
+                        "value": 26,
+                        "location": "Eindhoven"
+                    },
+                    {
+                        "name": "Outside Temperature",
+                        "value": 18,
+                        "location": "Eindhoven"
+                    },
+                    {
+                        "name": "Average Temperature",
+                        "value": 22,
+                        "location": "Eindhoven"
+                    }
+                ]
+            },
+            "schema": [
+                {
+                    "name": "name",
+                    "title": "Name"
+                },
+                {
+                    "name": "location",
+                    "title": "Location",
+                    "hidden": true
+                },
+                {
+                    "name": "value",
+                    "title": "Value"
+                }
+            ],
+            "captionBar": true,
+            "options": {
+                "editable": false,
+                "multi": false,
+                "style": {
+                    "fontSize": "12px"
+                },
+                "pageSize": 10,
+                "pagination": true,
+                "allowSorting": true,
+                "alternateColumnColoring": false,
+                "alternateRowColoring": true,
+                "showHoverHighLight": true
+            },
+            "id": "table_1",
+            "layout": {
+                "w": 9,
+                "h": 6,
+                "x": 6,
+                "y": 1,
+                "static": false
+            }
+        }
+    ]
+}
