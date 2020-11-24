@@ -246,14 +246,14 @@ A schema consist of:
             "title": "Population",
             "name": "population",
             "filter": "select",
-            "format": "number",
+            "type": "number",
             "editable": true
         },
         {
             "title": "Value",
             "name": "value",
             "filter": "slider",
-            "format": "number",
+            "type": "number",
             "numberOfDecimals": 2
         }
     ]
