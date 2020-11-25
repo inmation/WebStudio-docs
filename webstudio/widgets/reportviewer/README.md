@@ -15,6 +15,8 @@ This widget can be used to show generated reports.
 
 By configure a data source, a query can be provided. See [Report Item](##Report-Item) what needs to be done in the system in order to generate report data based on this query.
 
+The refresh button allows to refresh report data without refreshing reportdesign.
+
 ```json
 {
     "dataSource": [
