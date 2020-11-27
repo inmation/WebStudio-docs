@@ -39,15 +39,6 @@ Example opening a link:
 {
     "type": "text",
     "text": "Click me",
-    "options": {
-        "style": {
-            "color": "grey",
-            "textAlign": "center",
-            "fontSize": "26px",
-            "fontWeight": "bold",
-            "backgroundColor": "darkgreen"
-        }
-    },
     "actions": {
         "onClick": {
             "type": "openLink",
