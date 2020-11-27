@@ -56,3 +56,25 @@ Possible values for `size`:
 ### Update Behavior
 
 The update logic of the widget accepts a payload which is a string or a JSON object. In case the payload is a string the widget checks whether the string is a JSON string or base64 string. In case the string is base64 encoded, the `base64` field in the model will be updated. In case the payload is a JSON string or JSON object the values of the fields `url`, `base64` and `mimeType` will be used to change the fields in the model accordingly. In case the payload input is neither a base64 encoded or JSON string the value will be used to update the `url` in the model.
+
+### Actions
+
+Supported action hooks:
+
+- `onClick`: when user clicks on the image.
+
+Example opening a link:
+
+```json
+{
+    "type": "image",
+    "name": "Random Image",
+    "url": "https://source.unsplash.com/random",
+    "actions": {
+        "onClick": {
+            "type": "notify",
+            "text": "Image clicked!"
+        }
+    }
+}
+```
