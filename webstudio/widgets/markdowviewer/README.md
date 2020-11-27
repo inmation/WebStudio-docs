@@ -9,6 +9,66 @@ The content can be a plain markdown string or encoded as Base64. The latter is p
 ```json
 {
     "type": "markdownviewer",
-    "content": "IyBNYXJrZG93biBWaWV3ZXIKClRoZSB3aWRnZXQgY2FuIGJlIHVzZWQgdG8gc2hvdyBbR2l0SHViIEZsYXZvcmVkIE1hcmtkb3duXShodHRwczovL2dpdGh1Yi5naXRodWIuY29tL2dmbS8pLgo="
+    "content": "# Markdown Viewer\n\n- This is a markdown text."
+}
+```
+
+Base64 encoded content:
+
+```json
+{
+    "type": "markdownviewer",
+    "content": "IyBNYXJrZG93biBFeGFtcGxlCgpUaGlzIGlzIGFuIGV4YW1wbGUgdGV4dC4KCiMjIFN5c3RlbSBDb21wb25lbnQgT3ZlcnZpZXcKCnwgTmFtZSB8IERlc2NyaXB0aW9uIHwKfCAtLS0tIHwgLS0tIHwKTWFzdGVyIENvcmUgfCBDZW50cmFsIENvcmUgc2VydmljZSB0eXBpY2FsbHkgZGVwbG95ZWQgaW4gdGhlIChwcml2YXRlKSBjbG91ZC4KTG9jYWwgQ29yZSB8IENvcmUgd2hpY2ggaXMgdHlwaWNhbGx5IGRlcGxveWVkIGF0IGEgc2l0ZS4KQ29ubmVjdG9yIHwgUmV0cmlldmVzIGRhdGEgZnJvbSBhbmQgc2VuZHMgZGF0YSB0byBvbmUgb3IgbXVsdGlwbGUgZGF0YSBzb3VyY2VzLgpTZXJ2ZXIgfCBFeHBvc2VzIGRhdGEgYWNjb3JkaW5nIHRvIHRoZSBsYXRlc3QgT1BDIHNwZWNpZmljYXRpb25zLgpXZWIgQVBJIHwgU2VydmljZSB3aXRoIGEgcG93ZXJmdWwgSFRUUCwgV2ViU29ja2V0IGFuZCBzdGF0aWMgY29udGVudCBpbnRlcmZhY2UuCg=="
+}
+```
+
+## Options
+
+```jsonc
+{
+    "options": {
+        "linkTarget": "_blank"
+    }
+}
+```
+
+## Mermaid
+
+This widget supports [Mermaid](https://mermaid-js.github.io) code blocks.
+
+<!-- markdownlint-disable MD048 -->
+~~~md
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+~~~
+<!-- markdownlint-enable MD048 -->
+
+Results in:
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
+### Mermaid Options
+
+The theme of mermaid graphs can be set with one of the following values : `default`, `neutral`, `forest` or `dark`.
+
+See [Mermaid Options](https://mermaid-js.github.io/mermaid/#/theming?id=theme-variables-reference-table)
+
+```jsonc
+{
+    "mermaidOptions": {
+        "theme": "forest",
+        "themeVariables": {}
+    },
 }
 ```
