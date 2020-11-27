@@ -22,6 +22,8 @@ Base64 encoded content:
 }
 ```
 
+Tip: Write your complete Markdown text in [Visual Studio Code](https://code.visualstudio.com) and convert it to Base64 by using the [Encode Decode](https://marketplace.visualstudio.com/items?itemName=mitchdenny.ecdc) extension.
+
 ## Options
 
 ```jsonc
@@ -47,16 +49,6 @@ graph TD;
 ```
 ~~~
 <!-- markdownlint-enable MD048 -->
-
-Results in:
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
 
 ### Mermaid Options
 
