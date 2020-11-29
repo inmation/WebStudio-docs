@@ -1,6 +1,6 @@
 {
     "version": "1",
-    "name": "actions-transform-example-01",
+    "name": "actions-transform-01",
     "widgets": [
         {
             "type": "transformeditor",

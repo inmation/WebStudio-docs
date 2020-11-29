@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-read-example-02",
+    "name": "actions-read-object-value-01",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-read-example-02",
+            "text": "actions-read-object-value-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -26,7 +26,7 @@
         },
         {
             "type": "text",
-            "text": "Click me to retrieve data from the read endpoint and send data to the editor widget ",
+            "text": "Click here \r\n to retrieve data from the read endpoint and send data to the editor widget",
             "captionBar": {
                 "hidden": false,
                 "title": "Read data and send message to the editor widget",

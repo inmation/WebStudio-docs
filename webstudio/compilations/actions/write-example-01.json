@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-write-example-01",
+    "name": "actions-write-01",
     "actions": {
         "read": [
             {
                 "type": "read",
-                "path": "/System/Core/Playground/Counter"
+                "path": "/System/Core/Examples/WebStudio/VariableNumeric01"
             },
             {
                 "type": "transform",
@@ -15,7 +15,7 @@
                             "value": "$payload",
                             "text": {
                                 "$concat": [
-                                    "Count: ",
+                                    "Value: ",
                                     "$payload"
                                 ]
                             }
@@ -27,7 +27,7 @@
         "write": [
             {
                 "type": "write",
-                "path": "/System/Core/Playground/Counter"
+                "path": "/System/Core/Examples/WebStudio/VariableNumeric01"
             }
         ],
         "increase": [
@@ -79,13 +79,29 @@
                 "type": "action",
                 "name": "write"
             }
+        ],
+        "init": [
+            {
+                "type": "transform",
+                "aggregateOne": [
+                    {
+                        "$set": {
+                            "v": 1
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "action",
+                "name": "write"
+            }
         ]
     },
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-write-example-01",
+            "text": "actions-write-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -105,11 +121,11 @@
             }
         },
         {
-            "id": "counter",
+            "id": "subscriber",
             "type": "text",
             "dataSource": {
                 "type": "subscribe",
-                "path": "/System/Core/Playground/Counter"
+                "path": "/System/Core/Examples/WebStudio/VariableNumeric01"
             },
             "actions": {
                 "willUpdate": [
@@ -120,7 +136,7 @@
                                 "$project": {
                                     "text": {
                                         "$concat": [
-                                            "Count: ",
+                                            "Value: ",
                                             "$payload"
                                         ]
                                     }
@@ -131,21 +147,21 @@
                 ]
             },
             "captionBar": {
-                "title": "Counter"
+                "title": "/System/Core/Examples/WebStudio/VariableNumeric01"
             },
             "layout": {
-                "w": 11,
+                "w": 8,
                 "h": 6,
-                "x": 12,
+                "x": 16,
                 "y": 1,
                 "static": false
             }
         },
         {
             "type": "text",
-            "name": "Widget to increment the count",
+            "name": "Widget to initialize and increment the value",
             "dataSource": {
-                "data": "Click here \r\n to increase the value of count"
+                "data": "Click here \r\n to increase the value of `/System/Core/Examples/WebStudio/VariableNumeric01`"
             },
             "captionBar": {
                 "hidden": false
@@ -161,11 +177,15 @@
                 "onClick": {
                     "type": "action",
                     "name": "increase"
+                },
+                "didLoad": {
+                    "type": "action",
+                    "name": "init"
                 }
             },
             "id": "increase",
             "layout": {
-                "w": 6,
+                "w": 8,
                 "h": 6,
                 "x": 0,
                 "y": 1,
@@ -174,9 +194,9 @@
         },
         {
             "type": "text",
-            "name": "Widget to decrement the count",
+            "name": "Widget to decrement the value",
             "dataSource": {
-                "data": "Click here \r\n to decrement the value of count"
+                "data": "Click here \r\n to decrement the value of `/System/Core/Examples/WebStudio/VariableNumeric01`"
             },
             "captionBar": {
                 "hidden": false
@@ -196,9 +216,9 @@
             },
             "id": "decrease",
             "layout": {
-                "w": 6,
+                "w": 8,
                 "h": 6,
-                "x": 6,
+                "x": 8,
                 "y": 1,
                 "static": false
             }

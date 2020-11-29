@@ -4,8 +4,7 @@
         {
             "type": "text",
             "id": "text_1",
-            "name": "Title Bar",
-            "text": "actions-read-example-01",
+            "text": "actions-read-lua-kpi-table-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -26,11 +25,11 @@
         },
         {
             "type": "table",
-            "id": "table_1",
+            "description": "Lua KPI table",
             "name": "Lua KPI Table",
             "dataSource": {
                 "type": "read",
-                "path": "/Enterprise/Site/Area/KPI Table",
+                "path": "/Examples/WebStudio/KPI Table",
                 "opt": {
                     "STARTTIME": "2020-10-13T00:00:00.000Z",
                     "ENDTIME": "2020-10-14T00:00:00.000Z",
@@ -47,24 +46,21 @@
                 "alternateColumnColoring": false,
                 "alternateRowColoring": true,
                 "style": {
-                    "color": "grey",
-                    "textAlign": "center",
-                    "fontSize": "14px",
-                    "fontWeight": "bold",
-                    "backgroundColor": "transparent"
+                    "fontSize": "12px"
                 }
             },
             "layout": {
                 "w": 24,
-                "h": 4,
+                "h": 5,
                 "x": 0,
                 "y": 1,
-                "static": true
-            }
+                "static": false
+            },
+            "id": "03AS"
         }
     ],
     "options": {
-        "stacking": "horizontal",
+        "stacking": "vertical",
         "numberOfColumns": 24
     }
 }

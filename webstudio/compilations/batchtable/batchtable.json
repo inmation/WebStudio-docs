@@ -5,19 +5,49 @@
     "widgets": [
         {
             "type": "batchtable",
-            "id": "batchtable_1",
+            "description": "Batch Table",
             "name": "Batch Table",
-            "starttime": "2020-09-23T00:00:00.000Z",
-            "endtime": "2020-09-25T00:00:00.000Z",
+            "captionBar": true,
+            "starttime": "2020-12-01T00:00:00.000Z",
+            "endtime": "2020-12-15T00:00:00.000Z",
             "dataSource": {
                 "type": "fetch",
-                "path": "/enterprise/Site/Area/WorkCenter"
+                "path": "/System/Core/Examples/WebStudio/BPR"
             },
+            "table": {
+                "schema": [
+                    {
+                        "name": "batchid",
+                        "title": "Batch ID"
+                    },
+                    {
+                        "name": "starttime",
+                        "title": "Starttime",
+                        "type": "date",
+                        "format": "YYYY-MM-DD HH:mm:ss"
+                    },
+                    {
+                        "name": "endtime",
+                        "title": "Endtime",
+                        "type": "date",
+                        "format": "YYYY-MM-DD HH:mm:ss"
+                    },
+                    {
+                        "name": "duration",
+                        "title": "Duration"
+                    }
+                ],
+                "options": {
+                    "multi": false,
+                    "pagination": false
+                }
+            },
+            "id": "CId7",
             "layout": {
                 "w": 8,
                 "h": 8,
                 "x": 0,
-                "y": 1,
+                "y": 0,
                 "static": false
             }
         }

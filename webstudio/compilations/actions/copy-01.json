@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-copy-example-01",
+    "name": "actions-copy-01",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-copy-example-01",
+            "text": "actions-copy-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -26,7 +26,7 @@
         },
         {
             "type": "text",
-            "text": "Click me \r\n and I will be on your clipboard!",
+            "text": "Click here \r\n and I will be on your clipboard!",
             "captionBar": {
                 "hidden": false,
                 "title": "Copy to clipboard",

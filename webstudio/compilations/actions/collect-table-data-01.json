@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-collect-example-01",
+    "name": "actions-collect-table-data-01",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-collect-example-01",
+            "text": "actions-collect-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -29,7 +29,7 @@
             "id": "text_3",
             "captionBar": {},
             "name": "Text to collect and send data",
-            "text": "Click here to collect the fixed data and send it to the editor",
+            "text": "Click here \r\n to collect the fixed data and send it to the editor",
             "actions": {
                 "onClick": [
                     {

@@ -6,18 +6,197 @@
         {
             "type": "eventtable",
             "id": "eventtable",
-            "name": "Event Table",
-            "starttime": "2020-09-23T00:00:00.000Z",
-            "endtime": "2020-09-25T00:00:00.000Z",
+            "description": "Event Table",
+            "name": "Alarm & Events",
+            "starttime": "2020-12-01T00:00:00.000Z",
+            "endtime": "2020-12-02T00:00:00.000Z",
             "dataSource": {
                 "type": "fetch",
-                "path": "/System/Core/Examples/Events/ScriptEvent"
+                "path": "/System/Core/Examples/WebStudio/BPR/ScriptEvent"
+            },
+            "captionBar": true,
+            "actions": {
+                "didFetch": [
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "schema": 0
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "table": {
+                "options": {
+                    "multi": false
+                },
+                "schema": [
+                    {
+                        "name": "e_.s_.t",
+                        "title": "Timestamp",
+                        "type": "date",
+                        "format": "YYYY-MM-DD HH:mm:ss.SSS"
+                    },
+                    {
+                        "name": "attr.batchid",
+                        "title": "Batch ID",
+                        "type": "string"
+                    },
+                    {
+                        "name": "e_.o_.h_.x_.i",
+                        "title": "Source",
+                        "type": "string"
+                    },
+                    {
+                        "name": "e_.c_.m",
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    {
+                        "name": "e_.o_.h_.r_.t",
+                        "title": "Severity",
+                        "type": "string",
+                        "rules": [
+                            {
+                                "value": "MEDIUM HIGH",
+                                "style": {
+                                    "color": "orange"
+                                }
+                            },
+                            {
+                                "value": "HIGH",
+                                "style": {
+                                    "color": "red"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "actions": {
+                    "onSelect": [
+                        {
+                            "type": "transform",
+                            "aggregateOne": [
+                                {
+                                    "$project": {
+                                        "attr": {
+                                            "$objectToArray": "$attr"
+                                        },
+                                        "data": [
+                                            {
+                                                "Name": "TimestampSystem",
+                                                "Value": {
+                                                    "$dateToString": {
+                                                        "date": {
+                                                            "$toDate": "$e_.s_.t"
+                                                        },
+                                                        "format": "%Y-%m-%dT%H:%M:%S.%LZ"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "Name": "Source",
+                                                "Value": "$e_.o_.h_.x_.i"
+                                            },
+                                            {
+                                                "Name": "Message",
+                                                "Value": "$e_.c_.m"
+                                            },
+                                            {
+                                                "Name": "SeverityCode",
+                                                "Value": "$e_.o_.h_.r_.c"
+                                            },
+                                            {
+                                                "Name": "SeverityName",
+                                                "Value": "$e_.o_.h_.r_.t"
+                                            },
+                                            {
+                                                "Name": "CategoryCode",
+                                                "Value": "$e_.o_.h_.c_.c"
+                                            },
+                                            {
+                                                "Name": "CoreEventId",
+                                                "Value": "$e_.s_.i"
+                                            },
+                                            {
+                                                "Name": "CategoryName",
+                                                "Value": "$e_.o_.h_.c_.t"
+                                            },
+                                            {
+                                                "Name": "ConditionCode",
+                                                "Value": "$e_.o_.h_.m_.c"
+                                            },
+                                            {
+                                                "Name": "ConditionName",
+                                                "Value": "$e_.o_.h_.m_.t"
+                                            },
+                                            {
+                                                "Name": "SubConditionCode",
+                                                "Value": "$e_.o_.h_.s_.c"
+                                            },
+                                            {
+                                                "Name": "SubConditionName",
+                                                "Value": "$e_.o_.h_.s_.t"
+                                            },
+                                            {
+                                                "Name": "QualityNumeric",
+                                                "Value": "$e_.o_.h_.q"
+                                            },
+                                            {
+                                                "Name": "Attributes:",
+                                                "Value": ""
+                                            }
+                                        ],
+                                        "_id": -1
+                                    }
+                                },
+                                {
+                                    "$project": {
+                                        "data": 1,
+                                        "attr": {
+                                            "Name": "$k",
+                                            "Value": "$v"
+                                        }
+                                    }
+                                },
+                                {
+                                    "$project": {
+                                        "type": "table",
+                                        "name": "Event Detail",
+                                        "options": {
+                                            "pagination": false,
+                                            "showHoverHighLight": false,
+                                            "showSelectedRow": false,
+                                            "allowSorting": false,
+                                            "showToolbar": false
+                                        },
+                                        "dataSource.data": {
+                                            "$concatArrays": [
+                                                "$data",
+                                                "$attr"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "prompt",
+                            "width": "500px",
+                            "height": "500px",
+                            "useInput": true
+                        }
+                    ]
+                }
             },
             "layout": {
-                "w": 8,
+                "w": 15,
                 "h": 8,
                 "x": 0,
-                "y": 1,
+                "y": 0,
                 "static": false
             }
         }

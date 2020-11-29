@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-openlink-example-01",
+    "name": "actions-openlink-01",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-openlink-example-01",
+            "text": "actions-openlink-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -26,7 +26,7 @@
         },
         {
             "type": "text",
-            "text": "Click me \r\n to open a hypermedia link in the browser",
+            "text": "Click here \r\n to open a hypermedia link in the browser",
             "captionBar": {
                 "hidden": false,
                 "title": "Opens a hypermedia link in the browser",

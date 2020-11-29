@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "dataSource-subscribe-example-03",
+    "name": "dataSource-subscribe-03",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "dataSource-subscribe-example-03",
+            "text": "dataSource-subscribe-03",
             "captionBar": false,
             "options": {
                 "style": {

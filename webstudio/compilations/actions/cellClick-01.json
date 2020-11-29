@@ -2,12 +2,34 @@
     "version": "1",
     "widgets": [
         {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-cellClick-01 \r\n Click a cell in the `Item` column",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 2,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
             "type": "table",
             "id": "table_1",
-            "name": "Order Table",
+            "name": "Sales Orders",
             "captionBar": true,
             "dataSource": {
-                "path": "/System/Core/Simulation/Tables/Shifts_Mutable.TableData",
+                "path": "/System/Core/Examples/WebStudio/Tables/SalesOrders",
                 "type": "read"
             },
             "schema": [
@@ -68,7 +90,7 @@
                 }
             },
             "options": {
-                "pageSize": 20,
+                "pageSize": 15,
                 "pagination": true,
                 "allowSorting": true,
                 "alternateColumnColoring": false,
@@ -80,9 +102,9 @@
             },
             "layout": {
                 "w": 11,
-                "h": 10,
+                "h": 8,
                 "x": 0,
-                "y": 0,
+                "y": 2,
                 "static": false
             }
         },
@@ -100,12 +122,12 @@
                 "readOnly": false
             },
             "layout": {
-                "w": 11,
-                "h": 10,
+                "w": 12,
+                "h": 8,
                 "x": 11,
-                "y": 0,
+                "y": 2,
                 "static": false
-            }            
+            }
         }
     ],
     "options": {

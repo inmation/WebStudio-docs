@@ -138,7 +138,7 @@ Allows to select one or more predefined input values. To allow for multiple valu
 
 Default selected inputs can be defined by setting the `value` on entry level. This `value` can be a single value or an array of values. A default value should match the value of a predefined input. In case the default `value` is defined as an array and `multi` is set to false, the first non `disabled` option will be selected.
 
-To allow any input value besides a pre defined select options, the `free` field needs to be set to `true`.
+To allow any input value besides a pre defined select input, the `free` field needs to be set to `true`.
 
 ```jsonc
 {
@@ -155,16 +155,8 @@ To allow any input value besides a pre defined select options, the `free` field 
             "value": 1
         },
         {
-            "label": "Number 2",
-            "value": 2
-        },
-        {
             "label": "String 10",
             "value": "10"
-        },
-        {
-            "label": "String 20",
-            "value": "20"
         },
         {
             "label": "String Hello",

@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-consolelog-example-02",
+    "name": "actions-consolelog-02",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-consolelog-example-02",
+            "text": "actions-consolelog-02",
             "captionBar": false,
             "options": {
                 "style": {
@@ -26,7 +26,7 @@
         },
         {
             "type": "text",
-            "text": "Click me \r\n to write the input message `payload` to the browser's console log. Hit f12 to open your console!",
+            "text": "Click here \r\n to write the input message `payload` to the browser's console log. Hit f12 to open your console!",
             "captionBar": {
                 "hidden": false,
                 "title": "Console Log the input message `payload`",

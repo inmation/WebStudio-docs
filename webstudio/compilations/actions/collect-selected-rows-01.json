@@ -4,7 +4,7 @@
         {
             "type": "text",
             "name": "Text Widget",
-            "text": "Click here to see selected table rows in console log",
+            "text": "Click here \r\n to collect and send the selected table rows to the editor.",
             "actions": {
                 "onClick": [
                     {
@@ -15,7 +15,8 @@
                         }
                     },
                     {
-                        "type": "consoleLog"
+                        "type": "send",
+                        "to": "editor"
                     }
                 ]
             },
@@ -32,7 +33,7 @@
             "id": "text_1",
             "layout": {
                 "w": 10,
-                "h": 8,
+                "h": 4,
                 "x": 0,
                 "y": 0,
                 "static": false
@@ -42,31 +43,44 @@
             "type": "table",
             "name": "Demo Process Data",
             "dataSource": {
-                "ctx": "/System/Core/Use Cases/WebStudio Tests",
-                "func": "demoProcessDataTableData",
-                "lib": "webstudio-tests",
-                "type": "function"
+                "type": "read",
+                "path": "/System/Core/Examples/WebStudio/Tables/SalesOrders"
             },
             "schema": [
                 {
-                    "name": "name",
-                    "title": "Name"
+                    "name": "Item",
+                    "title": "Item",
+                    "actions": {
+                        "onClick": {
+                            "type": "action",
+                            "name": "cellClick"
+                        }
+                    }
                 },
                 {
-                    "name": "value",
-                    "numberOfDecimals": 2,
-                    "title": "Value",
-                    "type": "number"
-                },
-                {
-                    "name": "quality",
-                    "title": "Quality"
-                },
-                {
-                    "name": "timestamp",
-                    "title": "Timestamp",
-                    "type": "date",
+                    "name": "OrderDate",
+                    "title": "Order date",
                     "format": "YYYY-MM-DD HH:mm:ss:SSS"
+                },
+                {
+                    "name": "Region",
+                    "title": "Region"
+                },
+                {
+                    "name": "Rep",
+                    "title": "Rep"
+                },
+                {
+                    "name": "Total",
+                    "title": "Total"
+                },
+                {
+                    "name": "Unit Cost",
+                    "title": "Unit Cost"
+                },
+                {
+                    "name": "Units",
+                    "title": "Units"
                 }
             ],
             "captionBar": true,
@@ -86,9 +100,31 @@
             "id": "table",
             "layout": {
                 "w": 13,
-                "h": 8,
+                "h": 10,
                 "x": 10,
                 "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "id": "editor",
+            "name": "Editor",
+            "completeMsgObject": false,
+            "language": "json",
+            "options": {
+                "showToolbar": true
+            },
+            "editorOptions": {
+                "fontSize": 12,
+                "cursorStyle": "line",
+                "readOnly": false
+            },
+            "layout": {
+                "w": 10,
+                "h": 6,
+                "x": 0,
+                "y": 4,
                 "static": false
             }
         }

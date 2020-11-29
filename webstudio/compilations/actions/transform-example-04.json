@@ -1,12 +1,12 @@
 {
     "version": "1",
-    "name": "actions-transform-example-04",
+    "name": "actions-transform-04",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
             "name": "Title Bar",
-            "text": "actions-transform-example-04",
+            "text": "actions-transform-04",
             "captionBar": false,
             "options": {
                 "style": {

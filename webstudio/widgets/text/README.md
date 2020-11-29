@@ -38,7 +38,7 @@ Example opening a link:
 ```json
 {
     "type": "text",
-    "text": "Click me",
+    "text": "Click here",
     "actions": {
         "onClick": {
             "type": "openLink",

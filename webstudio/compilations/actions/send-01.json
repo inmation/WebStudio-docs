@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-send-example-01",
+    "name": "actions-send-01",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-send-example-01",
+            "text": "actions-send-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -26,7 +26,7 @@
         },
         {
             "type": "text",
-            "text": "Click me to send data to the editor widget ",
+            "text": "Click here to send data to the editor widget ",
             "captionBar": {
                 "hidden": false,
                 "title": "Send message to the editor widget",

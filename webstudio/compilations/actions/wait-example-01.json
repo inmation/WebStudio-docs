@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-wait-example-01",
+    "name": "actions-wait-01",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-wait-example-01",
+            "text": "actions-wait-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -28,7 +28,7 @@
             "type": "text",
             "id": "text_2",
             "name": "Simple Text Widget",
-            "text": "Click me \r\n to show a notification after one second",
+            "text": "Click here \r\n to show a notification after one second",
             "captionBar": {
                 "hidden": false,
                 "title": "Show notification after one second",

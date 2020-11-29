@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-modify-example-07",
+    "name": "actions-modify-07",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-modify-example-07",
+            "text": "actions-modify-07",
             "captionBar": false,
             "options": {
                 "style": {

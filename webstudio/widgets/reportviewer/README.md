@@ -7,7 +7,7 @@ This widget can be used to show generated reports.
 ```json
 {
     "type": "reportviewer",
-    "path": "/System/Core/Examples/Tables/Example1"
+    "path": "/System/Core/Examples/WebStudio/Reports/Process Data Report"
 }
 ```
 
@@ -22,7 +22,7 @@ The refresh button allows to refresh reportdesign and report data.
     "dataSource": [
         {
             "type": "fetch",
-            "path": "/System/Core/Examples/Tables/Example1",
+            "path": "/System/Core/Examples/WebStudio/Reports/Process Data Report",
             "query": {
                 "batchid": "AB1234"
             }

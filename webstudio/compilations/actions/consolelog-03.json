@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "actions-consolelog-example-03",
+    "name": "actions-consolelog-03",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-consolelog-example-03",
+            "text": "actions-consolelog-03",
             "captionBar": false,
             "options": {
                 "style": {
@@ -26,7 +26,7 @@
         },
         {
             "type": "text",
-            "text": "Click me \r\n to write a custom payload message to the browser's console log. Hit f12 to open your console!",
+            "text": "Click here \r\n to write a custom payload message to the browser's console log. Hit f12 to open your console!",
             "captionBar": {
                 "hidden": false,
                 "title": "Console Log a custom payload message",

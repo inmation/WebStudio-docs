@@ -11,7 +11,7 @@
             "type": "text",
             "id": "text_1",
             "name": "Simple Text",
-            "text": "Your text here",
+            "text": "Click here \r\n To invoke an action by name.",
             "captionBar": {
                 "hidden": false,
                 "title": "Simple Text Widget",

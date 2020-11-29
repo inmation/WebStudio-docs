@@ -1,11 +1,11 @@
 {
     "version": "1",
-    "name": "dataSource-read-example-01",
+    "name": "dataSource-read-01",
     "widgets": [
         {
             "type": "text",
             "id": "text_1",
-            "text": "actions-send-example-01",
+            "text": "dataSource-read-01",
             "captionBar": false,
             "options": {
                 "style": {
@@ -26,10 +26,9 @@
         },
         {
             "type": "text",
-            "text": "Click me to send data to the editor widget ",
             "captionBar": {
                 "hidden": false,
-                "title": "Send message to the editor widget",
+                "title": "Text Widget With DataSource Read",
                 "showModelEditorButton": true
             },
             "dataSource": [
