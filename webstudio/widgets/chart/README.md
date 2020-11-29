@@ -114,7 +114,7 @@ Setting the tag table by object path and prompt the Tags dialog.
     "message": {
         "topic": "setTagTable",
         "payload": {
-            "tagTable": "/System/Core/Performance Counter/Tags",
+            "tagTable": "/System/Core/Examples/WebStudio/Tables/Process Data Tags",
             "prompt": true
         }
     }
