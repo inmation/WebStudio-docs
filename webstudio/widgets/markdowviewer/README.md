@@ -36,7 +36,7 @@ Tip: Write your complete Markdown text in [Visual Studio Code](https://code.visu
 
 ## Mermaid
 
-This widget supports [Mermaid](https://mermaid-js.github.io) code blocks.
+This widget supports [Mermaid](https://mermaid-js.github.io) code blocks. Try online with the [Mermaid live editor](https://mermaid-js.github.io/mermaid-live-editor).
 
 <!-- markdownlint-disable MD048 -->
 ~~~md
