@@ -1,14 +1,40 @@
 {
     "version": "1",
+    "name": "Markdown-Mermaid-example-01",
     "widgets": [
         {
+            "type": "text",
+            "text": "Markdown-Mermaid-example-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            },
+            "id": "qmlr"
+        },
+        {
             "type": "markdownviewer",
-            "id": "markdown_1",
-            "name": "Markdown Viewer",
+            "name": "Markdown Viewer - Default",
             "content": "IyBNZXJtYWlkIEdyYXBoIERpYWdyYW1zCgojIyBEaXNwbGF5cyBhIHNpbXBsZSBncmFwaAoKYGBgbWVybWFpZApncmFwaCBURDsKICAgIEEtLT5COwogICAgQS0tPkM7CiAgICBCLS0+RDsKICAgIEMtLT5EOwpgYGAKCiMjIERpc3BsYXlzIGFub3RoZXIgc2ltcGxlIGdyYXBoIGNoYXJ0CgpgYGBtZXJtYWlkCmdyYXBoIFRECiAgICBBW0NocmlzdG1hc10gLS0+fEdldCBtb25leXwgQihHbyBzaG9wcGluZykKICAgIEIgLS0+IEN7TGV0IG1lIHRoaW5rfQogICAgQyAtLT58T25lfCBEW0xhcHRvcF0KICAgIEMgLS0+fFR3b3wgRVtpUGhvbmVdCiAgICBDIC0tPnxUaHJlZXwgRltmYTpmYS1jYXIgQ2FyXQpgYGAgIAoKIyMgRGlzcGxheXMgYSBzaW1wbGUgU2VxdWVuY2UgRGlhZ3JhbSBjaGFydAoKYGBgbWVybWFpZApzZXF1ZW5jZURpYWdyYW0KICAgIEFsaWNlLT4+K0pvaG46IEhlbGxvIEpvaG4sIGhvdyBhcmUgeW91PwogICAgQWxpY2UtPj4rSm9objogSm9obiwgY2FuIHlvdSBoZWFyIG1lPwogICAgSm9obi0tPj4tQWxpY2U6IEhpIEFsaWNlLCBJIGNhbiBoZWFyIHlvdSEKICAgIEpvaG4tLT4+LUFsaWNlOiBJIGZlZWwgZ3JlYXQhCmBgYCAgCgojIyBEaXNwbGF5cyBhIHNpbXBsZSBDbGFzcyBEaWFncmFtCgpgYGBtZXJtYWlkCmNsYXNzRGlhZ3JhbQogICAgQW5pbWFsIDx8LS0gRHVjawogICAgQW5pbWFsIDx8LS0gRmlzaAogICAgQW5pbWFsIDx8LS0gWmVicmEKICAgIEFuaW1hbCA6ICtpbnQgYWdlCiAgICBBbmltYWwgOiArU3RyaW5nIGdlbmRlcgogICAgQW5pbWFsOiAraXNNYW1tYWwoKQogICAgQW5pbWFsOiArbWF0ZSgpCiAgICBjbGFzcyBEdWNrewogICAgICArU3RyaW5nIGJlYWtDb2xvcgogICAgICArc3dpbSgpCiAgICAgICtxdWFjaygpCiAgICB9CiAgICBjbGFzcyBGaXNoewogICAgICAtaW50IHNpemVJbkZlZXQKICAgICAgLWNhbkVhdCgpCiAgICB9CiAgICBjbGFzcyBaZWJyYXsKICAgICAgK2Jvb2wgaXNfd2lsZAogICAgICArcnVuKCkKICAgIH0KYGBgCgojIyBEaXNwbGF5cyBhIHNpbXBsZSBTdGF0ZSBEaWFncmFtCgpgYGBtZXJtYWlkCnN0YXRlRGlhZ3JhbS12MgogICAgWypdIC0tPiBTdGlsbAogICAgU3RpbGwgLS0+IFsqXQogICAgU3RpbGwgLS0+IE1vdmluZwogICAgTW92aW5nIC0tPiBTdGlsbAogICAgTW92aW5nIC0tPiBDcmFzaAogICAgQ3Jhc2ggLS0+IFsqXQpgYGAKCiMjIERpc3BsYXlzIGEgc2ltcGxlIEdhbnR0IGNoYXJ0CgpgYGBtZXJtYWlkCmdhbnR0CiAgICB0aXRsZSBBIEdhbnR0IERpYWdyYW0KICAgIGRhdGVGb3JtYXQgIFlZWVktTU0tREQKICAgIHNlY3Rpb24gU2VjdGlvbgogICAgQSB0YXNrICAgICAgICAgICA6YTEsIDIwMTQtMDEtMDEsIDMwZAogICAgQW5vdGhlciB0YXNrICAgICA6YWZ0ZXIgYTEgICwgMjBkCiAgICBzZWN0aW9uIEFub3RoZXIKICAgIFRhc2sgaW4gc2VjICAgICAgOjIwMTQtMDEtMTIgICwgMTJkCiAgICBhbm90aGVyIHRhc2sgICAgICA6IDI0ZApgYGAKClNvbWUgbW9yZSB0ZXh0CgojIyBEaXNwbGF5cyBhIHNpbXBsZSBwaWUgY2hhcnQKCmBgYG1lcm1haWQKcGllIHRpdGxlIFBldHMgYWRvcHRlZCBieSB2b2x1bnRlZXJzCiAgICAiRG9ncyIgOiAzODYKICAgICJDYXRzIiA6IDg1CiAgICAiUmF0cyIgOiAxNQpgYGAKCiMjIERpc3BsYXlzIGEgRVIgRGlhZ3JhbQoKYGBgbWVybWFpZAplckRpYWdyYW0KICAgIENVU1RPTUVSIH18Li58eyBERUxJVkVSWS1BRERSRVNTIDogaGFzCiAgICBDVVNUT01FUiB8fC0tb3sgT1JERVIgOiBwbGFjZXMKICAgIENVU1RPTUVSIHx8LS1veyBJTlZPSUNFIDogImxpYWJsZSBmb3IiCiAgICBERUxJVkVSWS1BRERSRVNTIHx8LS1veyBPUkRFUiA6IHJlY2VpdmVzCiAgICBJTlZPSUNFIHx8LS18eyBPUkRFUiA6IGNvdmVycwogICAgT1JERVIgfHwtLXx7IE9SREVSLUlURU0gOiBpbmNsdWRlcwogICAgUFJPRFVDVC1DQVRFR09SWSB8fC0tfHsgUFJPRFVDVCA6IGNvbnRhaW5zCiAgICBQUk9EVUNUIHx8LS1veyBPUkRFUi1JVEVNIDogIm9yZGVyZWQgaW4iCmBgYAo=",
             "captionBar": {
                 "hidden": false,
                 "showModelEditorButton": true
+            },
+            "mermaidOptions": {
+                "theme": "default",
+                "themeVariables": {}
             },
             "options": {
                 "linkTarget": "_blank"
@@ -17,9 +43,10 @@
                 "w": 24,
                 "h": 13,
                 "x": 0,
-                "y": 0,
+                "y": 1,
                 "static": false
-            }
+            },
+            "id": "markdown_1"
         }
     ],
     "options": {
