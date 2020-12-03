@@ -9,7 +9,7 @@ Every widget needs to have a unique `id`. In case no `id` is set, WebStudio will
 ```jsonc
 {
     "type": "widget type",
-    "id": "IRFa-VaY2b", // Unique identification of the widget.
+    "id": "yLtC", // Unique identification of the widget.
     "name": "NAME", // Will be shown in the caption bar.
     "description": "",
      "layout": {
