@@ -56,6 +56,7 @@ Every widget can be styled by setting the `style` object. The `style` object acc
 ```json
 {
     "options": {
+        "refreshInterval": true,
         "style": {
             "backgroundColor": "transparent",
             "border": "1px solid blue"
