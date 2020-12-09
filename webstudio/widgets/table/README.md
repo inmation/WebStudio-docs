@@ -197,7 +197,7 @@ Example of getting the selected rows data from a table widget by using an onClic
 
 ```jsonc
 {
-  "type": "text",
+    "type": "text",
     "text": "Click here",
     "actions": {
         "onClick": [
