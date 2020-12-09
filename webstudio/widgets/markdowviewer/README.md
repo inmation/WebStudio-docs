@@ -36,7 +36,7 @@ Tip: Write your complete Markdown text in [Visual Studio Code](https://code.visu
 
 ## Mermaid
 
-This widget supports [Mermaid](https://mermaid-js.github.io) code blocks. Try online with the [Mermaid live editor](https://mermaid-js.github.io/mermaid-live-editor).
+This widget supports [Mermaid](https://mermaid-js.github.io) code blocks. Try online with the [Mermaid live editor](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBPUENVQVNWUltcQ2VudHJhbCBPUEMgVUEgU2VydmVyL10gLS0tIE1hc3RlckNvcmUoW0NlbnRyYWwgQ29yZV0pXG4gICAgV2ViQVBJe3tDZW50cmFsIFdlYiBBUEkgU2VydmVyfX0gLS0tIE1hc3RlckNvcmUoW0NlbnRyYWwgQ29yZV0pXG4gICAgTWFzdGVyQ29yZSAtLS0gTG9jYWxDb3JlQShbU2l0ZSBBIENvcmVdKVxuICAgIE1hc3RlckNvcmUgLS0tIExvY2FsQ29yZUIoW1NpdGUgQiBDb3JlXSlcbiAgICBMb2NhbE9QQ1VBU1ZSW1xTaXRlIEIgT1BDIFVBIFNlcnZlci9dIC0tLSBMb2NhbENvcmVCXG4gICAgTG9jYWxXZWJBUEl7e1NpdGUgQiBXZWIgQVBJIFNlcnZlcn19IC0tLSBMb2NhbENvcmVCXG4gICAgTG9jYWxDb3JlQSAtLS0gQ29ubjEoU2l0ZSBBIENvbm5lY3RvciAxKVxuICAgIExvY2FsQ29yZUEgLS0tIENvbm4yKFNpdGUgQSBDb25uZWN0b3IgMilcbiAgICBMb2NhbENvcmVCIC0tLSBDb25uMyhTaXRlIEIgQ29ubmVjdG9yKVxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0=).
 
 <!-- markdownlint-disable MD048 -->
 ~~~md
