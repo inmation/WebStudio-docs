@@ -90,7 +90,7 @@ Using Integrated Windows Authentication:
 
 - `secp=iwa`:
 
-## Loading WebStudio grids from custom Advanced Endpoint
+## Loading WebStudio compilation from custom Advanced Endpoint
 
 Model can be loaded by calling an Advanced Endpoint. See Web API - Advanced Endpoint docs for more details.
 
@@ -102,24 +102,18 @@ Model can be loaded by calling an Advanced Endpoint. See Web API - Advanced Endp
 Example:
 
 ```url
-https://company.corp:8002/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&lib=my_librarys&func=my_function
+https://company.corp:8003/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&lib=my_librarys&func=my_function
 ```
 
-## Loading WebStudio Grid from object's Custom Property
+## Loading WebStudio compilation from object's Custom Property
 
-In case the `webstudio-grids` library is stored in the System, WebStudio grids can be loaded from Custom Properties of objects. You can use the script context `ctx` or set the object path in the `farg`. The `farg` query parameter looks like:
+WebStudio compilations can be loaded from Custom Properties of objects by adding two query parameter in the URL.
 
-- display01: the name of the Custom Property.
-- ["/System/Core/MyFolder","display01"]: An array with object path and the name of the Custom Property.
+- `obj`: object path or id. (Note: if not provided the Web API default context path will be used.)
+- `name`: name of the Custom Property.
 
 Example:
 
 ```url
-https://company.corp:8002/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&lib=webstudio-grids&farg=["/System/Core/MyFolder","display01"]
-```
-
-Example with proper URL encoding:
-
-```url
-https://company.corp:8002/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&lib=webstudio-grids&farg=[%22/System/Core/MyFolder%22,%22display01%22]
+https://company.corp:8003/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&obj=/System/Core/MyFolder&name=display01
 ```

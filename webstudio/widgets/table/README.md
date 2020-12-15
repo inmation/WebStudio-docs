@@ -197,7 +197,7 @@ Example of getting the selected rows data from a table widget by using an onClic
 
 ```jsonc
 {
-  "type": "text",
+    "type": "text",
     "text": "Click here",
     "actions": {
         "onClick": [
@@ -227,7 +227,7 @@ A schema consist of:
 | `name` | Key name of the row data.
 | `filter` | Type of filter: `none`, `text`, `select`, `range`, `slider` (optional, default is `text`)
 | `type` | Cell values can be displayed as different types. The format how the date and number type are displayed depend on the user's locale settings. Accepted types: `text`, `number`, `date` (optional, there is no default format)
-| `format` | When type is `date`, the date format can be changed within the optional format property. Example of date formats: `"YYYY-MM-DD HH:mm:ss:SSS"`, `LLLL`, `DD.MM.YYYY HH:mm` (optional)
+| `format` | When type is `date`, the date format can be changed within the optional format property. Example of date formats: `"YYYY-MM-DD HH:mm:ss.SSS"`, `LLLL`, `DD.MM.YYYY HH:mm` (optional)
 | `numberOfDecimals` | When type is `number`, the numberOfDecimals property can specify the number of digits shown after a decimal separator (optional)
 | `items` | Cell value can be selected from a dropdown list containing predefined values.
 | `editable` | Instead of making every cell editable with setting `editable: true` on the table, there's an option to add the editable property to certain columns only. Note that this only affects the original dataset if the table is saved and the user has the  permissions to overwrite data (optional, default is false)
@@ -370,7 +370,7 @@ Example `items` by defining labels and values:
             "name": "timestamp",
             "title": "Timestamp",
             "type": "date",
-            "format": "YYYY-MM-DD HH:mm:ss:SSS"
+            "format": "YYYY-MM-DD HH:mm:ss.SSS"
         },
         {
             "name": "status",

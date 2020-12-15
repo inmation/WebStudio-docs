@@ -29,12 +29,12 @@ Web Chart also offers a wider range of chart types, such as Candlestick, Spline,
 }
 ```
 
-| ---- | --- |
 | name | description |
-| leftPanel | hide or show panel
-| rightPanel | hide or show panel
-| bottomPanel | hide or show panel
-| play | `live` or `refresh`
+| ---- | --- |
+| `leftPanel` | hide or show panel
+| `rightPanel` | hide or show panel
+| `bottomPanel` | hide or show panel
+| `play` | `live` or `refresh`
 
 ### Receive messages (Send Topics)
 
