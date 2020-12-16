@@ -3,7 +3,7 @@
 WebStudio is a modern Web App where you can compile widgets on a grid.
 
 | Item | Description |
-| --- | --- | --- |
+| --- | --- |
 | [Compilation Model](./webstudio/README.md) | WebStudio compilation model.
 | _Generic Widgets:_
 | [Editor](./webstudio/widgets/editor/README.md) | Display rich text editor.
