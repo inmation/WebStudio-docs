@@ -20,7 +20,7 @@ The widget fetches the table data from the system and does auto discovering of t
 {
     "dataSource": {
         "type": "read",
-        "path": "/System/Core/Examples/Tables/Example01"
+        "path": "/System/Core/Examples/WebStudio/Tables/SalesOrders"
     }
 }
 ```
