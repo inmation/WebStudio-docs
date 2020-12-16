@@ -105,6 +105,31 @@ Copies the `payload` to the clipboard.
 }
 ```
 
+### Convert
+
+Converts the `payload` to a specified format. Supported formats are:
+
+- `json`
+- `base64`
+
+Encode the payload:
+
+```json
+{
+    "type": "convert",
+    "encode": "json"
+}
+```
+
+Decode the payload:
+
+```json
+{
+    "type": "convert",
+    "decode": "json"
+}
+```
+
 ### Function
 
 To invoke an Advanced Endpoint.
