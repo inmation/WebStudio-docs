@@ -29,12 +29,12 @@ Web Chart also offers a wider range of chart types, such as Candlestick, Spline,
 }
 ```
 
-| ---- | --- |
 | name | description |
-| leftPanel | hide or show panel
-| rightPanel | hide or show panel
-| bottomPanel | hide or show panel
-| play | `live` or `refresh`
+| ---- | --- |
+| `leftPanel` | hide or show panel
+| `rightPanel` | hide or show panel
+| `bottomPanel` | hide or show panel
+| `play` | `live` or `refresh`
 
 ### Receive messages (Send Topics)
 
@@ -114,7 +114,7 @@ Setting the tag table by object path and prompt the Tags dialog.
     "message": {
         "topic": "setTagTable",
         "payload": {
-            "tagTable": "/System/Core/Performance Counter/Tags",
+            "tagTable": "/System/Core/Examples/WebStudio/Tables/Process Data Tags",
             "prompt": true
         }
     }

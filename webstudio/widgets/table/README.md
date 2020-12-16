@@ -20,7 +20,7 @@ The widget fetches the table data from the system and does auto discovering of t
 {
     "dataSource": {
         "type": "read",
-        "path": "/System/Core/Examples/Tables/Example01"
+        "path": "/System/Core/Examples/WebStudio/Tables/SalesOrders"
     }
 }
 ```
@@ -197,7 +197,7 @@ Example of getting the selected rows data from a table widget by using an onClic
 
 ```jsonc
 {
-  "type": "text",
+    "type": "text",
     "text": "Click here",
     "actions": {
         "onClick": [
