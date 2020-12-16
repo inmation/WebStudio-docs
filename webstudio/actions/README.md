@@ -2,23 +2,23 @@
 
 Pipeline can consist of actions with `type`:
 
-- `action`: Refers to another action to be executed.
-- `collect`: Collect data from a widget.
-- `consoleLog`: Write to the browser's console log.
-- `copy`: Copy to clipboard.
-- `function`: Advanced Endpoint call to the system.
-- `modify`: Change the model of a widget.
-- `notify`: Display a notification.
-- `openLink`: Opens the a URL in the browser.
-- `passthrough`: Just passes the input message to the next action with the option to merge a message / payload. **Default**
-- `prompt`: Show a dialog.
-- `read`: Reads a value of an object.
-- `read-write`: Used for data sources, supports `read` and `write`.
-- `send`: Send data to another widget.
-- `switch`: Execute different actions based on conditions. (*)
-- `transform`: Transform the data using e.g. MongoDB's Aggregation Pipeline logic.
-- `wait`: Adds a delay before executing the next action.
-- `write`: Writes a value to an object.
+- [action](#action): Refers to another action to be executed.
+- [collect](#collect): Collect data from a widget.
+- [consoleLog](#consolelog): Write to the browser's console log.
+- [copy](#copy): Copy to clipboard.
+- [function](#function): Advanced Endpoint call to the system.
+- [modify](#modify): Change the model of a widget.
+- [notify](#notify): Display a notification.
+- [openLink](#openLink): Opens the a URL in the browser.
+- [passthrough](#passthrough): Just passes the input message to the next action with the option to merge a message / payload. **Default**
+- [prompt](#prompt): Show a dialog.
+- [read](#read): Reads a value of an object.
+- [read-write](#read-write): Used for data sources, supports `read` and `write`.
+- [send](#send): Send data to another widget.
+- [switch](#switch): Execute different actions based on conditions. (*)
+- [transform](#transform): Transform the data using e.g. MongoDB's Aggregation Pipeline logic.
+- [wait](#wait): Adds a delay before executing the next action.
+- [write](#write): Writes a value to an object.
 
 Note: Features marked with (*) are not supported yet.
 
@@ -643,7 +643,7 @@ Example to send a message to another component to update itself:
 }
 ```
 
-The `to` field can have the value `self` in case the pipeline needs to send data to its own widget. The update behaviour differs per widget.
+The `to` field can have the value `self` in case the pipeline needs to send data to its own widget. The update behavior differs per widget.
 
 Supported topics:
 

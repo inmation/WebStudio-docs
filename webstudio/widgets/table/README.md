@@ -189,9 +189,12 @@ Example to send a message to a table widget with an array of the selected rows
 
 ### Collect
 
+Collect without a `topic` defined will result in the data rows.
+
 This widget supports the following topics to collect data:
 
-- `selectedRows`: collects the selected rows data
+- No topic defined: collects all the data rows.
+- `selectedRows`: collects the selected rows data.
 
 Example of getting the selected rows data from a table widget by using an onClick action of a text Widget:
 
@@ -459,7 +462,7 @@ Cell based rules:
 
 ### Actions
 
-- `onClick`: Cell is clicked. Can be defined via the [Schema](###Schema).
+- `onClick`: Cell is clicked. Can be defined via the [Schema](#schema).
 - `onSelect`: Single row is selected.
 - `onSelectionChanged`: Perform an action each time the selection is changed.
 - `onSubmit`: Submit button is clicked and selected rows are in the message payload.
@@ -568,7 +571,7 @@ Gets invoked when a row is (de)selected. The input message `payload` contains al
 
 #### onSubmit
 
-The selected rows (array) are set on the input message `payload`. Whether rows can be selected with respect to the minimum and maximum number of selected rows, can be set with `multi`, `multiMin` and `multiMax` in the [Options](###Options).
+The selected rows (array) are set on the input message `payload`. Whether rows can be selected with respect to the minimum and maximum number of selected rows, can be set with `multi`, `multiMin` and `multiMax` in the [Options](#Options).
 
 ```jsonc
 {

@@ -207,7 +207,7 @@ Subscribes to the `OnDataChanged` event of a dynamic value. The `payload` in the
 
 ## Actions
 
-The `actions` is an object which fields are known hooks, like the [Life Cycle Hooks](##Life-Cycle-Hooks), or custom action names. The value can be a single action object or an array with action objects.
+The `actions` is an object which fields are known hooks, like the [Life Cycle Hooks](#Life-Cycle-Hooks), or custom action names. The value can be a single action object or an array with action objects.
 
 ```json
 {
@@ -229,23 +229,27 @@ Overview of all the general hooks:
 - `willFetch`: Widget will perform a fetch.
 - `didFetch`: Widget did perform a fetch.
 
-Between `willFetch` and `didFetch` a fetch is performed using the `dataSource`.
+The hooks`willFetch` and `didFetch` are only invoked if the widget has a data source defined. Note that some widgets have root properties, like `path` on a Faceplate widget, which are considered as a data source.
 
 The load life cycle is:
 
 1. `didLoad`
-2. `willFetch`
+2. `willFetch`  
+Execution of the data source action (pipeline)
 3. `didFetch`
-4. `willUpdate`
+4. `willUpdate`  
+Screen updated
 5. `didUpdate`
 
 The refresh life cycle is:
 
 1. `willRefresh`
-2. `willFetch`
+2. `willFetch`  
+Execution of the data source action (pipeline)
 3. `didFetch`
-4. `willUpdate`
+4. `willUpdate`  
+Screen updated
 5. `didUpdate`
 6. `didRefresh`
 
-Refresh can be executed by e.g. a refresh button or a refresh interval.
+Refresh can be executed by e.g. a refresh button, refresh interval or send action.
