@@ -6,22 +6,6 @@
             {
                 "type": "read",
                 "path": "/System/Core/Examples/WebStudio/VariableNumeric01"
-            },
-            {
-                "type": "transform",
-                "aggregateOne": [
-                    {
-                        "$project": {
-                            "value": "$payload",
-                            "text": {
-                                "$concat": [
-                                    "Value: ",
-                                    "$payload"
-                                ]
-                            }
-                        }
-                    }
-                ]
             }
         ],
         "write": [
@@ -37,12 +21,13 @@
             },
             {
                 "type": "transform",
+                "completeMsgObject": true,
                 "aggregateOne": [
                     {
                         "$project": {
-                            "v": {
+                            "payload": {
                                 "$add": [
-                                    "$value",
+                                    "$payload",
                                     1
                                 ]
                             }
@@ -62,12 +47,13 @@
             },
             {
                 "type": "transform",
+                "completeMsgObject": true,
                 "aggregateOne": [
                     {
                         "$project": {
-                            "v": {
+                            "payload": {
                                 "$add": [
-                                    "$value",
+                                    "$payload",
                                     -1
                                 ]
                             }
@@ -82,11 +68,17 @@
         ],
         "init": [
             {
+                "type": "passthrough",
+                "message": {
+                    "payload": {}
+                }
+            },
+            {
                 "type": "transform",
                 "aggregateOne": [
                     {
                         "$set": {
-                            "v": 1
+                            "payload": 0
                         }
                     }
                 ]
