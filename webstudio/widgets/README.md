@@ -80,7 +80,7 @@ See more over here [CSS Borders](https://www.w3schools.com/css/css_border.asp).
 
 The widgets can perform logic in the form of actions. This can be a single action or a sequence of actions which we call an action pipeline. The data which is passed to and from one action to the other is called a message.
 
-Actions can be defined within the [actions](##actions) field and in specific parts in the model. This is documented per widget type.
+Actions can be defined within the [actions](#actions) field and in specific parts in the model. This is documented per widget type.
 
 Performing multiple pipelines in parallel can be achieved by defining multiple arrays on the pipeline field.
 
