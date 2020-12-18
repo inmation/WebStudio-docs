@@ -38,7 +38,7 @@
                     "id": "table_1",
                     "filter": [
                         {
-                            "name": "model.dataSource.data",
+                            "name": "model.data",
                             "condition": {
                                 "$gte": [
                                     "$$item.value",
@@ -61,25 +61,23 @@
         {
             "type": "table",
             "name": "Fixed Data",
-            "dataSource": {
-                "data": [
-                    {
-                        "name": "Inside Temperature",
-                        "value": 26,
-                        "location": "Eindhoven"
-                    },
-                    {
-                        "name": "Outside Temperature",
-                        "value": 18,
-                        "location": "Eindhoven"
-                    },
-                    {
-                        "name": "Average Temperature",
-                        "value": 22,
-                        "location": "Eindhoven"
-                    }
-                ]
-            },
+            "data": [
+                {
+                    "name": "Inside Temperature",
+                    "value": 26,
+                    "location": "Eindhoven"
+                },
+                {
+                    "name": "Outside Temperature",
+                    "value": 18,
+                    "location": "Eindhoven"
+                },
+                {
+                    "name": "Average Temperature",
+                    "value": 22,
+                    "location": "Eindhoven"
+                }
+            ],
             "schema": [
                 {
                     "name": "name",
