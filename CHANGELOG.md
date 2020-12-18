@@ -1,12 +1,17 @@
 # Change Log
 
-## [TBD] - 2020-12-18
+## [TBD] - 2020-12-21
 
 - Added `convert` action.
+- Added `mergeObjects` behavior to the `modify` action.
 - Added Message Debugger widget. Replaces the need to use the Editor for message inspection.
 - Added `onSelectionChanged` on Table widget.
 - Added `update` topic for `send` action.
 - Removed `completeMsgObject` from Editor. Use Message Debugger.
+
+**Breaking change:**
+
+- The `send` action cannot be used anymore to modify the widget model. Use `modify` action instead.
 
 ## [3428] - 2020-12-04
 
