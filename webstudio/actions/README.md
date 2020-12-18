@@ -692,8 +692,6 @@ Widgets data exchange
 
 Sending message from one to another widget can be done using the `send` action. This action does not change the output message. The output message is the same as the input message.
 
-Example to send a message to another component to update itself:
-
 ```json
 {
     "type": "send",
@@ -705,8 +703,13 @@ The `to` field can have the value `self` in case the pipeline needs to send data
 
 Supported topics:
 
-- `refresh`: the receiving widget will perform a refresh.
-- `do`: the receiving widget will perform the action or action pipeline, which is defined of the message. (*)
+- `refresh`: the recipient widget will perform a refresh. **(default)**
+- `do`: the receiving widget will perform the action or action pipeline, which is defined on the message. (*)
+- `update`: the receiving widget will perform an update. This will bypass the data source action.
+
+#### Refresh Topic
+
+The recipient widget will perform a refresh. The recipient widget will execute the data source action (pipeline) with the provided message `payload`. The [refresh life cycle](../widgets/README.md#refresh-life-cycle-hooks) will be performed including a fetch if a data source is present.
 
 Example to send a message to another component to refresh itself:
 
@@ -715,10 +718,13 @@ Example to send a message to another component to refresh itself:
     "type" : "send",
     "to" : "Place here the ID of the widget",
     "message": {
-        "topic": "refresh"
+        "topic": "refresh" // Can be omitted because it is default.
+        "payload": {} // Can be any type of value. Typically an object is ued.
     }
 }
 ```
+
+#### Do Topic (*)
 
 Example to send a message to another component to execute a certain action:
 
@@ -734,6 +740,21 @@ Example to send a message to another component to execute a certain action:
                 "name" : "NAME OF ACTION TO EXECUTE"
             }
         ]
+    }
+}
+```
+
+#### Update Topic
+
+The recipient widget will perform an update. The recipient widget only update its known properties with the provided message `payload`. The [update life cycle](../widgets/README.md#update-life-cycle-hooks) will be performed.
+
+```jsonc
+{
+    "type" : "send",
+    "to" : "Place here the ID of the widget",
+    "message": {
+        "topic": "update",
+        "payload": {} // Can be any type of value. Typically an object is ued.
     }
 }
 ```
