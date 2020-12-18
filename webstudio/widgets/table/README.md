@@ -47,18 +47,16 @@ Fixed data set. Instead of the data coming from fetch, a fixed data set can be d
 
 ```json
 {
-    "dataSource": {
-        "data": [
-            {
-                "name": "Inside Temperature",
-                "value": 26
-            }
-            {
-                "name": "Outside Temperature",
-                "value": 18
-            }
-        ]
-    }
+    "data": [
+        {
+            "name": "Inside Temperature",
+            "value": 26
+        }
+        {
+            "name": "Outside Temperature",
+            "value": 18
+        }
+    ]
 }
 ```
 
