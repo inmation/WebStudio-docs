@@ -26,6 +26,7 @@
         },
         {
             "type": "text",
+            "id": "text_2",
             "captionBar": {
                 "hidden": false,
                 "title": "Subscribes to OnDataChanged event and sends output of dataSource to the editor widget",
@@ -35,13 +36,14 @@
                 {
                     "type": "subscribe",
                     "path": "/System/Core/Examples/Demo Data/Process Data/FC4711"
-                },
-                {
+                }
+            ],
+            "actions": {
+                "didUpdate": {
                     "type": "send",
                     "to": "editor_1"
                 }
-            ],
-            "id": "text_2",
+            },
             "layout": {
                 "w": 12,
                 "h": 5,
