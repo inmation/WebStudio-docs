@@ -1,0 +1,202 @@
+{
+    "version": "1",
+    "name": "dynamic-chart-01",
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    },
+    "widgets": [
+        {
+            "type": "table",
+            "name": "Simulated Object Table",
+            "id": "3dYn",
+            "data": [
+                {
+                    "name": "Simulated Density DC4711",
+                    "objectName": "DC4711"
+                },
+                {
+                    "name": "Simulated Density DC666",
+                    "objectName": "DC666"
+                },
+                {
+                    "name": "Simulated Flow FC4711",
+                    "objectName": "FC4711"
+                },
+                {
+                    "name": "Simulated Flow FC666",
+                    "objectName": "FC666"
+                }
+            ],
+            "schema": [
+                {
+                    "name": "name",
+                    "title": "Name"
+                },
+                {
+                    "name": "objectName",
+                    "hidden": true
+                }
+            ],
+            "actions": {
+                "onSelect": [
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "newChart": {
+                                        "class": "Trend",
+                                        "name": {
+                                            "$concat": [
+                                                "Demo Process Data - ",
+                                                "$objectName"
+                                            ]
+                                        },
+                                        "pens": [
+                                            {
+                                                "DecimalPlaces": 2,
+                                                "OpcEngUnit": "$",
+                                                "draw": true,
+                                                "id": 1,
+                                                "name": "$name",
+                                                "path": {
+                                                    "$concat": [
+                                                        "/System/Core/Examples/Demo Data/Process Data/",
+                                                        "$objectName"
+                                                    ]
+                                                },
+                                                "style": {
+                                                    "line": "SOLID",
+                                                    "marker": "MARKER_STYLE_NONE",
+                                                    "thickness": "SEMISMALL"
+                                                },
+                                                "aggregate": "AGG_TYPE_INTERPOLATIVE",
+                                                "themes": {
+                                                    "dark": {
+                                                        "color": "aqua"
+                                                    },
+                                                    "light": {
+                                                        "color": "aqua"
+                                                    }
+                                                },
+                                                "trend_type": "HT_LINE",
+                                                "x_axis": [
+                                                    1
+                                                ],
+                                                "y_axis": [
+                                                    1
+                                                ]
+                                            }
+                                        ],
+                                        "x_axis": [
+                                            {
+                                                "end_time": "*",
+                                                "grid": false,
+                                                "id": 1,
+                                                "intervals_no": 100,
+                                                "locked": false,
+                                                "name": "X",
+                                                "position": {
+                                                    "alignment": "bottom",
+                                                    "end": 100,
+                                                    "orientation": "bottom",
+                                                    "start": 0,
+                                                    "value": 1
+                                                },
+                                                "start_time": "*-1d",
+                                                "themes": {
+                                                    "dark": {
+                                                        "color": "white"
+                                                    },
+                                                    "light": {
+                                                        "color": "black"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "y_axis": [
+                                            {
+                                                "grid": false,
+                                                "id": 1,
+                                                "locked": false,
+                                                "name": "Y",
+                                                "position": {
+                                                    "alignment": "left",
+                                                    "end": 100,
+                                                    "orientation": "left",
+                                                    "start": 0,
+                                                    "value": 1
+                                                },
+                                                "range": {
+                                                    "max": {
+                                                        "mode": "auto",
+                                                        "value": 0
+                                                    },
+                                                    "min": {
+                                                        "mode": "auto",
+                                                        "value": 0
+                                                    }
+                                                },
+                                                "themes": {
+                                                    "dark": {
+                                                        "color": "white"
+                                                    },
+                                                    "light": {
+                                                        "color": "black"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "modify",
+                        "id": "chart",
+                        "set": [
+                            {
+                                "name": "model.chart",
+                                "value": "$payload.newChart"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "captionBar": true,
+            "options": {
+                "pagination": false,
+                "allowSorting": false
+            },
+            "layout": {
+                "w": 4,
+                "h": 9,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "chart",
+            "name": "Select a sensor in the table",
+            "id": "chart",
+            "captionBar": true,
+            "options": {
+                "play": "live",
+                "rightPanel": true,
+                "bottomPanel": true,
+                "leftPanel": false
+            },
+            "layout": {
+                "w": 20,
+                "h": 9,
+                "x": 4,
+                "y": 0,
+                "static": false
+            },
+            "chart": {}
+        }
+    ]
+}

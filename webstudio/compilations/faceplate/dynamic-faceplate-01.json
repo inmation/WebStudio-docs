@@ -1,0 +1,91 @@
+{
+    "version": "1",
+    "name": "dynamic-faceplate-01",
+    "options": {
+        "stacking": "none",
+        "numberOfColumns": 24
+    },
+    "widgets": [
+        {
+            "type": "table",
+            "name": "Simulated Object Table",
+            "id": "3dYn",
+            "captionBar": true,
+            "data": [
+                {
+                    "name": "Simulated Density DC4711",
+                    "objectName": "DC4711"
+                },
+                {
+                    "name": "Simulated Density DC666",
+                    "objectName": "DC666"
+                },
+                {
+                    "name": "Simulated Flow FC4711",
+                    "objectName": "FC4711"
+                },
+                {
+                    "name": "Simulated Flow FC666",
+                    "objectName": "FC666"
+                }
+            ],
+            "schema": [
+                {
+                    "name": "name",
+                    "title": "Name"
+                },
+                {
+                    "name": "objectName",
+                    "hidden": true
+                }
+            ],
+            "actions": {
+                "onSelect": [
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "path": {
+                                        "$concat": [
+                                            "/System/Core/Examples/Demo Data/Process Data/",
+                                            "$objectName"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "modify",
+                        "id": "BVkK"
+                    }
+                ]
+            },
+            "options": {
+                "pagination": false,
+                "allowSorting": false
+            },
+            "layout": {
+                "w": 5,
+                "h": 3,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "faceplate",
+            "name": "Select a sensor in the table",
+            "id": "BVkK",
+            "captionBar": true,
+            "layout": {
+                "w": 5,
+                "h": 3,
+                "x": 5,
+                "y": 0,
+                "static": false
+            }
+        }
+    ]
+}
