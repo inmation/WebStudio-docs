@@ -222,6 +222,8 @@ Example of getting the selected rows data from a table widget by using an onClic
 
 ### Schema
 
+A schema in the model will overrule any returned schema from the data source.
+
 A schema consist of:
 
 | name | description
