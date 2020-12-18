@@ -31,18 +31,18 @@
                 "title": "Subscribes to OnDataChanged event and sends input of willUpdate to the editor widget",
                 "showModelEditorButton": true
             },
-            "actions": {
-                "willUpdate": {
-                    "type": "send",
-                    "to": "editor_1"
-                }
-            },
             "dataSource": [
                 {
                     "type": "subscribe",
                     "path": "/System/Core/Examples/Demo Data/Process Data/FC4711"
                 }
             ],
+            "actions": {
+                "willUpdate": {
+                    "type": "send",
+                    "to": "editor_1"
+                }
+            },
             "id": "text_2",
             "layout": {
                 "w": 12,
