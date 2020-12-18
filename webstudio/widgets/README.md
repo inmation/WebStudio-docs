@@ -231,7 +231,9 @@ Overview of all the general hooks:
 
 The hooks`willFetch` and `didFetch` are only invoked if the widget has a data source defined. Note that some widgets have root properties, like `path` on a Faceplate widget, which are considered as a data source.
 
-The load life cycle is:
+### Load Life Cycle Hooks
+
+The load life cycle flow is:
 
 1. `didLoad`
 2. `willFetch`  
@@ -241,7 +243,9 @@ Execution of the data source action (pipeline)
 Screen updated
 5. `didUpdate`
 
-The refresh life cycle is:
+### Refresh Life Cycle Hooks
+
+The refresh life cycle flow is:
 
 1. `willRefresh`
 2. `willFetch`  
@@ -252,4 +256,12 @@ Screen updated
 5. `didUpdate`
 6. `didRefresh`
 
-Refresh can be executed by e.g. a refresh button, refresh interval or send action.
+Refresh can be executed by e.g. a refresh button, refresh interval and send action.
+
+### Update Life Cycle Hooks
+
+The update life cycle flow is:
+
+1. `willUpdate`  
+Screen updated
+2. `didUpdate`
