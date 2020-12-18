@@ -146,9 +146,9 @@ To invoke an Advanced Endpoint.
 
 ### Modify
 
-With `modify` the model of a widget can be changed.
+With `modify` the model of a widget can be changed. If no modification operator is specified a `mergeObjects` will be performed. This will merge / overwrite the properties from the message `payload` into the model.
 
-Supported type:
+Supported modification operators in order of execution:
 
 - `set`: Add field to model or update field.
 - `unset`: Remove field from model.
@@ -156,7 +156,7 @@ Supported type:
 - `removeFromArray`: Removes one or more items from an array that matches the provided fields.
 - `filter`: Removes items from an array field by condition.
 
-A widget can be modified by an `modify` action. A `transform` action will be performed under the hood with `completeMsgObject` set to true. During execution the `model` field in the input message will always be set with the model of the designated widget.
+A `transform` action will be performed under the hood with `completeMsgObject` set to true. During execution the `model` field in the input message will always be set with the model of the designated widget. The message `payload` can be used to set values dynamically.
 
 Main signature of the `modify` action is:
 
@@ -168,6 +168,39 @@ Main signature of the `modify` action is:
     "debug": false //  If true, writes the model after the modification to the console log.
 }
 ```
+
+Merge the widget model with the message `payload`:
+
+```json
+{
+    "type": "modify",
+    "id": "TextWidget"
+}
+```
+
+Will result in a `transform` action:
+
+```json
+{
+    "type": "transform",
+    "completeMsgObject": true,
+    "aggregateOne": [
+        {
+            "$project": {
+                "model": {
+                    "$mergeObjects": [
+                        "$model",
+                        "$payload"
+                    ]
+                },
+                "payload": "$payload"
+            }
+        }
+    ]
+}
+```
+
+To modify a specific sub document of the model, make use of the supported modification operators.
 
 Example to update the font size:
 
