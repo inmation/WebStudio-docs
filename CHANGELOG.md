@@ -1,5 +1,13 @@
 # Change Log
 
+## [TBD] - 2020-12-18
+
+- Added `convert` action.
+- Added Message Debugger widget. Replaces the need to use the Editor for message inspection.
+- Added `onSelectionChanged` on Table widget.
+- Added `update` topic for `send` action.
+- Removed `completeMsgObject` from Editor. Use Message Debugger.
+
 ## [3428] - 2020-12-04
 
 - Release with system version 1.72.0

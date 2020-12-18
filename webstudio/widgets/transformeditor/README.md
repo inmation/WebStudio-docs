@@ -1,6 +1,6 @@
 # Transform Editor
 
-This widget can be used to test a `transform` action.
+This widget can be used to test a `transform` action. See [Transform section in Actions](../../actions/README.md#Transform) for more details.
 
 ## Model
 
@@ -17,5 +17,3 @@ This widget can be used to test a `transform` action.
     }
 }
 ```
-
-See [actions](../../actions/README.md) for more details about the `transform` action.

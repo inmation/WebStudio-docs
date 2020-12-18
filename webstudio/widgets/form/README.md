@@ -15,7 +15,7 @@ This widget can be used to show a form which can contain different type of entri
 
 Supported actions:
 
-- `onSubmit`: Gets executed when the `Submit` button is clicked.
+- `onSubmit`: Gets invoked when the `Submit` button is clicked.
 
 #### onSubmit
 
@@ -36,7 +36,7 @@ When the `onSubmit` action is defined in the `actions` a `Submit` button, will b
 }
 ```
 
-The `onSubmit` action gets executed when the `Submit` button is clicked. The input message `payload` is an array containing the `id` and `value` of each input entry. In case the input entry contains more than one input values, the `value` will be an array containing the selected values.
+The `onSubmit` action gets invoked when the `Submit` button is clicked. The input message `payload` is an array containing the `id` and `value` of each input entry. In case the input entry contains more than one input values, the `value` will be an array containing the selected values.
 
 ```json
 [

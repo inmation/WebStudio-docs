@@ -1,4 +1,6 @@
-# WebStudio
+# WebStudio Compilation
+
+The WebStudio configuration in which the applied widgets are defined is called a **compilation** and sometimes referred to as the **grid model**.
 
 Note: Features marked with (*) are not supported yet.
 
@@ -63,57 +65,4 @@ A list of widgets. See [widget doc](./widgets/README.md) model description for t
     "widgets": [
     ]
 }
-```
-
-## Loading WebStudio
-
-`PROTOCOL`://`HOSTNAME`:`PORT`/apps/webstudio/
-
-- `PROTOCOL`: http or https
-- `HOSTNAME`: Hostname of the web server from where to load WebStudio from. Can be the Web API.
-- `PORT`: TCP/IP port number of the web server.
-
-Query parameters:
-
-- `hostname=HOSTNAME`: Hostname of the Web API.
-- `port=8002`: TCP/IP port number of the Web API.
-- `ssl=true`: Using secure connection to the Web API.
-
-### Adding security in the query parameters
-
-Adding credentials in the URL:
-
-- `credentials=`: Base64 encoded 'username:password'.
-- `authority=builtin`: Possible values `builtin`(default), `ad`, `machine`
-
-Using Integrated Windows Authentication:
-
-- `secp=iwa`:
-
-## Loading WebStudio compilation from custom Advanced Endpoint
-
-Model can be loaded by calling an Advanced Endpoint. See Web API - Advanced Endpoint docs for more details.
-
-- `lib=MY_LIBRARY`: Lua library name. Script can return function or a Lua table.
-- `func=MY_FUNCTION`: Function name in case the library returns a Lua table.
-- `farg=`: Function argument data. Typically Base64 encoded in case of JSON data.
-- `ctx=/System/Core/MyFolder`: (Optional) Alternative script context.
-
-Example:
-
-```url
-https://company.corp:8003/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&lib=my_librarys&func=my_function
-```
-
-## Loading WebStudio compilation from object's Custom Property
-
-WebStudio compilations can be loaded from Custom Properties of objects by adding two query parameter in the URL.
-
-- `obj`: object path or id. (Note: if not provided the Web API default context path will be used.)
-- `name`: name of the Custom Property.
-
-Example:
-
-```url
-https://company.corp:8003/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&obj=/System/Core/MyFolder&name=display01
 ```

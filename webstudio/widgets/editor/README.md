@@ -20,14 +20,6 @@ Supported languages:
 - `txt`
 - `xml`
 
-In case you want to see the whole input message set `completeMsgObject` to `true`.
-
-```json
-{
-    "completeMsgObject": true
-}
-```
-
 ### Options
 
 ```json
@@ -57,7 +49,7 @@ Supported actions:
 
 ### onContentChange
 
-In case `onContentChange` is defined this will be executed every time the textual content of the widget is updated. Can be used together with the `send` action pipeline to send the content to an other widget.
+In case `onContentChange` is defined this will be invoked every time the textual content of the widget is updated. Can be used together with the `send` action pipeline to send the content to an other widget.
 
 ```json
 {

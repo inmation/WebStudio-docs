@@ -95,7 +95,7 @@ Fixed data set. Instead of the data coming from fetch, a fixed data set can be d
 
 | name | description |
 | ---- | --- |
-| `pagination` | when set to false, disables the pagination functionality of the table, showing all the rows from the database on one page.
+| `pagination` | when set to false, disables the pagination functionality of the table, showing all the rows from the database on one page. Toolbar is also hidden if there is no `onSubmit` action defined.
 | `showSelectedRow` | background color will change when a table row is clicked. Defaults to true when onSelect pipeline is defined.
 | `showHoverHighLight` | enable/disable hover effect on the table rows.
 | `allowSorting` | can disable sorting icons and sorting functionality.
@@ -189,9 +189,12 @@ Example to send a message to a table widget with an array of the selected rows
 
 ### Collect
 
+Collect without a `topic` defined will result in the data rows.
+
 This widget supports the following topics to collect data:
 
-- `selectedRows`: collects the selected rows data
+- No topic defined: collects all the data rows.
+- `selectedRows`: collects the selected rows data.
 
 Example of getting the selected rows data from a table widget by using an onClick action of a text Widget:
 
@@ -459,12 +462,49 @@ Cell based rules:
 
 ### Actions
 
+- `onClick`: Cell is clicked. Can be defined via the [Schema](#schema).
 - `onSelect`: Single row is selected.
+- `onSelectionChanged`: Perform an action each time the selection is changed.
 - `onSubmit`: Submit button is clicked and selected rows are in the message payload.
+
+#### onClick
+
+Cell click can be defined to a whole table column. This by setting the `onClick` action in a `schema` item.
+
+```jsonc
+{
+    "schema": [
+        {
+            "name": "value",
+            "title": "Value",
+            "actions": {
+                "onClick": [] // Can be a single action or action pipeline.
+            }
+        }
+    ]
+}
+```
+
+The input message `payload` will contain the complete row data and the selected cell info. Example:
+
+```json
+{
+    "row": {
+        "_idx": 1,
+        "name": "Temperature",
+        "value": 26
+    },
+    "cell": {
+        "_idx": 2,
+        "name": "value",
+        "value": 26
+    }
+}
+```
 
 #### onSelect
 
-Gets executed when a row is selected. The input message `payload` contains the selected row data.
+Gets invoked when a row is selected. The input message `payload` contains the selected row data.
 
 ```jsonc
 {
@@ -517,7 +557,21 @@ Send a message to another widget with selected row data
 }
 ```
 
+#### onSelectionChanged
+
+Gets invoked when a row is (de)selected. The input message `payload` contains all the selected rows (array).
+
+```jsonc
+{
+    "actions": {
+        "onSelectionChanged": [] // Can be a single action or action pipeline.
+    }
+}
+```
+
 #### onSubmit
+
+The selected rows (array) are set on the input message `payload`. Whether rows can be selected with respect to the minimum and maximum number of selected rows, can be set with `multi`, `multiMin` and `multiMax` in the [Options](#Options).
 
 ```jsonc
 {
