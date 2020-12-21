@@ -96,7 +96,6 @@
                 "alternateRowColoring": true,
                 "showHoverHighLight": true
             },
-            "refreshInterval": 10,
             "id": "table",
             "layout": {
                 "w": 13,

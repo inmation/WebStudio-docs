@@ -51,12 +51,14 @@ When `showModelEditorButton` is set to false, the editor of the widget becomes u
 
 ## Options
 
+- `refreshInterval` lets the widget automatically refresh. Value is given in seconds.
+
 Every widget can be styled by setting the `style` object. The `style` object accepts a wide range of CSS styles. The CSS properties are only accepted in camelCase. Some examples:
 
 ```json
 {
     "options": {
-        "refreshInterval": true,
+        "refreshInterval": 10,
         "style": {
             "backgroundColor": "transparent",
             "border": "1px solid blue"
