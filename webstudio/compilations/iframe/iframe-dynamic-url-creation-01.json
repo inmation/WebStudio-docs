@@ -1,0 +1,145 @@
+{
+    "version": "1",
+    "name": "iframe-dynamic-url-creation-01",
+    "widgets": [
+        {
+            "type": "text",
+            "text": "Construct URL for IFrame based on selection in the table",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "left",
+                    "fontSize": "26px",
+                    "fontWeight": "bold"
+                }
+            },
+            "id": "x2kP",
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "table",
+            "name": "Ledger explorer and analytics platform for Stellar Network",
+            "data": [
+                {
+                    "name": "Stellar Expert - Home",
+                    "relURL": ""
+                },
+                {
+                    "name": "Stellar Expert - Assets",
+                    "relURL": "/asset"
+                },
+                {
+                    "name": "Stellar Expert - Markets",
+                    "relURL": "/market"
+                },
+                {
+                    "name": "Stellar Expert - Network Stats",
+                    "relURL": "/network-activity"
+                }
+            ],
+            "schema": [
+                {
+                    "name": "name",
+                    "title": "Name"
+                },
+                {
+                    "name": "relURL",
+                    "hidden": true
+                }
+            ],
+            "captionBar": true,
+            "actions": {
+                "onSelect": [
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "url": {
+                                        "$concat": [
+                                            "https://stellar.expert/explorer/public",
+                                            "$relURL"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "send",
+                        "to": "iframe01"
+                    },
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "payload": "$url"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "send",
+                        "to": "editor01"
+                    }
+                ]
+            },
+            "options": {
+                "pagination": false,
+                "style": {
+                    "fontSize": "30px"
+                }
+            },
+            "id": "eqcs",
+            "layout": {
+                "w": 8,
+                "h": 8,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "iframe",
+            "id": "iframe01",
+            "name": "IFrame",
+            "layout": {
+                "w": 16,
+                "h": 11,
+                "x": 8,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "id": "editor01",
+            "name": "The constructed URL",
+            "language": "txt",
+            "editorOptions": {
+                "fontSize": 12,
+                "cursorStyle": "line",
+                "readOnly": false
+            },
+            "layout": {
+                "w": 8,
+                "h": 3,
+                "x": 0,
+                "y": 9,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "none",
+        "numberOfColumns": 24
+    }
+}
