@@ -72,6 +72,10 @@ Using Integrated Windows Authentication:
 
 - `secp=iwa`:
 
+### Loading options
+
+- `theme=light`: Setting the theme to `dark` **(default)** or `light`.
+
 ### Loading WebStudio compilation from custom Advanced Endpoint
 
 Model can be loaded by calling an Advanced Endpoint. See Web API - Advanced Endpoint docs for more details.
