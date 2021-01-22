@@ -5,6 +5,7 @@ Pipeline can consist of actions with `type`:
 - [action](#action): Refers to another action to be executed.
 - [collect](#collect): Collect data from a widget.
 - [consoleLog](#consolelog): Write to the browser's console log.
+- [convert](#convert): Converts data to and from JSON, Base64.
 - [copy](#copy): Copy to clipboard.
 - [function](#function): Advanced Endpoint call to the system.
 - [modify](#modify): Change the model of a widget.
