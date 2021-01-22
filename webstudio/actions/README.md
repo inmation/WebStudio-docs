@@ -762,7 +762,9 @@ The recipient widget will perform an update. The recipient widget only update it
 
 ### Switch (*)
 
-Execute actions based on rules. A rule will be checked by performing a `queryOne` transformation. In case the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed.
+Execute actions based on rules. A rule will be checked by performing a `queryOne` transformation. In case the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed. If one rule matches, its `action` will be executed and further testing of the subsequent rules with be stopped.
+
+In case `checkAll` is set to `true`, the 'initial' input message of the switch will be passed to each action pipeline of the matched rules. The output message of the last executed action pipeline, will be the output message of this switch action. When no rule matches, the output of the switch action is the same as the input.
 
 ```jsonc
 {
