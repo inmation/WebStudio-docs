@@ -1,0 +1,212 @@
+{
+    "version": "1",
+    "name": "switch-01",
+    "widgets": [
+        {
+            "type": "table",
+            "name": "Click on one of the Action cells",
+            "data": [
+                {
+                    "name": "Fruit",
+                    "value": "Apple",
+                    "action": "Click Here"
+                },
+                {
+                    "name": "Fruit",
+                    "value": "Peer",
+                    "action": "Click Here"
+                },
+                {
+                    "name": "Fruit",
+                    "value": "Banana",
+                    "action": "Click Here"
+                },
+                {
+                    "name": "Fruit",
+                    "value": "Grape",
+                    "action": "Click Here"
+                },
+                {
+                    "name": "Fruit",
+                    "value": "Prume",
+                    "action": "Click Here"
+                }
+            ],
+            "schema": [
+                {
+                    "name": "name",
+                    "title": "Name"
+                },
+                {
+                    "name": "value",
+                    "title": "Value"
+                },
+                {
+                    "name": "action",
+                    "title": "Action",
+                    "actions": {
+                        "onClick": [
+                            [
+                                {
+                                    "type": "passthrough",
+                                    "comment": "Clear the payload",
+                                    "message": {
+                                        "payload": ""
+                                    }
+                                },
+                                {
+                                    "type": "send",
+                                    "to": "editor1"
+                                },
+                                {
+                                    "type": "send",
+                                    "to": "editor2"
+                                },
+                                {
+                                    "type": "send",
+                                    "to": "editor3"
+                                },
+                                {
+                                    "type": "send",
+                                    "to": "editor3"
+                                },
+                                {
+                                    "type": "send",
+                                    "to": "editor4"
+                                }
+                            ],
+                            [
+                                {
+                                    "type": "switch",
+                                    "checkAll": false,
+                                    "case": [
+                                        {
+                                            "match": {
+                                                "row.value": "Apple"
+                                            },
+                                            "action": [
+                                                {
+                                                    "type": "send",
+                                                    "to": "editor1"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "match": {
+                                                "row.value": "Peer"
+                                            },
+                                            "action": [
+                                                {
+                                                    "type": "send",
+                                                    "to": "editor2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "match": {
+                                                "row.value": "Banana"
+                                            },
+                                            "action": [
+                                                {
+                                                    "type": "send",
+                                                    "to": "editor3"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "match": {},
+                                            "action": [
+                                                {
+                                                    "type": "send",
+                                                    "to": "editor4"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        ]
+                    }
+                }
+            ],
+            "captionBar": true,
+            "options": {
+                "editable": false,
+                "multi": false,
+                "style": {
+                    "fontSize": "12px"
+                },
+                "pageSize": 10,
+                "pagination": true,
+                "allowSorting": true,
+                "alternateColumnColoring": false,
+                "alternateRowColoring": true,
+                "showHoverHighLight": true
+            },
+            "id": "zB9C",
+            "layout": {
+                "w": 8,
+                "h": 8,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "id": "editor1",
+            "name": "Apple Here",
+            "language": "json",
+            "layout": {
+                "w": 4,
+                "h": 5,
+                "x": 8,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "id": "editor2",
+            "name": "Peer Here",
+            "language": "json",
+            "layout": {
+                "w": 4,
+                "h": 5,
+                "x": 12,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "id": "editor3",
+            "name": "Banana Here",
+            "language": "json",
+            "layout": {
+                "w": 4,
+                "h": 5,
+                "x": 16,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "editor",
+            "id": "editor4",
+            "name": "Other Here",
+            "language": "json",
+            "layout": {
+                "w": 4,
+                "h": 5,
+                "x": 20,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

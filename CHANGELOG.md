@@ -1,5 +1,10 @@
 # Change Log
 
+## [3655] - 2021-01-22
+
+- Added `switch` action.
+- Added `refresh` action.
+
 ## [3610] - 2020-12-21
 
 - Added `convert` action.

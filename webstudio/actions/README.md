@@ -15,8 +15,9 @@ Pipeline can consist of actions with `type`:
 - [prompt](#prompt): Show a dialog.
 - [read](#read): Reads a value of an object.
 - [read-write](#read-write): Used for data sources, supports `read` and `write`.
+- [refresh](#refresh): Refresh a widget.
 - [send](#send): Send data to another widget.
-- [switch](#switch): Execute different actions based on conditions. (*)
+- [switch](#switch): Execute different actions based on conditions.
 - [transform](#transform): Transform the data using e.g. MongoDB's Aggregation Pipeline logic.
 - [wait](#wait): Adds a delay before executing the next action.
 - [write](#write): Writes a value to an object.
@@ -687,6 +688,19 @@ Can be used for widgets which support reading and writing.
 }
 ```
 
+### Refresh
+
+Refresh a widget. No message will be send to the target widget. In case you want to send a message to a widget, use a `send` action with the message `topic` set to `refresh`.
+
+```json
+{
+    "type": "refresh",
+    "id": "Place here the ID of the widget"
+}
+```
+
+The `to` field can have the value `self` in case the action pipeline needs to refresh its own widget.
+
 ### Send
 
 Widgets data exchange
@@ -760,7 +774,7 @@ The recipient widget will perform an update. The recipient widget only update it
 }
 ```
 
-### Switch (*)
+### Switch
 
 Execute actions based on rules. A rule will be checked by performing a `queryOne` transformation. In case the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed. If one rule matches, its `action` will be executed and further testing of the subsequent rules with be stopped.
 
@@ -780,7 +794,7 @@ In case `checkAll` is set to `true`, the 'initial' input message of the switch w
                 "name": "doSomething"
             }
         },
-         {
+        {
             "match" : {
                 "temp": {
                     "$gte": 20
@@ -798,6 +812,15 @@ In case `checkAll` is set to `true`, the 'initial' input message of the switch w
             ]
         }
     ]
+}
+```
+
+In order to have a default action in case none of the rules matches, add a rule at the end of the `case` array with an empty object as `match`.
+
+```jsonc
+{
+    "match" : {},
+    "action" : [] // Can be a single action or action pipeline.
 }
 ```
 
