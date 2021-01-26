@@ -237,7 +237,7 @@ A schema consist of:
 | `width` | When resizeColumns is set to true, width can be defined for the headers manually (optional)
 | `style` | Styling (optional)
 | `hidden` | Property controlling column visibility (optional)
-| `sorting` | Property to define default sorting on the column. Accepted values: `asc` (ascending), `desc` (descending), `none` (no sorting). Note that sorting doesn't change the original rowIndexes (optional, default is none)
+| `sorting` | * Property to define default sorting on the column. Accepted values: `asc` (ascending), `desc` (descending), `none` (no sorting). Note that sorting doesn't change the original rowIndexes (optional, default is none)
 
 ```json
 {
