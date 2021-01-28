@@ -129,7 +129,7 @@ See valid fontSize values: [MDN web docs > CSS: Cascading Style Sheets > font-si
 
 Conditional styling, which needs to be applied to all cells in a row, can be defined within `rules` in the `options` of the model. Cell / column based styling can be defined in within a `schema` element.
 
-A row based rule needs to contain a `name` field to point to the right data field in the row. The `range` element can be used to define a numeric range by using the fields `from` and `to`. The value defined in the `to` field is excluded from the range. It is also possible to define only the `from` value to match all values greater than or equal to the value defined in the `from` field. To match all values less than a certain value, only the `to` field can be defined.
+A row based rule needs to contain a `name` field to point to the right data field in the row. The `range` element can be used to define a numeric or date range by using the fields `from` and `to`. The value defined in the `to` field is excluded from the range. It is also possible to define only the `from` value to match all values greater than or equal to the value defined in the `from` field. To match all values less than a certain value, only the `to` field can be defined.
 
 The styles of all matching rules will be applied to all cells in the row.
 
@@ -237,7 +237,8 @@ A schema consist of:
 | `width` | When resizeColumns is set to true, width can be defined for the headers manually (optional)
 | `style` | Styling (optional)
 | `hidden` | Property controlling column visibility (optional)
-| `sorting` | * Property to define default sorting on the column. Accepted values: `asc` (ascending), `desc` (descending), `none` (no sorting). Note that sorting doesn't change the original rowIndexes (optional, default is none)
+| `sort` | Property to define default sorting on the column. Accepted values: `asc` (ascending), `desc` (descending), `none` (no sorting). Default table sorting on multiple columns is possibly by defining `sort` in multiple schema items. The column order defines the sorting order. Note that sorting doesn't change the original row indexes (optional, default is none)
+| `value` | Can be used to define the value for a fixed column. A fixed column can be created without pointing to a key in the table data. The `value` property is ignored when the schema items contains a `name` property.
 
 ```json
 {
@@ -258,7 +259,18 @@ A schema consist of:
             "name": "value",
             "filter": "slider",
             "type": "number",
-            "numberOfDecimals": 2
+            "numberOfDecimals": 2,
+            "sort": "desc" 
+        },
+        {
+            "title": "Fixed column",
+            "value": "Click here",
+            "actions": {
+                "onClick": {
+                    "type": "notify",
+                    "text": "Fixed column cell clicked!"
+                }
+            }
         }
     ]
 }

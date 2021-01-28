@@ -1,5 +1,11 @@
 # Change Log
 
+## [3672] - 2021-01-28
+
+- Added `sort` schema property.
+- Added `value` schema property.
+- Added support for date range rules.
+
 ## [3655] - 2021-01-22
 
 - Added `switch` action.
