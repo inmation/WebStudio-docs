@@ -40,9 +40,50 @@ Web Chart also offers a wider range of chart types, such as Candlestick, Spline,
 
 This widget receive messages from others. Besides the generic, this widget also support topics:
 
-- `addPens`
-- `setTagTable`
-- `setTimeSpan`
+- `addCursors` : add one or multiple cursors
+- `addPens` : add one or multiple pens
+- `setCursors` : update the set of cursors
+- `setTagTable` : set the tag table by object path
+- `setTimeSpan` : set the timespan on x-axis
+
+#### addCursors
+
+Send topic `addCursors` adds one or multiple cursors. In case the cursor already exists the cursor in the payload will be ignored. Send `timestamp` in the payload to add the cursor on that timestamp. `Timestamp` can be send in ISO or Epoch format. 
+
+```json
+"onClick": [
+    {
+        "type": "send",
+        "to": "chartwidgetID",
+        "message": {
+            "topic": "addCursors",
+            "payload": [
+                {
+                    "timestamp": 1613481658185
+                },
+                {
+                    "timestamp": 1613482658185
+                }
+            ]
+        }
+    }
+]
+```
+
+To `clear cursors` send empty payload.
+
+```json
+"onClick": [
+    {
+        "type": "send",
+        "to": "chartwidgetID",
+        "message": {
+            "topic": "setCursors",
+            "payload": []
+        }
+    }
+]
+```
 
 #### addPens
 
@@ -101,6 +142,27 @@ Add pen(s) by providing pen objects:
         }
     }
 }
+```
+
+#### setCursors
+
+Send topic `setCursors` will fully update the set of cursors in the chart. Send `timestamp` in the payload to set the cursor on that timestamp. `Timestamp` can be send in ISO or Epoch format. 
+
+```json
+"onClick": [
+    {
+        "type": "send",
+        "to": "chartwidgetID",
+        "message": {
+            "topic": "setCursors",
+            "payload": [
+                {
+                    "timestamp": 1613480658185
+                }
+            ]
+        }
+    }
+]
 ```
 
 #### setTagTable
