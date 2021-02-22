@@ -239,6 +239,7 @@ A schema consist of:
 | `hidden` | Property controlling column visibility (optional)
 | `sort` | Property to define default sorting on the column. Accepted values: `asc` (ascending), `desc` (descending), `none` (no sorting). Default table sorting on multiple columns is possibly by defining `sort` in multiple schema items. The column order defines the sorting order. Note that sorting doesn't change the original row indexes (optional, default is none)
 | `value` | Can be used to define the value for a fixed column. A fixed column can be created without pointing to a key in the table data. The `value` property is ignored when the schema items contains a `name` property.
+| `isExpander` | This option can be used for [hierarchical data](#Hierarchical-Data) structures, it enables collapsing and expanding table rows. Set `isExpander: true` on a key of subrows item, which is of type array. Key has to be defined in `data` structure. Global or column filtering of the table is not supported when this options is used.
 
 ```json
 {
@@ -471,6 +472,61 @@ Cell based rules:
         }
      ]
  }
+```
+
+#### Hierarchical Data
+
+Data field has a key `children`, which is used in schema with `isExpander` to create hierarchical table layout.
+
+```json
+    "data": [
+        {
+            "Item": "Pencil",
+            "Total": 189.05,
+            "Unit Cost": 1.99,
+            "children": [
+                {
+                    "Item": "Pencil",
+                    "Total": 59.7,
+                    "Unit Cost": 1.99,
+                    "OrderDate": "2019-06-08"
+                },
+                {
+                    "Item": "Pencil",
+                    "Total": 59.7,
+                    "Unit Cost": 1.99,
+                    "OrderDate": "2019-06-10"
+                }
+            ]
+        }
+    ]
+```
+
+```json
+    "schema": [
+        {
+            "name": "children",
+            "isExpander": true
+        },
+        {
+            "name": "Item",
+            "title": "Item"
+        },
+        {
+            "name": "Total",
+            "title": "Total"
+        },
+        {
+            "name": "Unit Cost",
+            "title": "Unit Cost"
+        },
+        {
+            "name": "OrderDate",
+            "title": "Order date",
+            "type": "date",
+            "format": "YYYY-MM-DD"
+        }
+    ],
 ```
 
 ### Actions
