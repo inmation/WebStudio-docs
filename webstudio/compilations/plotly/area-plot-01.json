@@ -1,0 +1,60 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "plotly",
+            "name": "Plotly: Basic Bars",
+            "description": "Basic Bars",
+            "data": [
+                {
+                    "x": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "y": [
+                        0,
+                        2,
+                        3,
+                        5
+                    ],
+                    "stackgroup": "one",
+                    "groupnorm": "percent"
+                },
+                {
+                    "x": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "y": [
+                        3,
+                        5,
+                        1,
+                        7
+                    ],
+                    "stackgroup": "one"
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "paper_bgcolor": "white"
+                }
+            },
+            "id": "4Xu-",
+            "layout": {
+                "w": 16,
+                "h": 14,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

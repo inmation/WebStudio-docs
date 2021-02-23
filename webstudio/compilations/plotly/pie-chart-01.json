@@ -1,0 +1,113 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "plotly",
+            "name": "Plotly: Pie Chart Subplots",
+            "description": "Pie Chart Subplots",
+            "data": [
+                {
+                    "type": "pie",
+                    "values": [
+                        10,
+                        30,
+                        60
+                    ],
+                    "labels": [
+                        "1st",
+                        "2nd",
+                        "3rd"
+                    ],
+                    "hole": 0.4,
+                    "domain": {
+                        "row": 0,
+                        "column": 0
+                    }
+                },
+                {
+                    "type": "pie",
+                    "values": [
+                        19,
+                        26,
+                        55
+                    ],
+                    "labels": [
+                        "1st",
+                        "2nd",
+                        "3rd"
+                    ],
+                    "hole": 0.4,
+                    "domain": {
+                        "row": 1,
+                        "column": 0
+                    }
+                },
+                {
+                    "type": "pie",
+                    "values": [
+                        76,
+                        19,
+                        10
+                    ],
+                    "labels": [
+                        "1st",
+                        "2nd",
+                        "3rd"
+                    ],
+                    "hole": 0.4,
+                    "domain": {
+                        "row": 0,
+                        "column": 1
+                    }
+                },
+                {
+                    "type": "pie",
+                    "values": [
+                        60,
+                        25,
+                        15
+                    ],
+                    "labels": [
+                        "1st",
+                        "2nd",
+                        "3rd"
+                    ],
+                    "hole": 0.4,
+                    "domain": {
+                        "x": [
+                            0.52,
+                            1
+                        ],
+                        "y": [
+                            0,
+                            0.48
+                        ]
+                    }
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "paper_bgcolor": "white",
+                    "height": 400,
+                    "width": 500,
+                    "grid": {
+                        "rows": 2,
+                        "columns": 2
+                    }
+                }
+            },
+            "layout": {
+                "w": 23,
+                "h": 16,
+                "x": 0,
+                "y": 0,
+                "static": false
+            },
+            "id": "5ueO"
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

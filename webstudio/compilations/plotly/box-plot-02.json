@@ -1,0 +1,89 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "plotly",
+            "name": "Plotly: Boxplot",
+            "description": "Boxplot",
+            "data": [
+                {
+                    "type": "box",
+                    "y": [
+                        2.37,
+                        2.16,
+                        4.82,
+                        1.73,
+                        1.04,
+                        0.23,
+                        1.32,
+                        2.91,
+                        0.11,
+                        4.51,
+                        0.51,
+                        3.75,
+                        1.35,
+                        2.98,
+                        4.5,
+                        0.18,
+                        4.66,
+                        1.3,
+                        2.06,
+                        1.19
+                    ],
+                    "name": "Only Mean",
+                    "marker": {
+                        "color": "blue"
+                    },
+                    "boxmean": true
+                },
+                {
+                    "type": "box",
+                    "y": [
+                        5.37,
+                        2.16,
+                        4.82,
+                        1.73,
+                        1.74,
+                        0.23,
+                        1.32,
+                        2.91,
+                        0.75,
+                        4.51,
+                        0.51,
+                        3.75,
+                        3.35,
+                        2.98,
+                        4.95,
+                        1.18,
+                        4.66,
+                        1.3,
+                        3.96,
+                        1.19
+                    ],
+                    "name": "Mean and Standard Deviation",
+                    "marker": {
+                        "color": "blue"
+                    },
+                    "boxmean": "sd"
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "paper_bgcolor": "white"
+                }
+            },
+            "id": "SaR-",
+            "layout": {
+                "w": 19,
+                "h": 17,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

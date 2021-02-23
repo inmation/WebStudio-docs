@@ -1,0 +1,57 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "plotly",
+            "name": "Plotly: Basic Bars",
+            "description": "Basic Bars",
+            "data": [
+                {
+                    "type": "bar",
+                    "x": [
+                        "Line 1",
+                        "Line 2",
+                        "Line 3"
+                    ],
+                    "y": [
+                        20,
+                        14,
+                        23
+                    ],
+                    "name": "Cologne"
+                },
+                {
+                    "type": "bar",
+                    "x": [
+                        "Line 1",
+                        "Line 2",
+                        "Line 3"
+                    ],
+                    "y": [
+                        25,
+                        10,
+                        28
+                    ],
+                    "name": "Eindhoven"
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "paper_bgcolor": "white"
+                }
+            },
+            "id": "5ueO",
+            "layout": {
+                "w": 19,
+                "h": 13,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

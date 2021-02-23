@@ -1,0 +1,91 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "plotly",
+            "name": "Plotly: Basic Bars",
+            "description": "Basic Bars",
+            "data": [
+                {
+                    "x": [
+                        0,
+                        0.5,
+                        1,
+                        1.5,
+                        2
+                    ],
+                    "y": [
+                        0,
+                        1,
+                        2,
+                        1,
+                        0
+                    ],
+                    "fill": "toself",
+                    "hoveron": "points+fills",
+                    "line": {
+                        "color": "blue",
+                        "opacity": 0.4
+                    },
+                    "text": "Points + Fills",
+                    "hoverinfo": "text"
+                },
+                {
+                    "x": [
+                        3,
+                        3.5,
+                        4,
+                        4.5,
+                        5
+                    ],
+                    "y": [
+                        0,
+                        1,
+                        2,
+                        1,
+                        0
+                    ],
+                    "fill": "toself",
+                    "hoveron": "points",
+                    "line": {
+                        "color": "blue",
+                        "opacity": 0.4
+                    },
+                    "text": "Points only",
+                    "hoverinfo": "text"
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "paper_bgcolor": "white",
+                    "xaxis": {
+                        "range": [
+                            0,
+                            5
+                        ],
+                        "type": "linear"
+                    },
+                    "yaxis": {
+                        "range": [
+                            0,
+                            3
+                        ],
+                        "type": "linear"
+                    }
+                }
+            },
+            "id": "4Xu-",
+            "layout": {
+                "w": 21,
+                "h": 17,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "plotly",
+            "name": "Plotly: Basic Line Charts",
+            "description": "Line Charts",
+            "data": [
+                {
+                    "type": "scatter",
+                    "x": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "y": [
+                        10,
+                        15,
+                        13,
+                        17
+                    ],
+                    "mode": "lines+markers",
+                    "marker": {
+                        "color": "red",
+                        "size": 8
+                    },
+                    "line": {
+                        "color": "red",
+                        "width": 1
+                    }
+                },
+                {
+                    "type": "scatter",
+                    "x": [
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "y": [
+                        16,
+                        5,
+                        11,
+                        9
+                    ]
+                },
+                {
+                    "type": "scatter",
+                    "x": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "y": [
+                        12,
+                        9,
+                        15,
+                        12
+                    ]
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "paper_bgcolor": "white"
+                }
+            },
+            "id": "RxF-",
+            "layout": {
+                "w": 20,
+                "h": 16,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

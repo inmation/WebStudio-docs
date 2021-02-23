@@ -1,0 +1,46 @@
+{
+    "version": "1",
+    "widgets": [
+        {
+            "type": "plotly",
+            "name": "Plotly: Boxplot",
+            "description": "Boxplot",
+            "data": [
+                {
+                    "type": "box",
+                    "y": [
+                        0,
+                        1,
+                        1,
+                        2,
+                        3,
+                        5,
+                        8,
+                        13,
+                        21
+                    ],
+                    "boxpoints": "all",
+                    "jitter": 0.3,
+                    "pointpos": 0
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "paper_bgcolor": "white"
+                }
+            },
+            "id": "yE_u",
+            "layout": {
+                "w": 13,
+                "h": 12,
+                "x": 0,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}
