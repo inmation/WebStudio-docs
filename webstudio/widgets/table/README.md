@@ -239,7 +239,7 @@ A schema consist of:
 | `hidden` | Property controlling column visibility (optional)
 | `sort` | Property to define default sorting on the column. Accepted values: `asc` (ascending), `desc` (descending), `none` (no sorting). Default table sorting on multiple columns is possibly by defining `sort` in multiple schema items. The column order defines the sorting order. Note that sorting doesn't change the original row indexes (optional, default is none)
 | `value` | Can be used to define the value for a fixed column. A fixed column can be created without pointing to a key in the table data. The `value` property is ignored when the schema items contains a `name` property.
-| `isExpander` | This option can be used for [hierarchical data](#Hierarchical-Data) structures, it enables collapsing and expanding table rows. Set `isExpander: true` on a key of subrows item, which is of type array. Key has to be defined in `data` structure. Global or column filtering of the table is not supported when this options is used.
+| `isExpander` | This option can be used for [hierarchical data](#Hierarchical-Data) structures, it enables collapsing and expanding table rows. Set `isExpander: true` on a key of subrows item, which is of type array. Key has to be defined in `data` structure. Global or column filtering of the table is not supported when this options is used. Default `collapsedIcon` and `expandedIcon` can be replaced by custom icons, e.g. emoji or special characters. 
 
 ```json
 {
@@ -506,6 +506,8 @@ Data field has a key `children`, which is used in schema with `isExpander` to cr
     "schema": [
         {
             "name": "children",
+            "collapsedIcon": "▷",
+            "expandedIcon": "▽",
             "isExpander": true
         },
         {
