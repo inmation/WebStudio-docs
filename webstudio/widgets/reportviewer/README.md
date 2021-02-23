@@ -31,6 +31,25 @@ The refresh button allows to refresh reportdesign and report data.
 }
 ```
 
+#### Execution Context
+
+Default execution context is the path of the report item provided in the `dataSource`. Setting `ctx` value to `default` means that the default Web API context will be used, which is configured in the Web API server object. This is the same behavior as not providing the `ctx` option in an advanced endpoint request to the Web API. A custom execution context can be provided by setting the `ctx` field with a valid object path. 
+
+```json
+{
+    "dataSource": [
+        {
+            "type": "fetch",
+            "path": "/System/Core/Examples/WebStudio/Reports/Process Data Report",
+            "query": {
+                "batchid": "AB1234"
+            },
+            "ctx" : "default"
+        }
+    ]
+}
+```
+
 ### Stimulsoft Viewer Options
 
 The viewerOptions of Stimulsoft Report Viewer can be set in the appearance object. The available options can be found at [Stimulsoft.Viewer.StiViewerOptions](https://admin.stimulsoft.com/documentation/classreference-js/classes/stimulsoft.viewer.stivieweroptions.html)
