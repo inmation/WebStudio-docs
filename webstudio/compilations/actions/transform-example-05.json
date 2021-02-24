@@ -1,0 +1,87 @@
+{
+    "version": "1",
+    "name": "actions-transform-05",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "name": "Title Bar",
+            "text": "actions-transform-05",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "transformeditor",
+            "id": "transformeditor_1",
+            "name": "Transform Editor",
+            "completeMsgObject": false,
+            "input": [
+                {
+                    "id": "batchID",
+                    "value": "B123"
+                },
+                {
+                    "id": "orderNumber",
+                    "value": 43
+                },
+                {
+                    "id": "materialID",
+                    "value": "Mat0051"
+                }
+            ],
+            "transform": {
+                "type": "transform",
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "k": "$id",
+                            "v": "$value"
+                        }
+                    },
+                    {
+                        "$group": {
+                            "data": "$$ROOT"
+                        }
+                    },
+                    {
+                        "$project": {
+                            "payload": {
+                                "$arrayToObject": "$data"
+                            }
+                        }
+                    }
+                ]
+            },
+            "editorOptions": {
+                "fontSize": 12
+            },
+            "captionBar": true,
+            "layout": {
+                "w": 24,
+                "h": 9,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}
