@@ -27,6 +27,7 @@ WebStudio is a modern Web App where you can compile widgets on a grid.
 | [Transform Editor](./webstudio/widgets/transformeditor/README.md) | Test transform actions.
 | _Experimental:_
 | [Victory Library](./webstudio/widgets/victory/README.md) | Display modular charting and data visualization.
+| [Plotly Library](./webstudio/widgets/plotly/README.md) | Declarative charting and data visualization.
 
 ## Terminology
 
