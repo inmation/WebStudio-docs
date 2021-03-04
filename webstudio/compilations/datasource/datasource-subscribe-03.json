@@ -34,16 +34,18 @@
             "actions": {
                 "willUpdate": [
                     {
-                        "type": "consoleLog"
-                    },
-                    {
                         "type": "transform",
                         "completeMsgObject": true,
                         "aggregateOne": [
                             {
                                 "$project": {
                                     "payload": 1,
-                                    "prefix": 1,
+                                    "prefix": {
+                                        "$ifNull": [
+                                            "$prefix",
+                                            ""
+                                        ]
+                                    },
                                     "rounded": {
                                         "$round": [
                                             "$payload",

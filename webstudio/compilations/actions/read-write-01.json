@@ -1,0 +1,125 @@
+{
+    "version": "1",
+    "name": "table-datasource-read-write",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-read-write-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Table data is retrieved using read endpoint, click on save button to write data to the endpoint",
+            "captionBar": {
+                "hidden": false,
+                "title": "Read and write data to the endpoint",
+                "showModelEditorButton": true
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 12,
+                "h": 5,
+                "x": 12,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "table",
+            "description": "Table Holder",
+            "name": "Sales Orders",
+            "layout": {
+                "w": 12,
+                "h": 16,
+                "x": 0,
+                "y": 1,
+                "static": false
+            },
+            "dataSource": {
+                "path": "/System/Core/Examples/WebStudio/Tables/SalesOrdersMutable.TableData",
+                "type": "read-write"
+            },
+            "schema": [
+                {
+                    "name": "Item",
+                    "title": "Item",
+                    "editable": true
+                },
+                {
+                    "name": "OrderDate",
+                    "title": "Order date",
+                    "hidden": true
+                },
+                {
+                    "name": "Region",
+                    "title": "Region",
+                    "items": [
+                        "Central",
+                        "East",
+                        "West"
+                    ]
+                },
+                {
+                    "name": "Rep",
+                    "title": "Rep",
+                    "items": [
+                        "Kivell",
+                        "Jardine",
+                        "Gill",
+                        "Sorvino",
+                        "Jones",
+                        "Andrews",
+                        "Thompson"
+                    ]
+                },
+                {
+                    "name": "Total",
+                    "title": "Total"
+                },
+                {
+                    "name": "Unit Cost",
+                    "title": "Unit Cost"
+                },
+                {
+                    "name": "Units",
+                    "title": "Units"
+                }
+            ],
+            "captionBar": true,
+            "options": {
+                "multi": true,
+                "pageSize": 20,
+                "pagination": true,
+                "allowSorting": true,
+                "alternateColumnColoring": false,
+                "alternateRowColoring": true,
+                "showHoverHighLight": true,
+                "style": {
+                    "fontSize": "12px"
+                }
+            },
+            "id": "IST4"
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

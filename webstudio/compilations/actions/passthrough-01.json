@@ -1,0 +1,60 @@
+{
+    "version": "1",
+    "name": "actions-passthrough-01",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-passthrough-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Click here \r\n to pass the input message `payload` to the browser's console log. Hit f12 to open your console!",
+            "captionBar": {
+                "hidden": false,
+                "title": "Pass the input message `payload`",
+                "showModelEditorButton": true
+            },
+            "actions": {
+                "onClick": [
+                    {
+                        "message": {
+                            "topic": "test",
+                            "payload": {
+                                "hello": "world"
+                            }
+                        }
+                    },
+                    {
+                        "type": "consoleLog"
+                    }
+                ]
+            },
+            "id": "text_2",
+            "layout": {
+                "w": 24,
+                "h": 5,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        }
+    ]
+}
