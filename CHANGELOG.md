@@ -1,5 +1,17 @@
 # Change Log
 
+## [????]
+
+- Victory widget removed. Use Plotly widget.
+
+## [3854] - 2021-02-26
+
+- Fixed context of Report Viewer widget.
+- Fixed table row selection when `multiMin` and `multiMax` are set.
+- Added Plotly widget.
+- Added support for hierarchical data in table widget.
+- Added `addCursor` and `aetCursor` topics for Chart widget.
+
 ## [3672] - 2021-01-28
 
 - Added `sort` schema property.
@@ -18,7 +30,7 @@
 - Added Message Debugger widget. Replaces the need to use the Editor for message inspection.
 - Added `onSelectionChanged` on Table widget.
 - Added `update` topic for `send` action.
-- Removed `completeMsgObject` from Editor. Use Message Debugger.
+- Removed `completeMsgObject` from Editor widget. Use Message Debugger widget.
 
 **Breaking change:**
 
