@@ -25,8 +25,6 @@ WebStudio is a modern Web App where you can compile widgets on a grid.
 | _Development Widgets:_
 | [Message Debugger](./webstudio/widgets/messagedebugger/README.md) | Inspecting action pipeline messages.
 | [Transform Editor](./webstudio/widgets/transformeditor/README.md) | Test transform actions.
-| _Experimental:_
-| [Victory Library](./webstudio/widgets/victory/README.md) | Display modular charting and data visualization.
 
 ## Terminology
 
