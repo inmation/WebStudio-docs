@@ -1,4 +1,4 @@
-# Reportviewer
+# Report Viewer
 
 This widget can be used to show generated reports.
 
@@ -15,19 +15,17 @@ This widget can be used to show generated reports.
 
 By configure a data source, a query can be provided. See [Report Item](#Report-Item) what needs to be done in the system in order to generate report data based on this query.
 
-The refresh button allows to refresh reportdesign and report data.
+The refresh button allows to refresh report design and report data.
 
 ```json
 {
-    "dataSource": [
-        {
-            "type": "fetch",
-            "path": "/System/Core/Examples/WebStudio/Reports/Process Data Report",
-            "query": {
-                "batchid": "AB1234"
-            }
+    "dataSource": {
+        "type": "fetch",
+        "path": "/System/Core/Examples/WebStudio/Reports/Process Data Report",
+        "query": {
+            "batchid": "AB1234"
         }
-    ]
+    }
 }
 ```
 
@@ -37,16 +35,14 @@ Default execution context is the path of the report item provided in the `dataSo
 
 ```json
 {
-    "dataSource": [
-        {
-            "type": "fetch",
-            "path": "/System/Core/Examples/WebStudio/Reports/Process Data Report",
-            "query": {
-                "batchid": "AB1234"
-            },
-            "ctx" : "default"
-        }
-    ]
+    "dataSource": {
+        "type": "fetch",
+        "path": "/System/Core/Examples/WebStudio/Reports/Process Data Report",
+        "query": {
+            "batchid": "AB1234"
+        },
+        "ctx" : "default"
+    }
 }
 ```
 
@@ -210,7 +206,7 @@ return function(arg, req, hlp)
         end
         return reportData
     end
-    -- Is invoke within the system.
+    -- Is invoked within the system.
     local reportData = getReportData()
     return JSON.encode(reportData)
 end
