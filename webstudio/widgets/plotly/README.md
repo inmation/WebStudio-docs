@@ -2,9 +2,9 @@
 
 This widget can be used to generate graphs. It is build based on plotly.js, which is a high-level declarative charting library. Plotly.js ships with over 40 chart types.
 
-View plotly documentation [here](https://plotly.com/javascript/).
+View Plotly documentation [here](https://plotly.com/javascript/).
 
-This widget is data driven, data structure should conform to the Plotly documention provided at the beginining of each different type of chart's section.
+This widget is data driven, data structure should conform to the Plotly documentation provided at the beginning of each different type of chart's section.
 
 ## Configuration Options
 
@@ -31,9 +31,9 @@ This widget is data driven, data structure should conform to the Plotly document
 * Paper Background Color
 * Plot Background
 * Show Legend
-* Titel (font)
-* X-axis (titel, tickangle, gridwidth)
-* Y-axis (titel, tickangle, gridwidth)
+* Title (font)
+* X-axis (title, tickangle, gridwidth)
+* Y-axis (title, tickangle, gridwidth)
 
 ### Example
 
@@ -118,18 +118,45 @@ Example of data model saved as JSON string in the system:
 }
 ```
 
+## onClick events
+
+Plotly [Click Events](https://plotly.com/javascript/plotlyjs-events/#click-event) documentation.
+
+Plotly chart can handle on click triggered event. Based on a click event on a Plotly chart, the `onClick` action defined in the Widget model is executed.
+
+Charts that do not support click events:
+
+* Gauge charts
+* Bullet chart
+* Indicator
+
+```jsonc
+"actions": {
+        "onClick": [
+            {
+                "type": "send",
+                "to": "debugger"
+            },
+            {
+                "type": "transform",
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "text": "$points.0.label"
+                        }
+                    }
+                ]
+            }
+```
+
 ## Scatter Plots
 
 Plotly [Scatter Plots](https://plotly.com/javascript/line-and-scatter/) documentation.
 
-### Data Options
-
 * Mode (Markers, markers+text, line+markers)
 * Name
 * Marker (size, color, opacity)
-* Text (lables, text position, text font)
-
-### Example
+* Text (labels, text position, text font)
 
 ```json
 "data": [
@@ -164,14 +191,10 @@ Plotly [Scatter Plots](https://plotly.com/javascript/line-and-scatter/) document
 
 Plotly [Line Charts](https://plotly.com/javascript/line-charts/) documentation.
 
-### Data Options
-
 * Line (lines, markers, lines+markers)
 * Name
 * Marker (size, color, opacity)
 * Line (color, opacity, width)
-
-### Example
 
 ```json
 "data": [
@@ -202,16 +225,12 @@ Plotly [Line Charts](https://plotly.com/javascript/line-charts/) documentation.
 
 Plotly [Bar Charts](https://plotly.com/javascript/bar-charts/) documentation.
 
-### Data Options
-
 * Orientation (h, v)
 * Name
 * Text
 * Text Position
 * Hover Info
 * Marker (color, opacity, line(color, opacity, width))
-
-### Example
 
 ```json
 "data": [
@@ -244,12 +263,10 @@ Plotly [Bar Charts](https://plotly.com/javascript/bar-charts/) documentation.
 ]
 ```
 
-### Layouts Options
+Layout Options:
 
 * Bar Mode (group, stack)
 * Bar Gap
-
-### Example
 
 ```json
 "plotlyOptions": {
@@ -264,17 +281,13 @@ Plotly [Bar Charts](https://plotly.com/javascript/bar-charts/) documentation.
 
 Plotly [Pie Charts](https://plotly.com/javascript/pie-charts/) documentation.
 
-### Data Options
-
 * Labels
 * Domain (row and column or x and y)
-* Hole (for domunt chart)
+* Hole (for donut chart)
 * Text Info (label, percent, label+percent)
 * Inside Text Orientation (radial)
-* Automargin
+* Auto margin
 * Text Position (outside (inside is default))
-
-### Example
 
 ```json
 "data": [
@@ -303,13 +316,11 @@ Plotly [Pie Charts](https://plotly.com/javascript/pie-charts/) documentation.
 ]
 ```
 
-### Layout Options
+Layout Options:
 
 * Height
 * Width
 * Grid (rows, columns)
-
-### Example
 
 ```json
 "plotlyOptions": {
@@ -328,10 +339,8 @@ Plotly [Pie Charts](https://plotly.com/javascript/pie-charts/) documentation.
 
 Plotly [Filled Area Plots](https://plotly.com/javascript/filled-area-plots/) documentation.
 
-### Data Options
-
 * Fill (tozeroy, tonexty, toself)
-* Fill Color 
+* Fill Color
 * Mode (none)
 * Stack Group
 * Group Norm (percent)
@@ -339,8 +348,6 @@ Plotly [Filled Area Plots](https://plotly.com/javascript/filled-area-plots/) doc
 * Line (color, opacity)
 * Text
 * Hoverinfo (text)
-
-### Example
 
 ```json
 "data": [
@@ -360,12 +367,10 @@ Plotly [Filled Area Plots](https://plotly.com/javascript/filled-area-plots/) doc
 ]
 ```
 
-### Layout Options
+Layout Options:
 
 * X-axis (range)
 * Y-axis (range)
-
-### Example
 
 ```json
 "plotlyOptions": {
@@ -386,11 +391,9 @@ Plotly [Filled Area Plots](https://plotly.com/javascript/filled-area-plots/) doc
 }
 ```
 
-## Boxplot
+## Box Plot
 
-Plotly [Boxplot](https://plotly.com/javascript/box-plots/) documentation.
-
-### Data options
+Plotly [Box Plot](https://plotly.com/javascript/box-plots/) documentation.
 
 * Box Points
 * Jitter
@@ -402,8 +405,6 @@ Plotly [Boxplot](https://plotly.com/javascript/box-plots/) documentation.
 * Box points (false, outliers, suspectedoutliers),
 * Box mean (true, sd)
 * Orientation (h, v)
-
-#### Example
 
 ```json
 "data": [
@@ -436,11 +437,9 @@ Plotly [Boxplot](https://plotly.com/javascript/box-plots/) documentation.
 ]
 ```
 
-### Layout options
+Layout Options:
 
 * Box Mode (group, stack, overlay)
-
-#### Example
 
 ```json
 "plotlyOptions": {
@@ -453,8 +452,6 @@ Plotly [Boxplot](https://plotly.com/javascript/box-plots/) documentation.
 ## Histogram
 
 Plotly [Histograms](https://plotly.com/javascript/histograms/) documentation.
-
-### Data options
 
 * Name
 * Marker (color, opacity line(color, opacity, width))
@@ -504,7 +501,7 @@ Plotly [Histograms](https://plotly.com/javascript/histograms/) documentation.
 ]
 ```
 
-### Layout options
+Layout Options:
 
 * Bar Mode (group, stack, overlay)
 * Bar Gap

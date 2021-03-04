@@ -1,0 +1,114 @@
+{
+    "version": "1",
+    "name": "plotly-onClick",
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "plotly-onClick-01",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "w": 24,
+                "h": 1,
+                "x": 0,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "plotly",
+            "name": "Plotly: Basic Bars",
+            "description": "Basic Bars",
+            "data": [
+                {
+                    "x": [
+                        "giraffes",
+                        "orangutans",
+                        "monkeys"
+                    ],
+                    "y": [
+                        20,
+                        14,
+                        23
+                    ],
+                    "type": "bar"
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "paper_bgcolor": "#f2f2f2",
+                    "margin": {
+                        "l": 40,
+                        "r": 40,
+                        "t": 10,
+                        "b": 40
+                    }
+                }
+            },
+            "actions": {
+                "onClick": [
+                    {
+                        "type": "send",
+                        "to": "debugger"
+                    },
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "text": "$points.0.label"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "send",
+                        "to": "textwidget"
+                    }
+                ]
+            },
+            "id": "a0gN",
+            "layout": {
+                "w": 16,
+                "h": 14,
+                "x": 0,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "text",
+            "name": "Plotly OnClick Output",
+            "text": "",
+            "id": "textwidget",
+            "layout": {
+                "w": 8,
+                "h": 3,
+                "x": 16,
+                "y": 1,
+                "static": false
+            }
+        },
+        {
+            "type": "messagedebugger",
+            "name": "OnClick payload Message Debugger",
+            "id": "debugger",
+            "layout": {
+                "w": 8,
+                "h": 11,
+                "x": 16,
+                "y": 4,
+                "static": false
+            }
+        }
+    ]
+}

@@ -3,8 +3,8 @@
     "widgets": [
         {
             "type": "plotly",
-            "name": "Plotly: Basic Bars",
-            "description": "Basic Bars",
+            "name": "Plotly: Area Plots",
+            "description": "Area Plots",
             "data": [
                 {
                     "x": [

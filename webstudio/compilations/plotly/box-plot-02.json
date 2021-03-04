@@ -3,8 +3,8 @@
     "widgets": [
         {
             "type": "plotly",
-            "name": "Plotly: Boxplot",
-            "description": "Boxplot",
+            "name": "Plotly: Box Plot",
+            "description": "Box Plot",
             "data": [
                 {
                     "type": "box",
