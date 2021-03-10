@@ -102,7 +102,6 @@ Fixed data set. Instead of the data coming from fetch, a fixed data set can be d
 | `multiMin` | Minimal needed selected rows.
 | `multiMax` | Maximum allow selected rows.
 | `editable` | Editable cells.
-| `resizeColumns` | Allow manually column resizing. (*)
 | `refreshButton` | This will make sure a refresh button is visible and fetches the data from the system when pressed. By default the refresh button is visible.
 | `refreshInterval` | Refresh with an interval in seconds.
 
@@ -111,11 +110,6 @@ Fixed data set. Instead of the data coming from fetch, a fixed data set can be d
 
 `multiMax`:
 > When `multi` is true, the `multiMin` and `multiMax` properties can limit how many table rows can be selected. If `multiMax` is set to `1`, the table renders radio buttons instead of checkboxes.
-
-`resizeColumns`:
-> When `resizeColumns` is set to `true` the columns are manually resizable with the resize icon at the right of the headers, or the desired column width can be added to the headers with the `width` property.
-
-Refresh on a trigger. The widget subscribes to the system for data changes. This property is an objspec. (Not yet implemented) (*)
 
 ```json
 {
@@ -233,8 +227,8 @@ A schema consist of:
 | `format` | When type is `date`, the date format can be changed within the optional format property. Example of date formats: `"YYYY-MM-DD HH:mm:ss.SSS"`, `LLLL`, `DD.MM.YYYY HH:mm` (optional)
 | `numberOfDecimals` | When type is `number`, the numberOfDecimals property can specify the number of digits shown after a decimal separator (optional)
 | `items` | Cell value can be selected from a dropdown list containing predefined values.
-| `editable` | Instead of making every cell editable with setting `editable: true` on the table, there's an option to add the editable property to certain columns only. Note that this only affects the original dataset if the table is saved and the user has the  permissions to overwrite data (optional, default is false)
-| `width` | When resizeColumns is set to true, width can be defined for the headers manually (optional)
+| `editable` | Instead of making every cell editable with setting `editable: true` on the table, there's an option to add the editable property to certain columns only. Input type should match `type` declared in the cell. Note that this only affects the original dataset if the table is saved and the user has the  permissions to overwrite data (optional, default is false)
+| `width` | Width can be defined for the headers manually by providing pixel values as string e.g. "300px". `Width` declared in the schema will overrule the default column size. If the width is defined for all the columns and the table widget is bigger than the minimal width, the width will become relative (e.g column width width "200px" will always be 2X bigger than the column with "100px" (optional)
 | `style` | Styling (optional)
 | `hidden` | Property controlling column visibility (optional)
 | `sort` | Property to define default sorting on the column. Accepted values: `asc` (ascending), `desc` (descending), `none` (no sorting). Default table sorting on multiple columns is possibly by defining `sort` in multiple schema items. The column order defines the sorting order. Note that sorting doesn't change the original row indexes (optional, default is none)
