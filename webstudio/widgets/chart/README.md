@@ -62,17 +62,17 @@ This widget receive messages from others. Besides the generic, this widget also 
 - `addPens` : add one or multiple pens
 - `setCursors` : update the set of cursors
 - `setTagTable` : set the tag table by object path
-- `setTimeSpan` : set the timespan on x-axis
+- `setTimeSpan` : set the time span on x-axis
 
 #### addCursors
 
-Send topic `addCursors` adds one or multiple cursors. In case the cursor already exists the cursor in the payload will be ignored. Send `timestamp` in the payload to add the cursor on that timestamp. `Timestamp` can be send in ISO or Epoch format. 
+Send topic `addCursors` adds one or multiple cursors. In case the cursor already exists the cursor in the payload will be ignored. Send `timestamp` in the payload to add the cursor on that timestamp. `Timestamp` can be send in ISO or Epoch format.
 
 ```json
 "onClick": [
     {
         "type": "send",
-        "to": "chartwidgetID",
+        "to": "chartWidgetID",
         "message": {
             "topic": "addCursors",
             "payload": [
@@ -94,7 +94,7 @@ To `clear cursors` send empty payload.
 "onClick": [
     {
         "type": "send",
-        "to": "chartwidgetID",
+        "to": "chartWidgetID",
         "message": {
             "topic": "setCursors",
             "payload": []
@@ -164,13 +164,13 @@ Add pen(s) by providing pen objects:
 
 #### setCursors
 
-Send topic `setCursors` will fully update the set of cursors in the chart. Send `timestamp` in the payload to set the cursor on that timestamp. `Timestamp` can be send in ISO or Epoch format. 
+Send topic `setCursors` will fully update the set of cursors in the chart. Send `timestamp` in the payload to set the cursor on that timestamp. The `timestamp` can be send in ISO or Epoch format.
 
 ```json
 "onClick": [
     {
         "type": "send",
-        "to": "chartwidgetID",
+        "to": "chartWidgetID",
         "message": {
             "topic": "setCursors",
             "payload": [
@@ -456,7 +456,7 @@ Example to add a pen to the trend by selecting a row n a table:
                     },
                     {
                         "type": "send",
-                        "to": "webchart1",
+                        "to": "chart1",
                         "message": {
                             "topic": "addPens"
                         }
@@ -465,8 +465,8 @@ Example to add a pen to the trend by selecting a row n a table:
             }
         },
         {
-            "type": "webchart",
-            "id": "webchart1",
+            "type": "chart",
+            "id": "chart1",
             "layout": {
                 "w": 17,
                 "h": 9,

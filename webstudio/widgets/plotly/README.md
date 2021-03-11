@@ -11,8 +11,8 @@ This widget is data driven, data structure should conform to the Plotly document
 * Scroll and Zoom
 * Editable
 * Static Plot
-* Display ModeBar - either always or never display modebar
-* Display Logo - disable or enable Plotly logo on modebar
+* Display ModeBar - either always or never display mode bar
+* Display Logo - disable or enable Plotly logo on mode bar
 
 ```json
 "plotlyOptions": {

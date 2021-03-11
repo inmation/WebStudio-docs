@@ -227,13 +227,13 @@ A schema consist of:
 | `format` | When type is `date`, the date format can be changed within the optional format property. Example of date formats: `"YYYY-MM-DD HH:mm:ss.SSS"`, `LLLL`, `DD.MM.YYYY HH:mm` (optional)
 | `numberOfDecimals` | When type is `number`, the numberOfDecimals property can specify the number of digits shown after a decimal separator (optional)
 | `items` | Cell value can be selected from a dropdown list containing predefined values.
-| `editable` | Instead of making every cell editable with setting `editable: true` on the table, there's an option to add the editable property to certain columns only. Input type should match `type` declared in the cell. Note that this only affects the original dataset if the table is saved and the user has the  permissions to overwrite data (optional, default is false)
+| `editable` | Instead of making every cell editable with setting `editable: true` on the table, there's an option to add the editable property to certain columns only. Input type should match `type` declared in the cell. In case provided input does not match `type`or provided input is invalid, previous value will stay unchanged and notification will be raised to warn the user. Note that this only affects the original dataset if the table is saved and the user has the permissions to overwrite data (optional, default is false)
 | `width` | Width can be defined for the headers manually by providing pixel values as string e.g. "300px". `Width` declared in the schema will overrule the default column size. If the width is defined for all the columns and the table widget is bigger than the minimal width, the width will become relative (e.g column width width "200px" will always be 2X bigger than the column with "100px" (optional)
 | `style` | Styling (optional)
 | `hidden` | Property controlling column visibility (optional)
 | `sort` | Property to define default sorting on the column. Accepted values: `asc` (ascending), `desc` (descending), `none` (no sorting). Default table sorting on multiple columns is possibly by defining `sort` in multiple schema items. The column order defines the sorting order. Note that sorting doesn't change the original row indexes (optional, default is none)
 | `value` | Can be used to define the value for a fixed column. A fixed column can be created without pointing to a key in the table data. The `value` property is ignored when the schema items contains a `name` property.
-| `isExpander` | This option can be used for [hierarchical data](#Hierarchical-Data) structures, it enables collapsing and expanding table rows. Set `isExpander: true` on a key of subrows item, which is of type array. Key has to be defined in `data` structure. Global or column filtering of the table is not supported when this options is used. Default `collapsedIcon` and `expandedIcon` can be replaced by custom icons, e.g. emoji or special characters. 
+| `isExpander` | This option can be used for [hierarchical data](#Hierarchical-Data) structures, it enables collapsing and expanding table rows. Set `isExpander: true` on a key of sub rows item, which is of type array. Key has to be defined in `data` structure. Global or column filtering of the table is not supported when this options is used. Default `collapsedIcon` and `expandedIcon` can be replaced by custom icons, e.g. emoji or special characters.
 
 ```json
 {
@@ -281,11 +281,11 @@ A schema consist of:
             "columns": [
                 {
                     "title": "Name",
-                    "name": "firstname"
+                    "name": "firstName"
                 },
                 {
                     "title": "Last Name",
-                    "name": "lastname"
+                    "name": "lastName"
                 },
                 {
                     "title": "Age",
@@ -352,11 +352,11 @@ Example `items` by defining labels and values:
             "title": "Day of week",
             "items": [
                 {
-                    "label": "Montag",
+                    "label": "MON",
                     "value": "Monday"
                 },
                 {
-                    "label": "DiensTag",
+                    "label": "TUE",
                     "value": "Tuesday"
                 }
             ]

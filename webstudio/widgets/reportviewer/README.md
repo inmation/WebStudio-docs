@@ -31,7 +31,7 @@ The refresh button allows to refresh report design and report data.
 
 #### Execution Context
 
-Default execution context is the path of the report item provided in the `dataSource`. Setting `ctx` value to `default` means that the default Web API context will be used, which is configured in the Web API server object. This is the same behavior as not providing the `ctx` option in an advanced endpoint request to the Web API. A custom execution context can be provided by setting the `ctx` field with a valid object path. 
+Default execution context is the path of the report item provided in the `dataSource`. Setting `ctx` value to `default` means that the default Web API context will be used, which is configured in the Web API server object. This is the same behavior as not providing the `ctx` option in an advanced endpoint request to the Web API. A custom execution context can be provided by setting the `ctx` field with a valid object path.
 
 ```json
 {
