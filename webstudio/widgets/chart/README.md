@@ -18,19 +18,16 @@ Web Chart also offers a wider range of chart types, such as Candlestick, Spline,
 
 ### Model Root
 
-Property `modelRoot` declares from which KPI item to start the Model tree view. If this property is not set Model will display all alowed KPI model items.
-By setting property `includeRoot` to `true`, Model's tree view will be displayed including item declared in the `path`.
-By setting property `includeRoot` to `false`, Model's tree view will be displayed starting from the item's declared in the `path` children.
+Property `modelRoot` declares from which KPI Model object to start showing in the model tree view. If this property is not set the model will display the whole KPI Model object in respect to the object permissions.
+By setting property `includeRoot` to `true`, the model view will display the specified object including its children.
+By setting property `includeRoot` to `false`, the model view will display the children of specified object.
 
 ```jsonc
 {
-    "type": "chart",
-    "name": "My Chart",
     "modelRoot": {
-                "path": "/example Charts",
-                "includeRoot": false
-            },
-    "chart": {} // Chart model
+        "path": "/Company/Plant A", // Object path of an object in the KPI Model.
+        "includeRoot": false // Default is false.
+    }
 }
 ```
 
