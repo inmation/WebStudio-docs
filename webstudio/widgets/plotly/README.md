@@ -124,6 +124,8 @@ Plotly [Click Events](https://plotly.com/javascript/plotlyjs-events/#click-event
 
 Plotly chart can handle on click triggered event. Based on a click event on a Plotly chart, the `onClick` action defined in the Widget model is executed.
 
+When `onClick` action is defined, received data format depends on Plotly `Display ModeBar` mode selection. Default mode is `Compare data on hover`, with this selection all data points that are defined on the same x axis will be received. Another option is `Show closest data on hover`, when this mode is selected only selected data point is received.
+
 Charts that do not support click events:
 
 * Gauge charts
