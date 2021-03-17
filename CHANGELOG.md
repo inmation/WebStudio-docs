@@ -2,7 +2,28 @@
 
 ## [????]
 
-- Victory widget removed. Use Plotly widget.
+- Removed: Victory widget is removed. Use Plotly widget.
+
+## [3900] - 2021-03-17
+
+- Added: Chart widget has now a `modelRoot` property to specify the start node in the KPI Model.
+- Added: Table widget: Support to configure the width for columns.
+- Added: Report Viewer widget: Support for changing the execution context (ctx).
+- Added: Plotly widget: Supports `onCLick` action hooks.
+
+- Fixed: Subscription of the Chart widget could de-subscribe others like for the Faceplate widget.
+- Fixed: Message Debugger not showing topic.
+- Fixed: Action without a `type` is not treated as a passthrough.
+- Fixed: Table: Filter input boxes are to big.
+- Fixed: Report Viewer widget does not have vertical scroll bar.
+- Fixed: Table widget: Filter input boxes are to big.
+- Fixed: Table widget: Setting 'editable' to true for hierarchical table returns an error.
+- Fixed: Text widget cannot show boolean value via dataSource.
+- Fixed: A send action to or modify action of 'self' inside a life cycle hook results in an endless loop.
+
+- Improved: Show error when widget type is invalid.
+- Improved: Compilation and widget Diff Editor improvements.
+- Improved: Upgrade and lazy loading of the Stimulsoft third party library.
 
 ## [3854] - 2021-02-26
 
