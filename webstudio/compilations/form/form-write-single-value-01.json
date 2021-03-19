@@ -1,0 +1,62 @@
+{
+    "version": "1",
+    "name": "form-write-single-value-01",
+    "widgets": [
+        {
+            "type": "form",
+            "name": "Form With Fixed Entries",
+            "entries": [
+                {
+                    "type": "input",
+                    "description": "Enter a value and hit Submit",
+                    "label": "Value"
+                }
+            ],
+            "actions": {
+                "onSubmit": [
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "payload": {
+                                        "$toDecimal": "$value"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "write",
+                        "path": "/System/Core/Examples/WebStudio/VariableNumeric01"
+                    }
+                ]
+            },
+            "layout": {
+                "w": 6,
+                "h": 4,
+                "x": 0,
+                "y": 0,
+                "static": false
+            },
+            "id": "j1_E"
+        },
+        {
+            "type": "faceplate",
+            "name": "Faceplate",
+            "path": "/System/Core/Examples/WebStudio/VariableNumeric01",
+            "layout": {
+                "w": 6,
+                "h": 4,
+                "x": 6,
+                "y": 0,
+                "static": false
+            },
+            "id": "mXI8"
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

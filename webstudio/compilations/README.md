@@ -11,6 +11,7 @@ This section contains compilation examples. Through the index table navigate to 
 | [Chart](./chart/README.md) | [Chart](../widgets/chart/README.md)
 | [Event Table](./eventtable/README.md) | [Event Table](../widgets/eventtable/README.md)
 | [Faceplate](./faceplate/README.md) | [Faceplate](../widgets/faceplate/README.md)
+| [Form](./form/README.md) | [Form](../widgets/form/README.md)
 | [IFrame](./iframe/README.md) | [IFrame](../widgets/iframe/README.md)
 | [Markdown Viewer](./markdownviewer/README.md) | [Markdown Viewer](../widgets/markdownviewer/README.md)
 | [Plotly](./plotly/README.md) | [Plotly](../widgets/plotly/README.md)
