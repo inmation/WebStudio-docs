@@ -2,4 +2,4 @@
 
 | Examples | Description |
 | --- | --- |
-| [batchtable.json](./batchtable.json)| Fetch batch table.
+| [batchtable](./batchtable.json)| Fetch batch table.
