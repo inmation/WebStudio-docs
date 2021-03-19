@@ -5,6 +5,7 @@ WebStudio is a modern Web App where you can compile widgets on a grid.
 | Item | Description |
 | --- | --- |
 | [Compilation Model](./webstudio/README.md) | WebStudio compilation model.
+| [Actions](./webstudio/actions/README.md) | Interaction actions.
 | _Generic Widgets:_
 | [Editor](./webstudio/widgets/editor/README.md) | Display rich text editor.
 | [Form](./webstudio/widgets/form/README.md) | Display entries to collect user input.
@@ -25,6 +26,8 @@ WebStudio is a modern Web App where you can compile widgets on a grid.
 | _Development Widgets:_
 | [Message Debugger](./webstudio/widgets/messagedebugger/README.md) | Inspecting action pipeline messages.
 | [Transform Editor](./webstudio/widgets/transformeditor/README.md) | Test transform actions.
+| _Examples:_
+| [Example Compilations](./webstudio/compilations/README.md) | Examples of the widgets and their interaction.
 
 ## Terminology
 
