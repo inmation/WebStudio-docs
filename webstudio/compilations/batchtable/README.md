@@ -2,4 +2,4 @@
 
 | Examples | Description |
 | --- | --- |
-| [batchtable.json](./webstudio/compilations/actions/batchtable.json)| Fetch batch table.
+| [batchtable.json](./batchtable.json)| Fetch batch table.

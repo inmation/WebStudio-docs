@@ -2,4 +2,4 @@
 
 | Examples | Description |
 | --- | --- |
-| [eventtable.json](./webstudio/compilations/actions/eventtable.json)| Fetch event table and apply value formatting.
+| [eventtable.json](./eventtable.json)| Fetch event table and apply value formatting.
