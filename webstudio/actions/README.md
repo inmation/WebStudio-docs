@@ -1026,6 +1026,6 @@ Writes a value to an object in the system.
 ```json
 {
     "type": "write",
-    "path": "/System/Core/Examples/Variables"
+    "path": "/System/Core/Examples/Variable"
 }
 ```
