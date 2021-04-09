@@ -17,6 +17,7 @@ Pipeline can consist of actions with `type`:
 - [read-write](#read-write): Used for data sources, supports `read` and `write`.
 - [refresh](#refresh): Refresh a widget.
 - [send](#send): Send data to another widget.
+- [Subscribe](#subscribe): Subscribe to data changes in the system.
 - [switch](#switch): Execute different actions based on conditions.
 - [transform](#transform): Transform the data using e.g. MongoDB's Aggregation Pipeline logic.
 - [wait](#wait): Adds a delay before executing the next action.
@@ -771,6 +772,17 @@ The recipient widget will perform an update. The recipient widget only update it
         "topic": "update",
         "payload": {} // Can be any type of value. Typically an object is ued.
     }
+}
+```
+
+### Subscribe
+
+Subscribe to object data changes in the system. Typically used in `dataSource` configurations. In case necessary, use the `willUpdate` action hook to transform the data.
+
+```json
+{
+    "type": "subscribe",
+    "path": "/System/Core/Examples/Variable"
 }
 ```
 
