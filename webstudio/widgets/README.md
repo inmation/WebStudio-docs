@@ -142,15 +142,43 @@ If you want to skip an action step during testing you can set the `skip` field t
 
 ## DataSource
 
-Data sources can be defined in a Widget to fetch and write data from and to the system.
+Data sources can be defined in the widget model to fetch and write data from and to the system. It can also be an action pipeline.
 
-Supported types:
+Obvious actions:
 
 - `function`: Invokes an Advanced Endpoint.
 - `read`: Reads the dynamic value or a property value of an object.
 - `read-write`: Reads and writes the dynamic value or a property value of an object.
 - `subscribe` : Subscribes to the `OnDataChanged` event of a dynamic value.
 - `write`: Writes the dynamic value or a property value of an object.
+
+Typically a `dataSource` has a single action.
+
+```json
+{
+    "dataSource": {
+        "type": "read",
+        "path": "/System/Core/Examples/Variable"
+    }
+}
+```
+
+In order to `transform` the output message of the `read` action, an action pipeline can be defined.
+
+```jsonc
+{
+    "dataSource": [
+        {
+            "type": "read",
+            "path": "/System/Core/Examples/Variable"
+        },
+        {
+            "type": "transform",
+            "aggregateOne": [] // See transform docs.
+        }
+    ]
+}
+```
 
 ### Function
 
