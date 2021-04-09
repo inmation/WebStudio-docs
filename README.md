@@ -75,6 +75,7 @@ Using Integrated Windows Authentication:
 
 ### Loading options
 
+- `logo=false`: removes the vendor logo.
 - `theme=light`: Setting the theme to `dark` **(default)** or `light`.
 
 ### Loading WebStudio compilation from custom Advanced Endpoint
