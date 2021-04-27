@@ -15,6 +15,7 @@ WebStudio is a modern Web App where you can compile widgets on a grid.
 | [Table](./webstudio/widgets/table/README.md) | Display and edit tabular data. Supports (multi) select.
 | [Text](./webstudio/widgets/text/README.md) | Display text.
 | [Time Period Table](./webstudio/widgets/timeperiodtable/README.md) | Table with start and end time pickers.
+| [Tree](./webstudio/widgets/tree/README.md) | Display hierarchical node structure.
 | [Video](./webstudio/widgets/video/README.md) | Display a video.
 | _Specific Widgets:_
 | [Batch Table](./webstudio/widgets/batchtable/README.md) | Display batch (BPR) headers.
