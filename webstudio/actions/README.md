@@ -11,7 +11,7 @@ Pipeline can consist of actions with `type`:
 - [modify](#modify): Change the model of a widget.
 - [notify](#notify): Display a notification.
 - [openLink](#openLink): Opens the a URL in the browser.
-- [passthrough](#passthrough): Just passes the input message to the next action with the option to merge a message / payload. **Default**
+- [passthrough](#passthrough): Just passes the input message to the next action with the option to merge a message / payload.
 - [prompt](#prompt): Show a dialog.
 - [read](#read): Reads a value of an object.
 - [read-write](#read-write): Used for data sources, supports `read` and `write`.

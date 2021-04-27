@@ -35,6 +35,7 @@
             "actions": {
                 "onClick": [
                     {
+                        "type": "passthrough",
                         "message": {
                             "topic": "test",
                             "payload": {
