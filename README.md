@@ -78,7 +78,29 @@ Using Integrated Windows Authentication:
 - `logo=false`: removes the vendor logo.
 - `theme=light`: Setting the theme to `dark` **(default)** or `light`.
 
-### Loading WebStudio compilation from custom Advanced Endpoint
+### Loading WebStudio compilation from the system
+
+If the compilation is loaded from a URL, WebStudio will automatically hide the development tools. In order to allow editing but still serve the compilation from the system the property `showDevTools` can be set to `true`.
+
+```jsonc
+{
+    "options": {
+        "showDevTools": true
+    }
+}
+```
+
+In case the user, typically an engineer, wants to edit a hosted compilation, the query parameter `dev=1` can be added to the URL. Keeps in mind that a `showDevTools` which is set to `false`, will overrule the query parameter and prevents the development tools to be available.
+
+Development Tools are:
+
+- Add widget
+- Import compilation
+- Export compilation
+- Edit compilation model
+- Edit widget model
+
+#### Loading from custom Advanced Endpoint
 
 Model can be loaded by calling an Advanced Endpoint. See Web API - Advanced Endpoint docs for more details.
 
@@ -93,7 +115,7 @@ Example:
 https://company.corp:8003/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&lib=my_librarys&func=my_function
 ```
 
-### Loading WebStudio compilation from object's Custom Property
+#### Loading from object's Custom Property
 
 WebStudio compilations can be loaded from Custom Properties of objects by adding two query parameter in the URL.
 
