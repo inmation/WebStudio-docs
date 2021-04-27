@@ -1,10 +1,17 @@
 # Change Log
 
-## [????]
+## [4061-Dev]
+
+- Added: Tree Widget.
+- Added: Code completion in the model editor.
+- Added: Compilations loaded from the system will hide the development tools (Add, Import, Export and {}).
+  
+- Fixed: Table widget: Column filtering on formatted data.
+- Fixed: Table widget: prevent sub rows from collapsing after an editable cell has been changed in a sub row.
 
 - Removed: Victory widget is removed. Use Plotly widget.
 
-## [3900] - 2021-03-17
+## [3907-Master | 3900-Dev] - 2021-03-17
 
 - Added: Chart widget has now a `modelRoot` property to specify the start node in the KPI Model.
 - Added: Table widget: Support to configure the width for columns.
