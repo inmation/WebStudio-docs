@@ -7,6 +7,7 @@ Pipeline can consist of actions with `type`:
 - [consoleLog](#consolelog): Write to the browser's console log.
 - [convert](#convert): Converts data to and from JSON, Base64.
 - [copy](#copy): Copy to clipboard.
+- [gettime](#gettime): Converts relative, ISO UTC and milliseconds since Epoch timestamps.
 - [function](#function): Advanced Endpoint call to the system.
 - [modify](#modify): Change the model of a widget.
 - [notify](#notify): Display a notification.
@@ -98,16 +99,6 @@ Example to merge the input message `payload` with other key-value data.
 }
 ```
 
-### Copy
-
-Copies the `payload` to the clipboard.
-
-```json
-{
-    "type": "copy"
-}
-```
-
 ### Convert
 
 Converts the `payload` to a specified format. Supported formats are:
@@ -130,6 +121,53 @@ Decode the payload:
 {
     "type": "convert",
     "decode": "json"
+}
+```
+
+### Copy
+
+Copies the `payload` to the clipboard.
+
+```json
+{
+    "type": "copy"
+}
+```
+
+### GetTime
+
+Converts relative, ISO UTC and milliseconds since Epoch timestamps.
+
+| type | value type | value example | results |
+| --- | --| --- | --- |
+| Relative | string |*-1d | Now minus one day in ISO UTC string. |
+| ISO UTC | string | 2021-04-28T09:44:35.668Z | 1619603075668 |
+| Milliseconds since Epoch | number | 1619603075668 | 2021-04-28T09:44:35.668Z
+
+```json
+{
+    "type": "gettime",
+    "set": [
+        {
+            "name": "starttime",
+            "value": "*-5d"
+        },
+        {
+            "name": "endtime",
+            "value": "*-1d"
+        }
+    ]            
+}
+```
+
+Result for example in this output message:
+
+```json
+{
+    "payload": {
+        "starttime": "2021-04-24T10:31:04.091Z",
+        "endtime": "2021-04-28T10:31:04.092Z"
+    }
 }
 ```
 
