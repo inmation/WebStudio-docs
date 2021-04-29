@@ -90,6 +90,18 @@ Icons can be defined by:
 }
 ```
 
+The `schema` in the model will overrule the `schema` received from the data source fetch. By adding `extendSchemaFromDataSource` to the `schema` in the model you can make use of both. Typically scenario is that the system returns `data` containing the node structure and a `schema` containing icons and that the model `schema` has custom `actions`.
+
+This `extendSchemaFromDataSource` property only applies for `schema` configuration which are defined in the model.
+
+```json
+{
+    "schema": {
+        "extendSchemaFromDataSource": true
+    }
+}
+```
+
 ### Options
 
 Node styling and icon assignment can be combined using the `rules` in the `options`. The configuration in the `schema` is dominant to this `options`.
