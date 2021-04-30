@@ -1,10 +1,12 @@
 # Change Log
 
-## [4061-Dev]
+## [4136-Dev]
 
-- Added: Tree Widget.
+- Added: Tree widget.
+- Added: Tabs widget (Preview).
 - Added: Code completion in the model editor.
 - Added: Compilations loaded from the system will hide the development tools (Add, Import, Export and {}).
+- Added: gettime action to convert timestamps.
   
 - Fixed: Table widget: Column filtering on formatted data.
 - Fixed: Table widget: prevent sub rows from collapsing after an editable cell has been changed in a sub row.

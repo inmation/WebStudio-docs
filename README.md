@@ -13,6 +13,7 @@ WebStudio is a modern Web App where you can compile widgets on a grid.
 | [Image](./webstudio/widgets/image/README.md) | Display an image.
 | [Markdown Viewer](./webstudio/widgets/markdownviewer/README.md) | Display Markdown content including Mermaid graphs.
 | [Table](./webstudio/widgets/table/README.md) | Display and edit tabular data. Supports (multi) select.
+| [Tabs](./webstudion/../webstudio/widgets/tabs/README.md) | Displaying multiple compilations within a main compilation.
 | [Text](./webstudio/widgets/text/README.md) | Display text.
 | [Time Period Table](./webstudio/widgets/timeperiodtable/README.md) | Table with start and end time pickers.
 | [Tree](./webstudio/widgets/tree/README.md) | Display hierarchical node structure.
