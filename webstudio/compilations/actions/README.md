@@ -6,7 +6,7 @@ In this section you can find compilation examples of actions. Examples are showi
 | --- | --- |
 | [cellClick-01](./cellClick-01.json)| Click on a cell executes a named action action.
 | [collect-selected-rows-01](./collect-selected-rows-01.json) |  Click on a cell executes a collect action on selected rows.
-| [collect-table-data-01](./collect-table-data-01.json.json) | Click on a cell executes a collect action on entire data.
+| [collect-table-data-01](./collect-table-data-01.json) | Click on a cell executes a collect action on entire data.
 | [consolelog-01](./consolelog-01.json) | Click on a cell executes a `consoleLog` action. Text widget payload is logged in the console.
 | [consolelog-02](./consolelog-02.json) | Click on a cell executes a `consoleLog` action. Text widget payload is logged in the console with a tag.
 | [consolelog-03](./consolelog-03.json) | Click on a cell executes a `consoleLog` action. Custom payload is logged in the console with a tag.
