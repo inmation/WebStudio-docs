@@ -1,5 +1,17 @@
 # Actions
 
+Each action has this basic model. An action receives an input message which depend on the action hook and the previous action in case of an action pipeline. After execution of the action it will output a message which could be altered depending on the action type.
+
+```jsonc
+{
+    "type": "",        // Type of the action.
+    "message": {       // (Optional) To be merged with the input message.
+        "topic": "",   // (Optional) Can be a string or null.
+        "payload": {}  // (Optional) Can be any number, string, object or array.
+    }
+}
+```
+
 Pipeline can consist of actions with `type`:
 
 - [action](#action): Refers to another action to be executed.
@@ -179,9 +191,9 @@ To invoke an Advanced Endpoint.
 {
     "type": "function",
     "lib": "LIBRARY NAME",
-    "func": "FUNCTION NAME", // Optional function name in case library is Lua table.
-    "farg": {}, // Optional function argument.
-    "ctx": "" // Optional system object path.
+    "func": "FUNCTION NAME", // (Optional) Function name in case library is Lua table.
+    "farg": {},              // (Optional) Function argument.
+    "ctx": ""                // (Optional) System object path.
 }
 ```
 
