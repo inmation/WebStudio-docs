@@ -11,6 +11,24 @@ This widget can be used to show a form which can contain different type of entri
     }
 ```
 
+### Options
+
+```json
+{
+    "options": {
+        "showRefreshButton": true,
+        "showToolbar": true,
+        "refreshInterval": 30
+    }
+}
+```
+
+| name | description |
+| ---- | --- |
+| `showRefreshButton` | Set this to `false` to hide the refresh button. By default the refresh button is visible.
+| `showToolbar` | to hide the complete toolbar.
+| `refreshInterval` | Refresh with an interval in seconds.
+
 ### Actions
 
 Supported actions:
