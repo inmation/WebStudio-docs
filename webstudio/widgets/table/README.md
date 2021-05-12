@@ -65,27 +65,28 @@ Fixed data set. Instead of the data coming from fetch, a fixed data set can be d
 ```json
 {
     "options": {
+        "allowSorting": false,
+        "alternateColumnColoring": true,
+        "alternateRowColoring": true,
         "editable": false,
         "multi": true,
-        "multiMin": 1,
         "multiMax": 3,
-        "style": {
+        "multiMin": 1,
+        "pageSize": 20,
+        "pagination": true,
+        "showHoverHighLight": true,
+        "showRefreshButton": true,
+        "showSelectedRow": false,
+        "showToolbar": true,
+         "style": {
             "backgroundColor": "grey",
             "color": "blue",
-            "fontSize": "24px",
-            "fontWeight": "bold",
             "fontFamily": "\"Courier New\", Courier, sans-serif",
+            "fontWeight": "bold",
+            "fontSize": "24px",
             "textAlign": "left",
             "whiteSpace": "pre-line"
         },
-        "pagination": true,
-        "pageSize": 20,
-        "alternateColumnColoring": true,
-        "alternateRowColoring": true,
-        "showHoverHighLight": true,
-        "showSelectedRow": false,
-        "allowSorting": false,
-        "refreshButton": true,
         "refreshInterval": 30
     }
 }
@@ -93,16 +94,16 @@ Fixed data set. Instead of the data coming from fetch, a fixed data set can be d
 
 | name | description |
 | ---- | --- |
-| `pagination` | when set to false, disables the pagination functionality of the table, showing all the rows from the database on one page. Toolbar is also hidden if there is no `onSubmit` action defined.
-| `showSelectedRow` | background color will change when a table row is clicked. Defaults to true when onSelect pipeline is defined.
-| `showHoverHighLight` | enable/disable hover effect on the table rows.
+| `editable` | Editable cells.
 | `allowSorting` | can disable sorting icons and sorting functionality.
-| `showToolbar` | to hide the complete toolbar.
 | `multi` | Allow selection of multi rows.
 | `multiMin` | Minimal needed selected rows.
 | `multiMax` | Maximum allow selected rows.
-| `editable` | Editable cells.
-| `refreshButton` | This will make sure a refresh button is visible and fetches the data from the system when pressed. By default the refresh button is visible.
+| `pagination` | when set to false, disables the pagination functionality of the table, showing all the rows from the database on one page. Toolbar is also hidden if there is no `onSubmit` action defined.
+| `showHoverHighLight` | enable/disable hover effect on the table rows.
+| `showSelectedRow` | background color will change when a table row is clicked. Defaults to true when onSelect pipeline is defined.
+| `showRefreshButton` | Set this to `false` to hide the refresh button. By default the refresh button is visible.
+| `showToolbar` | to hide the complete toolbar.
 | `refreshInterval` | Refresh with an interval in seconds.
 
 `editable`:
