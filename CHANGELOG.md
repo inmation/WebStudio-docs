@@ -1,5 +1,11 @@
 # Change Log
 
+## [4152-Dev]
+
+- Added: Form widget: `showRefreshButton` option.
+
+- Fixed: Table widget: Incorrect option 'refreshButton' is renamed to `showRefreshButton`.
+
 ## [4136-Dev]
 
 - Added: Tree widget.
