@@ -1,0 +1,197 @@
+{
+    "version": "1",
+    "name": "text-read-subscribe",
+    "actions": {
+        "storeOnMessage": [
+            {
+                "type": "transform",
+                "note": "The input message payload will be assigned to the message with the value of the topic as the field name",
+                "completeMsgObject": true,
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "k": {
+                                "$ifNull": [
+                                    "$topic",
+                                    "myField"
+                                ]
+                            },
+                            "v": "$payload"
+                        }
+                    },
+                    {
+                        "$group": {
+                            "data": "$$ROOT"
+                        }
+                    },
+                    {
+                        "$project": {
+                            "data": {
+                                "$arrayToObject": "$data"
+                            }
+                        }
+                    },
+                    {
+                        "$replaceRoot": {
+                            "newRoot": "$data"
+                        }
+                    },
+                    {
+                        "$set": {
+                            "topic": null,
+                            "payload": null
+                        }
+                    }
+                ]
+            }
+        ],
+        "formatText": [
+            {
+                "type": "transform",
+                "completeMsgObject": true,
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "roundedValue": {
+                                "$round": [
+                                    "$payload",
+                                    {
+                                        "$ifNull": [
+                                            "$decimalPlaces",
+                                            2
+                                        ]
+                                    }
+                                ]
+                            },
+                            "engUnit": {
+                                "$ifNull": [
+                                    "$engUnit",
+                                    ""
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "$project": {
+                            "payload": {
+                                "$concat": [
+                                    "$roundedValue",
+                                    " ",
+                                    "$engUnit"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "widgets": [
+        {
+            "type": "text",
+            "id": "textFC4711",
+            "name": "FC4711 - Text with subscription",
+            "text": "",
+            "dataSource": [
+                {
+                    "type": "read",
+                    "path": "/System/Core/Examples/Demo Data/Process Data/FC4711.DecimalPlaces",
+                    "opt": {}
+                },
+                {
+                    "type": "action",
+                    "name": "storeOnMessage",
+                    "message": {
+                        "topic": "decimalPlaces"
+                    }
+                },
+                {
+                    "type": "read",
+                    "path": "/System/Core/Examples/Demo Data/Process Data/FC4711.OpcEngUnit",
+                    "opt": {}
+                },
+                {
+                    "type": "action",
+                    "name": "storeOnMessage",
+                    "message": {
+                        "topic": "engUnit"
+                    }
+                },
+                {
+                    "type": "subscribe",
+                    "path": "/System/Core/Examples/Demo Data/Process Data/FC4711"
+                }
+            ],
+            "actions": {
+                "willUpdate": [
+                    {
+                        "type": "action",
+                        "name": "formatText"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 0,
+                "w": 7,
+                "h": 3,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "text",
+            "id": "textDC4711",
+            "name": "DC4711 - Text with subscription",
+            "text": "",
+            "dataSource": [
+                {
+                    "type": "read",
+                    "path": "/System/Core/Examples/Demo Data/Process Data/DC4711.DecimalPlaces",
+                    "opt": {}
+                },
+                {
+                    "type": "action",
+                    "name": "storeOnMessage",
+                    "message": {
+                        "topic": "decimalPlaces"
+                    }
+                },
+                {
+                    "type": "read",
+                    "path": "/System/Core/Examples/Demo Data/Process Data/DC4711.OpcEngUnit",
+                    "opt": {}
+                },
+                {
+                    "type": "action",
+                    "name": "storeOnMessage",
+                    "message": {
+                        "topic": "engUnit"
+                    }
+                },
+                {
+                    "type": "subscribe",
+                    "path": "/System/Core/Examples/Demo Data/Process Data/DC4711"
+                }
+            ],
+            "actions": {
+                "willUpdate": [
+                    {
+                        "type": "action",
+                        "name": "formatText"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 7,
+                "w": 7,
+                "h": 3,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

@@ -4,32 +4,98 @@ WebStudio is a modern Web App where you can compile widgets on a grid.
 
 | Item | Description |
 | --- | --- |
-| [Compilation Model](./webstudio/README.md) | WebStudio compilation model.
-| [Actions](./webstudio/actions/README.md) | Interaction actions.
+| [Compilation Model](#Compilation) | WebStudio compilation model.
+| [Actions](./actions/README.md) | Interaction actions.
 | _Generic Widgets:_
-| [Editor](./webstudio/widgets/editor/README.md) | Display rich text editor.
-| [Form](./webstudio/widgets/form/README.md) | Display entries to collect user input.
-| [IFrame](./webstudio/widgets/iframe/README.md) | Embed other web content.
-| [Image](./webstudio/widgets/image/README.md) | Display an image.
-| [Markdown Viewer](./webstudio/widgets/markdownviewer/README.md) | Display Markdown content including Mermaid graphs.
-| [Table](./webstudio/widgets/table/README.md) | Display and edit tabular data. Supports (multi) select.
-| [Tabs](./webstudion/../webstudio/widgets/tabs/README.md) | Displaying multiple compilations within a main compilation.
-| [Text](./webstudio/widgets/text/README.md) | Display text.
-| [Time Period Table](./webstudio/widgets/timeperiodtable/README.md) | Table with start and end time pickers.
-| [Tree](./webstudio/widgets/tree/README.md) | Display hierarchical node structure.
-| [Video](./webstudio/widgets/video/README.md) | Display a video.
+| [Editor](./widgets/editor/README.md) | Display rich text editor.
+| [Form](./widgets/form/README.md) | Display entries to collect user input.
+| [IFrame](./widgets/iframe/README.md) | Embed other web content.
+| [Image](./widgets/image/README.md) | Display an image.
+| [Markdown Viewer](./widgets/markdownviewer/README.md) | Display Markdown content including Mermaid graphs.
+| [Table](./widgets/table/README.md) | Display and edit tabular data. Supports (multi) select.
+| [Tabs](./widgets/tabs/README.md) | Displaying multiple compilations within a main compilation.
+| [Text](./widgets/text/README.md) | Display text.
+| [Time Period Table](./widgets/timeperiodtable/README.md) | Table with start and end time pickers.
+| [Tree](./widgets/tree/README.md) | Display hierarchical node structure.
+| [Video](./widgets/video/README.md) | Display a video.
 | _Specific Widgets:_
-| [Batch Table](./webstudio/widgets/batchtable/README.md) | Display batch (BPR) headers.
-| [Chart](./webstudio/widgets/chart/README.md) | Display trend chart with multiple axis support.
-| [Event Table](./webstudio/widgets/eventtable/README.md) | Display A&E events.
-| [Faceplate](./webstudio/widgets/faceplate/README.md) | Display actual system object values.
-| [File Grid](./webstudio/widgets/filegrid/README.md) | Display info and content of multiple files (GridFS).
-| [Report Viewer](./webstudio/widgets/reportviewer/README.md) | Display reports with export support.
+| [Batch Table](./widgets/batchtable/README.md) | Display batch (BPR) headers.
+| [Chart](./widgets/chart/README.md) | Display trend chart with multiple axis support.
+| [Event Table](./widgets/eventtable/README.md) | Display A&E events.
+| [Faceplate](./widgets/faceplate/README.md) | Display actual system object values.
+| [File Grid](./widgets/filegrid/README.md) | Display info and content of multiple files (GridFS).
+| [Report Viewer](./widgets/reportviewer/README.md) | Display reports with export support.
 | _Development Widgets:_
-| [Message Debugger](./webstudio/widgets/messagedebugger/README.md) | Inspecting action pipeline messages.
-| [Transform Editor](./webstudio/widgets/transformeditor/README.md) | Test transform actions.
+| [Message Debugger](./widgets/messagedebugger/README.md) | Inspecting action pipeline messages.
+| [Transform Editor](./widgets/transformeditor/README.md) | Test transform actions.
 | _Examples:_
-| [Example Compilations](./webstudio/compilations/README.md) | Examples of the widgets and their interaction.
+| [Example Compilations](./compilations/README.md) | Examples of the widgets and their interaction.
+
+## Compilation
+
+The WebStudio configuration in which the applied widgets are defined is called a **compilation**.
+
+## Model
+
+The `version` is for future changes to be able to support new definition of the model.
+
+```jsonc
+{
+    "version": "1",
+    "widgets: [] // List of widget objects.
+}
+```
+
+See [widget doc](./widgets/README.md) model description for the widget model.
+
+### Options
+
+```json
+{
+    "options": {
+        "background": {},
+        "numberOfColumns": 24,
+        "numberOfRows": 12,
+        "stacking": "none"
+    }
+}
+```
+
+| name | description |
+| ---- | --- |
+| `backgroundSize` | options are:
+| | `auto`
+| | `cover`
+| | `contain`
+| | `50%`
+| | `12px`
+| | `3.2em`
+| | `50% auto`
+| | `100px 100px`
+| `numberOfColumns` | Defines how many vertical columns the grid is divided.
+| `numberOfRows` | defines how many horizontal rows the grid is divided.
+| `stacking` | Defines how the widgets can be positioned. Options are:
+| | `none`: Widgets can be dragged around freely. **Default**
+| | `vertical`: Widgets are stacked vertically.
+| | `horizontal`: Widgets are stacked horizontally.
+| `width`| To set the maximal grid width with e.g. 500.
+
+Example to have an image as the compilation background:
+
+```json
+{
+    "options": {
+        
+        "background": {
+            "style": {
+                "backgroundColor": "#001b01",
+                "backgroundImage": "url(\"https://transparenttextures.com/patterns/45-degree-fabric-light.png\")",
+                "backgroundSize": "contain"
+            }
+        }
+    }
+}
+```
 
 ## Terminology
 

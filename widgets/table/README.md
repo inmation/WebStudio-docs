@@ -95,15 +95,15 @@ Fixed data set. Instead of the data coming from fetch, a fixed data set can be d
 | name | description |
 | ---- | --- |
 | `editable` | Editable cells.
-| `allowSorting` | can disable sorting icons and sorting functionality.
+| `allowSorting` | Can disable sorting icons and sorting functionality.
 | `multi` | Allow selection of multi rows.
 | `multiMin` | Minimal needed selected rows.
 | `multiMax` | Maximum allow selected rows.
-| `pagination` | when set to false, disables the pagination functionality of the table, showing all the rows from the database on one page. Toolbar is also hidden if there is no `onSubmit` action defined.
-| `showHoverHighLight` | enable/disable hover effect on the table rows.
-| `showSelectedRow` | background color will change when a table row is clicked. Defaults to true when onSelect pipeline is defined.
+| `pagination` | When set to false, disables the pagination functionality of the table, showing all the rows from the database on one page. Toolbar is also hidden if there is no `onSubmit` action defined.
+| `showHoverHighLight` | Enable/disable hover effect on the table rows.
+| `showSelectedRow` | Background color will change when a table row is clicked. Defaults to true when onSelect pipeline is defined.
 | `showRefreshButton` | Set this to `false` to hide the refresh button. By default the refresh button is visible.
-| `showToolbar` | to hide the complete toolbar.
+| `showToolbar` | To hide the complete toolbar.
 | `refreshInterval` | Refresh with an interval in seconds.
 
 `editable`:
