@@ -133,7 +133,8 @@ Charts that do not support click events:
 * Indicator
 
 ```jsonc
-"actions": {
+{
+    "actions": {
         "onClick": [
             {
                 "type": "send",
@@ -149,6 +150,9 @@ Charts that do not support click events:
                     }
                 ]
             }
+        ]
+    }
+}
 ```
 
 ## Scatter Plots
@@ -161,32 +165,34 @@ Plotly [Scatter Plots](https://plotly.com/javascript/line-and-scatter/) document
 * Text (labels, text position, text font)
 
 ```json
-"data": [
-    {
-        "type": "scatter",
-        "x": [
-            1,
-            2
-        ],
-        "y": [
-            10,
-            15
-        ],
-        "mode": "markers+text",
-        "name": "Team A",
-        "text": [
-            "A-1",
-            "A-2"
-        ],
-        "textposition": "top center",
-        "textfont": {
-            "family": "Raleway, sans-serif"
-        },
-        "marker": {
-            "size": 12
+{
+    "data": [
+        {
+            "type": "scatter",
+            "x": [
+                1,
+                2
+            ],
+            "y": [
+                10,
+                15
+            ],
+            "mode": "markers+text",
+            "name": "Team A",
+            "text": [
+                "A-1",
+                "A-2"
+            ],
+            "textposition": "top center",
+            "textfont": {
+                "family": "Raleway, sans-serif"
+            },
+            "marker": {
+                "size": 12
+            }
         }
-    }
-]
+    ]
+}
 ```
 
 ## Line Charts
@@ -199,28 +205,30 @@ Plotly [Line Charts](https://plotly.com/javascript/line-charts/) documentation.
 * Line (color, opacity, width)
 
 ```json
-"data": [
-    {
-        "type": "scatter",
-        "x": [
-            1,
-            2
-        ],
-        "y": [
-            10,
-            15
-        ],
-        "mode": "lines+markers",
-        "marker": {
-            "color": "red",
-            "size": 8
-        },
-        "line": {
-            "color": "red",
-            "width": 1
+{
+    "data": [
+        {
+            "type": "scatter",
+            "x": [
+                1,
+                2
+            ],
+            "y": [
+                10,
+                15
+            ],
+            "mode": "lines+markers",
+            "marker": {
+                "color": "red",
+                "size": 8
+            },
+            "line": {
+                "color": "red",
+                "width": 1
+            }
         }
-    }
-]
+    ]
+}
 ```
 
 ## Bar Charts
@@ -235,34 +243,36 @@ Plotly [Bar Charts](https://plotly.com/javascript/bar-charts/) documentation.
 * Marker (color, opacity, line(color, opacity, width))
 
 ```json
-"data": [
-    {
-        "type": "bar",
-        "x": [
-            "Line 1",
-            "Line 2"
-        ],
-        "y": [
-            20,
-            14
-        ],
-        "name": "Cologne",
-        "text": [
-            "20",
-            "14"
-        ],
-        "textposition": "auto",
-        "hoverinfo": "none",
-        "marker": {
-            "color": "blue",
-            "opacity": 0.6,
-            "line": {
+{
+    "data": [
+        {
+            "type": "bar",
+            "x": [
+                "Line 1",
+                "Line 2"
+            ],
+            "y": [
+                20,
+                14
+            ],
+            "name": "Cologne",
+            "text": [
+                "20",
+                "14"
+            ],
+            "textposition": "auto",
+            "hoverinfo": "none",
+            "marker": {
                 "color": "blue",
-                "width": 1.5
+                "opacity": 0.6,
+                "line": {
+                    "color": "blue",
+                    "width": 1.5
+                }
             }
         }
-    }
-]
+    ]
+}
 ```
 
 Layout Options:
@@ -271,10 +281,12 @@ Layout Options:
 * Bar Gap
 
 ```json
-"plotlyOptions": {
-    "layout": {
-        "barmode": "group",
-        "bargap" :0.05
+{
+    "plotlyOptions": {
+        "layout": {
+            "barmode": "group",
+            "bargap" :0.05
+        }
     }
 }
 ```
@@ -292,30 +304,32 @@ Plotly [Pie Charts](https://plotly.com/javascript/pie-charts/) documentation.
 * Text Position (outside (inside is default))
 
 ```json
-"data": [
-    {
-        "values": [
-            10,
-            30,
-            60
-        ],
-        "labels": [
-            "1st",
-            "2nd",
-            "3rd"
-        ],
-        "type": "pie",
-        "textinfo": "label+percent",
-        "textposition": "outside",
-        "insidetextorientation": "radial",
-        "automargin": true,
-        "hole": 0.4,
-        "domain": {
-            "row": 0,
-            "column": 0
+{
+    "data": [
+        {
+            "values": [
+                10,
+                30,
+                60
+            ],
+            "labels": [
+                "1st",
+                "2nd",
+                "3rd"
+            ],
+            "type": "pie",
+            "textinfo": "label+percent",
+            "textposition": "outside",
+            "insidetextorientation": "radial",
+            "automargin": true,
+            "hole": 0.4,
+            "domain": {
+                "row": 0,
+                "column": 0
+            }
         }
-    }
-]
+    ]
+}
 ```
 
 Layout Options:
@@ -325,13 +339,15 @@ Layout Options:
 * Grid (rows, columns)
 
 ```json
-"plotlyOptions": {
-    "layout": {
-        "height": 400,
-        "width": 500,
-        "grid": {
-            "rows": 2,
-            "columns": 2
+{
+    "plotlyOptions": {
+        "layout": {
+            "height": 400,
+            "width": 500,
+            "grid": {
+                "rows": 2,
+                "columns": 2
+            }
         }
     }
 }
@@ -352,21 +368,23 @@ Plotly [Filled Area Plots](https://plotly.com/javascript/filled-area-plots/) doc
 * Hoverinfo (text)
 
 ```json
-"data": [
-    {
-        "type": "scatter",
-        "x": [
-            1,
-            2
-        ],
-        "y": [
-            0,
-            2
-        ],
-        "fill": "tonexty",
-        "mode": "none"
-    }
-]
+{
+    "data": [
+        {
+            "type": "scatter",
+            "x": [
+                1,
+                2
+            ],
+            "y": [
+                0,
+                2
+            ],
+            "fill": "tonexty",
+            "mode": "none"
+        }
+    ]
+}
 ```
 
 Layout Options:
@@ -375,19 +393,21 @@ Layout Options:
 * Y-axis (range)
 
 ```json
-"plotlyOptions": {
-    "layout": {
-        "xaxis": {
-            "range": [
-                0,
-                5
-            ]
-        },
-        "yaxis": {
-            "range": [
-                0,
-                3
-            ]
+{
+    "plotlyOptions": {
+        "layout": {
+            "xaxis": {
+                "range": [
+                    0,
+                    5
+                ]
+            },
+            "yaxis": {
+                "range": [
+                    0,
+                    3
+                ]
+            }
         }
     }
 }
@@ -409,34 +429,36 @@ Plotly [Box Plot](https://plotly.com/javascript/box-plots/) documentation.
 * Orientation (h, v)
 
 ```json
-"data": [
-    {
-        "type": "box",
-        "y": [
-            0,
-            1,
-            1,
-            2,
-            3,
-            5,
-            8,
-            13,
-            21
-        ],
-        "boxpoints": "all",
-        "jitter": 0.3,
-        "pointpos": 0,
-        "whiskerwidth": 0.2,
-        "fillcolor": "white",
-        "boxpoints": "Outliers",
-        "marker": {
-            "size": 5
-        },
-        "line": {
-            "width": 1
+{
+    "data": [
+        {
+            "type": "box",
+            "y": [
+                0,
+                1,
+                1,
+                2,
+                3,
+                5,
+                8,
+                13,
+                21
+            ],
+            "boxpoints": "all",
+            "jitter": 0.3,
+            "pointpos": 0,
+            "whiskerwidth": 0.2,
+            "fillcolor": "white",
+            "boxpoints": "Outliers",
+            "marker": {
+                "size": 5
+            },
+            "line": {
+                "width": 1
+            }
         }
-    }
-]
+    ]
+}
 ```
 
 Layout Options:
@@ -444,9 +466,11 @@ Layout Options:
 * Box Mode (group, stack, overlay)
 
 ```json
-"plotlyOptions": {
-    "layout": {
-        "boxmode": "group"
+{
+    "plotlyOptions": {
+        "layout": {
+            "boxmode": "group"
+        }
     }
 }
 ```
@@ -461,46 +485,48 @@ Plotly [Histograms](https://plotly.com/javascript/histograms/) documentation.
 * Auto Bin y
 
 ```json
-"data": [
-    {
-        "type": "histogram",
-        "y": [
-            20,
-            21,
-            23,
-            21,
-            22,
-            28,
-            29,
-            30,
-            19,
-            33
-        ],
-        "marker": {
-            "color": "blue",
-            "opacity": 0.2
+{
+    "data": [
+        {
+            "type": "histogram",
+            "y": [
+                20,
+                21,
+                23,
+                21,
+                22,
+                28,
+                29,
+                30,
+                19,
+                33
+            ],
+            "marker": {
+                "color": "blue",
+                "opacity": 0.2
+            }
+        },
+        {
+            "type": "histogram",
+            "y": [
+                25,
+                26,
+                28,
+                20,
+                21,
+                23,
+                21,
+                22,
+                28,
+                29
+            ],
+            "marker": {
+                "color": "red",
+                "opacity": 0.2
+            }
         }
-    },
-    {
-        "type": "histogram",
-        "y": [
-            25,
-            26,
-            28,
-            20,
-            21,
-            23,
-            21,
-            22,
-            28,
-            29
-        ],
-        "marker": {
-            "color": "red",
-            "opacity": 0.2
-        }
-    }
-]
+    ]           
+}
 ```
 
 Layout Options:
@@ -510,7 +536,8 @@ Layout Options:
 * Bar Group Gap
 
 ```json
-"plotlyOptions": {
+{
+    "plotlyOptions": {
         "layout": {
             "paper_bgcolor": "white",
             "barmode": "overlay",
@@ -518,4 +545,5 @@ Layout Options:
             "bargroupgap": 0.2
         }
     }
+}
 ```
