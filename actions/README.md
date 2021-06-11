@@ -375,6 +375,7 @@ Will result in a `transform` action:
 ```json
 {
     "type": "transform",
+    "completeMsgObject": true,
     "aggregateOne": [
         {
             "$set": {
@@ -385,7 +386,7 @@ Will result in a `transform` action:
 }
 ```
 
-Example to add an item to the `data` array in the `dataSource` of a table widget:
+Example to add an item to the `data` array of a table widget:
 
 ```json
 {
@@ -393,7 +394,7 @@ Example to add an item to the `data` array in the `dataSource` of a table widget
     "id": "fixedTableWidget",
     "addToArray": [
         {
-            "name": "model.dataSource.data",
+            "name": "model.data",
             "value": {
                 "column1": 1,
                 "column2": 2
@@ -408,19 +409,20 @@ Will result in a `transform` action:
 ```json
 {
     "type": "transform",
+    "completeMsgObject": true,
     "aggregateOne": [
         {
             "$set": {
-                "model.dataSource.data": {
+                "model.data": {
                     "$concatArrays": [
                         {
                             "$cond": [
                                 {
                                     "$isArray": [
-                                        "$model.dataSource.data"
+                                        "$model.data"
                                     ]
                                 },
-                                "$model.dataSource.data",
+                                "$model.data",
                                 []
                             ]
                         },
@@ -448,7 +450,7 @@ Removes the second row from a fixed data table.
     "id": "fixedTableWidget",
     "removeFromArray": [
         {
-            "name": "model.dataSource.data",
+            "name": "model.data",
             "idx": 2
         }
     ]
@@ -460,10 +462,11 @@ Will result in a `transform` action:
 ```json
 {
     "type": "transform",
+    "completeMsgObject": true,
     "aggregateOne": [
         {
             "$project": {
-                "model.dataSource.data.1": 0
+                "model.data.1": 0
             }
         }
     ]
@@ -480,7 +483,7 @@ Removes the rows from a fixed data table of which `name` contains value `Inside 
     "id": "fixedTableWidget",
     "removeFromArray": [
         {
-            "name": "model.dataSource.data",
+            "name": "model.data",
             "item": {
                 "name": "Inside Temperature",
                 "value": 26
@@ -498,7 +501,7 @@ Alternative structure:
     "id": "fixedTableWidget",
     "removeFromArray": [
         {
-            "name": "model.dataSource.data",
+            "name": "model.data",
             "item": [
                 {
                     "name": "name",
@@ -519,12 +522,13 @@ Will result in a `transform` action:
 ```json
 {
     "type": "transform",
+    "completeMsgObject": true,
     "aggregateOne": [
         {
             "$set": {
-                "dataSource.data": {
+                "model.data": {
                     "$filter": {
-                        "input": "$model.dataSource.data",
+                        "input": "$model.data",
                         "as": "item",
                         "cond": {
                             "$and": [
@@ -560,7 +564,7 @@ Filters the rows from a fixed data table of which the column `value` is greater 
     "id": "fixedTableWidget",
     "filter": [
         {
-            "name": "model.dataSource.data",
+            "name": "model.data",
             "condition": {
                 "$gte" : [
                     "$$item.value", 20
@@ -576,12 +580,13 @@ Will result in a `transform` action:
 ```json
 {
     "type": "transform",
+    "completeMsgObject": true,
     "aggregateOne": [
         {
             "$set": {
-                "dataSource.data": {
+                "model.data": {
                     "$filter": {
-                        "input": "$model.dataSource.data",
+                        "input": "$model.data",
                         "as": "item",
                         "cond": {
                             "$gte" : [
