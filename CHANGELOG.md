@@ -1,6 +1,14 @@
 # Change Log
 
-## [4152-Dev]
+## 4194-Master | 4209-Dev] - 2021-06-07
+
+- Added: Chart widget: Number of axis ticks can be set via the model.
+- Added: Chart widget: Axis description, set via the model, is concatenated in the axis label.
+
+- Fixed: Chart widget: User changes are now reflected in the work model.
+- Fixed: Table widget: Row height issues with latest Chrome and Firefox version.
+
+## [4105-Master | 4152-Dev]
 
 - Added: Form widget: `showRefreshButton` option.
 
