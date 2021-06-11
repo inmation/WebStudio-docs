@@ -31,6 +31,172 @@ By setting property `includeRoot` to `false`, the model view will display the ch
 }
 ```
 
+### Chart Model
+
+```jsonc
+{
+    "class": "Trend",
+    "name": "My Trend",
+    "x_axis": [],           // Array of X Axis objects
+    "y_axis": [],           // Array of Y Axis objects
+    "pens": []              // Array of Pen objects
+}
+```
+
+### X Axis Model
+
+X Axis object properties.
+
+```jsonc
+{
+    "id": 1,
+    "name": "X-1",
+    "description": "Simulated Flow 1",
+    "start_time": "*-1d",
+    "end_time": "*",
+    "intervals_no": 100,
+    "position": {
+        "alignment": "bottom",
+        "end": 100,
+        "orientation": "bottom",
+        "start": 0,
+        "value": 1
+    },
+    "themes": {
+        "dark": {
+            "color": "white"
+        },
+        "light": {
+            "color": "black"
+        }
+    },
+    "locked": true,
+    "grid": false,
+    "ticks": {
+        "count": 2
+    }
+}
+```
+
+| name | description |
+| ---- | --- |
+| `cursors` | (optional) Array of cursor objects.
+| `end_time` | End time of the axis.
+| `grid` | Enable/disable grid lines. If ticks are defined the grid lines are aligned with the ticks. (boolean)
+| `id` | Axis id.
+| `intervals_no` | Number of intervals.
+| `locked` | Lock/unlock axis (boolean)
+| `name` | Name of the axis.
+| `position`| Object holding configuration properties related to axis positioning (see below)
+| `start_time` | Start time of the axis.
+| `themes` | Object holding styling options (see below)
+| `ticks` | (optional) Object with tick configuration options (see below)
+
+Position:
+
+| name | description |
+| ---- | --- |
+| `alignment` | `bottom` / `top`
+| `end` | Margin end
+| `orientation` | `bottom` / `top`
+| `start` | Margin start
+| `value` | Position value (number between 1 and 8)
+
+Ticks:
+
+| name | description |
+| ---- | --- |
+| `count` | Number of ticks between start en end tick. Omit this to have it on auto.
+
+### Tag Table
+
+When a `tagtable` is provided a tabular icon is shown in the inspector at the pens section. By this the user can add additional pens to the chart.
+
+```jsonc
+{
+    "tagtable": [
+        {
+            "Name": "",         // Pen name
+            "Path": "",         // Path to the object
+            "Description": ""   // (Optional)
+        }
+    ]
+}
+```
+
+### Y Axis Model
+
+```jsonc
+{
+    "id": 1,
+    "name": "Y",
+    "position": {
+        "alignment": "left",
+        "end": 100,
+        "orientation": "left",
+        "start": 0,
+        "value": 1
+    },
+    "range": {
+        "max": {
+            "mode": "auto",
+            "value": 0
+        },
+        "min": {
+            "mode": "auto",
+            "value": 0
+        }
+    },
+    "themes": {
+        "dark": {
+            "color": "white"
+        },
+        "light": {
+            "color": "black"
+        }
+    },
+    "locked": false,
+    "grid": false,
+     "ticks": {
+        "count": 2
+    }
+}
+```
+
+### Pens
+
+```jsonc
+{
+    "id": 1,
+    "name": "Simulated Density",
+    "path": "/System/Core/Examples/Demo Data/Process Data/DC4711",
+    "DecimalPlaces": 2,             // Overrules the object DecimalPlaces property
+    "OpcEngUnit": "$",              // Overrules the object OpcEngUnit property
+    "trend_type": "HT_LINE",
+    "aggregate": "AGG_TYPE_INTERPOLATIVE",
+    "style": {
+        "line": "SOLID",
+        "marker": "MARKER_STYLE_NONE",
+        "thickness": "SEMISMALL"
+    },
+    "themes": {
+        "dark": {
+            "color": "aqua"
+        },
+        "light": {
+            "color": "aqua"
+        }
+    },    
+    "x_axis": [
+        1
+    ],
+    "y_axis": [
+        1
+    ],
+    "draw": true
+}
+```
+
 ### Options
 
 ```json
@@ -55,49 +221,47 @@ By setting property `includeRoot` to `false`, the model view will display the ch
 
 This widget receive messages from others. Besides the generic, this widget also support topics:
 
-- `addCursors` : add one or multiple cursors
-- `addPens` : add one or multiple pens
-- `setCursors` : update the set of cursors
-- `setTagTable` : set the tag table by object path
-- `setTimeSpan` : set the time span on x-axis
+- [`addCursors`](#addcursors) : add one or multiple cursors
+- [`addPens`](#addpens) : add one or multiple pens
+- [`setCursors`](#setcursors) : update the set of cursors
+- [`setTagTable`](#settagtable) : set the tag table by object path
+- [`setTimeSpan`](#settimespan) : set the time span on x-axis
 
 #### addCursors
 
-Send topic `addCursors` adds one or multiple cursors. In case the cursor already exists the cursor in the payload will be ignored. Send `timestamp` in the payload to add the cursor on that timestamp. `Timestamp` can be send in ISO or Epoch format.
+Send topic `addCursors` adds one or multiple cursors. In case the cursor already exists the cursor in the payload will be ignored. Send `timestamp` in the payload to add the cursor on that timestamp. The `timestamp` can be send in ISO, Epoch, or relative time format.
+If next to the timestamp, a `context` field is defined in the object, the cursor will show the value on hover. The `context` can be defined as a string, object, or array.
 
 ```json
-"onClick": [
-    {
-        "type": "send",
-        "to": "chartWidgetID",
-        "message": {
-            "topic": "addCursors",
-            "payload": [
-                {
-                    "timestamp": 1613481658185
-                },
-                {
-                    "timestamp": 1613482658185
-                }
-            ]
-        }
+{
+    "type": "send",
+    "to": "chartWidgetID",
+    "message": {
+        "topic": "addCursors",
+        "payload": [
+            {
+                "timestamp": 1613481658185
+            },
+            {
+                "timestamp": "*-1h",
+                "context": "Show this on cursor hover"
+            }
+        ]
     }
-]
+}
 ```
 
 To `clear cursors` send empty payload.
 
 ```json
-"onClick": [
-    {
-        "type": "send",
-        "to": "chartWidgetID",
-        "message": {
-            "topic": "setCursors",
-            "payload": []
-        }
+{
+    "type": "send",
+    "to": "chartWidgetID",
+    "message": {
+        "topic": "setCursors",
+        "payload": []
     }
-]
+}
 ```
 
 #### addPens
@@ -161,23 +325,26 @@ Add pen(s) by providing pen objects:
 
 #### setCursors
 
-Send topic `setCursors` will fully update the set of cursors in the chart. Send `timestamp` in the payload to set the cursor on that timestamp. The `timestamp` can be send in ISO or Epoch format.
+Send topic `setCursors` will fully update the set of cursors in the chart. Send `timestamp` in the payload to set the cursor on that timestamp. The `timestamp` can be send in ISO, Epoch, or relative time format. The `timestamp` can be send in ISO, Epoch, or relative time format.
+If next to the timestamp, a `context` field is defined in the object, the cursor will show the value on hover. The `context` can be defined as a string, object, or array.
 
 ```json
-"onClick": [
-    {
-        "type": "send",
-        "to": "chartWidgetID",
-        "message": {
-            "topic": "setCursors",
-            "payload": [
-                {
-                    "timestamp": 1613480658185
-                }
-            ]
-        }
+{
+    "type": "send",
+    "to": "chartWidgetID",
+    "message": {
+        "topic": "setCursors",
+        "payload": [
+            {
+                "timestamp": 1613480658185
+            },
+            {
+                "timestamp": "*-1h",
+                "context": "Show this on cursor hover"
+            }
+        ]
     }
-]
+}
 ```
 
 #### setTagTable
@@ -287,6 +454,7 @@ Complete chart model:
         ],
         "x_axis": [
             {
+                "description": "Simulated Flow 1",
                 "end_time": "*",
                 "grid": false,
                 "id": 1,
@@ -311,6 +479,7 @@ Complete chart model:
                 }
             },
             {
+                "description": "Simulated Flow 2",
                 "end_time": "*",
                 "grid": false,
                 "id": 2,
@@ -337,6 +506,7 @@ Complete chart model:
         ],
         "y_axis": [
             {
+                "description": "m³/h",
                 "grid": false,
                 "id": 1,
                 "locked": false,
