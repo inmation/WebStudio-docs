@@ -59,7 +59,7 @@ The data will be set on the provided `key` name in the message `payload` to the 
 ```json
 {
     "type": "collect",
-    "from": "Place here the ID of the widget",
+    "from": "Place the ID of the widget here",
     "key": "collectedData"
 }
 ```
@@ -751,7 +751,7 @@ Refresh a widget. No message will be send to the target widget. In case you want
 ```json
 {
     "type": "refresh",
-    "id": "Place here the ID of the widget"
+    "id": "Place the ID of the widget here"
 }
 ```
 
@@ -766,7 +766,7 @@ Sending message from one to another widget can be done using the `send` action. 
 ```json
 {
     "type": "send",
-    "to": "Place here the ID of the widget"
+    "to": "Place the ID of the widget here"
 }
 ```
 
@@ -787,7 +787,7 @@ Example to send a message to another component to refresh itself:
 ```jsonc
 {
     "type" : "send",
-    "to" : "Place here the ID of the widget",
+    "to" : "Place the ID of the widget here",
     "message": {
         "topic": "refresh" // Can be omitted because it is default.
         "payload": {} // Can be any type of value. Typically an object is ued.
@@ -802,7 +802,7 @@ Example to send a message to another component to execute a certain action:
 ```jsonc
 {
     "type" : "send",
-    "to" : "Place here the ID of the widget",
+    "to" : "Place the ID of the widget here",
     "message": {
         "topic": "do",
         "action" : [  // Can be a single action or action pipeline.
@@ -822,7 +822,7 @@ The recipient widget will perform an update. The recipient widget only update it
 ```jsonc
 {
     "type" : "send",
-    "to" : "Place here the ID of the widget",
+    "to" : "Place the ID of the widget here",
     "message": {
         "topic": "update",
         "payload": {} // Can be any type of value. Typically an object is ued.
