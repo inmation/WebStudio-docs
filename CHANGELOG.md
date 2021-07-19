@@ -1,6 +1,12 @@
 # Change Log
 
-## 4194-Master | 4209-Dev] - 2021-06-07
+## 4261-Dev - 2021-07-19
+
+- Added: Chart widget: tag table now makes use of the Table widget. This makes it possible to show additional columns which helps the user finding the right tags.
+- Added: Tabs widget: A single tab can be changed by a `modify` action without the whole Tabs widget being reinitialized.
+- Added: Modify action: The `modify` action now supports a `route` so that a widget on a tab can be addressed.
+
+## [4194-Master | 4209-Dev] - 2021-06-07
 
 - Added: Chart widget: Number of axis ticks can be set via the model.
 - Added: Chart widget: Axis description, set via the model, is concatenated in the axis label.
