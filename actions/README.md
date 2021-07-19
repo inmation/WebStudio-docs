@@ -25,7 +25,7 @@ Pipeline can consist of actions with `type`:
 - [notify](#notify): Display a notification.
 - [openLink](#openLink): Opens the a URL in the browser.
 - [passthrough](#passthrough): Just passes the input message to the next action with the option to merge a message / payload.
-- [prompt](#prompt): Show a dialog.
+- [prompt](#prompt-dialog): Show a dialog.
 - [read](#read): Reads a value of an object.
 - [read-write](#read-write): Used for data sources, supports `read` and `write`.
 - [refresh](#refresh): Refresh a widget.
@@ -42,7 +42,7 @@ Note: Features marked with (*) are not supported yet.
 
 ### Action
 
-Points to an action in the widget own `actions` collection or in the grid `actions` collection. The lookup of action names is dominant for the one which are in the same component. So if a widget refers to an action name which exists in his own and in the grid collection, the one in the widget collection will be executed.
+Invoke a named action defined in the widget's own `actions` collection or in the `actions` collection at compilation level. Actions defined at the widget level take precedence over those at compilation level. If a widget refers to a named action which exists in his own model and at compilation level, the one in the widget collection will be executed.
 
 ```jsonc
 {
@@ -51,10 +51,11 @@ Points to an action in the widget own `actions` collection or in the grid `actio
 }
 ```
 
+Refer to the [write-example-01](../compilations/actions/write-example-01.json) compilation to see how named actions are defined and used.  
+
 ### Collect
 
-Collect data from a widget. The data which is retrieved is dependent per widget.
-The data will be set on the provided `key` name in the message `payload` to the next action. If no `key` is specified the whole `payload` will be overwritten with the collected data.
+Collect data from a widget. The specific data retrieved dependents on the source widget. In general, collect returns the same payload data provided to action pipelines defined directly on the referenced widget. Refer to the widget specific documentation for more details. The collected information is assigned to the provided `key` name of the message `payload`. If a `key` is not specified the whole `payload` will be overwritten with the collected data.
 
 ```json
 {
@@ -105,7 +106,7 @@ Example to merge the input message `payload` with other key-value data.
     "tag": "fetch response",
     "message": {
         "payload": {
-            "otherTest": "This is just some other text message"
+            "otherText": "This is just some other text message"
         }
     }
 }
@@ -201,15 +202,15 @@ To invoke an Advanced Endpoint.
 
 With `modify` the model of a widget can be changed. If no modification operator is specified a `mergeObjects` will be performed. This will merge / overwrite the properties from the message `payload` into the model.
 
-Supported modification operators in order of execution:
+The following modification operators are supported, multiples of which can be specified in the same action. They are evaluated in the order shown. In other words, if multiple modification operators are used, the `set` modification is done first, followed by `unset` and so on.
 
 - `set`: Add field to model or update field.
 - `unset`: Remove field from model.
 - `addToArray`: Adds an item to an array field.
 - `removeFromArray`: Removes one or more items from an array that matches the provided fields.
-- `filter`: Removes items from an array field by condition.
+- `filter`: Removes items from an array field based on a condition.
 
-A `transform` action will be performed under the hood with `completeMsgObject` set to true. During execution the `model` field in the input message will always be set with the model of the designated widget. The message `payload` can be used to set values dynamically.
+A `transform` action will be performed under the hood with `completeMsgObject` set to true. During execution the `model` field in the input message will always be set to the model of the widget the action is directed at (as designated by the `id` field). The message `payload` can be used to set values dynamically.
 
 Main signature of the `modify` action is:
 
@@ -601,6 +602,8 @@ Will result in a `transform` action:
 }
 ```
 
+**Note:** Due to how the `$filter` pipeline is implemented in the external library, the condition expression can only refer to fields contained within `$$item`. What this means is that external variables are not visible inside the condition expression.
+
 ### Notify
 
 Displays a notification on the top right of WebStudio.
@@ -615,11 +618,11 @@ Displays a notification on the top right of WebStudio.
 }
 ```
 
-`title` is optional and by default the `title` defined in the `captionBar` in the widget model. In case the `title` is not defined in the caption bar the `name` or `id` of the widget will be shown.
+`title` is optional and is by default set to the `title` defined in the widget `captionBar`. In case the `title` is not defined in the caption bar the `name` or `id` of the widget will be shown.
 
 `duration` is optional and by default `3000`.
 
-`transition` is optional and by default `slide`.
+`transition` is optional with a default value of `slide`.
 
 - `slide`  Smooth sliding of notification
 - `bounce` Bounce in of the notification
@@ -645,7 +648,7 @@ Opens a hypermedia link.
 
 ### Passthrough
 
-The input message will be passed through the next action with the option to merge with a defined message.
+The input message will be passed through to the next action with the option to merge with a defined message.
 
 ```json
 {
@@ -661,7 +664,7 @@ The input message will be passed through the next action with the option to merg
 
 ### Prompt (Dialog)
 
-This action which show (prompt) a dialog which content is a widget model.
+This action causes a popup dialog (prompt) to be shown. Its content is a widget model, contained within the payload of the message.
 
 Example to prompt a text widget.
 
@@ -679,7 +682,7 @@ Example to prompt a text widget.
 }
 ```
 
-- `content`: Can be a single widget or a complete grid compilation. The latter is not supported yet.
+- `content`: Can be a single widget or a complete compilation. 
 
 ### Read
 
@@ -729,7 +732,7 @@ Example of the query mechanism support by the Read Web API endpoint.
 }
 ```
 
-- `opt`: optional field, supported arguments are described in the Read endpoint section in the Web API documentation.
+- `opt`: optional field, supported arguments are described in the Read endpoint section in the [Web API documentation](https://inmation.com/docs/api/latest/webapi/read.html#queries).
 
 ### Read-write
 
@@ -761,7 +764,7 @@ The `to` field can have the value `self` in case the action pipeline needs to re
 
 Widgets data exchange
 
-Sending message from one to another widget can be done using the `send` action. This action does not change the output message. The output message is the same as the input message.
+Sending message from one widget to another can be done using the `send` action. This action does not change the output message. The output message is the same as the input message.
 
 ```json
 {
@@ -770,7 +773,7 @@ Sending message from one to another widget can be done using the `send` action. 
 }
 ```
 
-The `to` field can have the value `self` in case the pipeline needs to send data to its own widget. The update behavior differs per widget.
+The value of the `to` field can be set to `self` in case the pipeline needs to send data to its own widget. The update behavior differs per widget.
 
 Supported topics:
 
@@ -780,7 +783,7 @@ Supported topics:
 
 #### Refresh Topic
 
-The recipient widget will perform a refresh. The recipient widget will execute the data source action (pipeline) with the provided message `payload`. The [refresh life cycle](../widgets/README.md#refresh-life-cycle-hooks) will be performed including a fetch if a data source is present.
+The recipient widget will perform a refresh. It will execute the data source action (pipeline) with the provided message `payload`. The [refresh life cycle](../widgets/README.md#refresh-life-cycle-hooks) will be performed including a fetch if a data source is present.
 
 Example to send a message to another component to refresh itself:
 
@@ -817,7 +820,7 @@ Example to send a message to another component to execute a certain action:
 
 #### Update Topic
 
-The recipient widget will perform an update. The recipient widget only update its known properties with the provided message `payload`. The [update life cycle](../widgets/README.md#update-life-cycle-hooks) will be performed.
+The recipient widget will perform an update. It only updates its known properties with the provided message `payload`. The [update life cycle](../widgets/README.md#update-life-cycle-hooks) will be performed.
 
 ```jsonc
 {
@@ -832,7 +835,7 @@ The recipient widget will perform an update. The recipient widget only update it
 
 ### Subscribe
 
-Subscribe to object data changes in the system. Typically used in `dataSource` configurations. In case necessary, use the `willUpdate` action hook to transform the data.
+Subscribe to object data changes in the system. Typically used in `dataSource` configurations. If necessary, use the `willUpdate` action hook to transform the data.
 
 ```json
 {
@@ -843,9 +846,11 @@ Subscribe to object data changes in the system. Typically used in `dataSource` c
 
 ### Switch
 
-Execute actions based on rules. A rule will be checked by performing a `queryOne` transformation. In case the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed. If one rule matches, its `action` will be executed and further testing of the subsequent rules with be stopped.
+Execute actions based on rules. A rule will be checked by performing a [`queryOne`](#transform) transformation. In case the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed. If one rule matches, its `action` will be executed and further testing of the subsequent rules will be stopped.
 
 In case `checkAll` is set to `true`, the 'initial' input message of the switch will be passed to each action pipeline of the matched rules. The output message of the last executed action pipeline, will be the output message of this switch action. When no rule matches, the output of the switch action is the same as the input.
+
+In order to have a **default action** in case none of the rules match, add a extra rule at the end of the `case` array with an empty `match` condition.
 
 ```jsonc
 {
@@ -877,27 +882,22 @@ In case `checkAll` is set to `true`, the 'initial' input message of the switch w
                     "name": "doSomethingExtra"
                 }
             ]
+        },
+        {
+            "match" : {}, // Default action
+            "action" : [] // Can be a single action or action pipeline.
         }
     ]
 }
 ```
 
-In order to have a default action in case none of the rules matches, add a rule at the end of the `case` array with an empty object as `match`.
-
-```jsonc
-{
-    "match" : {},
-    "action" : [] // Can be a single action or action pipeline.
-}
-```
-
 ### Transform
 
-Transformation of the data can be performed by the use of the MongoDB Aggregation framework. The input data is normally the value of the `payload` field of the input message. In case the whole message object needs to be available to the transform logic you can set `completeMsgObject` to `true`.
+Transformation of data can be performed by means of the MongoDB Aggregation framework. The input data is normally the value of the `payload` field of the input message. In case the whole message object needs to be available to the transform logic you can set `completeMsgObject` to `true`.
 
-An addition to the MongoDB Aggregation framework, in order to result in a single object the key `aggregateOne` instead of `aggregate` can be used.
+The aggregation pipeline often returns an array of one or more elements. In most cases, pipeline actions which ingest the output of the transformation are however looking for a single object. As a convenience the WebStudio specific `aggregateOne` options can be used instead of `aggregate`. It return the first element from the resulting transformation.
 
-Besides `aggregate` and `aggregateOne` also `query` and `queryOne` can be used. The two latter are purely for filtering where `queryOne` returns the first matching object.
+Besides `aggregate` and `aggregateOne`, `query` and `queryOne` can also be used. The latter two are purely for filtering where `queryOne` returns the first matching object.
 
 MongoDB Documentation:
 
@@ -940,7 +940,7 @@ Output message payload:
 }
 ```
 
-Example to search for the object which 'location' has the value 'Cologne':
+Example to search for the object with 'location' value 'Cologne':
 
 - Input message payload:
 
@@ -982,10 +982,18 @@ Example to search for the object which 'location' has the value 'Cologne':
     }
 ]
 ```
+**Note:** Even though only one element was matched, the returned massage payload is still an array. If `aggregateOne` were used instead of `aggregate`, the output would look like this:
+
+```json
+{
+    "name": "Company A",
+    "location": "Cologne"
+}
+```
 
 #### Transform Example 02
 
-This example is to search for the object which 'location' has the value 'Cologne' using a `query`.
+This example uses a `query` to search for the object with 'location' value of 'Cologne'.
 
 - Input message payload:
 
@@ -1034,7 +1042,7 @@ This example is to search for the object which 'location' has the value 'Cologne
 
 #### Transform Example 03
 
-This example is to search for the object which 'location' has the value 'Cologne' using a `queryOne`. Because of `queryOne` this example returns only the first match.
+This example uses `queryOne` to search for the object with 'location' value 'Cologne'. Like `aggregateOne`, it returns only the first match.  
 
 - Input message payload:
 

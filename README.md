@@ -72,12 +72,12 @@ See [widget doc](./widgets/README.md) model description for the widget model.
 | | `3.2em`
 | | `50% auto`
 | | `100px 100px`
-| `numberOfColumns` | Defines how many vertical columns the grid is divided.
-| `numberOfRows` | defines how many horizontal rows the grid is divided.
+| `numberOfColumns` | Defines the number of vertical columns the grid is divided into. The absolute column width in pixels, will scale proportionally to that of the compilation. 
+| `numberOfRows` | The naming of this property is a bit misleading in that it is used to set the height of grid rows to a specific number of pixels rather than dividing the canvas into equally sized rows. By setting this property, the row height is fixed and no longer scales when the canvas width is resized. If the property is omitted each cell in the grid is as many pixels high as it is wide. The width being determined by the canvas width divided by the `numberOfColumns`. In this case the row height does scales with the column width.
 | `stacking` | Defines how the widgets can be positioned. Options are:
-| | `none`: Widgets can be dragged around freely. **Default**
-| | `vertical`: Widgets are stacked vertically.
-| | `horizontal`: Widgets are stacked horizontally.
+| | `none`: Widgets can be dragged around freely and positioned on any gid cell. **Default**
+| | `vertical`: Widgets are stacked vertically starting from the top of the screen.
+| | `horizontal`: Widgets are stacked horizontally starting at the left of the screen.
 | `width`| To set the maximal grid width with e.g. 500.
 
 Example to have an image as the compilation background:
