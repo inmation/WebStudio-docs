@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
+        "addcursors",
+        "addpens",
         "apng",
         "automargin",
         "bargap",
@@ -41,11 +43,15 @@
         "scrollbars",
         "secp",
         "semismall",
+        "setcursors",
+        "settagtable",
+        "settimespan",
         "showlegend",
         "steelblue",
         "stimulsoft",
         "storename",
         "suspectedoutliers",
+        "tagtable",
         "textfont",
         "textinfo",
         "textposition",
