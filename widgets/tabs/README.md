@@ -24,7 +24,7 @@ With this widget you can show different widgets on the same space by switching b
 
 Icon configuration.
 
-```json
+```jsonc
 {
     "icon": {
         "icon": "",             // Emoji, URL or Base64 for both dark and light theme.

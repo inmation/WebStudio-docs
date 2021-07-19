@@ -106,7 +106,7 @@ This `extendSchemaFromDataSource` property only applies for `schema` configurati
 
 Node styling and icon assignment can be combined using the `rules` in the `options`. The configuration in the `schema` is dominant to this `options`.
 
-```json
+```jsonc
 {
     "options": {
         "rules": [
