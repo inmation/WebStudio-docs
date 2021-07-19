@@ -108,9 +108,108 @@ Ticks:
 | ---- | --- |
 | `count` | Number of ticks between start en end tick. Omit this to have it on auto.
 
-### Tag Table
+### Tag Search Table
 
-When a `tagtable` is provided a tabular icon is shown in the inspector at the pens section. By this the user can add additional pens to the chart.
+By providing a `tagSearchTable` config you can control how the table with tags is shown to the user. The selection table, which will be prompted when a user clicks on the tabular icon, is actually showing a [Table widget](../table/README.md). This feature makes use of `data` which can be configured within `tagSearchTable` or the old `tagtable` field.
+
+The config below matches the data which is configured on the `tagtable` field or is fetched from the KPI Model items from the custom table with name `tagtable`.
+
+At least make sure the table data has (`name` or `Name`) and (`path` or `Path`) fields.
+
+```json
+{
+    "tagSearchTable": {
+        "schema": [
+            {
+                "name": "Name",
+                "sort": "asc"
+            },
+            {
+                "name": "Description",
+                "title": "Description"
+            },
+            {
+                "name": "Path"
+            }
+        ]
+    }
+}
+```
+
+In case `tagtable` is not used a `data` field can be defined in the `tagSearchTable` directly.
+
+```json
+{
+    "tagSearchTable": {
+        "data": [
+            {
+                "name": "My Tag 1",
+                "qualified": false,
+                "description": "This is non qualified tag 1",
+                "path": "/System/Core/MyTag1"
+            },
+            {
+                "name": "My Tag 2",
+                "qualified": false,
+                "description": "This is non qualified tag 2",
+                "path": "/System/Core/MyTag2"
+            },
+            {
+                "name": "My Important Tag 10",
+                "qualified": true,
+                "description": "This is Important qualified tag 10",
+                "path": "/System/Core/MyImportantTag10"
+            },
+            {
+                "name": "My Important Tag 11",
+                "qualified": true,
+                "description": "This is non qualified tag 11",
+                "path": "/System/Core/MyImportantTag11"
+            }
+        ],
+        "schema": [
+            {
+                "name": "name",
+                "title": "Name",
+                "sort": "asc"
+            },
+            {
+                "name": "qualified",
+                "title": "Q",
+                "enum": {
+                    "X": true,
+                    "-": false
+                }
+            },
+            {
+                "name": "description",
+                "title": "Description"
+            },
+            {
+                "name": "path",
+                "title": "Path"
+            }
+        ]
+    }
+}
+```
+
+#### Tag Table
+
+When a `tagtable` is provided a tabular icon is shown in the inspector at the pens section. By this the user can add additional pens to the chart. Tagtable can be provided by configuring an array of objects with at least `name` and `path` or by just an object path. The latter needs to be a path to a Table Holder in the system.
+
+```jsonc
+{
+    "tagtable": [
+        {
+            "name": "",         // Will become the pen name.
+            "path": "",         // Path to the object
+        }
+    ]
+}
+```
+
+Or with camel casing fields.
 
 ```jsonc
 {
@@ -121,6 +220,14 @@ When a `tagtable` is provided a tabular icon is shown in the inspector at the pe
             "Description": ""   // (Optional)
         }
     ]
+}
+```
+
+Pointing to a Table Holder.
+
+```jsonc
+{
+    "tagtable": "/System/Core/Folder/MyTags"    // Object Path
 }
 ```
 
