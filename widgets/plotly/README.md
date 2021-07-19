@@ -6,6 +6,15 @@ View Plotly documentation [here](https://plotly.com/javascript/).
 
 This widget is data driven, data structure should conform to the Plotly documentation provided at the beginning of each different type of chart's section.
 
+## Model
+
+```jsonc
+{
+    "type": "plotly",
+    "data": []          // See Plotly documentation
+}
+```
+
 ## Configuration Options
 
 * Scroll and Zoom
@@ -15,13 +24,15 @@ This widget is data driven, data structure should conform to the Plotly document
 * Display Logo - disable or enable Plotly logo on mode bar
 
 ```json
-"plotlyOptions": {
-    "config": {
-        "scrollZoom": true,
-        "editable": true,
-        "staticPlot": true,
-        "displayModeBar": true,
-        "displaylogo": true
+{
+    "plotlyOptions": {
+        "config": {
+            "scrollZoom": true,
+            "editable": true,
+            "staticPlot": true,
+            "displayModeBar": true,
+            "displaylogo": true
+        }
     }
 }
 ```
@@ -38,27 +49,29 @@ This widget is data driven, data structure should conform to the Plotly document
 ### Example
 
 ```json
-"plotlyOptions": {
-    "layout": {
-        "paper_bgcolor": "steelblue",
-        "plot_bgcolor": "steelblue",
-        "showlegend": false,
-        "title": "Click Here<br>to Edit Chart Title",
-        "font":{
-            "family": "Raleway, sans-serif"
-            },
-        "xaxis": {
-            "tickangle": -45,
-            "gridwidth": 2,
-            "title": {
-                "text" : "normalized moisture"
+{
+    "plotlyOptions": {
+        "layout": {
+            "paper_bgcolor": "steelblue",
+            "plot_bgcolor": "steelblue",
+            "showlegend": false,
+            "title": "Click Here<br>to Edit Chart Title",
+            "font":{
+                "family": "Raleway, sans-serif"
                 },
-            },
-        "yaxis": {
-            "tickangle": -45,
-            "gridwidth": 2,
-            "title": {
-                "text": "normalized pressure"
+            "xaxis": {
+                "tickangle": -45,
+                "gridwidth": 2,
+                "title": {
+                    "text" : "normalized moisture"
+                    },
+                },
+            "yaxis": {
+                "tickangle": -45,
+                "gridwidth": 2,
+                "title": {
+                    "text": "normalized pressure"
+                }
             }
         }
     }
@@ -112,9 +125,9 @@ Example of data model saved as JSON string in the system:
 {
     "type": "function",
     "lib": "LIBRARY NAME",
-    "func": "FUNCTION NAME", // Optional function name in case library is Lua table.
-    "farg": {}, // Optional function argument.
-    "ctx": "" // Optional system object path.
+    "func": "FUNCTION NAME",    // Optional function name in case library is Lua table.
+    "farg": {},                 // Optional function argument.
+    "ctx": ""                   // Optional system object path.
 }
 ```
 
