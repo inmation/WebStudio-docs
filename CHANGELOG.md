@@ -1,10 +1,13 @@
 # Change Log
 
-## 4261-Dev - 2021-07-19
+## [4277-Dev] - 2021-07-21
 
+- Added: Plotly widget: `plotlyOptions` can now be provided via the datasource.
 - Added: Chart widget: tag table now makes use of the Table widget. This makes it possible to show additional columns which helps the user finding the right tags.
 - Added: Tabs widget: A single tab can be changed by a `modify` action without the whole Tabs widget being reinitialized.
 - Added: Modify action: The `modify` action now supports a `route` so that a widget on a tab can be addressed.
+
+- Fixed: Table widget: Schema item style now overrules the widget options style settings.
 
 ## [4194-Master | 4209-Dev] - 2021-06-07
 
