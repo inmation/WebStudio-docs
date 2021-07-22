@@ -84,3 +84,15 @@ This is similar how the [Image widget](../image/README.md) is configured to load
     }
 }
 ```
+
+### Actions
+
+A tab can be dynamically changed by the [modify action](../../actions/README.md#modify). Based on the `route` the behavior is:
+
+| route contains | results in |
+| --- | --- |
+| ID of the tabs |refresh of all the tabs |
+| ID of the tabs and the tab | refresh of that particular tab |
+| ID of the tabs and the tab and the widget | refresh of the widget on that particular tab |
+
+This pattern for the `route` continues for nested `Tabs widget` within tabs.
