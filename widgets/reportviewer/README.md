@@ -6,8 +6,7 @@ This widget can be used to show generated reports.
 
 ```json
 {
-    "type": "reportviewer",
-    "path": "/System/Core/Examples/WebStudio/Reports/Process Data Report"
+    "type": "reportviewer"
 }
 ```
 

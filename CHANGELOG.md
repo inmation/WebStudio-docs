@@ -9,6 +9,8 @@
 
 - Fixed: Table widget: Schema item style now overrules the widget options style settings.
 
+- Warning: ReportViewer widget: don't specify `path` of the report object in the root of the widget model. Use `datasource` instead.
+
 ## [4194-Master | 4209-Dev] - 2021-06-07
 
 - Added: Chart widget: Number of axis ticks can be set via the model.
