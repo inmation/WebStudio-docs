@@ -1,6 +1,6 @@
 # Change Log
 
-## [4277-Dev] - 2021-07-21
+## [4281-Master | 4288-Dev] - 2021-07-22
 
 - Added: Plotly widget: `plotlyOptions` can now be provided via the datasource.
 - Added: Chart widget: tag table now makes use of the Table widget. This makes it possible to show additional columns which helps the user finding the right tags.
