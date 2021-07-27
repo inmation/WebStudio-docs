@@ -302,7 +302,7 @@ Looking at the JSON we see the `actions` property, contains an `onClick` object 
 
 ![onClick](../assets/images/webstudio-onclick.png)
 
-Refer to the [Actions](../ReferenceDocs/actions/readme.md#actions) help pages for a full list of all the action types supported.  
+Refer to the [Actions](../ReferenceDocs/actions/README.md#actions) help pages for a full list of all the action types supported.  
 
 ### Messages
 One very important aspect of the way actions work is that they all receive a `Message` object as input, which in turn will always have at least one property called `payload`. The initial content of the payload is populated by the widget which triggered the action. It initializes the payload with values from its current state. We'll come back to this in more detail, but let's first see the `Message` in action.
