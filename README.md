@@ -88,4 +88,4 @@ The following additional tools are available in the widget editor when loaded fr
 | ![Compare Work Model](./assets/images/CompareModelsBtn.png) | Compare the current configuration to the "Work model". More about this when we get to "Debugging" |
 | ![Delete widget](./assets/images/DeleteWidgetBtn.png)| Delete this widget from the compilation|
 
-To learn more about how to create compilations refer top the [getting started](./gettingstarted/README.md) pages.
+To learn more about how to create compilations refer top the [getting started](./GettingStarted/README.md) pages.

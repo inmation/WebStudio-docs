@@ -2,9 +2,9 @@
 
 The aim of the "Getting Started" section is to convey the key WebStudio concepts and to, as far as possible, provide a more or less linear path to learning the tool. To get the best out of this guide, it is recommended that you work along and try things out for yourself. To do so, you'll need access to a running inmation instance and have login credentials to connect to the core. Also make sure you have installed the `Examples_WebStudio_Demo_Data_V<n.nn>.json` as described on the [WebStudio root](../README.md) page.
 
-Let's quickly recap the main points from [earlier](../README.md):
+Let's quickly recap the main points from earlier:
 
-- The WebStudio application is used to host interactive views, called [compilations](../referencedocs/README.md#compilation), made up of one or more widgets.
+- The WebStudio application is used to host interactive views, called [compilations](../ReferenceDocs/README.md#compilation), made up of one or more widgets.
 - The application runs in your browser of choice and is loaded using a URL that looks something this
 ```url
     http://<hostname_webapi>:8002/apps/webstudio/
@@ -302,7 +302,7 @@ Looking at the JSON we see the `actions` property, contains an `onClick` object 
 
 ![onClick](../assets/images/webstudio-onclick.png)
 
-Refer to the [Actions](../referencedocs/actions/readme.md#actions) help pages for a full list of all the action types supported.  
+Refer to the [Actions](../ReferenceDocs/actions/readme.md#actions) help pages for a full list of all the action types supported.  
 
 ### Messages
 One very important aspect of the way actions work is that they all receive a `Message` object as input, which in turn will always have at least one property called `payload`. The initial content of the payload is populated by the widget which triggered the action. It initializes the payload with values from its current state. We'll come back to this in more detail, but let's first see the `Message` in action.
@@ -339,7 +339,7 @@ The actions configuration of the "Red button" is shown below (The compilation JS
 }
 ```
 
-The action triggered by the `onClick` hook is of type [modify](../referencedocs/actions/readme.md#modify) which, as the name suggests, is used to make changes to widgets in the compilations. The `id` field identifies the target widget to be modified. 
+The action triggered by the `onClick` hook is of type [modify](../ReferenceDocs/actions/readme.md#modify) which, as the name suggests, is used to make changes to widgets in the compilations. The `id` field identifies the target widget to be modified. 
 
 In the modify action, multiple properties of the target widget can be changed at once. The `set` property, for example, is an array of { `name`, `value` } pairs indicating the fields to change and the values to set them to. 
 
