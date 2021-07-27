@@ -93,7 +93,7 @@ In this case, it is easy to do since there is only one widget in the compilation
 - Use the editor's "Find" function (**Control-F** or **⌘-F** on Mac) to search for a string you know to be part of the widget you are looking for. 
 - Use the editor's code-folding arrow buttons in the left sidebar of the editor to collapse sections of the JSON you want to ignore. 
 
-![Code-folding](../assets/images/webstudio-codefolding.png)
+![Code-folding](../assets/images/webstudio-codeFolding.png)
 
 With the compilation JSON loaded in the editor, change the `widgets.0.layout.static` property to `true` and apply the changes to remove the re-size drag handle, which leaves us with the final result:
 
