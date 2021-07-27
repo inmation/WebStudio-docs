@@ -339,7 +339,7 @@ The actions configuration of the "Red button" is shown below (The compilation JS
 }
 ```
 
-The action triggered by the `onClick` hook is of type [modify](../ReferenceDocs/actions/readme.md#modify) which, as the name suggests, is used to make changes to widgets in the compilations. The `id` field identifies the target widget to be modified. 
+The action triggered by the `onClick` hook is of type [modify](../ReferenceDocs/actions/README.md#modify) which, as the name suggests, is used to make changes to widgets in the compilations. The `id` field identifies the target widget to be modified. 
 
 In the modify action, multiple properties of the target widget can be changed at once. The `set` property, for example, is an array of { `name`, `value` } pairs indicating the fields to change and the values to set them to. 
 
