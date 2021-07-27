@@ -180,7 +180,7 @@ Where in the model the `path` is specified is somewhat Widget dependent. Conside
     ```
 
 ### Data Source
-Most widgets that display data can be configured to do so by specifying the appropriate [dataSource](../ReferenceDocs/Widgets/README.md#datasource) settings. The `dataSource` property supports a number of options which determine the binding behavior. Let's have a look at some of these applied to a `Text` widget:
+Most widgets that display data can be configured to do so by specifying the appropriate [dataSource](../ReferenceDocs/widgets/README.md#datasource) settings. The `dataSource` property supports a number of options which determine the binding behavior. Let's have a look at some of these applied to a `Text` widget:
 
 > **Note**: The `Text` widget is used here to illustrate the concepts due to its simplicity rather than its inherit suitability for that purpose.
 
