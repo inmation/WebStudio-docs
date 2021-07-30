@@ -35,6 +35,7 @@
                     {
                         "type": "send",
                         "to": "self",
+                        "skip": true,
                         "message": {
                             "topic": "selectRows",
                             "payload": {
