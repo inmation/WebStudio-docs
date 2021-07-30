@@ -19,6 +19,7 @@ Let's quickly recap a few main points:
 To get us going, we'll create a "Hello World" compilation, consisting of a single text widget placed in the middle of the workspace. Load the application and make sure you are logged into the back end. At this point you should see the workspace with the developer toolbar icons displayed at the top. 
 
 ![WebStudio - Menubar](../assets/images/webstudio-menubar.png)
+(**Note**: The application and web-studio version numbers that normally appear next to the inmation logo have been obscured in the screenshots)
 
 The work area or canvas starts off divided into a rectangular grid of 24 columns across. When placing widgets onto the canvas they will always align to the grid and their sizes will be multiples of the grid vertical and horizontal spacing. 
 
@@ -48,15 +49,29 @@ The fields in the object have the following meaning:
 
 > **Note**: Change the number of grid columns early on in you compilation configuration cycle to provide enough resolution to place widgets where you want them. With a finer grid you can place widgets more precisely.  
 
-The default [options](../ReferenceDocs/README.md#options) are set such that any widgets added to the compilation will be stacked vertically, starting at the top of the window. For our first example, we'd like to put the text box in the middle of the canvas, so let's change the `stacking` property. Delete the `"vertical"` setting, press **Control-Space** to bring up a list of valid stacking options, then select `"none"` which will allow widgets to be place in any grid cells on the screen. 
+The default [options](../ReferenceDocs/README.md#options) are set such that any widgets added to the compilation will be stacked vertically, starting at the top of the window. For our first example, we'd like to put the text box in the middle of the canvas, so let's change the `stacking` property. Delete the `"vertical"` setting, press **Control-Space** to bring up a list of valid stacking options, then select `"none"`. Widgets can now be place in any grid cells on the screen. 
 
 > **Note**: It is recommended that you name your compilations as a matter of course by adding a `name` field to it and assigning a value that reflects the "purpose" of the compilation. This ensures that when the JSON is exported (![Export](../assets/images/SmallSaveCompilationBtn.png)) to file it is easy to locate a specific one. Also remember to click the export button every now and then so you don't lose work if the browser page is re-loaded for some reason. 
+
+```json
+{
+    "version": "1",
+    "name": "HelloWorldCompilation",
+    "widgets": [],
+    "options": {
+        "stacking": "none",
+        "numberOfColumns": 24
+    }
+}
+```
 
 In general the **Control-Space** keyboard shortcut can be used to show the properties (and possible values in some cases) that are applicable within the various sections of the model. To see this in action, place the edit cursor at the end of the line ```"stacking":"none",``` and press **Control-Space** again to be prompted with the available, as yet un-used, options. 
 
 > **Note:** Entering a **space** when the cursor is placed in a position where new properties can be added, will also show the code-completion pop-ups. The difference between this and hitting **Control-Space** is that the latter also works while you are editing object properties and values (inside string double quotes).  
 
-We'll return to the compilation in a bit. For now, close the editor and click on the **`+`** icon at the top of the browser window to bring up the widget editor. It presents a palette of pre-configured templates on the left. Expand the "Text" tree node and select "Simple Text", which inserts some boilerplate JSON. From here we can start customizing the widget's appearance and behavior. Let's change the value of the `text` property to "Hello World". 
+We'll return to the compilation in a bit. For now, close the editor and click on the **`+`** icon at the top of the browser window to bring up the widget editor. It presents a palette of pre-configured templates on the left. 
+
+Expand the "Text" tree node and select "Simple Text", to insert the boilerplate JSON. From here we can start customizing the widget's appearance and behavior. Let's change the value of the `text` property to "Hello World". 
 
 Next we'll adjust the text widget to be two grid cells high and six wide. Move your edit cursor to the end of the line that now reads: 
 ```json 
@@ -68,7 +83,7 @@ and press the space bar. From the available options, select `layout`, which inse
 
 Press the space bar again to see the available `layout` fields and set `"h"=2,` and `"w"=6`. At this point the JSON formatting is out of kilter, which we can fix by clicking the format ![brush](../assets/images/FormatJSONToolBtn.png) icon at the top of the window. As a last refinement before adding the widget, let's change the text `color`. Place the cursor inside the current value (`"grey"`) of the `options.style.color` field and press **control-space** to pick a color.   
 
-> **Note**: Dot-notation is used as a shorthand to refer to nested properties in the JSON models as shown above in relation to setting the `color` attribute. The notation is fairly self-explanatory. One special case worth mentioning more explicitly is when referring to objects in arrays. Consider the arbitrary JSON below:
+> **Note**: Dot-notation is used as a shorthand to refer to nested properties in the JSON models as shown above. The notation is fairly self-explanatory. One special case worth mentioning more explicitly is when referring to objects in arrays. Consider the arbitrary JSON below:
 >```json
 >{
 >    "data": [
@@ -84,7 +99,7 @@ Press the space bar again to see the available `layout` fields and set `"h"=2,` 
 >}
 >```
 >
->To refer to the y-value of the second data point, the notation used is `data.1.y` 
+>To refer to the y-value of the second data point, the notation used is `data.1.y`
 
 
 Apply the selection, by clicking on the save icon then drag the widget to the center of the canvas. 
@@ -93,9 +108,9 @@ Apply the selection, by clicking on the save icon then drag the widget to the ce
 
 ### Widget title-bar and resize handles
 
-To finish things off, let's remove the title-bar and resize drag handle from the widget. Click the `{}` in the widget title-bar and set the `captionBar.hidden` field to `true`, then apply the change to see what it looks like... 
+To finish things off, let's remove the title-bar and resize drag handle, in the bottom right corner, from the widget. Click the `{}` in the widget title-bar and set the `captionBar.hidden` field to `true`, then apply the change to see what it looks like... 
 
-So far so good, except... how do we now get back to the JSON for the widget to make further changes? The answer is to use the compilation editor. Click the `{}` at the top of the work area and locate the text widget in the compilation's `widgets` array. 
+So far so good, except... with the title-bar now hidden, how do we get back to the Widget's JSON to make further changes? The answer is to use the compilation editor. Click the `{}` at the top of the work area and locate the text widget in the compilation's `widgets` array. 
 
 In this case, it is easy to do since there is only one widget in the compilation, but in general finding your widget in the array will be more cumbersome. There are two strategies that may help to mitigate the problem: 
 
@@ -108,13 +123,13 @@ With the compilation JSON loaded in the editor, change the `widgets.0.layout.sta
 
 ![Clean-text-widget](../assets/images/webstudio-cleanTextWidget.png)
 
-... OK, that was somewhat underwhelming, so let's pick up the pace a bit. (**Note**: The application and web-studio version numbers that normally appear next to the inmation logo have been obscured in the screenshots)
+... OK, that was somewhat underwhelming, so we'll pick up the pace a bit. 
 
 Before moving to the next section here are a few things you can try on your own:
 > **Things to try**:
 > - Add one instance of each of the templated widgets to your compilation,  to get an impression of what they look like. 
 >
->> **Note** Most of the template widgets are pre-configured to bind to the example demo data mentioned above so they can show real values. If your inmation system was installed to use the host machine name as the name of the "Core" node in the IO-Model, you will need to update the bindings in the widgets config. (We'll return to the topic of [data-binding](#data-binding) in a bit more detail below)
+>> **Note** Most of the template widgets are pre-configured to bind to the example demo data mentioned above so they can show actual values. If your inmation system was installed to use the host machine name as the name of the "Core" node in the IO-Model, you will need to update the bindings in the widgets config. (We'll return to the topic of [data-binding](#data-binding) in a bit more detail below)
 >
 > For example: If you add the `Faceplate` templates for tag `FC4711`, its default model JSON looks like this:
 >```json
@@ -129,7 +144,7 @@ Before moving to the next section here are a few things you can try on your own:
 >    }
 >}
 >```
->Looking in DataStudio you might find that the actual path to the referenced tag is something like "/System/*INMATION-HOST-01*/Examples/Demo Data/Process Data/FC4711". To make the binding work in WebStudio all path values then need to be  updated by replacing occurrences of /core/ with the name used (such as *INMATION-HOST-01* in the example). 
+>On the DataStudio side you might find that the actual path to the referenced tag is something like "/System/*INMATION-HOST-01*/Examples/Demo Data/Process Data/FC4711". To make the binding work in WebStudio all path values then need to be  updated by replacing occurrences of /core/ with the name used (such as *INMATION-HOST-01* in the example). 
 >
 >In the editor press **^-F** (**⌘-F** on Mac) to show the **Find** option and enter the string to find.
 >
@@ -147,12 +162,12 @@ Before moving to the next section here are a few things you can try on your own:
 > available in addition to the 'out-of-the-box' templates settings. 
 
 ## Displaying inmation data
-The reason for creating compilations in most cases is to display core data to platform users. In some situations modifications may need to be made by editing, adding or deleting information. We'll cover the second scenario later. For now, the focus is on how to retrieve and display information. 
+The reason for creating compilations in most cases is to display core data to platform users. In some situations modifications may need to be made by editing, adding or deleting information. For now, the focus is on how to retrieve and display information. 
 
 ### Path based bindings
-The `path` of objects in the various models, typically IO and KPI, is how they are uniquely identified in the system and is therefore used to configure direct bindings in WebStudio.
+The `path` of objects, typically in the IO and KPI models, is how they are uniquely identified in the system and is therefore used to configure direct data bindings in WebStudio. **Note**: Model in this context refers to how things are configured on the server side rather than in the compilation!
 
-Where in the model the `path` is specified is somewhat Widget dependent. Consider the following examples:
+Where in the compilation model the `path` is specified is somewhat Widget dependent. Consider the following examples:
 
 - `Faceplate`: Here the path is a base property of the widget
     ```json
@@ -211,9 +226,9 @@ When the `dataSource` type is set to `"read"` the value of the item pointed to b
 }
 ```
 
-> **NOTE** If you use this JSON, the tag value is shown with too many decimals. We'll fix that when we get round to talking about pipelines. 
+> **NOTE** If you use this JSON, the tag value is shown with many decimals. This can be changed as is sown in this [example](./compilations/text/text-subscribe-01.json). 
 
-The `"read"` dataSource type is therefore more often used for properties, such as the number of decimals on the tag or the engineering units, that tend to be static. (These, like the engineering units can be read by appending the property name to the path as show)
+The `"read"` dataSource type is therefore more often used for properties, such as the number of decimals on the tag or the engineering units, that tend to be static. (The engineering units can be read by appending the property name to the path as show)
 
 ```json
     {
@@ -244,12 +259,12 @@ In the example above, we could have "worked around" the fact that the data sourc
 }
 ```
 
-Now the source value will be polled once every ten second. While this works, it is not ideal. If the source value changes once a second for example, we'll miss 90% of the updates.
+Now the source value will be polled once every ten second. While this works, it is not ideal since there is no guarantee that the underlying value changes at the same rate as the refresh interval.
 
 A better approach is to change the dataSource type to `"subscribe"`. WebStudio will now be notified whenever the tag value we subscribed to changes. 
 
 #### Function
-Another binding option is to use a `function` type `dataSource` to call an [advanced endpoint](https://inmation.com/docs/api/latest/webapi/advancedendpoints.html) which in turn executes Lua script in the back end. The ability to call custom code in the core provides a great deal of flexibility, opening the door to manipulating or even generating data as required. 
+A third option is to use a `function` type `dataSource` to call an [advanced endpoint](https://inmation.com/docs/api/latest/webapi/advancedendpoints.html) which in turn executes Lua script in the back end. The ability to call custom code in the core provides a great deal of flexibility, opening the door to manipulating or even generating data as required. 
 
 To see this in action, add a table widget to your compilation and select the "Data source function" template in the `Table` section. The JSON in the editor should looks something like this:
 
@@ -272,10 +287,10 @@ To see this in action, add a table widget to your compilation and select the "Da
 ```
 
 > **Things to try:**
-> - Pick one of the widgets and experiment with the various data source types discussed. Try setting up our own core object and show their state in WebStudio
+> - Pick one of the widgets and experiment with the various data source types discussed. Try setting up our own core objects and show their state in WebStudio
 > - Look at all the templates to see where they get their data from. (You will need the demo dataset to see them in action)
 
-We are not quite done with dataSources yet, but in order to complete the discussion we need to make a detour to talk about `Hooks`, `Pipelines` and `Actions`
+While there is quite a lot more that can be said about dataSources, there are some other important topics to get to...
 
 ## Hooks, Actions, Messages and Pipelines.
 As we've seen so far, WebStudio takes JSON models and uses these to work out what to draw on the screen. In doing so, it goes through a set of phases during which the model is processed, data is retrieved, the UI is updated and so on. 
@@ -318,11 +333,11 @@ Starting from a blank compilation, click the `+` toolbar options and paste in th
 }
 ```
 
-Looking at the JSON we see the `actions` property, contains `onClick` which is the name of the trigger we want to respond to. `onClick` in turn is assigned an action object of type `notify`. The effect of all this is that when you click on the text, a "notification" is pop up in the top right corner of the workspace, displaying the widget's name: "Simple Text".
+From the JSON we see the `actions` property, contains `onClick` which is the name of the trigger we want to respond to. `onClick` in turn contains an action object of type `notify`. The effect of all this is that when you click on the text, a "notification" is pop up in the top right corner of the workspace, displaying the widget's name: "Simple Text".
 
 ![onClick](../assets/images/webstudio-onclick.png)
 
-In this example, none of the options available to customise the `notify` action have been used. Refer to the [Actions](../ReferenceDocs/actions/README.md#notify) help pages for a full list of all the available settings. 
+In this example, none of the settings available to customize the `notify` action have been used. Refer to the [Actions](../ReferenceDocs/actions/README.md#notify) help pages for a full list of all the available options. 
 
 ### Messages
 One very important aspect of the way actions work is that they all receive a `Message` object as input, which in turn will always have at least one property called `payload`. The content of the payload field is populated by the widget which triggered the action. It initializes the payload with values from its current state. We'll come back to this in more detail, but let's first see the `Message` in action.
@@ -397,13 +412,13 @@ Notice that in addition to a `payload` property we also have a `model` property 
 
 Knowing the structure of the message, the earlier `set` statement hopefully starts making sense. In short, it states that the background color of the widget called "indicator" should be set to the text value of the clicked widget. 
 
-- `"name"`: "model.options.style.backgroundColor" refers to the name of the property that will be modified by the action in dot-notation. In this case we are setting the widget background color.
+- `"name"`: "model.options.style.backgroundColor" refers to the name of the property, in the target widget, that will be modified by the action in dot-notation. In this case we are setting the widget background color.
 - `"value"`: "$payload" assigns the value of the message `payload` to the background property. The `$` in front of the field indicates that we need to resolve the value of the field as opposed to assigning the string "payload".   
 
 ### Named actions 
-There is one optimization that would be good to make and is probably a useful in general... Looking at the `actions` for the red and green buttons, it is clear that both are doing exactly the same thing. If we decide, for example, that the action should also set the text of the indicator in some way, the change would need to be applied in both places. 
+As things stand, the `actions` configuration for both the red and green buttons are identical. If we decide, for example, that the `onClick` behavior should also set the text of the indicator in some way, the change would need to be applied in both places. As a general principle this is something we'd like to avoid. It would be better if the click behavior could be defined somewhere centrally from where either of the widgets could invoke it when clicked. 
 
-We can avoid this, by creating our own ["named"](../ReferenceDocs/actions/README.md#action) action at the compilation level and have the red and green widgets use it instead. Here is how this works.
+We can do just that, by creating a ["named"](../ReferenceDocs/actions/README.md#action) action at the compilation level and have the red and green widgets use it instead of their current local settings. Here is how this works.
 
 - Start by copying the actions section of either the "red" or "green" Text widgets into the compilation model as shown. Notice that the name of the trigger was changed from `onClick` to `myClickAction`. By doing this, we are not creating a new trigger, but defining a named action sequence that can be invoked as an atomic action. (You can chose any name as long it differs from the pre-defined hooks)
 
@@ -440,7 +455,7 @@ We can avoid this, by creating our own ["named"](../ReferenceDocs/actions/README
     ...
 }
 ```
-The reason this works is because when the `onClick` hook triggers, it passes a message to the local `action` containing the payload of the source widget (the text in this case). It hands the message down to `myClickAction`, from where the same modifications as before are applied.
+The reason this works is because when the `onClick` hook triggers, it passes a message to the local `action` containing the payload of the source widget (the text in this case). It in turn hands the message down to `myClickAction`, from where the same modifications as before are applied.
 
 > **Note**: Named action are scoped to the widget that declared them or, as in this case, to the compilation as a whole.  In the latter case all the widgets in that compilation have access to the named action.
 
@@ -577,7 +592,7 @@ To fix this, we need to transform the message payload received from the text wid
 To affect the change, we use a `transform` action. [transform](../ReferenceDocs/actions/README.md#transform) actions are a whole topic of their own, so we won't go into much detail here. What you need to know to follow the further discussion is this:
 
 - A `transform` action use [MongoDB aggregation pipeline](https://docs.mongodb.com/manual/meta/aggregation-quick-reference/) syntax to specify how the input message should be modified and returned as an output message to the next WebStudio action. 
-- Within the `transform` action the `aggregateOne` field contains an array of MongoDB pipeline stages that are daisy chained to achieve the desired output, in the same way the WebStudio action pipeline works. 
+- Within the `transform` action the `aggregateOne` field contains an array of MongoDB pipeline stages that are daisy chained to achieve the desired output, in the same way the WebStudio action pipeline do. 
 - For the purpose of this example, the ["$project"](https://docs.mongodb.com/manual/reference/operator/aggregation/project/#mongodb-pipeline-pipe.-project) stage is used. As the name suggests, it "projects" or maps fields from the input message to chosen fields in the output.
 - The output of the `transform` actions is applied to the payload field of the message.
 
@@ -615,7 +630,7 @@ Change the action definition in the compilation as shown:
 ]
 ```
 
-Notice that we move the debugger send action to be immediately after the transform actions, so we can inspect what the change looks like, which is: 
+Notice that we moved the debugger "send" action to be immediately after the transform actions, so we can inspect what the change looks like, which is: 
 
 ```json
 {
@@ -658,7 +673,7 @@ This behavior can be quite confusing at times, so for case sake of clarity, the 
 
 Moving the debugger `send` action to be after the `gettime` action, the output now looks a lot better. 
 
-The `$project` stage of the `transform` action has placed the color text, read from "$payload", into a new `color` field, and `getttime` has added the ISO time string next to it.
+The JSON below confirms that the `$project` stage of the `transform` action has placed the color text, read from "$payload", into a new `color` field, and `getttime` has added the ISO time string next to it.
  
 
 ```json
@@ -696,12 +711,12 @@ Clicking on the "Green" text results in:
 
 ![webstudio_toggle_time_with_color](../assets/images/webstudio_toggle_time_with_color.png)
 
-As a final flourish, before moving on to other things, let's fix up the formatting of the time-stamp in the status widget to be something like this:
+As a final flourish, before moving on, let's fix up the formatting of the time-stamp in the status widget to be something like this:
 
 ![webstudio_toggle_formatted_time](../assets/images/webstudio_toggle_formatted_time.png)
 For this, the transform action is once again the tool to use. 
 
-Add an additional `transform` action to the pipeline just after the `gettime` action as shown:
+Add this additional `transform` action to the pipeline just after the `gettime` action as shown:
 
 ```json
 {
@@ -757,7 +772,7 @@ Add an additional `transform` action to the pipeline just after the `gettime` ac
 },
 ```
 
-I know... this is a lot af transformation to convert from "2021-07-28T12:29:39.100Z" to "2021-07-28 13:29:39", and to be honest, it's not really that important to understand it all right now. If you are curious though, here is a quick rundown of what is going on in the `aggregateOne` section of the transform action:
+I know... this is a lot af transformation to convert from "2021-07-28T12:29:39.100Z" to "2021-07-28 13:29:39", and to be honest, it's not really that important to understand it all right now. If you are curious though, here is a quick rundown of what is going on in the `aggregateOne` section of this transformation:
 
 * We start by taking the ISO Date string received as input and convert it to a new field of type *Date*, adding it to the message in a field called `date`. 
     * The `$dateFromString` function is used to parse the incoming string. It takes a `dateString` input parameter and an optional `timezone` (set to +1hr in this case). 
@@ -766,10 +781,10 @@ I know... this is a lot af transformation to convert from "2021-07-28T12:29:39.1
 * With the input time string now conveniently converted to a *Date* object, we can project the required fields to the output message.
     * The `color` field is retained by retrieving it from "$payload.color"
     * A new `time` value is constructed by concatenating date and time strings together with a space between them using the `$concat` function.
-        * The Date and Time strings are generated by applying different format string to the the `data` field we added earlier.
+        * The Date and Time strings are generated using the `$dateToString` function which formats the *Date* object according to the options supplied.
 
-## Initial model vs. Work model
-We've covers quite a lot of ground so far, but there are a few topics that were deferred earlier we can now return to. 
+## Initial-model vs. Work-model
+We've covers quite a lot of ground so far and are almost there as far the WebStudio fundamentals go. The last topic we want to cover here is that of the "Work-Model"
 
 When the concept of messages with payload was introduced the statement was made that: *"The content of the payload field is populated by the widget which triggered the action. It initializes the payload with values from its current state"*
 
@@ -777,18 +792,23 @@ This suggests that widgets in the model have some initial state, that the state 
 
 When a compilation is created in WebStudio, it maintains this configuration in memory as the **Initial-Model**. Immediately after applying any such config, WebStudio becomes active, reading data from the backend and allowing user interaction with the UI. In so doing, it is possible to substantially modify the appearance and structure of the compilation and by extension the underlying model. 
 
-In order to ensure that none of these dynamics changes overwrite the compilation under construction, WebStudio makes a copy of the initial model, into the work-model, when the compilation loads. All runtime changes are applied to the work-model. 
+In order to ensure that none of these dynamics changes overwrite the compilation under construction, WebStudio makes a copy of the initial-model, into the work-model, when the compilation loads. All runtime changes are applied to the work-model. 
 
-The work-model can be inspected using the compilation and widgets editors. To see this n action, go back to the "red-green" sample from before and click on one of the buttons. Now load compilation in the edititor (click `{}`) and select ![diff](../assets/images/CompareModelsBtn.png)
+The work-model can be inspected using the compilation and widgets editors. To see this in action, go back to the "red-green" sample from before and click on one of the buttons which will apply a change to the work-model. Now load compilation in the editor (click `{}`) and select ![diff](../assets/images/CompareModelsBtn.png) on the editor toolbar
 
-verifyThe editor now shows the difference between the initial-model (on the left) and the work-model. The marks in the right margin highlight where the two models differ. This view is really useful while creating compilation. It allows us to verify if actions are having the expected effect and exactly what data is loaded from the core. 
+The editor now shows the difference between the initial-model (on the left) and the work-model. The marks in the right margin highlight where the two models differ. This view is really useful while creating compilation. It allows us to verify that actions work as expected and shows exactly what data is loaded from the core. 
 
 ![webstudio-compare-models](../assets/images/webstudio-compare-models.png)
 
-The initial and work models can be exported by clicking on the respected icons in the toolbar at the top of the frame.
+The initial and work-models can be exported by clicking on the respected icons in the toolbar at the top of the frame.
+
+## What next?
+Many of the topics discussed so far will likely only really start miking sense once you've tried to build some compilations of your own. 
+As with any new tool, it takes a bit of time to become acquainted with it, and WebStudio is no exception. 
+
+A set of [examples compilations](./compilations/README.md) is provided to help things along and hopefully answer some of the questions you might have while creating your own views.
 
 
-TODO: go back to the Lifecyle hook demo
 
 
 
