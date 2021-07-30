@@ -4,7 +4,7 @@ This section contains compilation examples. Navigate to specific widget compilat
 
 | Compilations | Documentation |
 | --- | --- |
-| [Action](./actions/README.md) | [Action](../../ReferenceDocs/actions/README.md#action)
+| [Action](./actions/README.md) | [Action](../../ReferenceDocs/actions/README.md#actions)
 | [Data Source](./datasource/README.md) | [Data Source](../../ReferenceDocs/widgets/README.md#datasource) |
 | [Batch Table](./batchtable/README.md) | [Batch Table](../../ReferenceDocs/widgets/batchtable/README.md)
 | [Chart](./chart/README.md) | [Chart](../../ReferenceDocs/widgets/chart/README.md)
