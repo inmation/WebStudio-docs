@@ -1,6 +1,6 @@
 # Action Compilation
 
-In this section you can find compilation examples of actions. Examples are showing how and to use specific actions.
+In this section you can find compilation examples of actions.
 
 | Examples | Description | Screenshot |
 | --- | --- | --- |
