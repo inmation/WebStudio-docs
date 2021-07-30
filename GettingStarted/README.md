@@ -2,7 +2,7 @@
 
 The aim of the "Getting Started" section is to convey the key WebStudio concepts and to, as far as possible, provide a more or less linear path to learning the tool. To get the best out of this guide, it is recommended that you work along and try things out for yourself. To do so, you'll need access to a running inmation instance and have login credentials to connect to the core. Also make sure you have installed the `Examples_WebStudio_Demo_Data_V<n.nn>.json` as described on the [WebStudio root](../README.md) page.
 
-Let's quickly recap the main points from earlier:
+Let's quickly recap a few main points:
 
 - The WebStudio application is used to host interactive views, called [compilations](../ReferenceDocs/README.md#compilation), made up of one or more widgets.
 - The application runs in your browser of choice and is loaded using a URL that looks something this
@@ -22,8 +22,6 @@ To get us going, we'll create a "Hello World" compilation, consisting of a singl
 
 The work area or canvas starts off divided into a rectangular grid of 24 columns across. When placing widgets onto the canvas they will always align to the grid and their sizes will be multiples of the grid vertical and horizontal spacing. 
 
-> **Note**: Change the number of gid columns to use early on in you compilation configuration cycle to avoid having to manually reside a large number of widgets. Remember that with a finer grid, you can place widget more precisely.  
-
 As mentioned, compilations are defined using JSON text, which can seem a bit daunting at first. While the [syntax](https://www.json.org) is not too hard to follow, knowing what structure and parameter to use is not immediately obvious. Fortunately the built-in templates and editor code-completion take care of a lot of the heavy lifting for us, and if all else fails, there is always the online documentation to fall back on.
 
 Click on the **`{}`** icon in the toolbar to show the compilation in the JSON editor. 
@@ -42,6 +40,13 @@ The initial JSON for a blank compilation looks something like this.
     }
 }
 ```
+
+The fields in the object have the following meaning:
+* `version`: This is added to cater for possible future implementations where the structure of the model changes and needs to be interpreted differently. At present, the version should always be "1"
+* `widgets`: Initially, while the compilation is blank, the `widgets` array is empty. It gets populated with JSON objects as widgets are added. 
+* `options`: This is an important element of the model. It defines how widgets are arranged, their minimum sizes and how precisely they can be placed on the canvas. 
+
+> **Note**: Change the number of grid columns early on in you compilation configuration cycle to provide enough resolution to place widgets where you want them. With a finer grid you can place widgets more precisely.  
 
 The default [options](../ReferenceDocs/README.md#options) are set such that any widgets added to the compilation will be stacked vertically, starting at the top of the window. For our first example, we'd like to put the text box in the middle of the canvas, so let's change the `stacking` property. Delete the `"vertical"` setting, press **Control-Space** to bring up a list of valid stacking options, then select `"none"` which will allow widgets to be place in any grid cells on the screen. 
 
