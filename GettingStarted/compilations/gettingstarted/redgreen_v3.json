@@ -1,6 +1,38 @@
 {
     "version": "1",
-    "name": "redgreen_v1",
+    "name": "redgreen_v3",
+    "actions": {
+        "myClickAction": [
+            {
+                "type": "send",
+                "to": "debugger"
+            },
+            {
+                "type": "gettime",
+                "set": [
+                    {
+                        "name": "time",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "type": "modify",
+                "id": "indicator",
+                "debug": true,
+                "set": [
+                    {
+                        "name": "model.options.style.backgroundColor",
+                        "value": "$payload"
+                    },
+                    {
+                        "name": "model.text",
+                        "value": "$payload.time"
+                    }
+                ]
+            }
+        ]
+    },
     "widgets": [
         {
             "type": "text",
@@ -16,15 +48,8 @@
             },
             "actions": {
                 "onClick": {
-                    "type": "modify",
-                    "id": "indicator",
-                    "debug": true,
-                    "set": [
-                        {
-                            "name": "model.options.style.backgroundColor",
-                            "value": "$payload"
-                        }
-                    ]
+                    "type": "action",
+                    "name": "myClickAction"
                 }
             },
             "id": "redButton",
@@ -50,15 +75,8 @@
             },
             "actions": {
                 "onClick": {
-                    "type": "modify",
-                    "id": "indicator",
-                    "debug": true,
-                    "set": [
-                        {
-                            "name": "model.options.style.backgroundColor",
-                            "value": "$payload"
-                        }
-                    ]
+                    "type": "action",
+                    "name": "myClickAction"
                 }
             },
             "id": "greenButton",
@@ -91,6 +109,20 @@
                 "h": 2,
                 "y": 0,
                 "static": true
+            }
+        },
+        {
+            "type": "messagedebugger",
+            "name": "Message Debugger",
+            "description": "Message Debugger",
+            "id": "debugger",
+            "captionBar": false,
+            "layout": {
+                "x": 6,
+                "w": 5,
+                "h": 4,
+                "y": 0,
+                "static": false
             }
         }
     ],
