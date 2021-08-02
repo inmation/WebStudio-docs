@@ -216,7 +216,7 @@
                     "backgroundColor": "transparent"
                 }
             },
-            "id": "7IMS",
+            "id": "clearBtn",
             "layout": {
                 "x": 0,
                 "w": 4,
@@ -388,7 +388,7 @@
                 "y": 2,
                 "static": false
             },
-            "id": "eGrb"
+            "id": "propertiesForm"
         }
     ],
     "options": {

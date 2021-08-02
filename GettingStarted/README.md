@@ -307,7 +307,7 @@ These are the available lifecycle hooks:
 - `willFetch` / `didFetch` : Indicates that values for data bindings of type "read" will be retrieved from the backend. These hooks are triggered inside the will/did refresh. 
 - `willRefresh` / `didRefresh` : The refresh life cycle is triggered when data from the backend needs to be fetched and the UI updated. It brackets the fetch and update phases. In other words, the refresh life cycle looks like this: `willRefresh`, `willFetch`, `didFetch`, `willUpdate`, `didUpdate`,`didRefresh`
 
-> **Something to try:** Take a peek at the sample compilation which demonstrates the sequencing of the [lifecycle hooks](./compilations/gettingstarted/lifecycle-hook-demo.json). It relies on some WebStudio features we are yet to cover, so the explanation of how it works may still be a bit opaque at this stage... We'll return to that a little later.      
+> **Something to try:** Take a peek at the sample compilation which demonstrates the sequencing of the [lifecycle hooks](./compilations/gettingstarted/lifecycle-hook-demo.json). It relies on some WebStudio features we are yet to cover, so the explanation of how it works may still be a bit opaque at this stage... We'll return to that a [little later](#loose-ends).      
 
 ### Action Hooks
 Depending on the widget, there are also action-hooks that are triggered when a user interacts with the widget in some way, such as clicking on it for examples or submitting a form. 
@@ -808,6 +808,201 @@ Many of the topics discussed so far will likely only really start miking sense o
 As with any new tool, it takes a bit of time to become acquainted with it, and WebStudio is no exception. 
 
 A set of [examples compilations](./compilations/README.md) is provided to help things along and hopefully answer some of the questions you might have while creating your own views.
+
+## Loose ends
+Earlier, when the lifecycle hooks were introduced, a demo compilation was linked with a promise to return to the explanation of what it does, and what it intends to illustrate, so here we are ... 
+
+Below is a screenshot of the running compilation.
+
+![webstudio-lifecycle-hooks.png](../assets/images/webstudio-lifecycle-hooks.png)
+
+From left to right and top to bottom it shows the following widgets:
+
+* **Simple Text** (id=ActionBtn) widget which, when clicked, calls `modify` to change the text of "Text1" to **"Was Modified"**. 
+
+* **Text1: Data Bound text** (id=Text1) is the target widget. It is bound to a tag in the back-end where it gets the initial value from. To start with, the `dataSource` type is set to **"read"**. It also has an `actions` section, which attaches to all the available lifecycle hooks and outputs a time-stamp and event name when triggered, thus allowing the sequence of triggers to be visualized. Each of the lifecycle triggers causes a named "log" action, declared at compilation level, to be called.
+
+* **Form with buttons**: (id=propertiesForm) The form is used to change parameters that affect which life-cycle hooks are triggered and how the data bound widget behaves.
+
+    * **Modify-action with refresh**: The selected setting here is applied to the `refresh` field of the `modify` action declared on the "ActionBtn" text widget. When `refresh` is set to true ("yes" is selected), the `willRefresh` / `didRefresh` hooks will be forcibly triggered.
+
+    * **dataSource**: The selected setting is applied to Text1's `dataSource.type` field. 
+
+* **"Log of hooks invoked on Text1"**: (id=log) Shows which hooks have been triggered in response to onClick and onSubmit.
+
+* **"Clear Log"**: (id=clearBtn) Clickable text widget to clear the content of the log text.
+
+Take a look at the model JSON of each of the widgets to see exactly how they have been configure. The **onSubmit** action pipeline of the form is probably the hardest to follow and warrant some explanation:
+
+The first transformation action:
+```json 
+{
+    "type": "transform",
+    "aggregateOne": [
+        {
+            "$project": {
+                "k": "$id",
+                "v": "$value"
+            }
+        },
+        {
+            "$group": {
+                "data": "$$ROOT"
+            }
+        },
+        {
+            "$project": {
+                "data": {
+                    "$arrayToObject": "$data"
+                }
+            }
+        }
+    ]
+},
+```
+
+takes the form message payload, which looks like this (with the default settings in place)
+
+```json
+{
+    "payload": [
+        {
+            "id": "button_refresh",
+            "value": 0
+        },
+        {
+            "id": "button_dataSource",
+            "value": "read"
+        }
+    ]
+}
+```
+
+and creates a new payload with a named field for each of the form items. 
+
+It does this by using three MondoDB stages:
+
+```"$project": { "k": "$id", "v": "$value" }``` produces:
+
+```json
+[
+    {
+        "k": "button_refresh",
+        "v": 0
+    },
+    {
+        "k": "button_dataSource",
+        "v": "read"
+    }
+]
+```
+
+then ```"$group": { "data": "$$ROOT" }``` takes us to:
+
+```json
+{
+    "data": [
+        {
+            "k": "button_refresh",
+            "v": 0
+        },
+        {
+            "k": "button_dataSource",
+            "v": "read"
+        }
+    ]
+}
+```
+
+and last but not least, ``` "$project": { "data": { "$arrayToObject": "$data"}}``` uses the $arrayToObject function to combine the array elements from the previous step into a single object like this:
+
+```json
+{
+    "payload": {
+        "data": {
+            "button_refresh": 0,
+            "button_dataSource": "read"
+        }
+    }
+}
+```
+
+The reason for doing this transformation is that it allows us to reference the form fields by name rather than be array-index. The latter is more likely to change if we were to add extra fields into the form. While not strictly required in this scenario, it is generally speaking good practice to avoid referencing widgets and properties by index where possible.
+
+OK, with the transformed payload in hand, the next action in the pipeline sets the "Text1" `dataSource` type the value of `button_dataSource`
+
+```json
+{
+    "type": "modify",
+    "id": "text1",
+    "set": [
+        {
+            "name": "model.dataSource.type",
+            "value": "$payload.data.button_dataSource"
+        }
+    ]
+},
+```
+
+The next action is another transformation, which converts the value of the `button_refresh` property from a number (0 or 1 in this case) to a boolean (false or true). 
+
+```json
+{
+    "type": "transform",
+    "aggregateOne": [
+        {
+            "$project": {
+                "button_refresh": {
+                    "$cond": {
+                        "if": {
+                            "$gt": [
+                                "$data.button_refresh",
+                                0
+                            ]
+                        },
+                        "then": true,
+                        "else": false
+                    }
+                }
+            }
+        }
+    ]
+},
+```
+The message transformed by this action looks like:
+
+```json
+{
+    "payload": {
+        "button_refresh": false
+    }
+}
+```
+
+The last action in the pipeline then applies the value of `button_refresh` to the `refresh` field of the actionBtn.
+
+```json
+{
+    "type": "modify",
+    "id": "ActionBtn",
+    "set": [
+        {
+            "name": "model.actions.onClick.1.refresh",
+            "value": "$payload.button_refresh"
+        }
+    ]
+}
+```
+
+To close things out, we'll examine the output generated with the various options set. To try them out, adjust to form to select the desired combination of settings and clicking "Submit". Then clear the log, click on the actionBtn and analyse the output.
+
+* Load Behavior: immediately after loading the compilation. as we might expect, `didLoad` was triggered along with fetch and update hooks.
+
+* `ActionBtn.actions.onClick.1.refresh` = false and `Text1.dataSource.type` = "read". After clicking the actionBtn, Text1's value changed to "Was Modified" and the update hooks fire. As noted earlier, if a dataSource is set to "Read" the value pointed to by the path is only read when a `refresh` is triggers. In this case it is not, so the value of the text is overwritten in the UI.
+
+* `ActionBtn.actions.onClick.1.refresh` = true and `Text1.dataSource.type` = "read". Even though the click action on the actionBtn sets the Text1's text value, the widget still displays the numeric value of the tag it is bound to. The forced refresh causes a data fetch to be invoked.
+
+* `ActionBtn.actions.onClick.1.refresh` = false and `Text1.dataSource.type` = "subscribe". After clicking the actionBtn, Text1's value changed to "Was Modified" and the update hooks fire. After a short while though, the tag value is re-displayed caused by the dataSource type being "subscribe" and the underlying tag having been updated in the backend. The "update" lifecycle hooks are also triggered.
 
 
 
