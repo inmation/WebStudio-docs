@@ -19,6 +19,7 @@ Let's quickly recap a few main points:
 To get us going, we'll create a "Hello World" compilation, consisting of a single text widget placed in the middle of the workspace. Load the application and make sure you are logged into the back end. At this point you should see the workspace with the developer toolbar icons displayed at the top. 
 
 ![WebStudio - Menubar](../assets/images/webstudio-menubar.png)
+
 (**Note**: The application and web-studio version numbers that normally appear next to the inmation logo have been obscured in the screenshots)
 
 The work area or canvas starts off divided into a rectangular grid of 24 columns across. When placing widgets onto the canvas they will always align to the grid and their sizes will be multiples of the grid vertical and horizontal spacing. 
