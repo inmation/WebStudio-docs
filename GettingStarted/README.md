@@ -929,7 +929,7 @@ and last but not least, ``` "$project": { "data": { "$arrayToObject": "$data"}}`
 
 The reason for doing this transformation is that it allows us to reference the form fields by name rather than be array-index. The latter is more likely to change if we were to add extra fields into the form. While not strictly required in this scenario, it is generally speaking good practice to avoid referencing widgets and properties by index where possible.
 
-OK, with the transformed payload in hand, the next action in the pipeline sets the "Text1" `dataSource` type the value of `button_dataSource`
+OK, with the transformed payload in hand, the next action in the pipeline sets the "Text1" `dataSource` type to the value of `button_dataSource`
 
 ```json
 {
@@ -944,7 +944,7 @@ OK, with the transformed payload in hand, the next action in the pipeline sets t
 },
 ```
 
-The next action is another transformation, which converts the value of the `button_refresh` property from a number (0 or 1 in this case) to a boolean (false or true). 
+After that comes another transformation, which converts the value of the `button_refresh` property from a number (0 or 1 in this case) to a boolean (false or true). 
 
 ```json
 {
