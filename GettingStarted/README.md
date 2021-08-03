@@ -1,6 +1,6 @@
 # Getting Started
 
-The aim of the "Getting Started" section is to convey the key WebStudio concepts and to, as far as possible, provide a more or less linear path to learning the tool. To get the best out of this guide, it is recommended that you work along and try things out for yourself. To do so, you'll need access to a running inmation instance and have login credentials to connect to the core. Also make sure you have installed the `Examples_WebStudio_Demo_Data_V<n.nn>.json` as described on the [WebStudio root](../README.md) page.
+The aim of the "Getting Started" section is to convey the key WebStudio concepts and to, as far as possible, provide a more or less linear path to learning the tool. To get the best out of this guide, it is recommended that you work along and try things out for yourself. To do so, you will need access to a running inmation instance and have login credentials to connect to the core. Also make sure you have installed the `Examples_WebStudio_Demo_Data_V<n.nn>.json` as described on the [WebStudio root](../README.md) page.
 
 Let's quickly recap a few main points:
 
@@ -44,13 +44,13 @@ The initial JSON for a blank compilation looks something like this.
 ```
 
 The fields in the object have the following meaning:
-* `version`: This is added to cater for possible future implementations where the structure of the model changes and needs to be interpreted differently. At present, the version should always be "1"
+* `version`: This is added to cater for possible future implementations which would require WebStudio to interpret the  compilation configuration differently. At present, the version should always be "1"
 * `widgets`: Initially, while the compilation is blank, the `widgets` array is empty. It gets populated with JSON objects as widgets are added. 
-* `options`: This is an important element of the model. It defines how widgets are arranged, their minimum sizes and how precisely they can be placed on the canvas. 
+* `options`: This is an important configuration element and, as the name suggests, is used to control various options of the overall compilations. For example, it defines how widgets are arranged, their minimum sizes and how precisely they can be placed on the canvas. There are also optional settings to modify the background color and image of the main canvas.
 
 > **Note**: Change the number of grid columns early on in you compilation configuration cycle to provide enough resolution to place widgets where you want them. With a finer grid you can place widgets more precisely.  
 
-The default [options](../ReferenceDocs/README.md#options) are set such that any widgets added to the compilation will be stacked vertically, starting at the top of the window. For our first example, we'd like to put the text box in the middle of the canvas, so let's change the `stacking` property. Delete the `"vertical"` setting, press **Control-Space** to bring up a list of valid stacking options, then select `"none"`. Widgets can now be place in any grid cells on the screen. 
+The default [options](../ReferenceDocs/README.md#options) are set such that any widgets added to the compilation will be stacked vertically, starting at the top of the window. For our first example, we'd like to put the text box in the middle of the canvas, so let's change the `stacking` property. Delete the `"vertical"` setting, press **Control-Space** to activate the editor code-completion and bring up a list of valid stacking options, then select `"none"`. Widgets can now be place in any grid cells on the screen. 
 
 > **Note**: It is recommended that you name your compilations as a matter of course by adding a `name` field to it and assigning a value that reflects the "purpose" of the compilation. This ensures that when the JSON is exported (![Export](../assets/images/SmallSaveCompilationBtn.png)) to file it is easy to locate a specific one. Also remember to click the export button every now and then so you don't lose work if the browser page is re-loaded for some reason. 
 
@@ -78,13 +78,13 @@ Next we'll adjust the text widget to be two grid cells high and six wide. Move y
 ```json 
 "text": "Hello World", 
 ``` 
-and press the space bar. From the available options, select `layout`, which inserts a JSON fragment.
+and press the space bar. From the available options, select `layout`, which inserts a JSON fragment. The image below shows the text widget's JSON with the code-completion popup activated. 
 
 ![Text options](../assets/images/webstudio-code-completion.png)
 
 Press the space bar again to see the available `layout` fields and set `"h"=2,` and `"w"=6`. At this point the JSON formatting is out of kilter, which we can fix by clicking the format ![brush](../assets/images/FormatJSONToolBtn.png) icon at the top of the window. As a last refinement before adding the widget, let's change the text `color`. Place the cursor inside the current value (`"grey"`) of the `options.style.color` field and press **control-space** to pick a color.   
 
-> **Note**: Dot-notation is used as a shorthand to refer to nested properties in the JSON models as shown above. The notation is fairly self-explanatory. One special case worth mentioning more explicitly is when referring to objects in arrays. Consider the arbitrary JSON below:
+> **Note**: Dot-notation is used as a shorthand to refer to nested properties in the JSON models as shown above (`options.style.color`). The notation is fairly self-explanatory, essentially describing the sequence of properties to traverse from the parent object to an element contained within it. One special case worth mentioning more explicitly is when referring to objects in arrays. Consider the arbitrary JSON below:
 >```json
 >{
 >    "data": [
@@ -100,7 +100,7 @@ Press the space bar again to see the available `layout` fields and set `"h"=2,` 
 >}
 >```
 >
->To refer to the y-value of the second data point, the notation used is `data.1.y`
+>To refer to the y-value of the second data point, the notation used is `data.1.y`. In other words, elements are referenced by their zero-based index in the array.
 
 
 Apply the selection, by clicking on the save icon then drag the widget to the center of the canvas. 
@@ -145,9 +145,9 @@ Before moving to the next section here are a few things you can try on your own:
 >    }
 >}
 >```
->On the DataStudio side you might find that the actual path to the referenced tag is something like "/System/*INMATION-HOST-01*/Examples/Demo Data/Process Data/FC4711". To make the binding work in WebStudio all path values then need to be  updated by replacing occurrences of /core/ with the name used (such as *INMATION-HOST-01* in the example). 
+>The path used to access the "tag" information is determined by the setup on the server side. Using [DataStudio](https://inmation.com/docs/datastudio/latest/index.html), you can right-click on any node to copy its path from the popup menu. When you do this, you might find that the actual path to the referenced tag is something like "/System/*INMATION-HOST-01*/Examples/Demo Data/Process Data/FC4711" (since the default option when you install inmation is to use the hostname instead of "core") . To make the binding work in WebStudio all path values then need to be  updated by replacing occurrences of /core/ with the name used (such as *INMATION-HOST-01* in the example). 
 >
->In the editor press **^-F** (**⌘-F** on Mac) to show the **Find** option and enter the string to find.
+>In the editor press **ctrl-F** (**⌘-F** on Mac) to show the **Find** option and enter the string to find.
 >
 >![Find](../assets/images/webstudio-editor-find.png)
 >
@@ -227,9 +227,9 @@ When the `dataSource` type is set to `"read"` the value of the item pointed to b
 }
 ```
 
-> **NOTE** If you use this JSON, the tag value is shown with many decimals. This can be changed as is sown in this [example](./compilations/text/text-subscribe-01.json). 
+> **NOTE** If you use this JSON, the tag value is shown with many decimals. This can be changed as is shown in this [example](./compilations/text/text-subscribe-01.json). 
 
-The `"read"` dataSource type is therefore more often used for properties, such as the number of decimals on the tag or the engineering units, that tend to be static. (The engineering units can be read by appending the property name to the path as show)
+The `"read"` dataSource type is therefore more often used for properties, such as the number of decimals on the tag or the engineering units, that tend to be static. The engineering units can be read by appending the property name to the path as shown
 
 ```json
     {
@@ -463,9 +463,11 @@ The reason this works is because when the `onClick` hook triggers, it passes a m
 ### Pipelines
 The next key concept to introduce is that of the action **pipeline**. When a specific hook, such as `onClick`, triggers a sequence of actions can be called one after another to perform complex tasks. This is referred to as a pipeline due to they way in which messages are taken in by each action in the sequence and passed down to the next one along. 
 
+The content of the outbound message depends on what the action does to it. Many actions can enrich the incoming message with extra fields to be used by those further down the chain. Depending on the action information can be read from the compilation and widget models, or changes can be applied to them.
+
+
 ![acionPipeline](../assets/images/ActionPipeline.png)
 
-The content of the outbound message depends on what the action does to it. Many actions can enrich the incoming message with extra fields to be used by those further down the chain. 
 
 To see how this works, we'll modify the earlier example to display the time when the button was pressed in the status Text widget.
 
@@ -590,9 +592,9 @@ To fix this, we need to transform the message payload received from the text wid
 
 `color` is the name chosen for the text property, but any name will do.
 
-To affect the change, we use a `transform` action. [transform](../ReferenceDocs/actions/README.md#transform) actions are a whole topic of their own, so we won't go into much detail here. What you need to know to follow the further discussion is this:
+To effect the change, we use a `transform` action. [Transform](../ReferenceDocs/actions/README.md#transform) actions are a whole topic in their own right, so we won't go into much detail here. What you need to know to follow the further discussion is this:
 
-- A `transform` action use [MongoDB aggregation pipeline](https://docs.mongodb.com/manual/meta/aggregation-quick-reference/) syntax to specify how the input message should be modified and returned as an output message to the next WebStudio action. 
+- A `transform` action uses [MongoDB aggregation pipeline](https://docs.mongodb.com/manual/meta/aggregation-quick-reference/) syntax to specify how the input message should be modified and returned as an output message to the next WebStudio action. 
 - Within the `transform` action the `aggregateOne` field contains an array of MongoDB pipeline stages that are daisy chained to achieve the desired output, in the same way the WebStudio action pipeline do. 
 - For the purpose of this example, the ["$project"](https://docs.mongodb.com/manual/reference/operator/aggregation/project/#mongodb-pipeline-pipe.-project) stage is used. As the name suggests, it "projects" or maps fields from the input message to chosen fields in the output.
 - The output of the `transform` actions is applied to the payload field of the message.
@@ -641,7 +643,7 @@ Notice that we moved the debugger "send" action to be immediately after the tran
 }
 ```
 
-While this output is exactly what we want, it is actually somewhat surprising that the new field is placed inside a "payload" object as opposed to being at the message level as shown below. There is afterall no mention of a `payload` field in the "project" statement!? 
+While this output is exactly what we want, it is actually somewhat surprising that the new field is placed inside a "payload" object as opposed to being at the message level as shown below. There is after all no mention of a `payload` field in the "project" statement!? 
 
 ```json
 {
@@ -651,7 +653,7 @@ While this output is exactly what we want, it is actually somewhat surprising th
 
 The reason for this is that WebStudio intervenes, as mentioned in the last bullet-point above, and places the output of the transform action into the message payload... **unless** the output from the action is already contained in a field called "payload". 
 
-This behavior can be quite confusing at times, so for case sake of clarity, the transformation is changed as shown below. Here, the payload field is explicitly added to the `$project` statement. The output this produces is exactly the same as we had before but at least it is now clear why this is the case... 
+We could sidestep the "automatic payload" behavior if we wanted to by changing the transformation as shown below. Here, the payload field is explicitly added to the `$project` statement. The output this produces is exactly the same as we had before... 
 
 
 ```json
@@ -674,7 +676,7 @@ This behavior can be quite confusing at times, so for case sake of clarity, the 
 
 Moving the debugger `send` action to be after the `gettime` action, the output now looks a lot better. 
 
-The JSON below confirms that the `$project` stage of the `transform` action has placed the color text, read from "$payload", into a new `color` field, and `getttime` has added the ISO time string next to it.
+The JSON below confirms that the `$project` stage of the `transform` action has placed the color text, read from "$payload", into a new `color` field, and `gettime` has added the ISO time string next to it.
  
 
 ```json
@@ -773,7 +775,7 @@ Add this additional `transform` action to the pipeline just after the `gettime` 
 },
 ```
 
-I know... this is a lot af transformation to convert from "2021-07-28T12:29:39.100Z" to "2021-07-28 13:29:39", and to be honest, it's not really that important to understand it all right now. If you are curious though, here is a quick rundown of what is going on in the `aggregateOne` section of this transformation:
+I know... this is a lot of transformation to convert from "2021-07-28T12:29:39.100Z" to "2021-07-28 13:29:39", and to be honest, it's not really that important to understand it all right now. If you are curious though, here is a quick rundown of what is going on in the `aggregateOne` section of this transformation:
 
 * We start by taking the ISO Date string received as input and convert it to a new field of type *Date*, adding it to the message in a field called `date`. 
     * The `$dateFromString` function is used to parse the incoming string. It takes a `dateString` input parameter and an optional `timezone` (set to +1hr in this case). 

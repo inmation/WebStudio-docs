@@ -14,6 +14,37 @@
                 "type": "fetch",
                 "path": "/System/Core/Examples/WebStudio/BPR"
             },
+            "actions": {
+                "didLoad": [
+                    {
+                        "type": "gettime",
+                        "set": [
+                            {
+                                "name": "starttime",
+                                "value": "*-7d"
+                            },
+                            {
+                                "name": "endtime",
+                                "value": "*"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "modify",
+                        "id": "self",
+                        "set": [
+                            {
+                                "name": "model.starttime",
+                                "value": "$payload.starttime"
+                            },
+                            {
+                                "name": "model.endtime",
+                                "value": "$payload.endtime"
+                            }
+                        ]
+                    }
+                ]
+            },
             "table": {
                 "schema": [
                     {
@@ -44,9 +75,9 @@
             },
             "id": "CId7",
             "layout": {
-                "w": 8,
-                "h": 8,
                 "x": 0,
+                "w": 24,
+                "h": 15,
                 "y": 0,
                 "static": false
             }
