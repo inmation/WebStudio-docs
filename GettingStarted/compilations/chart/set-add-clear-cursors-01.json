@@ -56,7 +56,7 @@
                 ],
                 "x_axis": [
                     {
-                        "end_time": "2021-02-16T13:51:24.000Z",
+                        "end_time": "*",
                         "grid": false,
                         "id": 1,
                         "intervals_no": 100,
@@ -69,7 +69,7 @@
                             "start": 0,
                             "value": 1
                         },
-                        "start_time": "2021-02-16T12:51:24.000Z",
+                        "start_time": "*-1h",
                         "themes": {
                             "dark": {
                                 "color": "white"
@@ -137,7 +137,7 @@
                             "topic": "setCursors",
                             "payload": [
                                 {
-                                    "timestamp": 1613480658185
+                                    "timestamp": "*-40m"
                                 }
                             ]
                         }
@@ -166,10 +166,10 @@
                             "topic": "addCursors",
                             "payload": [
                                 {
-                                    "timestamp": 1613481658185
+                                    "timestamp": "*-25m"
                                 },
                                 {
-                                    "timestamp": 1613482658185
+                                    "timestamp": "*-15m"
                                 }
                             ]
                         }
