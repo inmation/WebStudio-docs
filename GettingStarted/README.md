@@ -299,7 +299,7 @@ As we've seen so far, WebStudio takes JSON models and uses these to work out wha
 ### Life cycle hooks
 Webstudio provides life cycle hook to allow us to react to the start and end of each of the phases (don't worry if that statement doesn't make 100% sense yet, things should become clearer in a bit). 
 
-Most of the [life cycle hooks](../referencedocs/widgets/readme.md#life-cycle-hooks) come in pairs which are triggered once before the relevant processing happens and after it has completed. The didLoad hook is the exception. 
+Most of the [life cycle hooks](../referencedocs/widgets/README.md#life-cycle-hooks) come in pairs which are triggered once before the relevant processing happens and after it has completed. The didLoad hook is the exception. 
 
 These are the available lifecycle hooks:
 - `didLoad` : A compilation was loaded. This happens when the compilation is loaded from disk or the backend using a URL, but also when edited. 
@@ -690,7 +690,7 @@ The JSON below confirms that the `$project` stage of the `transform` action has 
 
 
 
-OK, but our target status background is still not updated. All that remains is to fix up the `modify` action to retrieve the color setting from the correct location in the message payload. Update the action pipeline in your [compilation (v4)](redgreen_v4.json) as shown:
+OK, but our target status background is still not updated. All that remains is to fix up the `modify` action to retrieve the color setting from the correct location in the message payload. Update the action pipeline in your [compilation (v4)](./compilations/gettingstarted/redgreen_v4.json) as shown:
 
 ```json
 {
