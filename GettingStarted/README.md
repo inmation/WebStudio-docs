@@ -130,7 +130,7 @@ Before moving to the next section here are a few things you can try on your own:
 > **Things to try**:
 > - Add one instance of each of the templated widgets to your compilation,  to get an impression of what they look like. 
 >
->> **Note** Most of the template widgets are pre-configured to bind to the example demo data mentioned above so they can show actual values. If your inmation system was installed to use the host machine name as the name of the "Core" node in the IO-Model, you will need to update the bindings in the widgets config. (We'll return to the topic of [data-binding](#data-binding) in a bit more detail below)
+>> **Note** Most of the template widgets are pre-configured to bind to the example demo data mentioned above so they can show actual values. If your inmation system was installed to use the host machine name as the name of the "Core" node in the IO-Model, you will need to update the bindings in the widgets config. (We'll return to the topic of [data-binding](#displaying-inmation-data) in a bit more detail below)
 >
 > For example: If you add the `Faceplate` templates for tag `FC4711`, its default model JSON looks like this:
 >```json
