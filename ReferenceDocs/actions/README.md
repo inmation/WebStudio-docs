@@ -1178,7 +1178,7 @@ The value parameter `v` will be a number for most tags and is the only mandatory
 
 If the timestamp field `t` is omitted, the current time is assumed by the core. If present, `t` must be expressed as an ISO UTC string. 
 
-Is would be rare to supply a quality value `q` explicitly, but the option is available. The parameter can be omitted in most cases in which case 0 (GOOD) is assumed. 
+It would be rare to supply a quality value `q` explicitly, but the option is available. The parameter can be omitted in most cases in which case 0 (GOOD) is assumed. 
 
 #### Return Message
 The `write` action return message, which can be passed to the a subsequent action in a pipeline, is dependent on which parameters were supplied to it 
