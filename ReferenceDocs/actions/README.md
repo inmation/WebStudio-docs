@@ -1167,7 +1167,14 @@ Example:
 }
 ```
 
-The value parameter `v` will be a number for most tags and is the only mandatory variable. 
+The value parameter `v` will be a number for most tags and is the only mandatory variable. It may be specified explicitly as shown above, or can be set as the value of the payload itself as shown below. In the latter case, `t` and `q` cannot be set
+
+```json
+// Value supplied as the payload
+{
+    "payload": 79
+}
+```
 
 If the timestamp field `t` is omitted, the current time is assumed by the core. If present, `t` must be expressed as an ISO UTC string. 
 
