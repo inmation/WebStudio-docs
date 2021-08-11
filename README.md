@@ -1,13 +1,13 @@
 # WebStudio
 
-WebStudio is a Web App that allows you to compile a dashboard of dynamic responsive [widgets](./referencedocs/widgets/README.md) to visualize the data from your inmation system in a web browser. WebStudio uses the [Web API](https://inmation.com/docs/api/latest/webapi/index.html) to retrieve data from the system and allows access to your data from anywhere with an internet connection.
+WebStudio is a Web App that allows you to compile a dashboard of dynamic responsive [widgets](./ReferenceDocs/widgets/README.md) to visualize the data from your inmation system in a web browser. WebStudio uses the [Web API](https://inmation.com/docs/api/latest/webapi/index.html) to retrieve data from the system and allows access to your data from anywhere with an internet connection.
 
 >To begin using WebStudio immediately it is recommended that you create the WebStudio Demo Data objects in your system using the
 `Examples_WebStudio_Demo_Data_V<n.nn>.json` MassConfig file available on the [JumpStart Resources page](https://inmation.com/docs/jumpstarts/latest/resources.html). Import the JSON file into a [MassConfig display](https://inmation.com/docs/datastudio/latest/displays-hands-on/working-with-massconfig.html) and click \[Apply\] to create the objects. This will give you a good starting point to begin creating widgets in the workspace.
 
 ## Launching WebStudio and Authentication
 
-Like the other [Web Apps](https://inmation.com/docs/webapps/latest/general/index.html), WebStudio connects to the system through the [Web API](https://inmation.com/docs/api/latest/webapi/index.html). To launch the application, open a web browser and enter the url containing the hostname of the Web API you wish to connect to and the port (default is 8002. All connection options can be found [here](./referencedocs/README.md)
+Like the other [Web Apps](https://inmation.com/docs/webapps/latest/general/index.html), WebStudio connects to the system through the [Web API](https://inmation.com/docs/api/latest/webapi/index.html). To launch the application, open a web browser and enter the url containing the hostname of the Web API you wish to connect to and the port (default is 8002. All connection options can be found [here](./ReferenceDocs/README.md)
 
 ```url
     http://<hostname_webapi>:<port>/apps/webstudio/
@@ -45,7 +45,7 @@ Once you have successfully signed in, the WebStudio will open with an empty mode
 
 ![WebStudio - Menubar](./assets/images/webstudio-menubar.png)
 
-The icons in the menubar are used to create and edit views. Views/dashboards are generally referred to as [compilations](./referencedocs/readme.md#compilation) in inmation.
+The icons in the menubar are used to create and edit views. Views/dashboards are generally referred to as [compilations](./ReferenceDocs/readme.md#compilation) in inmation.
 
 | Icon | Function |
 |---|---|
@@ -88,4 +88,4 @@ The following additional tools are available in the widget editor when loaded fr
 | ![Compare Work Model](./assets/images/CompareModelsBtn.png) | Compare the current configuration to the "Work model". More about this when we get to "Debugging" |
 | ![Delete widget](./assets/images/DeleteWidgetBtn.png)| Delete this widget from the compilation|
 
-To learn more about how to create compilations refer top the [getting started](./GettingStarted/README.md) pages.
+To learn more about how to create compilations refer top the [getting started](./GettingStarted/README.md#getting-started) pages.
