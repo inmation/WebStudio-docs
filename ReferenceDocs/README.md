@@ -1,6 +1,6 @@
 # WebStudio Reference
 
-This part of the documentation is primarily aimed at providing technical reference material and as such isn't designed to be read end to end. While this may well be a good exercise to undertake in terms of getting to know all the tool has to offer, it is likely to be a rather dry read... For a more user friendly walk-through of how to use WebStudio and examples of compilations, refer to the "[Getting Started](../getting-started/README.md)" section instead.
+This part of the documentation is primarily aimed at providing technical reference material and as such isn't designed to be read end to end. While this may well be a good exercise to undertake in terms of getting to know all the tool has to offer, it is likely to be a rather dry read... For a more user friendly walk-through of how to use WebStudio and examples of compilations, refer to the "[Getting Started](../GettingStarted/README.md)" section instead.
 
 ## Loading WebStudio
 
