@@ -7,7 +7,7 @@ WebStudio is a Web App that allows you to compile a dashboard of dynamic respons
 
 ## Launching WebStudio and Authentication
 
-Like the other [Web Apps](https://inmation.com/docs/webapps/latest/general/index.html), WebStudio connects to the system through the [Web API](https://inmation.com/docs/api/latest/webapi/index.html). To launch the application, open a web browser and enter the url containing the hostname of the Web API you wish to connect to and the port (default is 8002. All connection options can be found [here](./ReferenceDocs/README.md)
+Like the other [Web Apps](https://inmation.com/docs/webapps/latest/general/index.html), WebStudio connects to the system through the [Web API](https://inmation.com/docs/api/latest/webapi/index.html). To launch the application, open a web browser and enter the url containing the hostname of the Web API you wish to connect to and the port (default is 8002. All connection options can be found [here](./ReferenceDocs/README.md#loading-webstudio)
 
 ```url
     http://<hostname_webapi>:<port>/apps/webstudio/
