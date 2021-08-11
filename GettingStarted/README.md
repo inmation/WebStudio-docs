@@ -717,6 +717,7 @@ Clicking on the "Green" text results in:
 As a final flourish, before moving on, let's fix up the formatting of the time-stamp in the status widget to be something like this:
 
 ![webstudio_toggle_formatted_time](../assets/images/webstudio_toggle_formatted_time.png)
+
 For this, the transform action is once again the tool to use. 
 
 Add this additional `transform` action to the pipeline just after the `gettime` action as shown:
