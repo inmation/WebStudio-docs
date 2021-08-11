@@ -16,21 +16,21 @@ Pipeline can consist of actions with `type`:
 
 - [action](#action): Refers to another action to be executed.
 - [collect](#collect): Collect data from a widget.
-- [consoleLog](#consolelog): Write to the browser's console log.
+- [consoleLog](#console-log): Write to the browser's console log.
 - [convert](#convert): Converts data to and from JSON, Base64.
 - [copy](#copy): Copy to clipboard.
 - [gettime](#gettime): Converts relative, ISO UTC and milliseconds since Epoch timestamps.
 - [function](#function): Advanced Endpoint call to the system.
 - [modify](#modify): Change the model of a widget.
 - [notify](#notify): Display a notification.
-- [openLink](#openLink): Opens the a URL in the browser.
+- [openLink](#open-link): Opens the a URL in the browser.
 - [passthrough](#passthrough): Just passes the input message to the next action with the option to merge a message / payload.
 - [prompt](#prompt-dialog): Show a dialog.
 - [read](#read): Reads a value of an object.
 - [read-write](#read-write): Used for data sources, supports `read` and `write`.
 - [refresh](#refresh): Refresh a widget.
 - [send](#send): Send data to another widget.
-- [Subscribe](#subscribe): Subscribe to data changes in the system.
+- [subscribe](#subscribe): Subscribe to data changes in the system.
 - [switch](#switch): Execute different actions based on conditions.
 - [transform](#transform): Transform the data using e.g. MongoDB's Aggregation Pipeline logic.
 - [wait](#wait): Adds a delay before executing the next action.
@@ -51,7 +51,7 @@ Invoke a named action defined in the widget's own `actions` collection or in the
 }
 ```
 
-Refer to the [write-example-01](../compilations/actions/write-example-01.json) compilation to see how named actions are defined and used.  
+Refer to the [write-example-01](../../GettingStarted/compilations/actions/write-example-01.json) compilation to see how named actions are defined and used.  
 
 ### Collect
 
