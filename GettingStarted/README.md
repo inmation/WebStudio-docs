@@ -299,7 +299,7 @@ As we've seen so far, WebStudio takes JSON models and uses these to work out wha
 ### Life cycle hooks
 Webstudio provides life cycle hook to allow us to react to the start and end of each of the phases (don't worry if that statement doesn't make 100% sense yet, things should become clearer in a bit). 
 
-Most of the [life cycle hooks](../referencedocs/widgets/README.md#life-cycle-hooks) come in pairs which are triggered once before the relevant processing happens and after it has completed. The didLoad hook is the exception. 
+Most of the [life cycle hooks](../ReferenceDocs/widgets/README.md#life-cycle-hooks) come in pairs which are triggered once before the relevant processing happens and after it has completed. The didLoad hook is the exception. 
 
 These are the available lifecycle hooks:
 - `didLoad` : A compilation was loaded. This happens when the compilation is loaded from disk or the backend using a URL, but also when edited. 
