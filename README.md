@@ -45,7 +45,7 @@ Once you have successfully signed in, the WebStudio will open with an empty mode
 
 ![WebStudio - Menubar](./assets/images/webstudio-menubar.png)
 
-The icons in the menubar are used to create and edit views. Views/dashboards are generally referred to as [compilations](./ReferenceDocs/readme.md#compilation) in inmation.
+The icons in the menubar are used to create and edit views. Views/dashboards are generally referred to as [compilations](./ReferenceDocs/README.md#compilation) in inmation.
 
 | Icon | Function |
 |---|---|
