@@ -23,8 +23,8 @@ Pipeline can consist of actions with `type`:
 - [function](#function): Advanced Endpoint call to the system.
 - [modify](#modify): Change the model of a widget.
 - [notify](#notify): Display a notification.
-- [openLink](#open-link): Opens the a URL in the browser.
-- [passthrough](#passthrough): Just passes the input message to the next action with the option to merge a message / payload.
+- [openLink](#open-link): Opens a URL in the browser.
+- [passthrough](#passthrough): Passes the input message to the next action with the option to merge a message and/or payload.
 - [prompt](#prompt-dialog): Show a dialog.
 - [read](#read): Reads a value of an object.
 - [read-write](#read-write): Used for data sources, supports `read` and `write`.
@@ -32,7 +32,7 @@ Pipeline can consist of actions with `type`:
 - [send](#send): Send data to another widget.
 - [subscribe](#subscribe): Subscribe to data changes in the system.
 - [switch](#switch): Execute different actions based on conditions.
-- [transform](#transform): Transform the data using e.g. MongoDB's Aggregation Pipeline logic.
+- [transform](#transform): Transform the data using MongoDB's Aggregation Pipeline logic.
 - [wait](#wait): Adds a delay before executing the next action.
 - [write](#write): Writes a value to an object.
 
@@ -65,7 +65,9 @@ Collect data from a widget. The specific data retrieved dependents on the source
 }
 ```
 
-`from` can have the value `self` in case the pipeline needs to fetch data from its own widget.
+the `from` field can be set to **"self"**. This allows the pipeline to fetch data from the widget that initiated the actions. 
+
+This might seem like an odd thing to do since the message at the beginning of a pipeline will be initialized by the source widget, but as the execution progresses this information may be overwritten. Using the `collect` action on **"self"** provides a way to get back to the original content.
 
 ### Console Log
 
@@ -152,7 +154,7 @@ Copies the `payload` to the clipboard.
 The `gettime` action can perform two types of functions:
 
 * Convert a relative time expression to the equivalent ISO UTC time string or an Epoch timestamp. By default the output is an ISO string. If the optional `asEpoch` property is set to true, the output is returned as a number.  
-* Convert a between ISO UTC string and epoch integer
+* Convert between ISO UTC string and epoch integer
 
 A time relative expression consists of a `*`, indicating **now**, optionally followed by an offset expression subtracted from, or if required, added to the current time. 
 
@@ -180,7 +182,7 @@ The table below illustrates the conversions performed by the `gettime` action.
 | ISO UTC | string | 2021-04-28T09:44:35.668Z | 1619603075668 |
 | Milliseconds since Epoch | number | 1619603075668 | 2021-04-28T09:44:35.668Z
 
-The following action: 
+The JSON below shows an example of `gettime` used to convert relative times to absolute ISO UTC strings: 
 
 ```json
 {
@@ -198,7 +200,7 @@ The following action:
 }
 ```
 
-Results in this output message:
+Resulting message:
 
 ```json
 {
@@ -235,7 +237,7 @@ yields this output message:
 
 ### Function
 
-To invoke an Advanced Endpoint.
+Invoke an Advanced Endpoint.
 
 ```jsonc
 {
@@ -259,7 +261,9 @@ The following modification operators are supported, multiples of which can be sp
 - `removeFromArray`: Removes one or more items from an array that matches the provided fields.
 - `filter`: Removes items from an array field based on a condition.
 
-A `transform` action will be performed under the hood with `completeMsgObject` set to true. During execution the `model` field in the input message will always be set to the model of the widget the action is directed at (as designated by the `id` field). The message `payload` can be used to set values dynamically.
+A `transform` action will be performed under the hood with `completeMsgObject` set to true. The `model` field is added to the input message by the modify action before the `transform` actions starts. It is read from the model of the widget being modified (as designated by the `id` field). 
+
+The message `payload`, which is passed down from the originating widget or previous action in the pipeline is typically used as the source for setting model fields.
 
 Main signature of the `modify` action is:
 
@@ -267,7 +271,7 @@ Main signature of the `modify` action is:
 {
     "type": "modify",
     "id": "TextWidget",
-    "refresh": true, // Default is true, in case you don't want to let the widget perform a refresh, set if to false.
+    "refresh": true, // Default is true, if you don't want to let the widget perform a refresh, set it to false.
     "debug": false //  If true, writes the model after the modification to the console log.
 }
 ```
@@ -894,7 +898,6 @@ Subscribe to object data changes in the system. Typically used in `dataSource` c
 ```
 
 ### Switch
-
 Execute actions based on rules. A rule will be checked by performing a [`queryOne`](#transform) transformation. In case the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed. If one rule matches, its `action` will be executed and further testing of the subsequent rules will be stopped.
 
 In case `checkAll` is set to `true`, the 'initial' input message of the switch will be passed to each action pipeline of the matched rules. The output message of the last executed action pipeline, will be the output message of this switch action. When no rule matches, the output of the switch action is the same as the input.
@@ -946,7 +949,7 @@ Transformation of data can be performed by means of the MongoDB Aggregation fram
 
 The aggregation pipeline often returns an array of one or more elements. In most cases, pipeline actions which ingest the output of the transformation are however looking for a single object. As a convenience the WebStudio specific `aggregateOne` options can be used instead of `aggregate`. It return the first element from the resulting transformation.
 
-Besides `aggregate` and `aggregateOne`, `query` and `queryOne` can also be used. The latter two are purely for filtering where `queryOne` returns the first matching object.
+Besides `aggregate` and `aggregateOne`, `query` and `queryOne` can also be used in scenarios where filtering is required. As expected `queryOne` returns the first matching object.
 
 MongoDB Documentation:
 
