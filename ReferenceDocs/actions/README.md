@@ -149,13 +149,38 @@ Copies the `payload` to the clipboard.
 
 ### GetTime
 
-Converts relative, ISO UTC and milliseconds since Epoch timestamps.
+The `gettime` action can perform two types of functions:
+
+* Convert a relative time expression to the equivalent ISO UTC time string or an Epoch timestamp. By default the output is an ISO string. If the optional `asEpoch` property is set to true, the output is returned as a number.  
+* Convert a between ISO UTC string and epoch integer
+
+A time relative expression consists of a `*`, indicating **now**, optionally followed by an offset expression subtracted from, or if required, added to the current time. 
+
+The offset is stated as an integer number followed by a time scale unit. The supported time scale units are:  
+* ms - millisecond
+* s - second
+* m - minute
+* h - hour
+* d - day
+* w - week
+
+Here are some examples of relative time expressions:
+
+| Expression | Description |
+| --- | --- |
+| * | Now |
+| *-5d | 5 days ago |
+| *+30m | 30 minutes from now |
+
+The table below illustrates the conversions performed by the `gettime` action.
 
 | type | value type | value example | results |
 | --- | --| --- | --- |
-| Relative | string |*-1d | Now minus one day in ISO UTC string. |
+| Relative | string |*-1d | Now minus one day as an ISO UTC string. <br/>Unless: <br/>`asEpoch` : true <br/>Then the output is the number of milliseconds since January first 1970  |
 | ISO UTC | string | 2021-04-28T09:44:35.668Z | 1619603075668 |
 | Milliseconds since Epoch | number | 1619603075668 | 2021-04-28T09:44:35.668Z
+
+The following action: 
 
 ```json
 {
@@ -173,13 +198,37 @@ Converts relative, ISO UTC and milliseconds since Epoch timestamps.
 }
 ```
 
-Result for example in this output message:
+Results in this output message:
 
 ```json
 {
     "payload": {
         "starttime": "2021-04-24T10:31:04.091Z",
         "endtime": "2021-04-28T10:31:04.092Z"
+    }
+}
+```
+
+This example shows how to convert a relative time to its Epoch equivalent 
+
+```json
+{
+    "type": "gettime",
+    "set": [
+        {
+            "name": "epochtime",
+            "value": "*-5d",
+            "asEpoch" : true
+        }
+    ]
+}
+```
+yields this output message:
+
+```json
+{
+    "payload": {
+        "epochtime": 1619260264103
     }
 }
 ```
@@ -1096,7 +1145,7 @@ Wait before the next actions will be executed. `duration` is in milliseconds.
 
 ### Write
 
-Writes a value to an object in the system.
+Writes a value to an object in the system. The write action inspects the message payload passed to it, looking for variables `v`, `q` and `t` which it uses to update the object identified by the path. 
 
 ```json
 {
@@ -1104,3 +1153,72 @@ Writes a value to an object in the system.
     "path": "/System/Core/Examples/Variable"
 }
 ```
+
+#### Input Message
+Example:
+
+```json
+{
+    "payload": {
+        "v": 79,
+        "t": "2021-08-10T08:34:13.000Z",
+        "q": 0
+    }
+}
+```
+
+The value parameter `v` will be a number for most tags and is the only mandatory variable. 
+
+If the timestamp field `t` is omitted, the current time is assumed by the core. If present, `t` must be expressed as an ISO UTC string. 
+
+Is would be rare to supply a quality value `q` explicitly, but the option is available. The parameter can be omitted in most cases in which case 0 (GOOD) is assumed. 
+
+#### Return Message
+The `write` action return message, which can be passed to the a subsequent action in a pipeline, is dependent on which parameters were supplied to it 
+
+For an input message containing only a value:
+
+```json
+// Input message
+{
+    "payload": {
+        "v": 79
+    }
+}
+```
+the return message looks like this:
+```json
+// Output message
+{
+    "payload": 79
+}
+```
+
+On the other hand, if the value and either the time-stamps or the quality parameters are supplied:
+
+```json
+// Input message
+{
+    "payload": {
+        "v": 79,
+        "q": 0
+    }
+}
+```
+
+the output will contain all vqt values returned from the `write` call made to the backend:
+
+```json
+// Output message
+{
+    "payload": {
+        "v": 79,
+        "q": 0,
+        "t": "2021-08-11T07:24:19.592Z"
+    }
+}
+```
+
+In the example above, the timestamp is what was assigned on the server side when the value was written.
+
+The quality value `q` is not present in the return message If only `v` and `t` are present in the input message. 
