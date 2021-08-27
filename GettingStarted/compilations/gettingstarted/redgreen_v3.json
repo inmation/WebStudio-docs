@@ -1,0 +1,133 @@
+{
+    "version": "1",
+    "name": "redgreen_v3",
+    "actions": {
+        "myClickAction": [
+            {
+                "type": "send",
+                "to": "debugger"
+            },
+            {
+                "type": "gettime",
+                "set": [
+                    {
+                        "name": "time",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "type": "modify",
+                "id": "indicator",
+                "debug": true,
+                "set": [
+                    {
+                        "name": "model.options.style.backgroundColor",
+                        "value": "$payload"
+                    },
+                    {
+                        "name": "model.text",
+                        "value": "$payload.time"
+                    }
+                ]
+            }
+        ]
+    },
+    "widgets": [
+        {
+            "type": "text",
+            "text": "Red",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "actions": {
+                "onClick": {
+                    "type": "action",
+                    "name": "myClickAction"
+                }
+            },
+            "id": "redButton",
+            "layout": {
+                "x": 0,
+                "w": 3,
+                "h": 1,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "text": "Green",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "actions": {
+                "onClick": {
+                    "type": "action",
+                    "name": "myClickAction"
+                }
+            },
+            "id": "greenButton",
+            "layout": {
+                "x": 0,
+                "w": 3,
+                "h": 1,
+                "y": 1,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "name": "Simple Text",
+            "description": "Simple Text",
+            "text": "Status",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "White",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "id": "indicator",
+            "layout": {
+                "x": 3,
+                "w": 3,
+                "h": 2,
+                "y": 0,
+                "static": true
+            }
+        },
+        {
+            "type": "messagedebugger",
+            "name": "Message Debugger",
+            "description": "Message Debugger",
+            "id": "debugger",
+            "captionBar": false,
+            "layout": {
+                "x": 6,
+                "w": 5,
+                "h": 4,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 24
+    }
+}

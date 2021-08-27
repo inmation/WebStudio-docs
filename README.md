@@ -1,197 +1,91 @@
 # WebStudio
 
-WebStudio is a modern Web App where you can compile widgets on a grid.
+WebStudio is a Web App that allows you to compile a dashboard of dynamic responsive [widgets](./ReferenceDocs/widgets/README.md) to visualize the data from your inmation system in a web browser. WebStudio uses the [Web API](https://inmation.com/docs/api/latest/webapi/index.html) to retrieve data from the system and allows access to your data from anywhere with an internet connection.
 
-| Item | Description |
-| --- | --- |
-| [Compilation Model](#Compilation) | WebStudio compilation model.
-| [Actions](./actions/README.md) | Interaction actions.
-| _Generic Widgets:_
-| [Editor](./widgets/editor/README.md) | Display rich text editor.
-| [Form](./widgets/form/README.md) | Display entries to collect user input.
-| [IFrame](./widgets/iframe/README.md) | Embed other web content.
-| [Image](./widgets/image/README.md) | Display an image.
-| [Markdown Viewer](./widgets/markdownviewer/README.md) | Display Markdown content including Mermaid graphs.
-| [Table](./widgets/table/README.md) | Display and edit tabular data. Supports (multi) select.
-| [Tabs](./widgets/tabs/README.md) | Displaying multiple compilations within a main compilation.
-| [Text](./widgets/text/README.md) | Display text.
-| [Time Period Table](./widgets/timeperiodtable/README.md) | Table with start and end time pickers.
-| [Tree](./widgets/tree/README.md) | Display hierarchical node structure.
-| [Video](./widgets/video/README.md) | Display a video.
-| _Specific Widgets:_
-| [Batch Table](./widgets/batchtable/README.md) | Display batch (BPR) headers.
-| [Chart](./widgets/chart/README.md) | Display trend chart with multiple axis support.
-| [Event Table](./widgets/eventtable/README.md) | Display A&E events.
-| [Faceplate](./widgets/faceplate/README.md) | Display actual system object values.
-| [File Grid](./widgets/filegrid/README.md) | Display info and content of multiple files (GridFS).
-| [Report Viewer](./widgets/reportviewer/README.md) | Display reports with export support.
-| _Development Widgets:_
-| [Message Debugger](./widgets/messagedebugger/README.md) | Inspecting action pipeline messages.
-| [Transform Editor](./widgets/transformeditor/README.md) | Test transform actions.
-| _Examples:_
-| [Example Compilations](./compilations/README.md) | Examples of the widgets and their interaction.
+>To begin using WebStudio immediately it is recommended that you create the WebStudio Demo Data objects in your system using the
+`Examples_WebStudio_Demo_Data_V<n.nn>.json` MassConfig file available on the [JumpStart Resources page](https://inmation.com/docs/jumpstarts/latest/resources.html). Import the JSON file into a [MassConfig display](https://inmation.com/docs/datastudio/latest/displays-hands-on/working-with-massconfig.html) and click \[Apply\] to create the objects. This will give you a good starting point to begin creating widgets in the workspace.
 
-## Compilation
+## Launching WebStudio and Authentication
 
-The WebStudio configuration in which the applied widgets are defined is called a **compilation**.
-
-## Model
-
-The `version` is for future changes to be able to support new definition of the model.
-
-```jsonc
-{
-    "version": "1",
-    "widgets: [] // List of widget objects.
-}
-```
-
-See [widget doc](./widgets/README.md) model description for the widget model.
-
-### Options
-
-```json
-{
-    "options": {
-        "background": {},
-        "numberOfColumns": 24,
-        "numberOfRows": 12,
-        "stacking": "none"
-    }
-}
-```
-
-| name | description |
-| ---- | --- |
-| `backgroundSize` | options are:
-| | `auto`
-| | `cover`
-| | `contain`
-| | `50%`
-| | `12px`
-| | `3.2em`
-| | `50% auto`
-| | `100px 100px`
-| `numberOfColumns` | Defines how many vertical columns the grid is divided.
-| `numberOfRows` | defines how many horizontal rows the grid is divided.
-| `stacking` | Defines how the widgets can be positioned. Options are:
-| | `none`: Widgets can be dragged around freely. **Default**
-| | `vertical`: Widgets are stacked vertically.
-| | `horizontal`: Widgets are stacked horizontally.
-| `width`| To set the maximal grid width with e.g. 500.
-
-Example to have an image as the compilation background:
-
-```json
-{
-    "options": {
-        
-        "background": {
-            "style": {
-                "backgroundColor": "#001b01",
-                "backgroundImage": "url(\"https://transparenttextures.com/patterns/45-degree-fabric-light.png\")",
-                "backgroundSize": "contain"
-            }
-        }
-    }
-}
-```
-
-## Terminology
-
-| name | description |
-| ---- | ----------- |
-| system | Refers to the system and/or the Web API.
-| objspec | Object’s path or the object ID.
-
-Read other parts of the docs to get familiar with the system capabilities.
-
-## Loading WebStudio
-
-WebStudio is shipped with the system Setup. The installation of the Web API also includes the WebStudio web app. WebStudio can be loaded into the Browser by:
-
-`PROTOCOL`://`HOSTNAME`:`PORT`/apps/webstudio/
-
-- `PROTOCOL`: http or https
-- `HOSTNAME`: Hostname of the web server from where to load WebStudio from. Can be the Web API.
-- `PORT`: TCP/IP port number of the web server.
-
-Typically with a default installation you can open the Browser, on the machine where the Web API is installed, and visit:
+Like the other [Web Apps](https://inmation.com/docs/webapps/latest/general/index.html), WebStudio connects to the system through the [Web API](https://inmation.com/docs/api/latest/webapi/index.html). To launch the application, open a web browser and enter the url containing the hostname of the Web API you wish to connect to and the port (default is 8002. All connection options can be found [here](./ReferenceDocs/README.md#loading-webstudio)
 
 ```url
-http://localhost:8002/apps/webstudio
+    http://<hostname_webapi>:<port>/apps/webstudio/
 ```
+When WebStudio is first opened you will be greeted by a sign-in dialog to authenticate the connection to the Web API and ultimately the core.
 
-By providing query parameters in the URL you can auto connect and load WebStudio compilations.
+![WebStudio Sign In](./assets/images/webstudio-authentication.png)
 
-### Connection parameters
+-   To connect, you will need to enter the *Hostname* and *Port* and an optional workspace *Name* 
+    (any previous connections will be saved and are made available for future use in the *Saved Connections*
+    panel on the left).
 
-- `hostname=HOSTNAME`: Hostname of the Web API.
-- `port=8002`: TCP/IP port number of the Web API.
-- `ssl=true`: Using secure connection to the Web API.
+-   If the Web API has been [configured to communicate over https or a
+    secure websocket (WSS)](https://inmation.com/docs/api/latest/webapi/encryption.html), then you can turn on the *Secure* communication switch.
 
-### Security parameters
+-   The authentication method for connection can be chosen at the bottom
+    of the dialog. There is the choice of using given Credentials (the
+    built in system Profile Credentials, Active directory, machine
+    credentials) or a Single Sign On (SSO) method (Integrate Windows
+    Authentication).
 
-Adding credentials in the URL:
+| Icon | Function |
+|---|---|
+|![New Connection](./assets/images/FileToolbarBtn.png)| Click this button to create a new saved connection. Once all the fields are filled in and the \[Connect\] button is pressed, the new entry is persisted and will be available next time the sign-in dialog is used. <br>**Note**: If you already have an existing connections settings selected when the button is pressed, the Hostname, Username and Password fields are cleared, but the name field is retained. Consequently, unless the name is updated, a second item with the same name is created when you connect to the back end. Saved connection details can be managed by clicking the ellipsis (...) next to the saved items |
+|![Console](./assets/images/ConsoleBtn.png)|Shows the content of the browser console. Reviewing the console logs can be helpful when trying to diagnose connection failures.|
 
-- `credentials=`: Base64 encoded 'username:password'.
-- `authority=builtin`: Possible values `builtin`(default), `ad`, `machine`
+Complete the Sign In Dialog with details appropriate to your own system
+and click \[Connect\].
 
-Using Integrated Windows Authentication:
+![Example Sign In](./assets/images/webstudio-authentication-complete.png)
 
-- `secp=iwa`:
+## WebStudio Workspace
 
-### Loading options
+Once you have successfully signed in, the WebStudio will open with an empty model screen. 
 
-- `logo=false`: removes the vendor logo.
-- `theme=light`: Setting the theme to `dark` **(default)** or `light`.
+![WebStudio - Menubar](./assets/images/webstudio-menubar.png)
 
-### Loading WebStudio compilation from the system
+The icons in the menubar are used to create and edit views. Views/dashboards are generally referred to as [compilations](./ReferenceDocs/README.md#compilation) in inmation.
 
-If the compilation is loaded from a URL, WebStudio will automatically hide the development tools. In order to allow editing but still serve the compilation from the system the property `showDevTools` can be set to `true`.
+| Icon | Function |
+|---|---|
+|![Widget Templates Btn](./assets/images/AddWidgetBtn.png)|Show the Widgets template dialog used to insert widgets into the compilation|
+|![Load Compilation Btn](./assets/images/LoadCompilationBtn.png)|Load a previously saved compilation JSON file from disk.|
+|![Save Compilation Btn](./assets/images/SaveCompilationBtn.png)|Save the current compilation to disk. The file name is based on the compilation "name" field. If the name field is not provided, the filename is set to "Untitled Grid"|
+|![Edit Compilation Btn](./assets/images/EditCompilationJsonBtn.png)|Display the compilation JSON document in an editor. <BR>**NOTE**: The buttons described so far will be omitted from the UI if the `showDevTools` compilation option is set to false in the JSON or the compilation is loaded from the 
+|![Toggle theme Btn](./assets/images/LightDarkMode.png)|Toggle between light and dark display themes.|
+|![Sign out btn](./assets/images/SignOutBtn.png)|Sign out from the inmation core server|
 
-```jsonc
-{
-    "options": {
-        "showDevTools": true
-    }
-}
-```
+To begin adding widgets to the workspace, click on the "+" icon. This
+will open a Model Editor with a series of pre-configured widget template to choose from
+(using the [WebStudio Demo Data Items](https://inmation.com/docs/webapps/latest/webstudio/index.html#jumpstarts:resources.adoc)). 
 
-In case the user, typically an engineer, wants to edit a hosted compilation, the query parameter `dev=1` can be added to the URL. Keeps in mind that a `showDevTools` which is set to `false`, will overrule the query parameter and prevents the development tools to be available.
+![Widget Templates](./assets/images/webstudio-widget-template.png)
 
-Development Tools are:
+| Icon | Function |
+|---|---|
+|![Apply changes](./assets/images/SaveBtn.png)| Apply model changes made in the editor to the current in memory compilation and close the editor dialog. <br>**Note:** This action does not save changes to persistent storage. If you reload the page for any reason, all in-memory state will be lost! It is therefore advised that while you are developing your compilation you export it at regular intervals, by pressing the ![Export](./assets/images/SmallSaveCompilationBtn.png) icon at the top of the workspace. |
+| ![JSON Format](./assets/images/FormatJSONToolBtn.png) | Format the JSON to align brackets and indent sub-elements. |
 
-- Add widget
-- Import compilation
-- Export compilation
-- Edit compilation model
-- Edit widget model
+The templates can be selected from the left hand pane and this will load
+the configuration into the Model Editor. Each widget configuration is
+entirely encapsulated in a JSON document as shown in the example above. The
+JSON can be edited to change the configuration. In this case the "path" field of the widget `pens` object was set to points directly at objects in the I/O Model of the system.
 
-#### Loading from custom Advanced Endpoint
+Add the widget to the compilation by clicking the \[Apply\]
 
-Model can be loaded by calling an Advanced Endpoint. See Web API - Advanced Endpoint docs for more details.
+![Web Chart Widget](./assets/images/webstudio-widget-webchart.png)
 
-- `lib=MY_LIBRARY`: Lua library name. Script can return function or a Lua table.
-- `func=MY_FUNCTION`: Function name in case the library returns a Lua table.
-- `farg=`: Function argument data. Typically Base64 encoded in case of JSON data.
-- `ctx=/System/Core/MyFolder`: (Optional) Alternative script context.
+The widget can be moved to any location in the workspace and resized
+using the "corner" icon in the bottom right-hand corner of the widget.
 
-Example:
+To make further configuration changes click on the `{}` icon in the widgets own title-bar. **Note** that the same config can be found in the JSON for the compilation as a whole, contained within its `widgets` array.
 
-```url
-https://company.corp:8003/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&lib=my_librarys&func=my_function
-```
+The following additional tools are available in the widget editor when loaded from a existing instance:
 
-#### Loading from object's Custom Property
+| Icon | Function |
+|---|---|
+| ![Compare Work Model](./assets/images/CompareModelsBtn.png) | Compare the current configuration to the "Work model". More about this when we get to "Debugging" |
+| ![Delete widget](./assets/images/DeleteWidgetBtn.png)| Delete this widget from the compilation|
 
-WebStudio compilations can be loaded from Custom Properties of objects by adding two query parameter in the URL.
-
-- `obj`: object path or id. (Note: if not provided the Web API default context path will be used.)
-- `name`: name of the Custom Property.
-
-Example:
-
-```url
-https://company.corp:8003/apps/webstudio/?hostname=company.corp&port=8002&ssl=true&secp=iwa&obj=/System/Core/MyFolder&name=display01
-```
+To learn more about how to create compilations refer top the [getting started](./GettingStarted/README.md#getting-started) pages.

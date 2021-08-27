@@ -1,0 +1,398 @@
+{
+    "version": "1",
+    "name": "LifecycleHookDemo",
+    "actions": {
+        "log1": {
+            "type": "notify"
+        },
+        "log2": {
+            "type": "consoleLog",
+            "tag": "LOGGING : "
+        },
+        "log": [
+            {
+                "type": "collect",
+                "from": "log",
+                "key": "log"
+            },
+            {
+                "type": "gettime",
+                "set": [
+                    {
+                        "name": "time",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "type": "modify",
+                "id": "log",
+                "refresh": false,
+                "set": [
+                    {
+                        "name": "model.content",
+                        "value": {
+                            "$concat": [
+                                "$payload.log",
+                                "$payload.time",
+                                " : ",
+                                "$topic",
+                                "\n"
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "widgets": [
+        {
+            "type": "text",
+            "name": "Simple Text",
+            "description": "Simple Text",
+            "text": "",
+            "dataSource": {
+                "type": "read",
+                "path": "/System/Core/Examples/Demo Data/Process Data/DC4711"
+            },
+            "captionBar": {
+                "hidden": false,
+                "title": "Text1: Data Bound text",
+                "showModelEditorButton": true
+            },
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "26px",
+                    "fontWeight": "bold",
+                    "fontFamily": "\"Courier New\", Courier, sans-serif",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "actions": {
+                "didFetch": [
+                    [
+                        {
+                            "type": "action",
+                            "name": "log",
+                            "message": {
+                                "topic": "didFetch - text1"
+                            }
+                        }
+                    ],
+                    []
+                ],
+                "didLoad": [
+                    [
+                        {
+                            "type": "action",
+                            "name": "log",
+                            "message": {
+                                "topic": "didLoad - text1"
+                            }
+                        }
+                    ],
+                    []
+                ],
+                "didRefresh": [
+                    [
+                        {
+                            "type": "action",
+                            "name": "log",
+                            "message": {
+                                "topic": "didRefresh - text1"
+                            }
+                        }
+                    ],
+                    []
+                ],
+                "didUpdate": [
+                    [
+                        {
+                            "type": "action",
+                            "name": "log",
+                            "message": {
+                                "topic": "didUpdate - text1"
+                            }
+                        }
+                    ],
+                    []
+                ],
+                "willFetch": [
+                    [
+                        {
+                            "type": "action",
+                            "name": "log",
+                            "message": {
+                                "topic": "willFetch - text1"
+                            }
+                        }
+                    ],
+                    []
+                ],
+                "willRefresh": [
+                    [
+                        {
+                            "type": "action",
+                            "name": "log",
+                            "message": {
+                                "topic": "willRefresh - text1"
+                            }
+                        }
+                    ],
+                    []
+                ],
+                "willUpdate": [
+                    [
+                        {
+                            "type": "action",
+                            "name": "log",
+                            "message": {
+                                "topic": "willUpdate - text1"
+                            }
+                        }
+                    ],
+                    []
+                ]
+            },
+            "layout": {
+                "x": 4,
+                "w": 9,
+                "h": 2,
+                "y": 0,
+                "static": false
+            },
+            "id": "text1"
+        },
+        {
+            "type": "editor",
+            "name": "Log of hooks invoked on Text1",
+            "description": "Editor",
+            "language": "text",
+            "options": {
+                "showToolbar": true,
+                "showLanguageSelection": false
+            },
+            "content": "",
+            "editorOptions": {
+                "fontSize": 12,
+                "cursorStyle": "line",
+                "readOnly": true
+            },
+            "layout": {
+                "x": 4,
+                "w": 9,
+                "h": 8,
+                "y": 2,
+                "static": false
+            },
+            "id": "log"
+        },
+        {
+            "type": "text",
+            "name": "Simple Text",
+            "description": "Simple Text",
+            "text": "Clear Log",
+            "actions": {
+                "onClick": {
+                    "type": "modify",
+                    "id": "log",
+                    "set": [
+                        {
+                            "name": "model.content",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            "captionBar": true,
+            "options": {
+                "style": {
+                    "color": "white",
+                    "textAlign": "center",
+                    "fontSize": "16px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "id": "clearBtn",
+            "layout": {
+                "x": 0,
+                "w": 4,
+                "h": 2,
+                "y": 8,
+                "static": false
+            }
+        },
+        {
+            "type": "text",
+            "name": "Simple Text",
+            "description": "Simple Text",
+            "text": "Click to Modify Text1",
+            "captionBar": true,
+            "actions": {
+                "onClick": [
+                    {
+                        "type": "action",
+                        "name": "log",
+                        "message": {
+                            "topic": "onClick"
+                        }
+                    },
+                    {
+                        "type": "modify",
+                        "id": "text1",
+                        "mergeObjects": true,
+                        "refresh": false,
+                        "set": [
+                            {
+                                "name": "model.text",
+                                "value": "Was Modified"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "options": {
+                "style": {
+                    "color": "white",
+                    "textAlign": "center",
+                    "fontSize": "16px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "id": "ActionBtn",
+            "layout": {
+                "x": 0,
+                "w": 4,
+                "h": 2,
+                "y": 0,
+                "static": false
+            }
+        },
+        {
+            "type": "form",
+            "name": "Form with buttons",
+            "description": "Form with buttons",
+            "entries": [
+                {
+                    "id": "button_refresh",
+                    "label": "Modify action with refresh",
+                    "items": [
+                        {
+                            "color": "green",
+                            "label": "yes",
+                            "value": 1
+                        },
+                        {
+                            "color": "red",
+                            "label": "no",
+                            "value": 0
+                        }
+                    ],
+                    "type": "buttons",
+                    "value": 0
+                },
+                {
+                    "id": "button_dataSource",
+                    "label": "dataSource",
+                    "items": [
+                        {
+                            "label": "Subscribe",
+                            "value": "subscribe"
+                        },
+                        {
+                            "label": "Read",
+                            "value": "read"
+                        }
+                    ],
+                    "type": "buttons",
+                    "value": "read"
+                }
+            ],
+            "actions": {
+                "onSubmit": [
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "k": "$id",
+                                    "v": "$value"
+                                }
+                            },
+                            {
+                                "$group": {
+                                    "data": "$$ROOT"
+                                }
+                            },
+                            {
+                                "$project": {
+                                    "data": {
+                                        "$arrayToObject": "$data"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "modify",
+                        "id": "text1",
+                        "set": [
+                            {
+                                "name": "model.dataSource.type",
+                                "value": "$payload.data.button_dataSource"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "transform",
+                        "aggregateOne": [
+                            {
+                                "$project": {
+                                    "button_refresh": {
+                                        "$cond": {
+                                            "if": {
+                                                "$gt": [
+                                                    "$data.button_refresh",
+                                                    0
+                                                ]
+                                            },
+                                            "then": true,
+                                            "else": false
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "modify",
+                        "id": "ActionBtn",
+                        "set": [
+                            {
+                                "name": "model.actions.onClick.1.refresh",
+                                "value": "$payload.button_refresh"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "captionBar": true,
+            "layout": {
+                "x": 0,
+                "w": 4,
+                "h": 6,
+                "y": 2,
+                "static": false
+            },
+            "id": "propertiesForm"
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 30
+    }
+}
