@@ -58,7 +58,7 @@ The icons in the menubar are used to create and edit views. Views/dashboards are
 
 To begin adding widgets to the workspace, click on the "+" icon. This
 will open a Model Editor with a series of pre-configured widget template to choose from
-(using the [WebStudio Demo Data Items](https://inmation.com/docs/webapps/latest/webstudio/index.html#jumpstarts:resources.adoc)). 
+(using the [WebStudio Demo Data Items](https://inmation.com/docs/jumpstarts/latest/resources.html)). 
 
 ![Widget Templates](./assets/images/webstudio-widget-template.png)
 
