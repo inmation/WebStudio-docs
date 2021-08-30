@@ -170,39 +170,39 @@ The `path` of objects, typically in the IO and KPI models, is how they are uniqu
 
 Where in the compilation model the `path` is specified is somewhat Widget dependent. Consider the following examples:
 
-- `Faceplate`: Here the path is a base property of the widget
-    ```json
-        {
-            "type": "faceplate",
-            "name": "DC4711",
-            "description": "Process Data DC4711",
-            "path": "/System/Core/Examples/Demo Data/Process Data/DC4711",
-            "captionBar": true,
-            "layout": {
-                "h": 4
-            }
-        }
-        ```
-- `Chart`: The chart is quite a complex widget and is able to retrieve core data in a number of ways, the most direct of which is to define one or more pens and to set their path properties. 
-    ```json
-    {
-        "type": "chart",
-        "chart": {
-            "pens": [
-                {
-                    "path": "/System/Core/Examples/Demo Data/Process Data/DC4711",
-                    "aggregate": "AGG_TYPE_INTERPOLATIVE", ...
-                }
-            ],
-            "x_axis": [...],
-            "y_axis": [...],
-        },
-        "name": "Webchart with pen",
-        "description": "Webchart with pen",
-        "layout": {...}
-    }
+- `Faceplate`: Here the path is a base property of the widget  
+  ```json
+      {
+          "type": "faceplate",
+          "name": "DC4711",
+          "description": "Process Data DC4711",
+          "path": "/System/Core/Examples/Demo Data/Process Data/DC4711",
+          "captionBar": true,
+          "layout": {
+              "h": 4
+          }
+      }
+      ```
 
-    ```
+- `Chart`: The chart is quite a complex widget and is able to retrieve core data in a number of ways, the most direct of which is to define one or more pens and to set their path properties.  
+  ```json
+  {
+  	"type": "chart",
+  	"chart": {
+  		"pens": [
+  			{
+  				"path": "/System/Core/Examples/Demo Data/Process Data/DC4711",
+  				"aggregate": "AGG_TYPE_INTERPOLATIVE", ...
+  			}
+  		],
+  		"x_axis": [...],
+  		"y_axis": [...],
+  	},
+  	"name": "Webchart with pen",
+  	"description": "Webchart with pen",
+  	"layout": {...}
+  }
+  ```
 
 ### Data Source
 Most widgets that display data can be configured to do so by specifying the appropriate [dataSource](../ReferenceDocs/widgets/README.md#datasource) settings. The `dataSource` property supports a number of options which determine the binding behavior. Let's have a look at some of these applied to a `Text` widget:
