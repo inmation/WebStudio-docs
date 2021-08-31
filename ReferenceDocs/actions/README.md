@@ -237,6 +237,40 @@ yields this output message:
 }
 ```
 
+The action can also take the `set` instruction from the message payload to do dynamic conversions.
+
+Action message input:
+
+```json
+{
+    "payload": {
+        "set": [
+            {
+                "name": "myTimestamp",
+                "value": "*-2d"
+            }
+        ]
+    }
+}
+```
+
+Action:
+
+```jsonc
+{
+    "type": "gettime"       // Notice it does not contain a set field.
+}
+```
+
+Result is the message output:
+
+```jsonc
+{
+    "set": [],                      // Since the action result is merged with the message input the set is still present.
+    "myTimestamp": 1630497600000
+}
+```
+
 ### Function
 
 Invoke an Advanced Endpoint.
