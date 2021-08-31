@@ -2,6 +2,46 @@
 
 This part of the documentation is primarily aimed at providing technical reference material and as such isn't designed to be read end to end. While this may well be a good exercise to undertake in terms of getting to know all the tool has to offer, it is likely to be a rather dry read... For a more user friendly walk-through of how to use WebStudio and examples of compilations, refer to the "[Getting Started](../GettingStarted/README.md)" section instead.
 
+Refer to the tables below to jump to specific reference section. 
+
+| Item | Description |
+|---|---|
+| [Loading WebStudio](#loading-webstudio) | Load WebStudio in a browser
+| [Compilation Model](#compilation) | WebStudio compilation model. |
+| [Actions](actions/README.md) | Interaction actions. |
+
+| Generic Widgets: | |
+|---|---|
+| [Editor](widgets/editor/README.md) | Display rich text editor. |
+| [Form](widgets/form/README.md) | Display entries to collect user input. |
+| [IFrame](widgets/iframe/README.md) | Embed other web content. |
+| [Image](widgets/image/README.md) | Display an image. |
+| [Markdown Viewer](widgets/markdownviewer/README.md) | Display Markdown content including Mermaid graphs. |
+| [Table](widgets/table/README.md) | Display and edit tabular data. Supports (multi) select. |
+| [Tabs](widgets/tabs/README.md) | Displaying multiple compilations within a main compilation. |
+| [Text](widgets/text/README.md) | Display text. |
+| [Time Period Table](widgets/timeperiodtable/README.md) | Table with start and end time pickers. |
+| [Tree](widgets/tree/README.md) | Display hierarchical node structure. |
+| [Video](widgets/video/README.md) | Display a video. |
+
+| Specific Widgets: | |
+|---|---|
+| [Batch Table](widgets/batchtable/README.md) | Display batch (BPR) headers. |
+| [Chart](widgets/batchtable/README.md) | Display trend chart with multiple axis support. |
+| [Event Table](widgets/eventtable/README.md) | Display A&E events. |
+| [Faceplate](widgets/faceplate/README.md) | Display actual system object values. |
+| [File Grid](widgets/filegrid/README.md) | Display info and content of multiple files (GridFS). |
+| [Report Viewer](widgets/reportviewer/README.md) | Display reports with export support. |
+
+| Development Widgets: | |
+|---|---|
+| [Message Debugger](widgets/messagedebugger/README.md) | Inspecting action pipeline messages. |
+| [Transform Editor](widgets/transformeditor/README.md) | Test transform actions. |
+
+| Examples: | |
+|---|---|
+| [Example Compilations](../GettingStarted/compilations/README.md) |Examples of the widgets and their interaction. |
+
 ## Loading WebStudio
 
 WebStudio is shipped with the system Setup. The installation of the Web API also includes the WebStudio web app. WebStudio can be loaded into the Browser by:
