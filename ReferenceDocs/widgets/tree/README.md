@@ -13,7 +13,8 @@ The Tree widget can be used to show hierarchical data in the form of nodes. Each
             "c": []             // Children             
         }
     ],
-    "schema": []                // See Schema
+    "schema": [],               // See Schema
+    "searchTable": {}           // See Search Table
 }
 ```
 
@@ -220,5 +221,46 @@ Action on a specific icon:
             ]
         }
     ]
+}
+```
+
+### Search Table
+
+In order to show the proper and desired node fields in search table, a `searchTable` configuration can be made. The prompted search table is a [Table widget](../table/README.md). Currently only `schema` and `options` are supported.
+
+```json
+{
+    "searchTable": {
+        "schema": [
+            {
+                "name": "nodeName",
+                "title": "Name",
+                "sort": "asc"
+            },
+            {
+                "name": "text",
+                "title": "Description"
+            },
+            {
+                "name": "path",
+                "title": "Path
+            }
+        ]
+    }
+}
+```
+
+Note: deep linking of node properties is not supported.
+
+```jsonc
+{
+    "searchTable": {
+        "schema": [
+            {
+                "name": "props.name",       // NOT SUPPORTED
+                "title": "Name",
+            }
+        ]
+    }
 }
 ```
