@@ -857,7 +857,6 @@ The value of the `to` field can be set to `self` in case the pipeline needs to s
 Supported topics:
 
 - `refresh`: the recipient widget will perform a refresh. **(default)**
-- `do`: the receiving widget will perform the action or action pipeline, which is defined on the message. (*)
 - `update`: the receiving widget will perform an update. This will bypass the data source action.
 
 #### Refresh Topic
@@ -873,26 +872,6 @@ Example to send a message to another component to refresh itself:
     "message": {
         "topic": "refresh" // Can be omitted because it is default.
         "payload": {} // Can be any type of value. Typically an object is ued.
-    }
-}
-```
-
-#### Do Topic (*)
-
-Example to send a message to another component to execute a certain action:
-
-```jsonc
-{
-    "type" : "send",
-    "to" : "Place the ID of the widget here",
-    "message": {
-        "topic": "do",
-        "action" : [  // Can be a single action or action pipeline.
-            {
-                "type" : "action",
-                "name" : "NAME OF ACTION TO EXECUTE"
-            }
-        ]
     }
 }
 ```
