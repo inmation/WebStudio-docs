@@ -154,7 +154,7 @@ Using `tabs` widgets, compilations can be created that contain sub-compilations 
 
 The `delegate` action provides a mechanism to address this constraint.
 
-```json
+```jsonc
 {
     "type": "delegate",
     "action":  []  // Action pipeline to be executed in the new context 
