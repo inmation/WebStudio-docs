@@ -208,7 +208,7 @@ To get the correct execution context we need to define the action at either the 
 
 >**Note:** The execution **context** refers to the compilation model from which routes and widget ids are resolved.  
 
-Using a named [action](#action) works since these are resolved by searching upwards in the containment hierarchy. In this case the **text01** `onClick` could be defined like so:
+A named [action](#action) can be be defined in the root compilation and invoked from **text01**. This works since named actions are resolved by searching upwards in the containment hierarchy. In this case the `onClick` could be defined like so:
 
 ```json
 {
@@ -273,7 +273,7 @@ However, just declaring the named action in the root compilation is not enough. 
 }
 ```
 
-In other words, `delegate` changes the context of the execution pipeline to be at the level where it is defined in the compilation.Using the new context, the pipeline defined in the `action` property is executed. 
+In other words, `delegate` changes the context of the execution pipeline to be at the level where it is defined in the compilation. Using the new context, the pipeline defined in the `action` property is executed. 
 
 When the `delegate` action returns, the context is restored and any subsequent actions will be executed in the context that was there before.
 
