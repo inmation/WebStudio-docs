@@ -165,7 +165,7 @@ This action is probably easiest to understand by considering an example.
 
 Suppose we have a `tabs` widget with two tabs, each containing their own `text` widget, **text01** and **text02**. We want to change the text of **text02** when clicking on **text01**. As a first attempt, we might try something like this:
 
-```json
+```jsonc
 {
     "type": "text",
     "text": "Click Me",
@@ -226,7 +226,7 @@ A named [action](#action) can be be defined in the root compilation and invoked 
 
 with the named action in the root compilation:
 
-```json
+```jsonc
 {
     "actions": {
         "modifyWidgetOnSecondTab": { // this still does not work !
