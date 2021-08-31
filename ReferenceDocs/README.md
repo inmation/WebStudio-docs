@@ -44,7 +44,7 @@ Using Integrated Windows Authentication:
 
 ### Loading WebStudio compilation from the system
 
-If the compilation is loaded from a URL, WebStudio automatically hides the development tools. If the user, typically an engineer, wants to edit a hosted compilation, the query parameter `dev=1` can be added to the URL. Also refer to the `showDevTools` option below which can be set directly on the compilation to control the visibility of the toolbar icons. 
+If the compilation is loaded from a URL, WebStudio automatically hides the development tools. If the user, typically an engineer, wants to edit a hosted compilation, the query parameter `dev=1` can be added to the URL. Also refer to the `showDevTools` option below which can be set directly on the compilation to control the visibility of the toolbar icons.
 
 Development Tools are:
 
@@ -84,9 +84,9 @@ https://company.corp:8003/apps/webstudio/?hostname=company.corp&port=8002&ssl=tr
 
 ## Compilation
 
-The WebStudio configuration, in which widgets along with their display attributes and dynamic behavior are defined, is collectively referred to as a **compilation**. 
+The WebStudio configuration, in which widgets along with their display attributes and dynamic behavior are defined, is collectively referred to as a **compilation**.
 
-The compilation and contained widgets within are described using JSON objects. Throughout this documentation the term **"model"** refers to the structure of the various JSON fragments used to describe the elements within the compilation as well as the compilation as a whole. 
+The compilation and contained widgets within are described using JSON objects. Throughout this documentation the term **"model"** refers to the structure of the various JSON fragments used to describe the elements within the compilation as well as the compilation as a whole.
 
 ## Model
 
@@ -119,7 +119,7 @@ See [widget doc](./widgets/README.md) model description for the widget model.
 | ---- | --- |
 | `background` | Used to set the compilation background color and image. These settings are actually nested within a style object. Refer to the example below to see them in action |
 |&nbsp;&nbsp;`style` | style options for the background |
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`backgroundImage` | load an image as the canvas backdrop. | 
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`backgroundImage` | load an image as the canvas backdrop. |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`backgroundSize` | Set the display options for the `backgroundImage`. The options derived from CSS styles and are: |
 | |`auto` : The loaded image native size is used and it is tiled to fill the whole canvas area. This is the **default** options |
 | |`cover` : The image height is stretched to that of the canvas. If it has a wider aspect ratio than that of the browser window, the image will be clipped. Also note the if the image height is larger than that of the canvas, it will be clipped at the bottom of the frame|
@@ -162,4 +162,3 @@ Example to have an image as the compilation background:
 | objspec | Object’s path or the object ID.
 
 Read other parts of the docs to get familiar with the system capabilities.
-
