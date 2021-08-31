@@ -854,6 +854,21 @@ Sending message from one widget to another can be done using the `send` action. 
 
 The value of the `to` field can be set to `self` in case the pipeline needs to send data to its own widget. The update behavior differs per widget.
 
+Using a `route` to point to a widget within a tab
+
+```jsonc
+{
+    "type": "send",
+    "to": {
+        "route" : [
+            "MyTabs",       // ID of the Tabs widget.
+            "Tab01",        // ID of the single tab.
+            "TextWidget"    // Pointing to a Text widget which has an ID of 'TextWidget` which.
+        ]
+    }
+}
+```
+
 Supported topics:
 
 - `refresh`: the recipient widget will perform a refresh. **(default)**
