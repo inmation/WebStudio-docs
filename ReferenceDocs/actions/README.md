@@ -65,7 +65,7 @@ Collect data from a widget. The specific data retrieved dependents on the source
 }
 ```
 
-the `from` field can be set to **"self"**. This allows the pipeline to fetch data from the widget that initiated the actions. 
+the `from` field can be set to **"self"**. This allows the pipeline to fetch data from the widget that initiated the actions.
 
 This might seem like an odd thing to do since the message at the beginning of a pipeline will be initialized by the source widget, but as the execution progresses this information may be overwritten. Using the `collect` action on **"self"** provides a way to get back to the original content.
 
@@ -153,18 +153,19 @@ Copies the `payload` to the clipboard.
 
 The `gettime` action can perform two types of functions:
 
-* Convert a relative time expression to the equivalent ISO UTC time string or an Epoch timestamp. By default the output is an ISO string. If the optional `asEpoch` property is set to true, the output is returned as a number.  
-* Convert between ISO UTC string and epoch integer
+- Convert a relative time expression to the equivalent ISO UTC time string or an Epoch timestamp. By default the output is an ISO string. If the optional `asEpoch` property is set to true, the output is returned as a number.  
+- Convert between ISO UTC string and epoch integer
 
-A time relative expression consists of a `*`, indicating **now**, optionally followed by an offset expression subtracted from, or if required, added to the current time. 
+A time relative expression consists of a `*`, indicating **now**, optionally followed by an offset expression subtracted from, or if required, added to the current time.
 
 The offset is stated as an integer number followed by a time scale unit. The supported time scale units are:  
-* ms - millisecond
-* s - second
-* m - minute
-* h - hour
-* d - day
-* w - week
+
+- ms - millisecond
+- s - second
+- m - minute
+- h - hour
+- d - day
+- w - week
 
 Here are some examples of relative time expressions:
 
@@ -182,7 +183,7 @@ The table below illustrates the conversions performed by the `gettime` action.
 | ISO UTC | string | 2021-04-28T09:44:35.668Z | 1619603075668 |
 | Milliseconds since Epoch | number | 1619603075668 | 2021-04-28T09:44:35.668Z
 
-The JSON below shows an example of `gettime` used to convert relative times to absolute ISO UTC strings: 
+The JSON below shows an example of `gettime` used to convert relative times to absolute ISO UTC strings:
 
 ```json
 {
@@ -211,26 +212,27 @@ Resulting message:
 }
 ```
 
-This example shows how to convert a relative time to its Epoch equivalent 
+This example shows how to convert a relative time to its Epoch equivalent:
 
 ```json
 {
     "type": "gettime",
     "set": [
         {
-            "name": "epochtime",
+            "name": "starttime",
             "value": "*-5d",
             "asEpoch" : true
         }
     ]
 }
 ```
+
 yields this output message:
 
 ```json
 {
     "payload": {
-        "epochtime": 1619260264103
+        "starttime": 1619260264103
     }
 }
 ```
@@ -285,7 +287,7 @@ The following modification operators are supported, multiples of which can be sp
 - `removeFromArray`: Removes one or more items from an array that matches the provided fields.
 - `filter`: Removes items from an array field based on a condition.
 
-A `transform` action will be performed under the hood with `completeMsgObject` set to true. The `model` field is added to the input message by the modify action before the `transform` actions starts. It is read from the model of the widget being modified (as designated by the `id` field). 
+A `transform` action will be performed under the hood with `completeMsgObject` set to true. The `model` field is added to the input message by the modify action before the `transform` actions starts. It is read from the model of the widget being modified (as designated by the `id` field).
 
 The message `payload`, which is passed down from the originating widget or previous action in the pipeline is typically used as the source for setting model fields.
 
@@ -759,7 +761,7 @@ Example to prompt a text widget.
 }
 ```
 
-- `content`: Can be a single widget or a complete compilation. 
+- `content`: Can be a single widget or a complete compilation.
 
 ### Read
 
@@ -922,6 +924,7 @@ Subscribe to object data changes in the system. Typically used in `dataSource` c
 ```
 
 ### Switch
+
 Execute actions based on rules. A rule will be checked by performing a [`queryOne`](#transform) transformation. In case the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed. If one rule matches, its `action` will be executed and further testing of the subsequent rules will be stopped.
 
 In case `checkAll` is set to `true`, the 'initial' input message of the switch will be passed to each action pipeline of the matched rules. The output message of the last executed action pipeline, will be the output message of this switch action. When no rule matches, the output of the switch action is the same as the input.
@@ -1058,6 +1061,7 @@ Example to search for the object with 'location' value 'Cologne':
     }
 ]
 ```
+
 **Note:** Even though only one element was matched, the returned massage payload is still an array. If `aggregateOne` were used instead of `aggregate`, the output would look like this:
 
 ```json
@@ -1172,7 +1176,7 @@ Wait before the next actions will be executed. `duration` is in milliseconds.
 
 ### Write
 
-Writes a value to an object in the system. The write action inspects the message payload passed to it, looking for variables `v`, `q` and `t` which it uses to update the object identified by the path. 
+Writes a value to an object in the system. The write action inspects the message payload passed to it, looking for variables `v`, `q` and `t` which it uses to update the object identified by the path.
 
 ```json
 {
@@ -1182,6 +1186,7 @@ Writes a value to an object in the system. The write action inspects the message
 ```
 
 #### Input Message
+
 Example:
 
 ```json
@@ -1203,12 +1208,13 @@ The value parameter `v` will be a number for most tags and is the only mandatory
 }
 ```
 
-If the timestamp field `t` is omitted, the current time is assumed by the core. If present, `t` must be expressed as an ISO UTC string. 
+If the timestamp field `t` is omitted, the current time is assumed by the core. If present, `t` must be expressed as an ISO UTC string.
 
-It would be rare to supply a quality value `q` explicitly, but the option is available. The parameter can be omitted in most cases in which case 0 (GOOD) is assumed. 
+It would be rare to supply a quality value `q` explicitly, but the option is available. The parameter can be omitted in most cases in which case 0 (GOOD) is assumed.
 
 #### Return Message
-The `write` action return message, which can be passed to a subsequent action in a pipeline, is dependent on which parameters were supplied to it 
+
+The `write` action return message, which can be passed to a subsequent action in a pipeline, is dependent on which parameters were supplied to it.
 
 For an input message containing only a value:
 
@@ -1220,7 +1226,9 @@ For an input message containing only a value:
     }
 }
 ```
+
 the return message looks like this:
+
 ```json
 // Output message
 {
@@ -1255,4 +1263,4 @@ the output will contain all vqt values returned from the `write` call made to th
 
 In the example above, the timestamp is what was assigned on the server side when the value was written.
 
-The quality value `q` is not present in the return message If only `v` and `t` are present in the input message. 
+The quality value `q` is not present in the return message If only `v` and `t` are present in the input message.
