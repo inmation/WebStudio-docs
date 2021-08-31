@@ -19,6 +19,7 @@ Pipeline can consist of actions with `type`:
 - [consoleLog](#console-log): Write to the browser's console log.
 - [convert](#convert): Converts data to and from JSON, Base64.
 - [copy](#copy): Copy to clipboard.
+- [delegate](#delegate): delegate the execution context of an action pipeline.
 - [gettime](#gettime): Converts relative, ISO UTC and milliseconds since Epoch timestamps.
 - [function](#function): Advanced Endpoint call to the system.
 - [modify](#modify): Change the model of a widget.
@@ -148,6 +149,135 @@ Copies the `payload` to the clipboard.
     "type": "copy"
 }
 ```
+### Delegate
+Using `tabs` widgets, compilations can be created that contain sub-compilations in each tab. Widgets defined within these cannot directly interact with other widgets in peer level compilations.
+
+The `delegate` action provides a mechanism to address this constraint.
+
+```json
+{
+    "type": "delegate",
+    "action":  []  // Action pipeline to be executed in the new context 
+}
+```
+
+This action is probably easiest to understand by considering an example.
+
+Suppose we have a `tabs` widget with two tabs, each containing their own `text` widget, **text01** and **text02**. We want to change the text of **text02** when clicking on **text01**. As a first attempt, we might try something like this:
+
+```json
+{
+    "type": "text",
+    "text": "Click Me",
+    "id": "text01",
+    "actions": {
+        "onClick": {
+            "type": "send",
+            "to": {
+                "route": [ // This does not work from text01
+                    "tabs01",
+                    "tab02",
+                    "text02"
+                ]
+            },
+            "message": {
+                "payload": "Text on tab 1 was clicked"
+            }
+        }
+    }
+}
+```
+
+This fails since, from within the **tab01** compilation, there is no widget that resolves to the provided route. The route only makes sense when it is traversed starting at the root compilation.
+
+```
++ Root (compilation)
+|
++--+ tabs01 (widget)
+   |
+   +--+ tab01 (compilation)
+   |  |
+   |  +--+ text01 (widget)  <-- Action starts here
+   | 
+   +--+ tab02 (compilation)
+      |
+      +--+ text02 (widget)
+```
+
+To get the correct execution context we need to define the action at either the root compilation level, or in the actions section of the **tabs01** widget. 
+
+>**Note:** The execution **context** refers to the compilation model from which routes and widget ids are resolved.  
+
+Using a named [action](#action) works since these are resolved by searching upwards in the containment hierarchy. In this case the **text01** `onClick` could be defined like so:
+
+```json
+{
+    "type": "text",
+    "text": "Click Me",
+    "id": "text01",
+    "actions": {
+        "onClick": {
+            "type": "action",
+            "name": "modifyWidgetOnSecondTab"
+        }
+    }
+}
+```
+
+with the named action in the root compilation:
+
+```json
+{
+    "actions": {
+        "modifyWidgetOnSecondTab": { // this still does not work !
+            "type": "send",
+            "to": {
+                "route": [
+                    "tabs01",
+                    "tab02",
+                    "text02"
+                ]
+            },
+            "message": {
+                "payload": "Text on tab 1 was clicked"
+            }
+        }
+    }
+}
+```
+
+However, just declaring the named action in the root compilation is not enough. The execution context is not affected by where the action is declared, unless `delegate` is used. 
+
+```json
+{
+    "actions": {
+        "modifyWidgetOnSecondTab": {
+            "type": "delegate",
+            "action": [
+                {
+                    "type": "send",
+                    "to": {
+                        "route": [
+                            "tabs01",
+                            "tab02",
+                            "text02"
+                        ]
+                    },
+                    "message": {
+                        "payload": "Text on tab 1 was clicked"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+In other words, `delegate` changes the context of the execution pipeline to be at the level where it is defined in the compilation.Using the new context, the pipeline defined in the `action` property is executed. 
+
+When the `delegate` action returns, the context is restored and any subsequent actions will be executed in the context that was there before.
+
+>**Note:** The context also includes the widget that initiated the pipeline. and is referred to as "`self`". If the `delegate` action is declared at compilation level, the `self` widget will not be set. In the current version, `self` cannot yet be used in `route` expressions of delegated actions. 
 
 ### GetTime
 
