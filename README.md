@@ -12,22 +12,21 @@ Like the other [Web Apps](https://inmation.com/docs/webapps/latest/general/index
 ```url
     http://<hostname_webapi>:<port>/apps/webstudio/
 ```
+
 When WebStudio is first opened you will be greeted by a sign-in dialog to authenticate the connection to the Web API and ultimately the core.
 
 ![WebStudio Sign In](./assets/images/webstudio-authentication.png)
 
--   To connect, you will need to enter the *Hostname* and *Port* and an optional workspace *Name* 
-    (any previous connections will be saved and are made available for future use in the *Saved Connections*
-    panel on the left).
+- To connect, you will need to enter the *Hostname* and *Port* and an optional workspace *Name* (any previous connections will be saved and are made available for future use in the *Saved Connections*
+panel on the left).
 
--   If the Web API has been [configured to communicate over https or a
-    secure websocket (WSS)](https://inmation.com/docs/api/latest/webapi/encryption.html), then you can turn on the *Secure* communication switch.
+- If the Web API has been [configured to communicate over https or a secure websocket (WSS)](https://inmation.com/docs/api/latest/webapi/encryption.html), then you can turn on the *Secure* communication switch.
 
--   The authentication method for connection can be chosen at the bottom
-    of the dialog. There is the choice of using given Credentials (the
-    built in system Profile Credentials, Active directory, machine
-    credentials) or a Single Sign On (SSO) method (Integrate Windows
-    Authentication).
+- The authentication method for connection can be chosen at the bottom
+of the dialog. There is the choice of using given Credentials (the
+built in system Profile Credentials, Active directory, machine
+credentials) or a Single Sign On (SSO) method (Integrate Windows
+Authentication).
 
 | Icon | Function |
 |---|---|
@@ -41,7 +40,7 @@ and click \[Connect\].
 
 ## WebStudio Workspace
 
-Once you have successfully signed in, the WebStudio will open with an empty model screen. 
+Once you have successfully signed in, the WebStudio will open with an empty model screen.
 
 ![WebStudio - Menubar](./assets/images/webstudio-menubar.png)
 
@@ -52,13 +51,12 @@ The icons in the menubar are used to create and edit views. Views/dashboards are
 |![Widget Templates Btn](./assets/images/AddWidgetBtn.png)|Show the Widgets template dialog used to insert widgets into the compilation|
 |![Load Compilation Btn](./assets/images/LoadCompilationBtn.png)|Load a previously saved compilation JSON file from disk.|
 |![Save Compilation Btn](./assets/images/SaveCompilationBtn.png)|Save the current compilation to disk. The file name is based on the compilation "name" field. If the name field is not provided, the filename is set to "Untitled Grid"|
-|![Edit Compilation Btn](./assets/images/EditCompilationJsonBtn.png)|Display the compilation JSON document in an editor. <BR>**NOTE**: The buttons described so far will be omitted from the UI if the `showDevTools` compilation option is set to false in the JSON or the compilation is loaded from the 
+|![Edit Compilation Btn](./assets/images/EditCompilationJsonBtn.png)|Display the compilation JSON document in an editor. <BR>**NOTE**: The buttons described so far will be omitted from the UI if the `showDevTools` compilation option is set to false in the JSON or the compilation is loaded from the
 |![Toggle theme Btn](./assets/images/LightDarkMode.png)|Toggle between light and dark display themes.|
 |![Sign out btn](./assets/images/SignOutBtn.png)|Sign out from the inmation core server|
 
 To begin adding widgets to the workspace, click on the "+" icon. This
-will open a Model Editor with a series of pre-configured widget template to choose from
-(using the [WebStudio Demo Data Items](https://inmation.com/docs/jumpstarts/latest/resources.html)). 
+will open a Model Editor with a series of pre-configured widget template to choose from (using the [WebStudio Demo Data Items](https://inmation.com/docs/jumpstarts/latest/resources.html)).
 
 ![Widget Templates](./assets/images/webstudio-widget-template.png)
 
@@ -74,7 +72,7 @@ JSON can be edited to change the configuration. In this case the "path" field of
 
 Add the widget to the compilation by clicking the \[Apply\]
 
-![Web Chart Widget](./assets/images/webstudio-widget-webchart.png)
+![Chart Widget](./assets/images/webstudio-widget-chart.png)
 
 The widget can be moved to any location in the workspace and resized
 using the "corner" icon in the bottom right-hand corner of the widget.

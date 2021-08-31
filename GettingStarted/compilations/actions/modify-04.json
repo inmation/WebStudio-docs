@@ -26,7 +26,7 @@
         },
         {
             "type": "text",
-            "text": "Click here \r\n to change the aggregate of the first pen in the Webchart",
+            "text": "Click here \r\n to change the aggregate of the first pen in the Chart",
             "captionBar": {
                 "hidden": false,
                 "title": "Widget to update array item by index",

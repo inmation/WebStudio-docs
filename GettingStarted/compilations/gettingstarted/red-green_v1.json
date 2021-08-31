@@ -1,50 +1,6 @@
 {
     "version": "1",
-    "name": "redgreen_v4",
-    "actions": {
-        "myClickAction": [
-            {
-                "type": "transform",
-                "aggregateOne": [
-                    {
-                        "$project": {
-                            "payload": {
-                                "color": "$payload"
-                            }
-                        }
-                    }
-                ]
-            },
-            {
-                "type": "gettime",
-                "set": [
-                    {
-                        "name": "time",
-                        "value": "*"
-                    }
-                ]
-            },
-            {
-                "type": "send",
-                "to": "debugger"
-            },
-            {
-                "type": "modify",
-                "id": "indicator",
-                "debug": true,
-                "set": [
-                    {
-                        "name": "model.options.style.backgroundColor",
-                        "value": "$payload.color"
-                    },
-                    {
-                        "name": "model.text",
-                        "value": "$payload.time"
-                    }
-                ]
-            }
-        ]
-    },
+    "name": "red-green_v1",
     "widgets": [
         {
             "type": "text",
@@ -60,8 +16,15 @@
             },
             "actions": {
                 "onClick": {
-                    "type": "action",
-                    "name": "myClickAction"
+                    "type": "modify",
+                    "id": "indicator",
+                    "debug": true,
+                    "set": [
+                        {
+                            "name": "model.options.style.backgroundColor",
+                            "value": "$payload"
+                        }
+                    ]
                 }
             },
             "id": "redButton",
@@ -87,8 +50,15 @@
             },
             "actions": {
                 "onClick": {
-                    "type": "action",
-                    "name": "myClickAction"
+                    "type": "modify",
+                    "id": "indicator",
+                    "debug": true,
+                    "set": [
+                        {
+                            "name": "model.options.style.backgroundColor",
+                            "value": "$payload"
+                        }
+                    ]
                 }
             },
             "id": "greenButton",
@@ -121,20 +91,6 @@
                 "h": 2,
                 "y": 0,
                 "static": true
-            }
-        },
-        {
-            "type": "messagedebugger",
-            "name": "Message Debugger",
-            "description": "Message Debugger",
-            "id": "debugger",
-            "captionBar": false,
-            "layout": {
-                "x": 6,
-                "w": 6,
-                "h": 2,
-                "y": 0,
-                "static": false
             }
         }
     ],

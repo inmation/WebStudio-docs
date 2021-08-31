@@ -1,6 +1,34 @@
 {
     "version": "1",
-    "name": "redgreen_v1",
+    "name": "red-green_v2",
+    "actions": {
+        "myClickAction": [
+            {
+                "type": "gettime",
+                "set": [
+                    {
+                        "name": "time",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "type": "modify",
+                "id": "indicator",
+                "debug": true,
+                "set": [
+                    {
+                        "name": "model.options.style.backgroundColor",
+                        "value": "$payload"
+                    },
+                    {
+                        "name": "model.text",
+                        "value": "$payload.time"
+                    }
+                ]
+            }
+        ]
+    },
     "widgets": [
         {
             "type": "text",
@@ -16,15 +44,8 @@
             },
             "actions": {
                 "onClick": {
-                    "type": "modify",
-                    "id": "indicator",
-                    "debug": true,
-                    "set": [
-                        {
-                            "name": "model.options.style.backgroundColor",
-                            "value": "$payload"
-                        }
-                    ]
+                    "type": "action",
+                    "name": "myClickAction"
                 }
             },
             "id": "redButton",
@@ -50,15 +71,8 @@
             },
             "actions": {
                 "onClick": {
-                    "type": "modify",
-                    "id": "indicator",
-                    "debug": true,
-                    "set": [
-                        {
-                            "name": "model.options.style.backgroundColor",
-                            "value": "$payload"
-                        }
-                    ]
+                    "type": "action",
+                    "name": "myClickAction"
                 }
             },
             "id": "greenButton",

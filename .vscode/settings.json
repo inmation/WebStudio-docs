@@ -23,6 +23,7 @@
         "filegrid",
         "fillcolor",
         "gettime",
+        "gettingstarted",
         "gridwidth",
         "hoverinfo",
         "hoveron",
@@ -50,6 +51,7 @@
         "steelblue",
         "stimulsoft",
         "storename",
+        "substr",
         "suspectedoutliers",
         "tagtable",
         "textfont",
@@ -63,6 +65,7 @@
         "transformeditor",
         "webstudio",
         "whiskerwidth",
+        "widget's",
         "xaxis",
         "yaxis"
     ]

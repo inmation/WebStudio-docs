@@ -4,8 +4,8 @@
     "widgets": [
         {
             "type": "chart",
-            "name": "Webchart with pen",
-            "description": "Webchart with pen",
+            "name": "Chart with pen",
+            "description": "Chart with pen",
             "captionBar": true,
             "options": {
                 "rightPanel": true,

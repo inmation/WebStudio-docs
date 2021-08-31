@@ -1,6 +1,6 @@
 {
     "version": "1",
-    "name": "redgreen_v3",
+    "name": "red-green_v3",
     "actions": {
         "myClickAction": [
             {

@@ -1,8 +1,20 @@
 {
     "version": "1",
-    "name": "redgreen_v2",
+    "name": "red-green_v4",
     "actions": {
         "myClickAction": [
+            {
+                "type": "transform",
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "payload": {
+                                "color": "$payload"
+                            }
+                        }
+                    }
+                ]
+            },
             {
                 "type": "gettime",
                 "set": [
@@ -13,13 +25,17 @@
                 ]
             },
             {
+                "type": "send",
+                "to": "debugger"
+            },
+            {
                 "type": "modify",
                 "id": "indicator",
                 "debug": true,
                 "set": [
                     {
                         "name": "model.options.style.backgroundColor",
-                        "value": "$payload"
+                        "value": "$payload.color"
                     },
                     {
                         "name": "model.text",
@@ -105,6 +121,20 @@
                 "h": 2,
                 "y": 0,
                 "static": true
+            }
+        },
+        {
+            "type": "messagedebugger",
+            "name": "Message Debugger",
+            "description": "Message Debugger",
+            "id": "debugger",
+            "captionBar": false,
+            "layout": {
+                "x": 6,
+                "w": 6,
+                "h": 2,
+                "y": 0,
+                "static": false
             }
         }
     ],
