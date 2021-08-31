@@ -277,7 +277,7 @@ In other words, `delegate` changes the context of the execution pipeline to be a
 
 When the `delegate` action returns, the context is restored and any subsequent actions will be executed in the context that was there before.
 
->**Note:** The context also includes the widget that initiated the pipeline. and is referred to as "`self`". If the `delegate` action is declared at compilation level, the `self` widget will not be set. In the current version, `self` cannot yet be used in `route` expressions of delegated actions. 
+>**Note:** The context also includes the widget that initiated the pipeline, and is referred to as "`self`". If the `delegate` action is declared at compilation level, the `self` widget will not be set. In the current version, `self` cannot yet be used in `route` expressions of delegated actions. 
 
 ### GetTime
 
