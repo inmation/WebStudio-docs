@@ -13,7 +13,8 @@ The Tree widget can be used to show hierarchical data in the form of nodes. Each
             "c": []             // Children             
         }
     ],
-    "schema": []                // See Schema
+    "schema": [],               // See Schema
+    "searchTable": {}           // See Search Table
 }
 ```
 
@@ -29,6 +30,8 @@ In order to support data with different fields for the standard `n` and `c`, a m
     }
 }
 ```
+
+In case the search is used, it would be good to provide each node with an unique id. This way the underlying logic does not need to generate ids for each node. A custom id field can be configured.
 
 Assigning icons to nodes can be done via the `schema`. Nodes can have an arbitrary number of icons. By default the icons are positioned to the left of the node name. Icons can also be assigned on the right side of the node name. This can done by providing an `alignment` field with the value `leading` or `trailing` and a `position` field in the icon definition. With `rules` you can assign a specific icon depending on the data of a node.
 
@@ -48,12 +51,13 @@ Icons can be defined by:
 ```jsonc
 {
     "schema": {
+        "id": "i",                              // Default id field is 'i' or 'id'
         "name": "n",                            // Default name field is 'n'
         "children": "c",                        // Default children field is 'c'
         "icons": [                              // Generic for all nodes
             {
-                "alignment": "leading",        // Default is 'leading'
-                "position": 1,                 // Default index in the array + 1
+                "alignment": "leading",         // Default is 'leading'
+                "position": 1,                  // Default index in the array + 1
                 "icon": "ℹ️",
                 "actions": {}
             },
@@ -217,5 +221,46 @@ Action on a specific icon:
             ]
         }
     ]
+}
+```
+
+### Search Table
+
+In order to show the proper and desired node fields in search table, a `searchTable` configuration can be made. The prompted search table is a [Table widget](../table/README.md). Currently only `schema` and `options` are supported.
+
+```json
+{
+    "searchTable": {
+        "schema": [
+            {
+                "name": "nodeName",
+                "title": "Name",
+                "sort": "asc"
+            },
+            {
+                "name": "text",
+                "title": "Description"
+            },
+            {
+                "name": "path",
+                "title": "Path
+            }
+        ]
+    }
+}
+```
+
+Note: deep linking of node properties is not supported.
+
+```jsonc
+{
+    "searchTable": {
+        "schema": [
+            {
+                "name": "props.name",       // NOT SUPPORTED
+                "title": "Name",
+            }
+        ]
+    }
 }
 ```

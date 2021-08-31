@@ -1,5 +1,12 @@
 # Change Log
 
+## [4369-Master | 4364-Dev] - 2021-08-31
+
+- Added: Delegate action: Communicate from a widget in a tab to the root compilation by the use of pipeline action delegation.
+- Added: Tree widget: Search support. Search table widget can be configured with `searchTable`.
+- Added: Modify action: removeFromArray `item` can contain any fields of the message payload.
+- Added: Gettime action: `asEpoch` added so that e.g. a relative date time can be converted directly to a milliseconds to Epoch value.
+
 ## [4281-Master | 4288-Dev] - 2021-07-22
 
 - Added: Plotly widget: `plotlyOptions` can now be provided via the datasource.
