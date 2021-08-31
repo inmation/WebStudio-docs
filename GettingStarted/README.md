@@ -136,44 +136,44 @@ With the compilation JSON loaded in the editor, change the `widgets.0.layout.sta
 
 Before moving to the next section here are a few things you can try on your own:
 
-> **Things to try**:
->
-> - Add one instance of each of the templated widgets to your compilation,  to get an impression of what they look like.
->
->
->> **Note** Most of the template widgets are pre-configured to bind to the example demo data mentioned above so they can show actual values. If your inmation system was installed to use the host machine name as the name of the "Core" node in the IO-Model, you will need to update the bindings in the widgets config. (We'll return to the topic of [data-binding](#displaying-inmation-data) in a bit more detail below)
->
-> For example: If you add the `Faceplate` templates for tag `FC4711`, its default model JSON looks like this:
->
->```json
->{
->    "type": "faceplate",
->    "name": "FC4711",
->    "description": "Process Data FC4711",
->    "path": "/System/Core/Examples/Demo Data/Process Data/FC4711",
->    "captionBar": true,
->    "layout": {
->        "h": 4
->    }
->}
->```
->
->The path used to access the "tag" information is determined by the setup on the server side. Using [DataStudio](https://inmation.com/docs/datastudio/latest/index.html), you can right-click on any node to copy its path from the popup menu. When you do this, you might find that the actual path to the referenced tag is something like "/System/*INMATION-HOST-01*/Examples/Demo Data/Process Data/FC4711" (since the default option when you install inmation is to use the hostname instead of "core") . To make the binding work in WebStudio all path values then need to be  updated by replacing occurrences of /core/ with the name used (such as *INMATION-HOST-01* in the example).
->
->In the editor press **ctrl-F** (**⌘-F** on Mac) to show the **Find** option and enter the string to find.
->
->![Find](../assets/images/webstudio-editor-find.png)
->
->Press the **>** arrow in front of the find input box to show the **Replace** input box, enter the name of your Core node and click the "Replace All" button (the icon to the far right of the replace field).
->
->![replace](../assets/images/webstudio-replace.png)
->
->If all went according to plan, the Faceplate should show up with live data:
->
->![faceplate](../assets/images/webstudio-Faceplate.png)
->
-> - Experiment with the code-completion options to see which config options are
-> available in addition to the 'out-of-the-box' templates settings.
+**Things to try**:
+
+- Add one instance of each of the templated widgets to your compilation,  to get an impression of what they look like.
+
+
+**Note** Most of the template widgets are pre-configured to bind to the example demo data mentioned above so they can show actual values. If your inmation system was installed to use the host machine name as the name of the "Core" node in the IO-Model, you will need to update the bindings in the widgets config. (We'll return to the topic of [data-binding](#displaying-inmation-data) in a bit more detail below)
+
+For example: If you add the `Faceplate` templates for tag `FC4711`, its default model JSON looks like this:
+
+```json
+{
+    "type": "faceplate",
+    "name": "FC4711",
+    "description": "Process Data FC4711",
+    "path": "/System/Core/Examples/Demo Data/Process Data/FC4711",
+    "captionBar": true,
+    "layout": {
+        "h": 4
+    }
+}
+```
+
+The path used to access the "tag" information is determined by the setup on the server side. Using [DataStudio](https://inmation.com/docs/datastudio/latest/index.html), you can right-click on any node to copy its path from the popup menu. When you do this, you might find that the actual path to the referenced tag is something like "/System/*INMATION-HOST-01*/Examples/Demo Data/Process Data/FC4711" (since the default option when you install inmation is to use the hostname instead of "core") . To make the binding work in WebStudio all path values then need to be  updated by replacing occurrences of /core/ with the name used (such as *INMATION-HOST-01* in the example).
+
+In the editor press **ctrl-F** (**⌘-F** on Mac) to show the **Find** option and enter the string to find.
+
+![Find](../assets/images/webstudio-editor-find.png)
+
+Press the **>** arrow in front of the find input box to show the **Replace** input box, enter the name of your Core node and click the "Replace All" button (the icon to the far right of the replace field).
+
+![replace](../assets/images/webstudio-replace.png)
+
+If all went according to plan, the Faceplate should show up with live data:
+
+![faceplate](../assets/images/webstudio-Faceplate.png)
+
+- Experiment with the code-completion options to see which config options are
+available in addition to the 'out-of-the-box' templates settings.
 
 ## Displaying inmation data
 
