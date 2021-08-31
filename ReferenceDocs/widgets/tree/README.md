@@ -147,6 +147,12 @@ Node styling and icon assignment can be combined using the `rules` in the `optio
 }
 ```
 
+| name | description |
+| ---- | --- |
+| `allowSearch` | Shows the magnify glass button in the toolbar (default is true).
+| `collapseOnSearchSelection` | The tree will be collapsed when a selection is made in the search table.
+| `showRefreshButton` | Shows the refresh button in the toolbar (default is true).
+
 ### Actions
 
 Nodes and icon of nodes support action hooks. An action hook supports the standard action pipeline. The message payload is de data of the node.
