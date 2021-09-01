@@ -443,7 +443,7 @@ Notice that in addition to a `payload` property we also have a `model` property 
 Knowing the structure of the message, the earlier `set` statement hopefully starts making sense. In short, it states that the background color of the widget called "indicator" should be set to the text value of the clicked widget.
 
 - `"name"`: "model.options.style.backgroundColor" refers to the name of the property, in the target widget, that will be modified by the action in dot-notation. In this case we are setting the widget background color.
-- `"value"`: "$payload" assigns the value of the message `payload` to the background property. The `$` in front of the field indicates that we need to resolve the value of the field as opposed to assigning the string "payload".
+- `"value"`: "\$payload" assigns the value of the message `payload` to the background property. The `\$` in front of the field indicates that we need to resolve the value of the field as opposed to assigning the string "payload".
 
 ### Named actions
 
