@@ -1,6 +1,6 @@
 # WebStudio
 
-WebStudio is a Web App that allows you to compile a dashboard of dynamic responsive [widgets](./ReferenceDocs/widgets/README.md) to visualize the data from your inmation system in a web browser. WebStudio uses the [Web API](https://inmation.com/docs/api/latest/webapi/index.html) to retrieve data from the system and allows access to your data from anywhere with an internet connection.
+WebStudio is a Web App that allows you to compile a dashboard of dynamic responsive [widgets](./referencedocs/widgets/README.md) to visualize the data from your inmation system in a web browser. WebStudio uses the [Web API](https://inmation.com/docs/api/latest/webapi/index.html) to retrieve data from the system and allows access to your data from anywhere with an internet connection.
 
 >To begin using WebStudio immediately it is recommended that you create the WebStudio Demo Data objects in your system using the
 `Examples_WebStudio_Demo_Data_V<n.nn>.json` MassConfig file available on the [JumpStart Resources page](https://inmation.com/docs/jumpstarts/latest/resources.html). Import the JSON file into a [MassConfig display](https://inmation.com/docs/datastudio/latest/displays-hands-on/working-with-massconfig.html) and click \[Apply\] to create the objects. This will give you a good starting point to begin creating widgets in the workspace.
