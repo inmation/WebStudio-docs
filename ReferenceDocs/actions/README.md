@@ -1050,7 +1050,7 @@ Example to send a message to another component to refresh itself:
     "to" : "Place the ID of the widget here",
     "message": {
         "topic": "refresh" // Can be omitted because it is default.
-        "payload": {} // Can be any type of value. Typically an object is ued.
+        "payload": {} // Can be any type of value. Typically an object is used.
     }
 }
 ```
@@ -1065,7 +1065,7 @@ The recipient widget will perform an update. It only updates its known propertie
     "to" : "Place the ID of the widget here",
     "message": {
         "topic": "update",
-        "payload": {} // Can be any type of value. Typically an object is ued.
+        "payload": {} // Can be any type of value. Typically an object is used.
     }
 }
 ```
