@@ -1,5 +1,11 @@
 # Change Log
 
+## [4563-Dev] - 2021-09-30
+- Updated: WebStudio 3rd party libraries to the latest versions
+- Added: Widget `spacing` and `padding` options in the compilation `options`
+- Change: The default `numberOfColumns` was increased from 24 to 96
+- Fixed and Enhanced: Data source on a Tab can be used to set any of the tab properties except the id.
+- Added option to activate a tab using the send action.  
 ## [4369-Master | 4364-Dev] - 2021-08-31
 
 - Added: Delegate action: Communicate from a widget in a tab to the root compilation by the use of pipeline action delegation.

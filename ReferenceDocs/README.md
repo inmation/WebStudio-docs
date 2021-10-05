@@ -150,7 +150,15 @@ See [widget doc](./widgets/README.md) model description for the widget model.
         "numberOfColumns": 24,
         "numberOfRows": 12,
         "stacking": "none", 
-        "showDevTools" : true
+        "showDevTools" : true,
+        "padding": {
+            "x": 0,
+            "y": 2
+        },
+        "spacing": {
+            "x": 2,
+            "y": 2
+        }
     }
 }
 ```
@@ -175,6 +183,8 @@ See [widget doc](./widgets/README.md) model description for the widget model.
 | | `vertical`: Widgets are stacked vertically starting from the top of the screen.
 | | `horizontal`: Widgets are stacked horizontally starting at the left of the screen.
 | `showDevTools` | As the name suggests, this parameter is used to control the availability of developer tools in the UI. It would be set to `true` for example to allow editing of compilations served from the system, or `false` to prohibit editing at any time.<br>**Note**: this setting takes precedence over the `dev` URL query parameter described above. In other words, if `showDevTools` is set to `false`, this will override the query parameter and prevents the development tools from being shown.|
+| `padding`| This is an optional property used to set the number of pixels between the edge of the canvas and the content. The `x` value sets the padding at the left and right edges of the canvas, while the `y` value sets the padding at the top. Since compilations can be taller that the height of the canvas, the there is no padding applied to the bottom of the view.<br><br>If the property is omitted a default value of 5 is applied to the `x` and `y` properties.
+| `spacing`| This is an optional property used to set the spacing between widgets on the canvas. The `x` and `y` values determine the horizontal and vertical spacing. <br><br>If the property is omitted, the widget spacing defaults to 10<br><br>**Note:** The `numberOfColumns` property places a limit on the pixel size of each grid cell. The widget spacing is achieved by reducing the area within the grid cell occupied by the widget. This in turn means that the spacing cannot be set larger than the dimensions of one cell. A side effect of this is that the higher the `numberOfColumns` the smaller the maximum spacing can be between widgets.|
 | `width`| To set the maximal grid width with e.g. 500.
 
 Example to have an image as the compilation background:
