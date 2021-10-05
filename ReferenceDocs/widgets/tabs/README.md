@@ -242,7 +242,7 @@ Move to the next tab in the tabs array:
 ```
 
 Active a specific tab:
-```json
+```jsonc
 {
     "type": "send",
     "to": "tabs01",
