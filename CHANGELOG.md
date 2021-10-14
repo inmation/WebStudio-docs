@@ -1,5 +1,7 @@
 # Change Log
 
+## [4632-Dev] - 2021-10-14
+- Collect and Update actions now support route expressions for the `from` and `id` fields.
 ## [4563-Dev] - 2021-09-30
 - Updated: WebStudio 3rd party libraries to the latest versions
 - Added: Widget `spacing` and `padding` options in the compilation `options`

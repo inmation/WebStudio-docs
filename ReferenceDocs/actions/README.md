@@ -66,10 +66,14 @@ Collect data from a widget. The specific data retrieved dependents on the source
 }
 ```
 
-the `from` field can be set to **"self"**. This allows the pipeline to fetch data from the widget that initiated the actions.
-
+The `from` field can be set to one of the following:
+* **Widget ID**: ID of a widget at the same level in the compilations. <br>
+  > **Note**: Dot-notation cannot be used to collect data from widgets nested inside tabs.
+* **Route**: The route notation is typically used to access widgets contained in nested tab compilations.  
+* **"self"**: This allows the pipeline to fetch data from the widget that initiated the actions. <br>
 This might seem like an odd thing to do since the message at the beginning of a pipeline will be initialized by the source widget, but as the execution progresses this information may be overwritten. Using the `collect` action on **"self"** provides a way to get back to the original content.
 
+> **Note**: Collect is mainly intended to grab the "data" content of a widget. If you need to get access to any other fields of a widget during pipeline execution, the [modify](#using-modify-to-collect-model-information) action can be used together with `set` 
 ### Console Log
 
 Writes the input message `payload` to the browser's console log.
@@ -847,6 +851,67 @@ Will result in a `transform` action:
 
 **Note:** Due to how the `$filter` pipeline is implemented in the external library, the condition expression can only refer to fields contained within `$$item`. What this means is that external variables are not visible inside the condition expression.
 
+#### Using `modify` to collect model information
+In addition to using the `modify` action to manipulate widgets it can also be used to access model state in an action pipeline. 
+
+For example, suppose we want to toggle the background color of a text widget between say green and transparent each time it is clicked. To achieve this a [switch](#switch) action can be used which "looks at" the current background color and set the opposite one in `onClick`. The tricky part is getting access to the current color. The json snippet below shows how this might be achieved:
+
+```jsonc
+{
+    "actions": {
+        "onClick": [
+            { // Start by reading the current background color.
+                "type": "modify",
+                "id": "self",
+                "set": [
+                    { // Note how the model and payload are referenced to
+                      // read the background color and save it in the message payload
+                        "name": "payload", 
+                        "value": "$model.options.style.backgroundColor"
+                    }
+                ]
+            },
+            { // Swop the colors in the message payload. 
+                "type": "switch",
+                "case": [
+                    {
+                        "match": { // if the current bg is transparent
+                            "payload": "transparent"
+                        },
+                        "action": { // then set it to green
+                            "type": "passthrough",
+                            "message": {
+                                "payload": "green"
+                            }
+                        }
+                    },
+                    {
+                        "match": {}, // otherwise
+                        "action": {  // set to back to transparent
+                            "type": "passthrough",
+                            "message": {
+                                "payload": "transparent"
+                            }
+                        }
+                    }
+                ]
+            },
+            { // Apply the payload color to the widget background.
+                "type": "modify",
+                "id": "self",
+                "set": [
+                    {
+                        "name": "model.options.style.backgroundColor",
+                        "value": "$payload"
+                    }
+                ]
+            }
+        ]
+    },
+}
+```
+
+
 ### Notify
 
 Displays a notification on the top right of WebStudio.
@@ -1001,7 +1066,7 @@ Refresh a widget. No message will be send to the target widget. In case you want
 }
 ```
 
-The `to` field can have the value `self` in case the action pipeline needs to refresh its own widget.
+The `id` field can have the value `self` should the action pipeline need to refresh its own widget. It can also be a route expression allowing widgets embedded in nested tabs compilations to be refreshed.
 
 ### Send
 
