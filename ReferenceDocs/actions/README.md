@@ -423,7 +423,7 @@ Invoke an Advanced Endpoint.
 
 With `modify` the model of a widget can be changed. If no modification operator is specified a `mergeObjects` will be performed. This will merge / overwrite the properties from the message `payload` into the model.
 
-To point to the widget which needs to be modified a `id` field. The value is normally a string with the widget ID of the designated widget. In case you need to point to a single tab of a Tab widget or a widget which is residing within a tab, you need to provide a `route`.
+The `id` field is used to point to the widget which needs to be modified. The value is normally a string with the ID of the relevant widget. Should you need to point to a tab instance of a Tabs widget or a widget which is residing within a tab, you need to use a `route` expression.
 
 ```jsonc
 {
@@ -446,6 +446,8 @@ Using a `route` to point to a widget within a tab
     }
 }
 ```
+
+> **Note**: The `id` field may be set to **"self"** resulting in the action being apply to the currently scoped widget. Some caution is required in this case, since doing so can lead to continuous looping, particularly when the modify action is called inside one of the [life cycle hooks](../widgets/README.md#life-cycle-hooks) such as `willUpdate` for example. To avoid looping behavior, set the `refresh` field to **false**. 
 
 The following modification operators are supported, multiples of which can be specified in the same action. They are evaluated in the order shown. In other words, if multiple modification operators are used, the `set` modification is done first, followed by `unset` and so on.
 
