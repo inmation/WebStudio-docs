@@ -1148,11 +1148,11 @@ Subscribe to object data changes in the system. Typically used in `dataSource` c
 
 ### Switch
 
-Execute actions based on rules. A rule will be checked by performing a [`queryOne`](#transform) transformation. In case the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed. If one rule matches, its `action` will be executed and further testing of the subsequent rules will be stopped.
+Execute actions based on rules. A rule will be checked by performing a [`queryOne`](#transform) transformation. If the result of the queryOne transformation is something other than `null` the action(s) defined in the `case` statement will be executed. If one rule matches, its `action` will be executed and further testing of the subsequent rules will be stopped.
 
-In case `checkAll` is set to `true`, the 'initial' input message of the switch will be passed to each action pipeline of the matched rules. The output message of the last executed action pipeline, will be the output message of this switch action. When no rule matches, the output of the switch action is the same as the input.
+When `checkAll` is set to `true`, the 'initial' input message of the switch will be passed to each action pipeline of the matched rules. The output message of the last executed action pipeline, will be the output message of this switch action. When no rule matches, the output of the switch action is the same as the input.
 
-In order to have a **default action** in case none of the rules match, add a extra rule at the end of the `case` array with an empty `match` condition.
+To declare a **default action** which applies when none of the rules match, add a extra rule at the end of the `case` array with an empty `match` condition.
 
 ```jsonc
 {
@@ -1160,7 +1160,7 @@ In order to have a **default action** in case none of the rules match, add a ext
     "checkAll": false,
     "case": [
         {
-            "match" : {
+            "match" : { // test if payload.temp == 10
                 "temp": 10
             },
             "action" : { // Can be a single action or action pipeline.
@@ -1169,7 +1169,7 @@ In order to have a **default action** in case none of the rules match, add a ext
             }
         },
         {
-            "match" : {
+            "match" : { // test if payload.temp >= 20
                 "temp": {
                     "$gte": 20
                 }
@@ -1190,6 +1190,23 @@ In order to have a **default action** in case none of the rules match, add a ext
             "action" : [] // Can be a single action or action pipeline.
         }
     ]
+}
+```
+
+In its simplest form, a match expressions tests if the named payload field equals the provided value. An explicit comparison operator can also be used as illustrated above. 
+
+Even more complex match conditions can be formulated by using the mongoDB `$expr` operator. For example:
+
+```jsonc
+{
+    "match" : { 
+        "$expr": {
+            "$lt": [ // check if payload.value < payload.maxValue
+                "$value",
+                "$maxValue"
+            ]
+        }
+    }, // ... 
 }
 ```
 
