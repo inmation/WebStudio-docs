@@ -11,7 +11,7 @@ With this widget you can show different widgets in the same space by switching b
     "tabs": [                   // List of tabs. View order depends on the index in the array.
         {
             "id": "",           // Unique id of the tab.
-            "name": "",         // Name of the tab as shown on the tab when there is no title.
+            "name": "",         // Name of the tab as shown on the tab when there is no indicator title.
             "indicator": {},    // Configure the appearance of the tab's indicator. see details below
             "compilation": {}   // Like the a normal WebStudio compilation.
         }
@@ -40,6 +40,8 @@ The options property controls the overall appearance of the tabs indicator:
 
 ### Indicator
 The appearance of the indicator, used to show which tab is selected, can be configured at the `tabs` level, in which case it applies to all `tab` instances, or at the individual `tab` level.
+
+> **Note**: The `indicator` element of the `tab` model is optional. If omitted, the indicator title will be set to the value of the `tab` name field.
 
 ```jsonc
 {
