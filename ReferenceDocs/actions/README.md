@@ -20,6 +20,7 @@ Pipeline can consist of actions with `type`:
 - [convert](#convert): Converts data to and from JSON, Base64.
 - [copy](#copy): Copy to clipboard.
 - [delegate](#delegate): delegate the execution context of an action pipeline.
+- [dismiss](#dismiss): Dismiss the last shown [prompt](#prompt-dialog)
 - [gettime](#gettime): Converts relative, ISO UTC and milliseconds since Epoch timestamps.
 - [function](#function): Advanced Endpoint call to the system.
 - [modify](#modify): Change the model of a widget.
@@ -282,6 +283,17 @@ In other words, `delegate` changes the context of the execution pipeline to be a
 When the `delegate` action returns, the context is restored and any subsequent actions will be executed in the context that was there before.
 
 >**Note:** The context also includes the widget that initiated the pipeline, and is referred to as `"self"`. If the `delegate` action is declared at compilation level, the `self` widget will not be set. In the current version, `self` cannot yet be used in `route` expressions of delegated actions. 
+
+### Dismiss 
+This action is used to close a modal dialog shown using the [prompt](#prompt-dialog) action. 
+
+```json
+{
+    "type" : "dismiss"
+}
+```
+
+To use it, create an action pipeline that responds to a user action on a widget in the prompt dialog and invoke `dismiss`.
 
 ### GetTime
 
@@ -978,7 +990,7 @@ This action causes a popup dialog (prompt) to be shown. Its content is a widget 
 
 Example to prompt a text widget.
 
-```json
+```jsonc
  {
     "type": "prompt",
     "width": "500px",
@@ -986,13 +998,18 @@ Example to prompt a text widget.
     "message": {
         "payload": {
             "type": "text",
-            "text": "Hello world"
+            "text": "Hello world",
+            "actions": { 
+                "onClick": { // Close the dialog when the text is clicked
+                "type": "dismiss"
+                }
+            }
         }
     }
 }
 ```
 
-- `content`: Can be a single widget or a complete compilation.
+- `content`: Can be a single widget. It is possible to indirectly show a complete compilation. This can be achieved by showing a [tabs](../widgets/tabs/README.md#tabs) widget containing one or more tab instances. The appearance of a singe compilation is achieved by defining a single tab and hiding the indicator.
 
 ### Read
 
