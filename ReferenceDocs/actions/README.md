@@ -1001,7 +1001,7 @@ Example to prompt a text widget.
             "text": "Hello world",
             "actions": { 
                 "onClick": { // Close the dialog when the text is clicked
-                "type": "dismiss"
+                    "type": "dismiss"
                 }
             }
         }
