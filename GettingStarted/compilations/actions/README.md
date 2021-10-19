@@ -28,6 +28,7 @@ In this section you can find compilation examples of actions.
 | [openlink-01](./openlink-01.json) | Click to open a hypermedia link.|![openlink-01](../../../assets/images/compilations/actions/Actions_22_openlink-01.png)|
 | [passthrough-01](./passthrough-01.json) | Click to passes input message payload to the next action in the pipeline, which in this case is the browser consoles.|![passthrough-01](../../../assets/images/compilations/actions/Actions_23_passthrough-01.png)|
 | [prompt-01](./prompt-01.json) | Click to show a prompt dialog containing a text widget.|![prompt-01](../../../assets/images/compilations/actions/Actions_24_prompt-01.png)|
+| [prompt-02](./prompt-02.json) | Show how to use:<ul><li>stacked prompts.</li><li>Tabs configured to appear as a single compilation in the prompt</li><li>named actions to modify widgets from within the prompt</li><li>dismiss actions</li></ul> |  ![prompt-02](../../../assets/images/compilations/actions/Actions_38_prompt-02.png.png)| 
 | [read-lua-kpi-table-01](./read-lua-kpi-table-01.json) | Click to retrieves a KPI table.|![read-lua-kpi-table-01](../../../assets/images/compilations/actions/Actions_25_read-lua-kpi-table-01.png)|
 | [read-object-value-01](./read-object-value-01.json) | Click to retrieve data from the read endpoint.|![read-object-value-01](../../../assets/images/compilations/actions/Actions_26_read-object-value-01.png)|
 | [read-write-01](./read-write-01.json) | Table data is retrieved using read endpoint, click on save button to write data to the endpoint|![read-write-01](../../../assets/images/compilations/actions/Actions_27_read-write-01.png)|
@@ -41,3 +42,5 @@ In this section you can find compilation examples of actions.
 | [transform-example-05](./transform-example-05.json) | Transform entire input using MongoDB's Aggregation Pipeline logic.|![transform-example-05](../../../assets/images/compilations/actions/Actions_35_transform-example-05.png)|
 | [wait-example-01](./wait-example-01.json) | Click on a cell prompts notification with one second delay.|![wait-example-01](../../../assets/images/compilations/actions/Actions_36_wait-example-01.png)|
 | [write-example-01](./write-example-01.json) | Click on a cell increases or decreases value of inmation object.|![write-example-01](../../../assets/images/compilations/actions/Actions_37_write-example-01.png)|
+
+

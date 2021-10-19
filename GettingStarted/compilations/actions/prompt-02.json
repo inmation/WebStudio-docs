@@ -1,0 +1,274 @@
+{
+    "version": "1",
+    "name": "actions-prompt-02",
+    "actions": {
+        "buttonClicked": {
+            "type": "delegate",
+            "action": [
+                {
+                    "type": "modify",
+                    "id": "OMM6",
+                    "set": [
+                        {
+                            "name": "model.text",
+                            "value": "Changed by Text from prompted Tabs"
+                        }
+                    ]
+                },
+                {
+                    "type": "wait",
+                    "duration": 3000
+                },
+                {
+                    "type": "modify",
+                    "id": "OMM6",
+                    "set": [
+                        {
+                            "name": "model.text",
+                            "value": "Click me again"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "widgets": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "text": "actions-prompt-02",
+            "captionBar": false,
+            "options": {
+                "style": {
+                    "color": "grey",
+                    "textAlign": "center",
+                    "fontSize": "30px",
+                    "fontWeight": "bold",
+                    "backgroundColor": "transparent"
+                }
+            },
+            "layout": {
+                "x": 0,
+                "y": 0,
+                "w": 24,
+                "h": 1,
+                "static": true
+            }
+        },
+        {
+            "type": "text",
+            "name": "Action Pipeline Delegation with Prompt",
+            "text": "Click here to prompt",
+            "actions": {
+                "buttonClicked_NOTWORKING_YET": {
+                    "type": "delegate",
+                    "action": [
+                        {
+                            "type": "modify",
+                            "id": "self",
+                            "set": [
+                                {
+                                    "name": "model.text",
+                                    "value": "changed"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "onClick": [
+                    {
+                        "type": "prompt",
+                        "height": "400px",
+                        "width": "600px",
+                        "message": {
+                            "payload": {
+                                "type": "tabs",
+                                "id": "tabs01",
+                                "name": "Tabs",
+                                "description": "Empty Tabs",
+                                "tabs": [
+                                    {
+                                        "id": "tab01",
+                                        "name": "Tab01",
+                                        "indicator": {
+                                            "title": "Tab 01"
+                                        },
+                                        "compilation": {
+                                            "version": "1",
+                                            "widgets": [
+                                                {
+                                                    "type": "text",
+                                                    "name": "Action Pipeline Delegation with Prompt",
+                                                    "text": "Click here to prompt",
+                                                    "actions": {
+                                                        "onClick": [
+                                                            {
+                                                                "type": "prompt",
+                                                                "height": "150px",
+                                                                "width": "500px",
+                                                                "message": {
+                                                                    "payload": {
+                                                                        "type": "tabs",
+                                                                        "id": "tabs01",
+                                                                        "name": "Tabs",
+                                                                        "description": "Empty Tabs",
+                                                                        "tabs": [
+                                                                            {
+                                                                                "id": "tab01",
+                                                                                "name": "Tab01",
+                                                                                "indicator": {
+                                                                                    "title": "Tab 01"
+                                                                                },
+                                                                                "compilation": {
+                                                                                    "version": "1",
+                                                                                    "widgets": [
+                                                                                        {
+                                                                                            "type": "text",
+                                                                                            "name": "Text",
+                                                                                            "text": "Click here \r\n To modify text in first prompted Tab.",
+                                                                                            "actions": {
+                                                                                                "onClick": [
+                                                                                                    {
+                                                                                                        "type": "action",
+                                                                                                        "name": "innerButtonClicked"
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "dismiss"
+                                                                                                    }
+                                                                                                ]
+                                                                                            },
+                                                                                            "id": "GjkJ",
+                                                                                            "layout": {
+                                                                                                "x": 0,
+                                                                                                "w": 24,
+                                                                                                "h": 6,
+                                                                                                "y": 0,
+                                                                                                "static": false
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "options": {
+                                                                                        "stacking": "vertical",
+                                                                                        "numberOfColumns": 24
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "actions": {
+                                                                            "innerButtonClicked": {
+                                                                                "type": "delegate",
+                                                                                "action": [
+                                                                                    {
+                                                                                        "type": "modify",
+                                                                                        "id": "OMM6",
+                                                                                        "set": [
+                                                                                            {
+                                                                                                "name": "model.text",
+                                                                                                "value": "Changed by Text from second prompted Tabs"
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "wait",
+                                                                                        "duration": 3000
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "modify",
+                                                                                        "id": "OMM6",
+                                                                                        "set": [
+                                                                                            {
+                                                                                                "name": "model.text",
+                                                                                                "value": "Click me again"
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        },
+                                                                        "options": {
+                                                                            "showTabBar": false
+                                                                        },
+                                                                        "layout": {
+                                                                            "x": 0,
+                                                                            "w": 8,
+                                                                            "h": 3,
+                                                                            "y": 0,
+                                                                            "static": false
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "id": "OMM6",
+                                                    "layout": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "w": 24,
+                                                        "h": 5,
+                                                        "static": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "name": "Text",
+                                                    "text": "Click here \r\n to modify text on root level and to dissmis prompt.",
+                                                    "actions": {
+                                                        "onClick": [
+                                                            {
+                                                                "type": "action",
+                                                                "name": "buttonClicked"
+                                                            },
+                                                            {
+                                                                "type": "dismiss"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "id": "GjkJ",
+                                                    "layout": {
+                                                        "x": 0,
+                                                        "y": 8,
+                                                        "w": 24,
+                                                        "h": 5,
+                                                        "static": false
+                                                    }
+                                                }
+                                            ],
+                                            "options": {
+                                                "stacking": "vertical",
+                                                "numberOfColumns": 24
+                                            }
+                                        }
+                                    }
+                                ],
+                                "options": {
+                                    "showTabBar": false
+                                },
+                                "layout": {
+                                    "x": 0,
+                                    "w": 59,
+                                    "h": 43,
+                                    "y": 0,
+                                    "static": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "id": "OMM6",
+            "options": {
+                "style": {
+                    "textAlign": "left"
+                }
+            },
+            "layout": {
+                "x": 0,
+                "y": 1,
+                "w": 24,
+                "h": 2,
+                "static": false
+            }
+        }
+    ]
+}

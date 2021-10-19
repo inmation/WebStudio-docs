@@ -295,6 +295,8 @@ This action is used to close a modal dialog shown using the [prompt](#prompt-dia
 
 To use it, create an action pipeline that responds to a user action on a widget in the prompt dialog and invoke `dismiss`.
 
+> **Note**: The dismiss action closes the last shown prompt. Prompts can be "stacked" by invoking a `prompt` action from within an active popup dialog. When `dismiss` is called, only the top most instance is closed.
+
 ### GetTime
 
 The `gettime` action can perform two types of functions:
@@ -1010,6 +1012,12 @@ Example to prompt a text widget.
 ```
 
 - `content`: Can be a single widget. It is possible to indirectly show a complete compilation. This can be achieved by showing a [tabs](../widgets/tabs/README.md#tabs) widget containing one or more tab instances. The appearance of a single compilation is achieved by defining one tab and hiding the indicator.
+
+> **Note**: Actions implemented on widgets inside the `prompt` are able to manipulate others, using [modify](#modify) actions for example, in the main compilation or in the previous prompt from which the current one was shown. To ensure that the changes are directed at the correct widget, named [actions](#action) can be declared at root compilation level for example, in which the `modify` is [delegated](#delegate) to the root context. 
+><br>To make sense of this statement it might be helpful tp refer to the [prompt-02](../../GettingStarted/compilations/actions/README.md) example. It shows how to load a prompt from a click in the main compilation, containing a tabs widget with its indicator hidden. The text widgets in the prompt are clickable, resulting in changes to other text widgets. 
+
+> **Note**: Named actions, callable from prompts, can currently only be declared at root compilation level or in the tabs widget of the prompt.
+
 
 ### Read
 
