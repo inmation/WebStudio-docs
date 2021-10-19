@@ -1009,7 +1009,7 @@ Example to prompt a text widget.
 }
 ```
 
-- `content`: Can be a single widget. It is possible to indirectly show a complete compilation. This can be achieved by showing a [tabs](../widgets/tabs/README.md#tabs) widget containing one or more tab instances. The appearance of a singe compilation is achieved by defining a single tab and hiding the indicator.
+- `content`: Can be a single widget. It is possible to indirectly show a complete compilation. This can be achieved by showing a [tabs](../widgets/tabs/README.md#tabs) widget containing one or more tab instances. The appearance of a single compilation is achieved by defining a one tab and hiding the indicator.
 
 ### Read
 
