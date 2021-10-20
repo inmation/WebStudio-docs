@@ -147,7 +147,7 @@ See [widget doc](./widgets/README.md) model description for the widget model.
 {
     "options": {
         "background": {},
-        "numberOfColumns": 24,
+        "numberOfColumns": 96,
         "numberOfRows": 12,
         "stacking": "none", 
         "showDevTools" : true,
@@ -176,7 +176,7 @@ See [widget doc](./widgets/README.md) model description for the widget model.
 | | `<n>px` or `<n>px <m>px`: Sets the size of the image in pixels. If only one value is provided it is applied to the width of the image. For example `100px` is equivalent to `100px auto`  |
 | | `<n>.<m>em`: Specify the size in EM units. `3.2em` for example |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`backgroundColor`| can be set to any valid CSS color name or RGB value |
-| `numberOfColumns` | Defines the number of vertical columns the grid is divided into. The absolute column width in pixels, will scale proportionally to that of the compilation. |
+| `numberOfColumns` | Defines the number of vertical columns the grid is divided into. The absolute column width in pixels, will scale proportionally to that of the compilation. By default the `numberOfColumns` is set to 96 when you create a new compilation. <br>In case you are wondering why 96 and not 100, it is because 96 has the most factors, allowing the columns to be divided into more equal width groups ( 2, 3, 4, 6 ... etc) that 100. That said, the column count should be adjusted to suite the layout needs of your compilation|
 | `numberOfRows` | The naming of this property is a bit misleading in that it is used to set the height of grid rows to a specific number of pixels rather than dividing the canvas into equally sized rows. By setting this property, the row height is fixed and no longer scales when the canvas width is resized. If the property is omitted each cell in the grid is as many pixels high as it is wide. The width being determined by the canvas width divided by the `numberOfColumns`. In this case the row height does scales with the column width.
 | `stacking` | Defines how the widgets can be positioned. Options are:
 | | `none`: Widgets can be dragged around freely and positioned on any gid cell. **Default**
