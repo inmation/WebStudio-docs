@@ -224,7 +224,7 @@ The `tabs` widget responds to the following message topics in a [send action](..
 
   | Field | Description |
   | --- | --- |
-  | `activate` | Optional field used to controls which tab should be selected. Options are:<br>-  Relative to the currently selected tab or the provided `id` : "next", "previous", "nextWithRotate", "previousWithRotate". The last two options cause the selection to wrap round if the referenced tab at the last or first position. <br>- Absolute: "first" or "last" |
+  | `activate` | Optional field used to controls which tab should be selected. Options are:<br><ul><li>Relative to the currently selected tab or the provided `id` : "next", "previous", "nextWithRotate", "previousWithRotate". The last two options cause the selection to wrap round if the referenced tab at the last or first position.</li><li>Absolute: "first" or "last"</li></ul> |
   | `id` | Causes the tab with the specified `id` to be activated when used without providing an `activate` value. When used in conjunction with `activate`, determines the tab from which the relative position is calculated.  
 
 Examples: 
