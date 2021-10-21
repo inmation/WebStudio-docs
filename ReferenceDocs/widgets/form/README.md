@@ -37,7 +37,7 @@ Supported actions:
 
 #### onSubmit
 
-When the `onSubmit` action is defined in the `actions` a `Submit` button, will be shown at the bottom right corner of the form.
+When the `onSubmit` action is defined in the `actions` a `Submit` button, will be shown in the bottom right corner of the form.
 
 ```jsonc
 {
