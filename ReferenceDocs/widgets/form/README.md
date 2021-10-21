@@ -54,7 +54,7 @@ When the `onSubmit` action is defined in the `actions` a `Submit` button, will b
 }
 ```
 
-The `onSubmit` action gets invoked when the `Submit` button is clicked. The input message `payload` is an array containing the `id` and `value` of each input entry. If the input entry contains more than one input values, the `value` will be an array or values.
+The `onSubmit` action gets invoked when the `Submit` button is clicked. The input message `payload` is an array containing the `id` and `value` of each input entry. If the input entry contains more than one input values, the `value` field will be an array or values.
 
 ```json
 [
