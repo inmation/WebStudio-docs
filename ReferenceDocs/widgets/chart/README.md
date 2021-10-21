@@ -1,6 +1,6 @@
 # Chart
 
-The chart is an advanced chart widget. The ability to display multiple axes (both x and y) means Web Chart is a great way to illustrate a lot of information within limited space and allow new insight to the data you may have otherwise missed.
+The chart is feature rich plot widget. The ability to display multiple axes (both x and y) means Web Chart is a great way to present a lot of information within a limited space. It allows trends and patterns in the data to be visualized thus providing insight into details that might otherwise be missed.
 
 Multiple x-axis support enables different time period comparisons. Diverse production data can be added to a single graph, making the comparison of critical outliers much easier by removing the need to switch between graphs. Multiple y-axis support enables different scale comparison. Variables with different scales can have a strong relation, e.g. temperature and humidity. Thanks to multi y-axis support these relations can now be easily illustrated. Combination of both multi x and y-axis makes Web Chart a powerful tool for chart plotting, analysis and trend exploration.
 
@@ -18,9 +18,9 @@ Web Chart also offers a wider range of chart types, such as Candlestick, Spline,
 
 ### Model Root
 
-Property `modelRoot` declares from which KPI Model object to start showing in the model tree view. If this property is not set the model will display the whole KPI Model object in respect to the object permissions.
-By setting property `includeRoot` to `true`, the model view will display the specified object including its children.
-By setting property `includeRoot` to `false`, the model view will display the children of specified object.
+The `modelRoot` property defines from which KPI Model object, defined in the back end, to start the model tree view, shown in the left chart panel. If this property is not set the tree will display the whole KPI Model hierarchy taking into account object permissions of the currently logged in user.
+By setting the `includeRoot` property to `true`, the model view will display the specified object including its children.
+By setting it to `false`, the model view will display the children of specified object.
 
 ```jsonc
 {
@@ -114,7 +114,7 @@ By providing a `tagSearchTable` config you can control how the table with tags i
 
 The config below matches the data which is configured on the `tagtable` field or is fetched from the KPI Model items from the custom table with name `tagtable`.
 
-At least make sure the table data has (`name` or `Name`) and (`path` or `Path`) fields.
+Each entry in the table `data` list must contain at least a (`name` or `Name`) and (`path` or `Path`) fields.
 
 ```json
 {
@@ -136,7 +136,7 @@ At least make sure the table data has (`name` or `Name`) and (`path` or `Path`) 
 }
 ```
 
-In case `tagtable` is not used a `data` field can be defined in the `tagSearchTable` directly.
+If `tagtable` is not used a `data` field can be defined in the `tagSearchTable` directly.
 
 ```json
 {
@@ -195,8 +195,9 @@ In case `tagtable` is not used a `data` field can be defined in the `tagSearchTa
 ```
 
 #### Tag Table
+When a `tagtable` is provided a table icon is shown on the right inspector panel in the pens section. From the `+` button, additional pens can be added to the chart. 
 
-When a `tagtable` is provided a tabular icon is shown in the inspector at the pens section. By this the user can add additional pens to the chart. Tagtable can be provided by configuring an array of objects with at least `name` and `path` or by just an object path. The latter needs to be a path to a Table Holder in the system.
+A `tagtable` can be provided either by configuring an array of objects containing at least `name` and `path` or by assigning a single object path of a system Table Holder object to the property.
 
 ```jsonc
 {
@@ -322,11 +323,11 @@ Pointing to a Table Holder.
 | `leftPanel` | hide or show panel
 | `rightPanel` | hide or show panel
 | `bottomPanel` | hide or show panel
+| `showToolbar` | hide or show the toolbar.
 | `play` | `live` or `refresh`
 
 ### Receive messages (Send Topics)
-
-This widget receive messages from others. Besides the generic, this widget also support topics:
+This widget receive messages from others. Besides the generic topics, this widget also support:
 
 - [`addCursors`](#addcursors) : add one or multiple cursors
 - [`addPens`](#addpens) : add one or multiple pens
@@ -335,9 +336,8 @@ This widget receive messages from others. Besides the generic, this widget also 
 - [`setTimeSpan`](#settimespan) : set the time span on x-axis
 
 #### addCursors
-
-Send topic `addCursors` adds one or multiple cursors. In case the cursor already exists the cursor in the payload will be ignored. Send `timestamp` in the payload to add the cursor on that timestamp. The `timestamp` can be send in ISO, Epoch, or relative time format.
-If next to the timestamp, a `context` field is defined in the object, the cursor will show the value on hover. The `context` can be defined as a string, object, or array.
+Send topic `addCursors` adds one or more cursors. If the cursor already exists the one in the payload will be ignored. Send a `timestamp` in the payload to add the cursor to that time on the x-axis. The `timestamp` can be sent in ISO, Epoch, or relative time format.
+An optional `context` field can also be defined in the object. It will be shown when hovering over the cursor. The `context` can be defined as a string, an object, or an array.
 
 ```json
 {
@@ -372,8 +372,7 @@ To `clear cursors` send empty payload.
 ```
 
 #### addPens
-
-Add pen(s) with the provided list of pen objects or object paths. The `addPens` topic type provides a way to add pen(s) to a chart. (This can be particularly useful when firing an onSelect action - e.g on table row select)
+Add pen(s) with the provided list of pen objects or object paths. The `addPens` topic type provides a way to add pen(s) to a chart. (This can be particularly useful when firing an onSelect action - such as on table row select)
 
 Add pen(s) by providing the object paths:
 
@@ -431,9 +430,8 @@ Add pen(s) by providing pen objects:
 ```
 
 #### setCursors
-
-Send topic `setCursors` will fully update the set of cursors in the chart. Send `timestamp` in the payload to set the cursor on that timestamp. The `timestamp` can be send in ISO, Epoch, or relative time format. The `timestamp` can be send in ISO, Epoch, or relative time format.
-If next to the timestamp, a `context` field is defined in the object, the cursor will show the value on hover. The `context` can be defined as a string, object, or array.
+Send topic `setCursors` will update the current set of cursors in the chart. Send `timestamp` in the payload to set the cursor on that timestamp. The `timestamp` can be send in ISO, Epoch, or relative time format. 
+An optional `context` field can be defined as a string, an object, or an array. It will be shown when hovering over the cursor.
 
 ```json
 {
@@ -455,7 +453,6 @@ If next to the timestamp, a `context` field is defined in the object, the cursor
 ```
 
 #### setTagTable
-
 Setting the tag table by object path and prompt the Tags dialog.
 
 ```json
@@ -473,7 +470,6 @@ Setting the tag table by object path and prompt the Tags dialog.
 ```
 
 #### setTimeSpan
-
 If a time period in the form of `starttime` and/or `endtime` is received, the widget will change the X-Axis accordingly when those X-Axis is not locked.
 
 Changing the time period.
