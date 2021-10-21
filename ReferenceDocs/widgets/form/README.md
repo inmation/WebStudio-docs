@@ -1,13 +1,13 @@
 # Form
-
-This widget can be used to show a form which can contain different type of entries in order to accept input data from the user.
+This widget is used to show a form which contains different types of entry fields used to accept data from the user.
 
 ## Model
 
-```json
+```jsonc
     {
         "type": "form",
-        "entries": []
+        "entries": [], // List of input fields
+        "options": {}
     }
 ```
 
@@ -73,19 +73,32 @@ The `onSubmit` action gets invoked when the `Submit` button is clicked. The inpu
 ```
 
 ### Entries
+The entries section is used to define the form fields. The common model for all field types is shown below. 
 
-Different type of entries in order to accept input data from the user.
+```jsonc
+{
+    "type": "input", 
+    "id": "fld1",
+    "description": "Field input details",
+    "label": "Input 1",
+    "value": "default value",
+    "disabled": true
+}
+```
 
-- `buttons`: Allows for input by clicking one of the predefined buttons.
-- `date`: Allows for a datetime input by selecting a date in a date picker.
-- `input`: Allows for input by typing any value in an input box.
-- `select`: Allows for input by selecting predefined inputs from a Drop-down list.
+| Name | Description |
+| --- | --- |
+| `types` | Input field type. Supported options are:<br><ul><li>`buttons`: Radio buttons used to select one option from the predefined set.<li>`date`: Date-time input fields. The value can be typed in or selected from a date picker.<li>`input`: standard text input field.<li>`select`: Select one or more values from predefined drop-down options |
+|`id` | Optional id field that can be used to locate a specific value in the [submitted](#onsubmit) data |
+|`label` | Optional field label shown in bold above the field. |
+|`description` | Optional field used to describe what input is expected for the field in question. If provided will appear between the `label` and input field. |
+|`value` | Optional default value for the field. |
+|`disabled` | Used to grey out the field and prevent the value from being changed |
 
+
+Depending on the field type specified, some additional properties can also be set: 
 #### Buttons
-
-Allows for input by clicking one of the predefined buttons. Buttons need to be defined in `items`. Each button requires a `label` and `value`. Optionally a button can be disabled by setting `disabled` to `true`. The `border color` and `selected color` can be configured by setting the `color`. The default color is `white`.
-
-Default selected buttons can be defined by setting the `value` on entry level. This `value` can be a single value or an array of values. A default value should match the value of a predefined button.
+An example of the model for the button input field is shown below. In addition to the common properties it requires an `items` list containing the available radio buttons.    
 
 ```json
 {
@@ -120,23 +133,36 @@ Default selected buttons can be defined by setting the `value` on entry level. T
 }
 ```
 
+> **Note**: The `value` property is compulsory for the button field. It can, but need not, be set to one of the item values, in which case the form will start out with that item being selected.
+
+Item fields: 
+
+| Name | Description |
+| --- | --- |
+|`color` | Optional button color. If omitted the border and selected background color will default to "white", which works will for dark theme compilations, but not for the light theme, where an explicit color should be provided (such ag "gray").|
+|`label` | Button label |
+|`value` | Compulsory item value. The value of the selected item is returned when the from is submitted, or the default field value if none of te buttons are selected. Also note that the types of the item values don't need to be the same. |
+|`disabled`| Optional field to used to disable an item, preventing it from being selected. Note that the default value may be set to that of a disabled button.
+
 #### Date Picker Entry
+The model for a Date entry field is:
 
-Allows for a datetime input by selecting a date in a date picker. A default datetime can be defined by setting the `value`.
-
-```json
+```jsonc
 {
     "id": "DatePicker01",
     "type": "date",
     "label": "Start time",
     "description": "The start time of the interval to retrieve data for.",
-    "value": "2020-11-01T01:00:00.000Z"
+    "value": "2020-11-01T01:00:00.000Z",
+    "convertRelativeDate": false // Date specific field 
 }
 ```
+Using the date input field, a date/time can be selected from a pup-up date picker, invoked by clicking on the clock icon at the right edge of the field, or it can be directly entered. The date-time selected or entered is relative to the timezone of the browser. When the form is submitted, the date will be converted to an ISO UTC string. 
+
+It is also possible to specify a relative time expressions (see [gettime](../../actions/README.md#gettime)). When the form is submitted, the relative time expression is converted to the equivalent explicit time string by default. The relative time string can also be passed through unchanged by setting `convertRelativeDate` to false. 
 
 #### Input Entry
-
-Allows for input by typing any value in an input box. An input entry can be made readonly by setting `readonly` to true. A unit of measurement can be defined for the input by setting `uom` in the entry.
+Generic input box. An input entry can be made readonly by setting `readonly` to true. A unit of measure can be defined by assigning it to the `uom` property.
 
 ```jsonc
 {
@@ -144,19 +170,15 @@ Allows for input by typing any value in an input box. An input entry can be made
     "type": "input",
     "label": "Pressure",
     "description": "Set the pressure value",
-    "uom": "bar",
+    "uom": "bar", // Optional unit of measure.
     "value": 0.5,
     "readonly": false // Optional, by default false
 }
 ```
 
+> **Note**: Irrespective of the `value` property's initial type, when a field is edited, the value in the submit array will always be a string! 
 #### Select Entry
-
-Allows to select one or more predefined input values. To allow for multiple values, `multi` needs to be set to `true`. Predefined inputs need to be defined in the `items` array. This can be an array of strings or an array of objects containing a `label` and `value`. The latter can be used when the `label` to show should be different than the `value`. Optionally a predefined input can be disabled by setting `disabled` to `true`.
-
-Default selected inputs can be defined by setting the `value` on entry level. This `value` can be a single value or an array of values. A default value should match the value of a predefined input. In case the default `value` is defined as an array and `multi` is set to false, the first non `disabled` option will be selected.
-
-To allow any input value besides a pre defined select input, the `free` field needs to be set to `true`.
+Drop-down entry field with the following model:
 
 ```jsonc
 {
@@ -187,3 +209,11 @@ To allow any input value besides a pre defined select input, the `free` field ne
     ]
 }
 ```
+The type specific fields are:
+| Name | Description |
+| --- | --- |
+| `items` | List of items to show in the dropdown. This list can either be make up of atomic values such as strings and number or each entry can be an object with the following fields:<ul><li> `label`: Optional display label used instead of the value. <li> `value`: Value returned by `onSubmit` when the item is selected. As is the case for the "button", the type of the value field can be different for each item.<li>`disabled`: Items may be disabled, in which case they will not be shown in the dropdown |
+|`free` | If set, free form text can be entered, otherwise only options which appear in the drop-down can be selected.|
+|`milti` | When set to `true`, multiple items can be selected. In this case, onSubmit will return an array of values.|
+
+Default selected inputs can be defined by setting the `value` field at entry level. It can be a single value or an array of values and should match the value(s) of a predefined inputs. If the default `value` is defined as an array and `multi` is set to false, the first non `disabled` option will be selected.

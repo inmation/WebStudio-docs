@@ -243,7 +243,7 @@ In order to show the proper and desired node fields in search table, a `searchTa
             },
             {
                 "name": "path",
-                "title": "Path
+                "title": "Path"
             }
         ]
     }
