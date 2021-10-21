@@ -139,7 +139,7 @@ Item fields:
 
 | Name | Description |
 | --- | --- |
-|`color` | Optional button color. If omitted the border and selected background color will default to "white", which works will for dark theme compilations, but not for the light theme, where an explicit color should be provided (such ag "gray").|
+|`color` | Optional button color. If omitted the border and selected background color will default to "white", which works will for dark theme compilations, but not for the light theme, where an explicit color should be provided (for example: "gray").|
 |`label` | Button label |
 |`value` | Compulsory item value. The value of the selected item is returned when the from is submitted, or the default field value if none of te buttons are selected. Also note that the types of the item values don't need to be the same. |
 |`disabled`| Optional field to used to disable an item, preventing it from being selected. Note that the default value may be set to that of a disabled button.
