@@ -214,6 +214,6 @@ The type specific fields are:
 | --- | --- |
 | `items` | List of items to show in the dropdown. This list can either be make up of atomic values such as strings and number or each entry can be an object with the following fields:<ul><li> `label`: Optional display label used instead of the value. <li> `value`: Value returned by `onSubmit` when the item is selected. As is the case for the "button", the type of the value field can be different for each item.<li>`disabled`: Items may be disabled, in which case they will not be shown in the dropdown |
 |`free` | If set, free form text can be entered, otherwise only options which appear in the drop-down can be selected.|
-|`milti` | When set to `true`, multiple items can be selected. In this case, onSubmit will return an array of values.|
+|`multi` | When set to `true`, multiple items can be selected. In this case, onSubmit will return an array of values.|
 
 Default selected inputs can be defined by setting the `value` field at entry level. It can be a single value or an array of values and should match the value(s) of a predefined inputs. If the default `value` is defined as an array and `multi` is set to false, the first non `disabled` option will be selected.
