@@ -164,6 +164,8 @@ Nodes and icon of nodes support action hooks. An action hook supports the standa
 Supported action hooks:
 
 - `onClick`: when user clicks on the node or on one of its icons.
+- `onSelect`: triggers with `onClick` or when a node is selected using the search table. The action pipeline receives the data of the selected node in the message payload. 
+- `onSelectionChanged`: triggers when the selection is changed. That is to say, it is only triggered the first time if the same node is selected multiple times in succession. The message payload will contain the selected node's data.
 
 Generic `onClick` action hook for a node:
 
