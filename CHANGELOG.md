@@ -2,7 +2,7 @@
 
 ## [4769-Dev] - 2021-10-26
 - Added tree `onSelect` and `onSelectionChanged` hooks
-- 
+- Table search and filter options are persisted in the work model state field
 ## [4632-Dev] - 2021-10-14
 - Add `convertRelativeDate` to date fields in form
 - Add showToolbar option to chart widget

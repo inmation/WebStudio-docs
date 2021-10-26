@@ -196,17 +196,17 @@ Suppose we have a `tabs` widget with two tabs, each containing their own `text` 
 This fails since, from within the **tab01** compilation, there is no widget that resolves to the provided route. The route only makes sense when it is traversed starting at the root compilation.
 
 ```
-+ Root (compilation)
+Root (compilation)
 |
-+--+ tabs01 (widget)
++- tabs01 (widget)
    |
-   +--+ tab01 (compilation)
+   +- tab01 (compilation)
    |  |
-   |  +--+ text01 (widget)  <-- Action starts here
+   |  +- text01 (widget)  <-- Action starts here
    | 
-   +--+ tab02 (compilation)
+   +- tab02 (compilation)
       |
-      +--+ text02 (widget)
+      +- text02 (widget)
 ```
 
 To get the correct execution context we need to define the action at either the root compilation level, or in the actions section of the **tabs01** widget. 

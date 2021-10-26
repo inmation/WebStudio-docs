@@ -526,6 +526,82 @@ Data field has a key `children`, which is used in schema with `isExpander` to cr
     ],
 ```
 
+### State
+The table widget maintains some dynamic state information in the `state` property to record the currently selected row(s) as well as the active search and filter options. 
+
+```jsonc
+{
+    "state": {
+        // list of 0 based row indexes of selected rows 
+        "selectedRowIndex": [], 
+        // list of filter object
+        "filters": [
+            {
+                "name": "Count",
+                "value": [
+                    2,
+                    5
+                ]
+            }
+        ],
+        // Search text
+        "search": {
+            "value": ""
+        }
+    }
+}
+```
+These may be set in the initial model, but it is more common to access and manipulate the values at run-time. 
+
+**Note**: The state properties can be modified using action pipelines to explicitly set the filters, selected rows or search values. When applying such changes the current state fields need to be overwritten in their entirety. Changing fields inside the root level properties is not supported. 
+
+To put this into perspective, consider the following example: 
+Suppose we want to change the **"range"** filter on the **"Count"** field so it ends at 10 rather then 5, as in the example above. 
+
+We might be tempted to so something like this:
+
+```jsonc
+{
+    "type": "modify",
+    "id": "table",
+    "set": [
+        {   // This is not supported !
+            "name": "model.table.state.filters.0.value.1",
+            "value": 10
+        }
+    ]
+}
+```
+
+What we need to do instead, is to provide the complete filter array. 
+
+```jsonc
+{
+    "type": "modify",
+    "id": "table",
+    "set": [
+        {
+            // The model field being modified is the 
+            // "filter" array
+            "name": "model.table.state.filters",
+            // The value assigned to it must includes 
+            // all filter settings to be applied.
+            "value": [
+                {
+                    "value": [
+                        3,
+                        10
+                    ],
+                    "name": "Count"
+                }
+            ]
+        }
+    ]
+} 
+```
+
+In this case only one field is involved in the filter, but if there were more, they would all need to be included in the `filters` array even if only one of them changes.
+
 ### Actions
 
 - `onClick`: Cell is clicked. Can be defined via the [Schema](#schema).

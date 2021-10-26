@@ -194,6 +194,8 @@ If `tagtable` is not used a `data` field can be defined in the `tagSearchTable` 
 }
 ```
 
+> **Note**: Since the tag search table is essentially a "regular" table widget. it also has a [state](../table/README.md#state) property  
+
 #### Tag Table
 When a `tagtable` is provided a table icon is shown on the right inspector panel in the pens section. From the `+` button, additional pens can be added to the chart. 
 
