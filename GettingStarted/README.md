@@ -13,7 +13,7 @@ Let's quickly recap a few main points:
 
 - Starting from a blank canvas, you can create your own views by adding `widgets` to the compilation.
 - Widgets are able to bind to, and display dynamic data from the core inmation server and can be configured to react to user interactions.
-- Complications and the widgets contained within are defined using JSON (JavaScript Object Notation)
+- Compilations and the widgets contained within are defined using JSON (JavaScript Object Notation)
 
 ## Compilations basics
 
