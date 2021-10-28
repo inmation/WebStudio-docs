@@ -1,10 +1,11 @@
 # Change Log
 
 ## [4769-Dev] - 2021-10-26
-- Added tree `onSelect` and `onSelectionChanged` hooks
-- Table search and filter options are persisted in the work model state field
-- Add tree `expandedNodes` state
-- Add `contentToCompare` to editor
+- Added tree `onSelect` and `onSelectionChanged` hooks.
+- Table search and filter options are persisted in the work model state field.
+- Add tree `expandedNodes` state.
+- Add `contentToCompare` to editor.
+- Table support for multiple schema items with the same name. 
 ## [4632-Dev] - 2021-10-14
 - Add `convertRelativeDate` to date fields in form
 - Add showToolbar option to chart widget

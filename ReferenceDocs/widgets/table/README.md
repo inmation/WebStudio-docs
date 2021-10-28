@@ -222,7 +222,8 @@ A schema consist of:
 | name | description
 | ---- | ----------
 | `title` | Column title.
-| `name` | Key name of the row data.
+| `name` | Key name of the row data. The name is also used by default to uniquely identify columns in the table. If the same named data field needs to appear in the table multiple times an `id` field is used to identify the column instead. See [example](#multiple-schema-items-with-the-same-name) below
+| `id` | When column names are repeated in the schema section, WebStudio will automatically generated a unique `id` for all but the first occurrence, consisting of the `name` with a count suffix appended, such as **"date_2"** for example. The count starts at 2 and increments from there for each repeated name.<br>The `id` can also be explicitly provided in the initial-model, in which case any unique value can be assigned. **Note**: If the assigned `id` is itself repeated in the schema, from the second occurrence on, WebStudio will disambiguate them in the same ways as the name by appending a count to the end.   
 | `filter` | Type of filter: `none`, `text`, `select`, `range`, `slider` (optional, default is `text`)
 | `type` | Cell values can be displayed as different types. The format how the date and number type are displayed depend on the user's locale settings. Accepted types: `text`, `number`, `date` (optional, there is no default format)
 | `format` | When type is `date`, the date format can be changed within the optional format property. Example of date formats: `"YYYY-MM-DD HH:mm:ss.SSS"`, `LLLL`, `DD.MM.YYYY HH:mm` (optional)
@@ -267,6 +268,67 @@ A schema consist of:
                     "text": "Fixed column cell clicked!"
                 }
             }
+        }
+    ]
+}
+```
+
+##### Multiple schema items with the same name
+To illustrate the use of repeated names in the schema, consider an example where the data rows include a "timestamp" field expressed as an epoch integer and we want to show the raw number as well as a formatted version. 
+
+The data could be something like:
+```json
+{
+    "data": [
+        {
+            "event": "machine start",
+            "timestamp": 1635408094000
+        },
+        {
+            "event": "machine stop",
+            "timestamp": 1635416051000
+        }
+    ]
+}
+```
+
+In the schema the timestamp appears twice. First formatted as a number and then as a date:
+
+```json
+{
+        "schema": [
+        {
+            "name": "event",
+            "title": "Event Description"
+        },
+        {
+            "name": "timestamp",
+            "type": "number",
+            "title": "raw timestamp"
+        },
+        {
+            "name": "timestamp",
+            "type": "date",
+            "title": "Date-Time",
+            "format": "YYYY-MM-DD HH:mm:ss"
+        }
+    ]
+}
+```
+
+> **Note**: Looking at the work-model for this table, we see that an `id` = "timestamp_2" was automatically generated in the schema for the second occurrence of the column. It can also be explicitly added to the initial model, in which case we are free to choose the `id` value:
+
+```jsonc
+{
+        "schema": [
+        { "name": "event", /* etc ... */ },
+        { "name": "timestamp", /* etc ... */ },
+        {
+            "name": "timestamp",
+            "id" : "formatted_timestamp", 
+            "type": "date",
+            "title": "Date-Time",
+            "format": "YYYY-MM-DD HH:mm:ss"
         }
     ]
 }
