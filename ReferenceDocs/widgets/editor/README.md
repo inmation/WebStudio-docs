@@ -8,17 +8,15 @@ The widget can be used to show any kind of text like JSON or scripting code.
 {
     "type": "editor",
     "content": {}, // Optional content to be shown. Can be a string or JSON.
+    "contentToCompare" : {}, // optional
     "language" : "json"
 }
 ```
-
-Supported languages:
-
-- `json` **Default**
-- `lua`
-- `markdown`
-- `txt`
-- `xml`
+| Name | Description |
+| --- | --- |
+| `content` | Primary editor content. This can be either text or JSON. |
+| `contentToCompare` | Setting this property activates the editor's compare functionality which shows the difference between the `content` and the `contentToCompare` side by side.|
+| `language` | The language setting is used to activate the editor's syntax coloring and checking. <br>**Supported languages:**<br><ul><li>`json` **Default**<li> `lua`<li> `markdown`<li> `txt`<li> `xml`
 
 ### Options
 
@@ -31,13 +29,22 @@ Supported languages:
 
 ### Editor Options
 
-See [Editor Options](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html)
+See [Editor Options](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html) for all the available editor options.
 
 ```json
 {
     "editorOptions": {}
 }
 ```
+
+When the editor is used to compare content, either of the panels can be configured to be editable or read-only by setting the `readOnly` and `originalEditable` options as follows:
+
+| Editable panels | `readOnly` | `originalEditable` |
+| --- | --- | --- |
+| Both panels | false | true |
+| Neither panel | true | false | 
+| Only the `content` | true | true |
+| Only the `contentToCompare` | false | false |
 
 ### Actions
 
