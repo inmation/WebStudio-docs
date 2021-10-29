@@ -72,6 +72,34 @@
                         ],
                         "type": "linear"
                     }
+                },
+                "_layout": {
+                    "font": {
+                        "color": "#d5d5d6",
+                        "size": 12
+                    },
+                    "paper_bgcolor": "#212123",
+                    "plot_bgcolor": "#212123",
+                    "xaxis": {
+                        "showgrid": true,
+                        "gridcolor": "#6c6c6d",
+                        "linecolor": "#f9f9f9",
+                        "range": [
+                            0,
+                            5
+                        ],
+                        "type": "linear"
+                    },
+                    "yaxis": {
+                        "showgrid": true,
+                        "gridcolor": "#6c6c6d",
+                        "linecolor": "#f9f9f9",
+                        "range": [
+                            0,
+                            3
+                        ],
+                        "type": "linear"
+                    }
                 }
             },
             "id": "4Xu-",

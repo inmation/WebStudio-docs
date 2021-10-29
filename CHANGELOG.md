@@ -6,6 +6,7 @@
 - Add tree `expandedNodes` state.
 - Add `contentToCompare` to editor.
 - Table support for multiple schema items with the same name. 
+- Added plotly gauge example 
 ## [4632-Dev] - 2021-10-14
 - Add `convertRelativeDate` to date fields in form
 - Add showToolbar option to chart widget

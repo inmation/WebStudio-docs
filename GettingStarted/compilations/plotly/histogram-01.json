@@ -87,6 +87,35 @@
                         ],
                         "autorange": true
                     }
+                },
+                "_layout": {
+                    "font": {
+                        "color": "#d5d5d6",
+                        "size": 12
+                    },
+                    "paper_bgcolor": "#212123",
+                    "plot_bgcolor": "#212123",
+                    "xaxis": {
+                        "showgrid": true,
+                        "gridcolor": "#6c6c6d",
+                        "linecolor": "#f9f9f9",
+                        "titel": "Value",
+                        "range": [
+                            0,
+                            6.315789473684211
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "showgrid": true,
+                        "gridcolor": "#6c6c6d",
+                        "linecolor": "#f9f9f9",
+                        "range": [
+                            -0.5,
+                            99.5
+                        ],
+                        "autorange": true
+                    }
                 }
             },
             "id": "aNAK",

@@ -38,6 +38,22 @@
             "plotlyOptions": {
                 "layout": {
                     "paper_bgcolor": "white"
+                },
+                "_layout": {
+                    "font": {
+                        "color": "#d5d5d6",
+                        "size": 12
+                    },
+                    "paper_bgcolor": "#212123",
+                    "plot_bgcolor": "#212123",
+                    "xaxis": {
+                        "linecolor": "#f9f9f9"
+                    },
+                    "yaxis": {
+                        "showgrid": true,
+                        "gridcolor": "#6c6c6d",
+                        "linecolor": "#f9f9f9"
+                    }
                 }
             },
             "id": "5ueO",

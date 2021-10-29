@@ -1,0 +1,269 @@
+{
+    "version": "1",
+    "name": "gauge-02",
+    "actions": {
+        "storeOnMessage": [
+            {
+                "type": "transform",
+                "note": "The input message payload will be assigned to the message with the value of the topic as the field name",
+                "completeMsgObject": true,
+                "aggregateOne": [
+                    {
+                        "$replaceRoot": {
+                            "newRoot": {
+                                "$arrayToObject": [
+                                    {
+                                        "k": {
+                                            "$ifNull": [
+                                                "$topic",
+                                                "myField"
+                                            ]
+                                        },
+                                        "v": "$payload"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "$set": {
+                            "topic": null,
+                            "payload": null
+                        }
+                    }
+                ]
+            }
+        ],
+        "updateBarThreshold": [
+            {
+                "note": "Move the value which is currently on the payload to a dedicated value field",
+                "type": "action",
+                "name": "storeOnMessage",
+                "message": {
+                    "topic": "value"
+                }
+            },
+            {
+                "note": "Retrieve the current threshold",
+                "skip": false,
+                "type": "modify",
+                "refresh": false,
+                "id": "self",
+                "set": [
+                    {
+                        "name": "payload",
+                        "value": "$model.data.0.gauge.threshold.value"
+                    }
+                ]
+            },
+            {
+                "note": "find the max of the current threshold and the value",
+                "type": "transform",
+                "completeMsgObject": true,
+                "aggregateOne": [
+                    {
+                        "$project": {
+                            "payload": {
+                                "$max": [
+                                    "$payload",
+                                    "$value"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "modify",
+                "id": "self",
+                "refresh": false,
+                "set": [
+                    {
+                        "name": "model.data.0.gauge.threshold.value",
+                        "value": "$payload"
+                    }
+                ]
+            }
+        ]
+    },
+    "widgets": [
+        {
+            "type": "plotly",
+            "description": "Angular Gauge Chart",
+            "name": "Plotly: Angular Gauge Chart",
+            "captionBar": {
+                "hidden": false,
+                "showModelEditorButton": true
+            },
+            "dataSource": [
+                {
+                    "note": "Read the units of measure",
+                    "path": "/System/Core/Examples/Demo Data/Process Data/PC4711.OpcEngUnit",
+                    "type": "read"
+                },
+                {
+                    "note": "Init the Units",
+                    "type": "modify",
+                    "id": "self",
+                    "refresh": false,
+                    "set": [
+                        {
+                            "name": "model.data.0.number.suffix",
+                            "value": "$payload"
+                        }
+                    ]
+                },
+                {
+                    "path": "/System/Core/Examples/Demo Data/Process Data/PC4711",
+                    "type": "subscribe"
+                }
+            ],
+            "actions": {
+                "willUpdate": [
+                    {
+                        "note": "Copy the current value to the reference field",
+                        "type": "modify",
+                        "id": "self",
+                        "refresh": false,
+                        "set": [
+                            {
+                                "name": "model.data.0.delta.reference",
+                                "value": "$model.data.0.value"
+                            }
+                        ]
+                    },
+                    {
+                        "note": "Update the value with tag value",
+                        "type": "modify",
+                        "id": "self",
+                        "refresh": false,
+                        "set": [
+                            {
+                                "name": "model.data.0.value",
+                                "value": "$payload"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "action",
+                        "skip": false,
+                        "name": "updateBarThreshold"
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "mode": "gauge+number+delta",
+                    "type": "indicator",
+                    "value": 8.28,
+                    "number": {
+                        "suffix": ""
+                    },
+                    "domain": {
+                        "x": [
+                            0,
+                            1
+                        ],
+                        "y": [
+                            0,
+                            1
+                        ]
+                    },
+                    "title": {
+                        "text": "PC4711"
+                    },
+                    "gauge": {
+                        "bar": {
+                            "color": "#004702"
+                        },
+                        "borderwidth": 1,
+                        "bordercolor": "black",
+                        "steps": [
+                            {
+                                "color": "orange",
+                                "range": [
+                                    0,
+                                    2
+                                ]
+                            },
+                            {
+                                "color": "#7aff7a",
+                                "range": [
+                                    2,
+                                    8
+                                ]
+                            },
+                            {
+                                "color": "red",
+                                "range": [
+                                    8,
+                                    10
+                                ]
+                            }
+                        ],
+                        "axis": {
+                            "range": [
+                                0,
+                                10
+                            ]
+                        },
+                        "threshold": {
+                            "line": {
+                                "color": "black",
+                                "width": 3
+                            },
+                            "thickness": 0.75,
+                            "value": 0
+                        }
+                    }
+                }
+            ],
+            "plotlyOptions": {
+                "layout": {
+                    "font": {
+                        "size": 12
+                    },
+                    "margin": {
+                        "b": 0,
+                        "l": 25,
+                        "r": 50,
+                        "t": 20
+                    }
+                },
+                "_layout": {
+                    "font": {
+                        "color": "#d5d5d6",
+                        "size": 12
+                    },
+                    "margin": {
+                        "b": 0,
+                        "l": 25,
+                        "r": 50,
+                        "t": 20
+                    },
+                    "paper_bgcolor": "#212123"
+                }
+            },
+            "id": "gauge1",
+            "layout": {
+                "x": 0,
+                "w": 21,
+                "h": 18,
+                "y": 0,
+                "static": false
+            }
+        }
+    ],
+    "options": {
+        "stacking": "vertical",
+        "numberOfColumns": 96,
+        "padding": {
+            "x": 0,
+            "y": 2
+        },
+        "spacing": {
+            "x": 2,
+            "y": 2
+        }
+    }
+}
